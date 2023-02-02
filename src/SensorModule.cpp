@@ -434,11 +434,12 @@ void SensorModule::calculateAirquality(bool iForce /*= false*/)
             uint8_t lAirquality = 6;
             if ((gSensor & BIT_Co2)) {
                 // do not calculate if underlying measures are not yet available
-                if (!Sensor::measureValue(Co2, lValue))
-                    return;
-                lValue = knx.getGroupObject(SENS_KoCo2).value(getDPT(VAL_DPT_9));
-                if (lValue <= 1.0)
+                if (Sensor::measureValue(Co2, lValue))
+                    lValue = knx.getGroupObject(SENS_KoCo2).value(getDPT(VAL_DPT_9));
+                else if (Sensor::measureValue(Co2Calc, lValue))
                     lValue = knx.getGroupObject(SENS_KoCo2b).value(getDPT(VAL_DPT_9));
+                else
+                    return;
                 lAirquality = getAirquality(lValue, sCo2Limits);
             } else if ((gSensor & BIT_Voc)) {
                 if (!Sensor::measureValue(Voc, lValue))

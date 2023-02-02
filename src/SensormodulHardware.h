@@ -1,7 +1,7 @@
 #pragma once
 
 #ifndef BOARD_ENDUSER
-// // Board specific definietions
+// // Board specific definitions
 // // #define BOARD_MASIFI
 // // ################################################
 // // ### Board Configuration
@@ -49,7 +49,7 @@
 #define BUZZER_PIN 9
 #define I2C_1WIRE_DEVICE_ADDRESSS 0x1A  // Address of DS2482 1-Wire-Busmaster chip
 #define I2C_EEPROM_DEVICE_ADDRESSS 0x50 // Address of 24LC256 eeprom chip
-#define I2C_RGBLED_DEVICE_ADDRESS 0x60  // Address of PCA9632 RBGW-LED-Driver
+#define I2C_RGBLED_DEVICE_ADDRESS 0x60  // Address of PCA9632 RGBW-LED-Driver
 #endif
 #ifdef BOARD_MASIFI_V2
 #define PROG_LED_PIN 13
@@ -67,7 +67,7 @@
 #define BUZZER_PIN 9
 #define I2C_1WIRE_DEVICE_ADDRESSS 0x18 // Address of DS2484 1-Wire-Busmaster chip
 #define I2C_EEPROM_DEVICE_ADDRESSS 0x50 // Address of 24LC256 eeprom chip
-#define I2C_RGBLED_DEVICE_ADDRESS 0x60  // Address of PCA9632 RBGW-LED-Driver
+#define I2C_RGBLED_DEVICE_ADDRESS 0x60  // Address of PCA9632 RGBW-LED-Driver
 #endif
 #ifdef BOARD_MASIFI_V3
 #define PROG_LED_PIN 13
@@ -85,7 +85,7 @@
 #define BUZZER_PIN 9
 #define I2C_1WIRE_DEVICE_ADDRESSS 0x18  // Address of DS2484 1-Wire-Busmaster chip
 #define I2C_EEPROM_DEVICE_ADDRESSS 0x50 // Address of 24LC256 eeprom chip
-#define I2C_RGBLED_DEVICE_ADDRESS 0x60  // Address of PCA9632 RBGW-LED-Driver
+#define I2C_RGBLED_DEVICE_ADDRESS 0x60  // Address of PCA9632 RGBW-LED-Driver
 #endif
 #ifdef BOARD_MASIFI_V31
 #define PROG_LED_PIN 13
@@ -103,7 +103,7 @@
 #define BUZZER_PIN 9
 #define I2C_1WIRE_DEVICE_ADDRESSS 0x18  // Address of DS2484 1-Wire-Busmaster chip
 #define I2C_EEPROM_DEVICE_ADDRESSS 0x50 // Address of 24LC256 eeprom chip
-#define I2C_RGBLED_DEVICE_ADDRESS 0x60  // Address of PCA9632 RBGW-LED-Driver
+#define I2C_RGBLED_DEVICE_ADDRESS 0x60  // Address of PCA9632 RGBW-LED-Driver
 #endif
 #ifdef BOARD_MASIFI_V40
 #define PROG_LED_PIN 1
@@ -131,7 +131,7 @@
 // Buzzer
 #define BUZZER_PIN 27
 // #define I2C_EEPROM_DEVICE_ADDRESSS 0x50 // Address of 24LC256 eeprom chip
-#define I2C_RGBLED_DEVICE_ADDRESS 0x60  // Address of PCA9632 RBGW-LED-Driver
+#define I2C_RGBLED_DEVICE_ADDRESS 0x60  // Address of PCA9632 RGBW-LED-Driver
 #define HW_ANALOG_ID 26 
 #define HW_REVISION_ID1 10
 #define HW_REVISION_ID2 11
@@ -182,7 +182,7 @@
 // Buzzer
 #define BUZZER_PIN 9
 // #define I2C_1WIRE_DEVICE_ADDRESSS 0x18  // Address of DS2484 1-Wire-Busmaster chip
-#define I2C_RGBLED_DEVICE_ADDRESS 0x60  // Address of PCA9632 RBGW-LED-Driver
+#define I2C_RGBLED_DEVICE_ADDRESS 0x60  // Address of PCA9632 RGBW-LED-Driver
 #define HW_ANALOG_ID 26 
 #define HW_REVISION_ID1 10
 #define HW_REVISION_ID2 11
