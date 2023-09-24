@@ -301,7 +301,8 @@ void SensorModule::processSensor(sSensorInfo* cData, getSensorValue fGetSensorVa
                     if (lPercent > 0 && (uint8_t)round(abs(lDelta)) >= lPercent)
                         lSend = true;
                     float lAbsolute = knx.paramWord(iParamIndex + 3) / iOffsetFactor;
-                    if (lAbsolute > 0.0f && roundf(abs(lValue - cData->lastSentValue)) >= lAbsolute)
+                    float lDiff = abs(lValue - cData->lastSentValue);
+                    if (lAbsolute > 0.0f && lDiff >= lAbsolute)
                         lSend = true;
                 }
                 // we always store the new value in KO, even it it is not sent (to satisfy potential read request)
@@ -371,10 +372,9 @@ void SensorModule::calculateComfort(bool iForce /*= false*/)
         if (getError() & (Temperature | Humidity))
             return;
 
-        float lTemp = roundf(knx.getGroupObject(SENS_KoTemp).value(getDPT(VAL_DPT_9)));
-        float lHum = roundf(knx.getGroupObject(SENS_KoHum).value(getDPT(VAL_DPT_9)));
-        bool lTempHumValid = (((lTemp < 0.0f) || lTemp > 0.0f) && lHum > 0.0f);
-        if (lTempHumValid && (knx.paramByte(SENS_Comfort) & SENS_ComfortMask))
+        float lTemp = knx.getGroupObject(SENS_KoTemp).value(getDPT(VAL_DPT_9));
+        float lHum = knx.getGroupObject(SENS_KoHum).value(getDPT(VAL_DPT_9));
+        if (knx.paramByte(SENS_Comfort) & SENS_ComfortMask)
         {
             // comfort zone
             uint8_t lComfort = 0;
