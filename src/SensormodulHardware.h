@@ -65,7 +65,7 @@
 // #define COUNT_LOG_CHANNEL 99
 // Buzzer
 #define BUZZER_PIN 9
-#define I2C_1WIRE_DEVICE_ADDRESSS 0x18 // Address of DS2484 1-Wire-Busmaster chip
+#define I2C_1WIRE_DEVICE_ADDRESSS 0x18  // Address of DS2484 1-Wire-Busmaster chip
 #define I2C_EEPROM_DEVICE_ADDRESSS 0x50 // Address of 24LC256 eeprom chip
 #define I2C_RGBLED_DEVICE_ADDRESS 0x60  // Address of PCA9632 RGBW-LED-Driver
 #endif
@@ -124,15 +124,15 @@
 #define KNX_I2C1_SCL_PIN 15
 #define COUNT_1WIRE_BUSMASTER 1
 #define COUNT_1WIRE_CHANNEL 30
-#define I2C_1WIRE_DEVICE_ADDRESSS 0x18  // Address of DS2484 1-Wire-Busmaster chip
+#define I2C_1WIRE_DEVICE_ADDRESSS 0x18 // Address of DS2484 1-Wire-Busmaster chip
 #define I2C_BUS_1WIRE Wire1
 #define ONEWIRE_5V_ENABLE 5
 #define ONEWIRE_5V_SHORT 4
 // Buzzer
 #define BUZZER_PIN 27
 // #define I2C_EEPROM_DEVICE_ADDRESSS 0x50 // Address of 24LC256 eeprom chip
-#define I2C_RGBLED_DEVICE_ADDRESS 0x60  // Address of PCA9632 RGBW-LED-Driver
-#define HW_ANALOG_ID 26 
+#define I2C_RGBLED_DEVICE_ADDRESS 0x60 // Address of PCA9632 RGBW-LED-Driver
+#define HW_ANALOG_ID 26
 #define HW_REVISION_ID1 10
 #define HW_REVISION_ID2 11
 #define HW_REVISION_ID3 12
@@ -152,7 +152,7 @@
 #define KNX_I2C1_SCL_PIN 15
 #define COUNT_1WIRE_BUSMASTER 1
 #define COUNT_1WIRE_CHANNEL 30
-#define I2C_1WIRE_DEVICE_ADDRESSS 0x18  // Address of DS2484 1-Wire-Busmaster chip
+#define I2C_1WIRE_DEVICE_ADDRESSS 0x18 // Address of DS2484 1-Wire-Busmaster chip
 #define I2C_BUS_1WIRE Wire1
 #define ONEWIRE_5V_ENABLE 5
 #define ONEWIRE_5V_SHORT 4
@@ -175,18 +175,68 @@
 #define KNX_I2C1_SCL_PIN 15
 #define COUNT_1WIRE_BUSMASTER 1
 #define COUNT_1WIRE_CHANNEL 30
-#define I2C_1WIRE_DEVICE_ADDRESSS 0x18  // Address of DS2484 1-Wire-Busmaster chip
+#define I2C_1WIRE_DEVICE_ADDRESSS 0x18 // Address of DS2484 1-Wire-Busmaster chip
 #define I2C_BUS_1WIRE Wire1
 #define ONEWIRE_5V_ENABLE 5
 #define ONEWIRE_5V_SHORT 4
 // Buzzer
 #define BUZZER_PIN 9
 // #define I2C_1WIRE_DEVICE_ADDRESSS 0x18  // Address of DS2484 1-Wire-Busmaster chip
-#define I2C_RGBLED_DEVICE_ADDRESS 0x60  // Address of PCA9632 RGBW-LED-Driver
-#define HW_ANALOG_ID 26 
+#define I2C_RGBLED_DEVICE_ADDRESS 0x60 // Address of PCA9632 RGBW-LED-Driver
+#define HW_ANALOG_ID 26
 #define HW_REVISION_ID1 10
 #define HW_REVISION_ID2 11
 #define HW_REVISION_ID3 12
+#endif
+
+#ifdef BOARD_MASIFI_HFPM_DEVEL2
+#define PROG_LED_PIN 18
+#define PROG_LED_PIN_ACTIVE_ON HIGH
+#define PROG_BUTTON_PIN 17
+#define PROG_BUTTON_PIN_INTERRUPT_ON FALLING
+// #define INFO_LED_PIN 9
+// #define INFO_LED_PIN_ACTIVE_ON HIGH
+#define PRESENCE_LED_PIN 0
+#define PRESENCE_LED_PIN_ACTIVE_ON HIGH
+#define MOVE_LED_PIN 1
+#define MOVE_LED_PIN_ACTIVE_ON HIGH
+#define KNX_UART_TX_PIN 12
+#define KNX_UART_RX_PIN 13
+#define I2C_SDA_PIN 26 // I2C1
+#define I2C_SCL_PIN 27 // I2C1
+#define HF_UART_TX_PIN 4
+#define HF_UART_RX_PIN 5
+#define HF_S1_PIN 2
+#define HF_S2_PIN 3
+#define HF_POWER_PIN 10
+#define SAVE_INTERRUPT_PIN 11
+// #define SENSOR_I2C_OPT300x Wire1
+// #define SENSOR_I2C_VEML7700 Wire1
+#endif
+
+#ifdef BOARD_MASIFI_HFPM_V20
+#define PROG_LED_PIN 18
+#define PROG_LED_PIN_ACTIVE_ON HIGH
+#define PROG_BUTTON_PIN 17
+#define PROG_BUTTON_PIN_INTERRUPT_ON FALLING
+// #define INFO_LED_PIN 9
+// #define INFO_LED_PIN_ACTIVE_ON HIGH
+#define PRESENCE_LED_PIN 0
+#define PRESENCE_LED_PIN_ACTIVE_ON HIGH
+#define MOVE_LED_PIN 1
+#define MOVE_LED_PIN_ACTIVE_ON HIGH
+#define KNX_UART_TX_PIN 12
+#define KNX_UART_RX_PIN 13
+#define I2C_SDA_PIN 26 // I2C1
+#define I2C_SCL_PIN 27 // I2C1
+#define HF_UART_TX_PIN 4
+#define HF_UART_RX_PIN 5
+#define HF_S1_PIN 2
+#define HF_S2_PIN 3
+#define HF_POWER_PIN 28
+#define SAVE_INTERRUPT_PIN 11
+// #define SENSOR_I2C_OPT300x Wire1
+// #define SENSOR_I2C_VEML7700 Wire1
 #endif
 
 #ifdef BOARD_MASIFI_AUSSEN_V13
@@ -227,7 +277,6 @@
 #define BUZZER_PIN 27
 // #define I2C_1WIRE_DEVICE_ADDRESSS 0x18  // Address of DS2484 1-Wire-Busmaster chip
 // #define I2C_EEPROM_DEVICE_ADDRESSS 0x50 // Address of 24LC256 eeprom chip
-#define I2C_RGBLED_DEVICE_ADDRESS 0x60  // Address of PCA9632 RBGW-LED-Driver
+#define I2C_RGBLED_DEVICE_ADDRESS 0x60 // Address of PCA9632 RBGW-LED-Driver
 #endif
 #endif
-
