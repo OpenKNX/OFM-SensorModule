@@ -1,8 +1,8 @@
 // cSpell:words millis Millis Divident Dewpoint Airquality airquality
+#include "OpenKNX.h"
 #include "Sensor.h"
-#include "knxprod.h"
 #include "hardware.h"
-#include "HardwareDevices.h"
+#include "knxprod.h"
 
 #define BIT_1WIRE 1
 #define BIT_Temp 2
@@ -23,10 +23,10 @@ struct sPoint
     float y;
 };
 
-class SensorModule
+class SensorModule : public OpenKNX::Module
 {
-private:
-    static SensorModule *sInstance;
+  private:
+    static SensorModule* sInstance;
 
     // the entries have the same order as the KOs starting with "Ext"
     uint8_t gIsExternalValueValid[14] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -47,7 +47,7 @@ private:
     int8_t gTempOffset = 0;
 
     uint16_t gSensor = 0;
-
+    bool gCallbackProcessing = false;
 
     static void sensorDelayCallback(uint32_t iMillis);
     static bool calculateDewValue(MeasureType iMeasureType, float& eValue);
@@ -57,16 +57,14 @@ private:
     void startSensor();
     bool readSensorValue(MeasureType iMeasureType, float& eValue);
     void processSensor(sSensorInfo* cData, getSensorValue fGetSensorValue, MeasureType iMeasureType, float iOffsetFactor, float iValueFactor, uint16_t iParamIndex, uint16_t iKoNumber, uint8_t iDpt);
-    bool inPolygon(sPoint *iPoly, uint8_t iLen, float iX, float iY);
+    bool inPolygon(sPoint* iPoly, uint8_t iLen, float iX, float iY);
     void calculateComfort(bool iForce = false);
     void calculateAccuracy(bool iForce = false);
-    uint8_t getAirquality(float iCurrent, float* iLimits); 
+    uint8_t getAirquality(float iCurrent, float* iLimits);
     void calculateAirquality(bool iForce = false);
     void processSensors(bool iForce = false);
 
-
-
-public:
+  public:
     SensorModule();
     ~SensorModule();
 
@@ -74,12 +72,15 @@ public:
     void sendError();
     void setError(uint16_t iValue);
     void processReadRequests(uint32_t iStartupDelay, uint32_t iReadRequestDelay);
-    bool processDiagnoseCommand(char *iBuffer);
-    void processInputKo(GroupObject &iKo);
+    bool processDiagnoseCommand(char* iBuffer);
+    void processInputKo(GroupObject& iKo);
     void setup();
     void loop();
-    void onBeforeRestartHandler(); 
+    void readFlash(const uint8_t* iBuffer, const uint16_t iSize) override;
+    void writeFlash() override;
+    uint16_t flashSize() override;
+    // const std::string name() override;
+    // const std::string version() override;
+    void onBeforeRestartHandler();
     void onBeforeTablesUnloadHandler();
-
 };
-

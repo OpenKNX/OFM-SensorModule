@@ -1,16 +1,12 @@
 // cSpell:words millis Millis Divident Dewpoint Airquality airquality
-#include "Helper.h"
-#include "Schedule.h"
-
-// #include "IncludeManager.h"
-#include "HardwareDevices.h"
-
-#include "Logic.h"
 #include "SensorModule.h"
+#include "Logic.h"
+// #include <cmath>
+#include "ModuleVersionCheck.h"
 
 #include "Sensor.h"
 #include "SensorBME680.h"
-#include "SensorSGP30.h"
+// #include "SensorSGP30.h"
 
 SensorModule* SensorModule::sInstance = nullptr;
 
@@ -125,7 +121,11 @@ void SensorModule::sensorDelayCallback(uint32_t iMillis)
     {
         if (sInstance != nullptr)
         {
-            Schedule::loop();
+            // CHECKv1
+            sInstance->gCallbackProcessing = true;
+            openknx.loop();
+            openknx.common.skipLooptimeWarning();
+            sInstance->gCallbackProcessing = false;
         }
     }
     // printDebug("sensorDelayCallback: Left after %lu ms\n", millis() - lMillis);
@@ -142,7 +142,8 @@ void SensorModule::addSensorMetadata(Sensor* iSensor, uint8_t iSensorId, Measure
     }
     else if (iSensorId == SENS_SGP30)
     {
-        ((SensorSGP30*)iSensor)->setMagicKeyOffset(lMagicWordOffset);
+        // CHECKv1
+        // ((SensorSGP30*)iSensor)->setMagicKeyOffset(lMagicWordOffset);
     }
     if (iMeasureType == Temperature)
     {
@@ -301,7 +302,8 @@ void SensorModule::processSensor(sSensorInfo* cData, getSensorValue fGetSensorVa
                     if (lPercent > 0 && (uint8_t)round(abs(lDelta)) >= lPercent)
                         lSend = true;
                     float lAbsolute = knx.paramWord(iParamIndex + 3) / iOffsetFactor;
-                    if (lAbsolute > 0.0f && roundf(abs(lValue - cData->lastSentValue)) >= lAbsolute)
+                    float lDiff = abs(lValue - cData->lastSentValue);
+                    if (lAbsolute > 0.0f && lDiff >= lAbsolute)
                         lSend = true;
                 }
                 // we always store the new value in KO, even it it is not sent (to satisfy potential read request)
@@ -353,7 +355,7 @@ bool SensorModule::calculateDewValue(MeasureType iMeasureType, float& eValue)
     bool lTempHumValid = (((lTemp < 0.0f) || (lTemp > 0.0f)) && lHum > 0.0f);
     if (lTempHumValid)
     {
-        float lLogHum = log(lHum / 100.0f);
+        float lLogHum = ::log(lHum / 100.0f); // this is cmath::log
         // eValue = 243.12f * ((17.62f * lTemp) / (243.12f + lTemp) + lLogHum) / ((17.62f * 243.12f) / (243.12f + lTemp) - lLogHum);
         eValue = 243.12f * ((17.62f * lTemp) / (243.12f + lTemp) + lLogHum) / (4283.7744 / (243.12f + lTemp) - lLogHum);
     }
@@ -371,10 +373,9 @@ void SensorModule::calculateComfort(bool iForce /*= false*/)
         if (getError() & (Temperature | Humidity))
             return;
 
-        float lTemp = roundf(knx.getGroupObject(SENS_KoTemp).value(getDPT(VAL_DPT_9)));
-        float lHum = roundf(knx.getGroupObject(SENS_KoHum).value(getDPT(VAL_DPT_9)));
-        bool lTempHumValid = (((lTemp < 0.0f) || lTemp > 0.0f) && lHum > 0.0f);
-        if (lTempHumValid && (knx.paramByte(SENS_Comfort) & SENS_ComfortMask))
+        float lTemp = knx.getGroupObject(SENS_KoTemp).value(getDPT(VAL_DPT_9));
+        float lHum = knx.getGroupObject(SENS_KoHum).value(getDPT(VAL_DPT_9));
+        if (knx.paramByte(SENS_Comfort) & SENS_ComfortMask)
         {
             // comfort zone
             uint8_t lComfort = 0;
@@ -600,6 +601,8 @@ void SensorModule::loop()
 {
     if (!knx.configured())
         return;
+    if (gCallbackProcessing)
+        return;
 
     // set backreference, at this point it is also an "isRunning" info
     if (sInstance == nullptr)
@@ -611,25 +614,24 @@ void SensorModule::loop()
     // Schedule::loop();
 
     Sensor::sensorLoop();
-    Schedule::loop();
 }
 
-void SensorModule::onBeforeRestartHandler()
-{
-    // printDebug("before Restart called\n");
-    Sensor::saveState();
-}
+// void SensorModule::onBeforeRestartHandler()
+// {
+//     // printDebug("before Restart called\n");
+//     Sensor::saveState();
+// }
 
-void SensorModule::onBeforeTablesUnloadHandler()
-{
-    static uint32_t sLastCalledTablesUnloadHandler = 0;
-    printDebug("beforeTablesUnload called\n");
-    if (sLastCalledTablesUnloadHandler == 0 || delayCheck(sLastCalledTablesUnloadHandler, 10000))
-    {
-        Sensor::saveState();
-        sLastCalledTablesUnloadHandler = millis();
-    }
-}
+// void SensorModule::onBeforeTablesUnloadHandler()
+// {
+//     static uint32_t sLastCalledTablesUnloadHandler = 0;
+//     // printDebug("beforeTablesUnload called\n");
+//     if (sLastCalledTablesUnloadHandler == 0 || delayCheck(sLastCalledTablesUnloadHandler, 10000))
+//     {
+//         Sensor::saveState();
+//         sLastCalledTablesUnloadHandler = millis();
+//     }
+// }
 
 void SensorModule::setup()
 {
@@ -638,4 +640,29 @@ void SensorModule::setup()
         gTempOffset = (int8_t)knx.paramByte(SENS_TempOffset); // we handle temp offset in Sensor, if possible
         startSensor();
     }
+}
+
+void SensorModule::readFlash(const uint8_t* iBuffer, const uint16_t iSize)
+{
+    if (iSize == 0) // first call - without data
+        return;
+
+    uint8_t lVersion = openknx.flash.readByte();
+    if (lVersion != 1) // version unknown
+    {
+        logDebugP("Wrong version of flash data (%i)", lVersion);
+        return;
+    }
+    Sensor::readFlash(iBuffer, iSize);
+}
+
+void SensorModule::writeFlash()
+{
+    openknx.flash.writeByte(1); // Version
+    Sensor::writeFlash();
+}
+
+uint16_t SensorModule::flashSize()
+{
+    return 1 + Sensor::flashSize();
 }
