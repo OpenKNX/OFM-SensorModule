@@ -18,6 +18,16 @@ SensorModule::~SensorModule()
 {
 }
 
+const std::string SensorModule::name()
+{
+    return "SensorModule";
+}
+
+const std::string SensorModule::version()
+{
+    return MODULE_SensorModule_Version;
+}
+
 uint16_t SensorModule::getError()
 {
     return (uint16_t)knx.getGroupObject(SENS_KoError).value(getDPT(VAL_DPT_7));
