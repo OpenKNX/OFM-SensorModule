@@ -62,6 +62,19 @@ Die nicht Sensor-spezifischen Teile der Applikation basieren auf anderen OpenKNX
 
 Im folgenden werden Änderungen an dem Dokument erfasst, damit man nicht immer das Gesamtdokument lesen muss, um Neuerungen zu erfahren.
 
+09.10.2023: Firmware 1.5.2, Applikation 1.5
+
+* Aktualisierung auf die neuste Logikmodul-Version 1.6, siehe dortige Änderungshistorie
+* Das SensorModule-Vpm bzw. SensorModule-Big enthält die neuste PresenceModule-Version 1.12. 
+* Das Sensormodul unterstützt jetzt auch die Hardware für den RealPresence, damit dort auch andere I²C-Sensoren als nur ein Helligkeitssensor genutzt werden können. 
+
+24.09.2023: Firmware 1.3.4, Applikation 1.3
+
+* FIX: Zyklisches senden von Temperaturen funktionierte nicht korrekt, weil in der Berechnung für den Vergleichswert fälschlicherweise gerundet wurde.
+* FIX: Die Berechnung der Behaglichkeitszone ist jetzt genauer, da die nicht gerundete Temperatur einfließt.
+
+* Alle enthaltenen Module behalten ihre Versionen.
+
 29.08.2023: Firmware 1.1.3, Applikation 1.1
 
 * Aktualisierung auf die neuste Logikmodul-Version 1.5.3.
@@ -378,71 +391,93 @@ Derzeit wird der Watchdog bei der Verwendung vom SCD30 (CO<sub>2</sub>-Sensor) e
 
 ## **Standardsensoren**
 
-Zu den Standardsensoren zählen die Sensoren, die im Kapitel "Hardwareeinstellungen" in der Tabelle aufgelistet sind. Diese Sensoren werden von der Applikation bestens unterstützt. Alle Messwerte von Standardsensoren (Temperatur, Luftfeuchte, Luftdruck, Voc, CO<sub>2</sub>, Helligkeit und Entfernung) erlauben die gleichen Einstellungen, die im Folgenden detailliert für die Temperatur beschrieben werden. Für die weiteren Messwerte werden dann nur noch die Einheiten genannt, in den die Eingaben zu erfolgen sind.
+Zu den Standardsensoren zählen die Sensoren, die im Kapitel "Hardwareeinstellungen" in der Tabelle aufgelistet sind. Diese Sensoren werden von der Applikation bestens unterstützt. Alle Messwerte von Standardsensoren (Temperatur, Luftfeuchte, Luftdruck, Voc, CO<sub>2</sub>, Helligkeit und Entfernung) erlauben die gleichen Einstellungen, die im Folgenden abstrakt für einen beliebigen Messwert beschrieben werden. Für die konkreten Messwerte werden dann nur noch die Einheiten genannt, in den die Eingaben zu erfolgen sind.
 
 <kbd>![Standardsensoren](pics/Standardsensoren.PNG)</kbd>
 
-## Temperatur
+## Messwert
 
-### **Temperatur anpassen (interner Messwert)**
+<!-- DOC HelpContext="Messwert anpassen" -->
+### **Messwert anpassen (interner Messwert)**
 
-Mit dieser Einstellung kann der Sensor kalibriert werden. Der eingegebene Wert wird zum gemessenen Wert addiert. Man kann die Temperatur um -10°C absenken und bis zu +10°C erhöhen. Die Werte werden in  0.1°C angegeben, so dass die Eingabe von -100 bis +100 in ganzen Zahlen zu erfolgen hat.
+Mit dieser Einstellung kann der Sensor kalibriert werden. Der eingegebene Wert wird zum gemessenen Wert addiert. die möglichen Eingabegrenzen und die Einheit werden bei dem konkreten Messwert beschrieben.
 
 ## Externe Werte
 
+<!-- DOC -->
 ### **Externe Messwerte berücksichtigen**
 
-Es können bis zu 2 externe Temperatur-Messwerte mit dem intern gemessenen verrechnet werden und als Gesamtmesswert ausgegeben werden. Dabei kann angegeben werden, in welchem Verhältnis die externen und der interne Messwert zueinander stehen. Eine Angabe von 60:30:10 würde bedeuten, dass der interne Messwert zu 60%, der externe Messwert 1 zu 30% und der externe Messwert 2 zu 10% in den Gesamtmesswert einfließt. Es sind aber auch durchaus Angaben wie 12:6:2 möglich (gleichbedeutend zu 60:30:10).
+Es können bis zu 2 externe Messwerte mit dem intern gemessenen verrechnet werden und als Gesamtmesswert ausgegeben werden. Dabei kann angegeben werden, in welchem Verhältnis die externen und der interne Messwert zueinander stehen. Eine Angabe von 60:30:10 würde bedeuten, dass der interne Messwert zu 60%, der externe Messwert 1 zu 30% und der externe Messwert 2 zu 10% in den Gesamtmesswert einfließt. Es sind aber auch durchaus Angaben wie 12:6:2 möglich (gleichbedeutend zu 60:30:10).
 
 Solange ein externer Messwert noch nicht empfangen wurde, ist sein Anteil (nicht sein Wert) 0, wird also beim Gesamtergebnis nicht berücksichtigt.
 
 In der Auswahlbox wird angegeben, ob 0, 1 oder 2 externe Messwerte berücksichtigt werden sollen.
 
+<!-- DOC -->
 #### **Anteil interner Messwert**
 
-Erscheint nur, wenn externe Werte berücksichtigt werden sollen. Gibt den Anteil des internen Messwerts am Gesamtmesswert an.
+<!-- DOC Skip="1" -->
+Erscheint nur, wenn externe Werte berücksichtigt werden sollen. 
 
+Gibt den Anteil des internen Messwerts am Gesamtmesswert an.
+
+<!-- DOC -->
 #### **Anteil externer Messwert 1**
 
-Erscheint nur, wenn externe Werte berücksichtigt werden sollen. Gibt den Anteil des ersten externen Messwerts am Gesamtmesswert an.
+<!-- DOC Skip="1" -->
+Erscheint nur, wenn externe Werte berücksichtigt werden sollen. 
 
+Gibt den Anteil des ersten externen Messwerts am Gesamtmesswert an.
+
+<!-- DOC -->
 #### **Anteil externer Messwert 2**
 
-Erscheint nur, wenn 2 externe Werte berücksichtigt werden sollen. Gibt den Anteil des zweiten externen Messwerts am Gesamtmesswert an.
+<!-- DOC Skip="1" -->
+Erscheint nur, wenn 2 externe Werte berücksichtigt werden sollen. 
 
+Gibt den Anteil des zweiten externen Messwerts am Gesamtmesswert an.
+
+<!-- DOC -->
 #### **Externe Messwerte beim Start lesen**
 
-Erscheint nur, wenn externe Werte berücksichtigt werden sollen. Ein "Ja" führt zu einem Lesen der externen Werte beim Neustart des Gerätes. Siehe hier auch Allgemeine Einstellungen -> Zeit bis das Gerät nach einem Neustart aktiv wird.
+<!-- DOC Skip="1" -->
+Erscheint nur, wenn externe Werte berücksichtigt werden sollen. 
+
+Ein "Ja" führt zu einem Lesen der externen Werte beim Neustart des Gerätes. Siehe hier auch Allgemeine Einstellungen -> Zeit bis das Gerät nach einem Neustart aktiv wird.
 
 ## Sendeverhalten
 
-### **Temperatur zyklisch senden (0 = nicht senden)**
+<!-- DOC HelpContext="Messwert zyklisch senden" -->
+### **Messwert zyklisch senden (0 = nicht senden)**
 
-Die Temperatur kann in bestimmten Zeitintervallen auf den Bus gesendet werden. Hier wird das Zeitintervall in Sekunden angegeben.
+Der Messwert kann in bestimmten Zeitintervallen auf den Bus gesendet werden. Hier wird das Zeitintervall in Sekunden angegeben.
 
 Wird eine 0 angegeben, wird die Temperatur nicht zyklisch gesendet.
 
-### **Temperatur bei absoluter Abweichung senden (0 = nicht senden)**
+<!-- DOC HelpContext="Messwert bei absoluter Abweichung senden" -->
+### **Messwert bei absoluter Abweichung senden (0 = nicht senden)**
 
-Die Temperatur kann auch gesendet werden, wenn der aktuell gemessene Wert um eine festgelegte Temperatur von dem zuletzt gesendeten Wert nach oben oder unten abweicht.
+Der Messwert kann auch gesendet werden, wenn der aktuell gemessene Wert um eine festgelegte Differenz von dem zuletzt gesendeten Wert nach oben oder unten abweicht.
 
-Hier wird die Abweichung in 0.1°C angegeben. Soll also bei einer Abweichung von 0.5°C gesendet werden, muss hier eine 5 angegeben werden.
+In welcher Einheit und welcher Genauigkeit der Messwert angegeben wird steht in der Dokumentation zum entsprechenden Messwert.
 
 Wird eine 0 angegeben, wird bei einer absoluten Abweichung nicht gesendet.
 
-### **Temperatur bei relativer Abweichung senden (0 = nicht senden)**
+<!-- DOC HelpContext="Messwert bei relativer Abweichung senden" -->
+### **Messwert bei relativer Abweichung senden (0 = nicht senden)**
 
-Die Temperatur kann auch gesendet werden, wenn der aktuell gemessene Wert um einen bestimmten Prozentsatz von dem zuletzt gesendeten Wert nach oben oder unten abweicht.
+Der Messwert kann auch gesendet werden, wenn der aktuell gemessene Wert um einen bestimmten Prozentsatz von dem zuletzt gesendeten Wert nach oben oder unten abweicht.
 
-Hier wird die Abweichung in % angegeben. Bei einem zuletzt gesendeten Wert von 20°C und einen angegebenen Abweichung von 5% wird erneut gesendet, wenn die gemessene Temperatur 21°C überschreitet oder 19°C unterschreitet (5% von 20°C sind 1°C).
+Hier wird die Abweichung in % angegeben. Bei einem zuletzt gesendeten Wert von 20 und einen angegebenen Abweichung von 5% wird erneut gesendet, wenn der gemessene Messwert 21 überschreitet oder 19 unterschreitet (5% von 20 ergibt &pm;1).
 
 Wird eine 0 angegeben, wird bei einer relativen Abweichung nicht gesendet.
 
 ## Glättungsfunktion
 
-### **Temperatur glätten: P =**
+<!-- DOC HelpContext="Messwert glaetten" -->
+### **Messewert glätten: P =**
 
-Falls der Sensor zu empfindlich ist und man starke Schwankungen im Temperaturmesswert hat, kann man eine Glättungsfunktion nutzen, um starke Messwertschwankungen abzumildern. Die hier verwendete Funktion ist vergleichbar mit einer Durchschnittsberechnung über eine gewisse Anzahl vergangener Messwerte, funktioniert aber im Detail anders.
+Falls der Sensor zu empfindlich ist und man starke Schwankungen im Messwert hat, kann man eine Glättungsfunktion nutzen, um starke Messwertschwankungen abzumildern. Die hier verwendete Funktion ist vergleichbar mit einer Durchschnittsberechnung über eine gewisse Anzahl vergangener Messwerte, funktioniert aber im Detail anders.
 
 Es wird folgende Glättungsformel verwendet:
 
@@ -463,60 +498,64 @@ Der neu ermittelte Wert wird alle 5 Sekunden auf das entsprechende KO geschriebe
 
 ## **Standardsensoren - Temperatur**
 
-Die Temperatureinstellungen sind wie unter Standardsensoren beschrieben. Alle Temperaturangaben werden in 0.1°C vorgenommen.
+Alle Temperaturangaben werden in 0.1°C vorgenommen. Die Temperatur kann um &pm;10°C angepasst werden. Der eingegebene Wert ist dann &pm;100.
 
 ## **Standardsensoren - Luftfeuchte**
 
-Einstellungen für Luftfeuchte werden wie unter Standardsensoren beschrieben vorgenommen. Alle Angaben für Luftfeuchte werden in % vorgenommen.
+Alle Angaben für Luftfeuchte werden in % vorgenommen. Die Luftfeuchte kann um &pm;50% angepasst werden.
 
 ## **Standardsensoren - Luftdruck**
 
 Erscheint nur, wenn der angeschlossene Sensor auch einen Messwert für Luftdruck liefert.
 
-Einstellungen für Luftdruck werden wie unter Standardsensoren beschrieben vorgenommen. Alle Angaben für Luftdruck werden in Millibar (mBar) vorgenommen.
+Alle Angaben für Luftdruck werden in Millibar (mBar) vorgenommen. Der Luftdruck kann um &pm;80 mBar angepasst werden.
 
 ## **Standardsensoren - Voc**
 
 Erscheint nur, wenn der angeschlossene Sensor auch einen Messwert für Voc liefert.
 
-Einstellungen für Voc werden wie unter Standardsensoren beschrieben vorgenommen. Alle Angaben für Voc sind einheitenlos und werden in ganzen Zahlen vorgenommen.
+Alle Angaben für Voc sind einheitenlos und werden in ganzen Zahlen vorgenommen. Der Voc-Wert kann um &pm;100 angepasst werden.
 
 ## **Standardsensoren - CO<sub>2</sub>**
 
 Erscheint nur, wenn der angeschlossene Sensor auch einen Messwert für CO<sub>2</sub> liefert.
 
-Einstellungen für CO<sub>2</sub> werden wie unter Standardsensoren beschrieben vorgenommen. Alle Angaben für CO<sub>2</sub> werden in Parts-Per-Million (ppm) vorgenommen.
+Alle Angaben für CO<sub>2</sub> werden in Parts-Per-Million (ppm) vorgenommen. Der CO<sub>2</sub>-Wert kann um &pm;120 ppm angepasst werden.
 
 Anmerkung zum BME680: Dieser Sensor liefert nur ein berechnetes CO<sub>2</sub>-Äquivalent passend zum gemessenen Voc-Wert und keinen gemessenen CO<sub>2</sub>-Wert. Dieser berechnete CO<sub>2</sub>-Wert wird über ein zusätzliches KO 20 ausgegeben.
 
-Ist die Sensorkombination BME680+SCD30/SCD4x installiert, werden beide CO<sub>2</sub>-Werte ausgegeben, der gemessene und der berechnete.
+Ist die Sensorkombination BME680+SCD4x installiert, werden beide CO<sub>2</sub>-Werte ausgegeben, der gemessene und der berechnete.
 
-> **Anmerkung zum SDC30:** Derzeit wird bei diesem Sensor die Nutzung vom Watchdog empfohlen (Siehe Kapitel Watchdog-Unterstützung). Mit diesem Sensor kommt es zu sporadischen "Hängern", deren Ursache noch nicht bekannt ist. Eine bessere Wahl für einen CO<sub>2</sub>-Sensor ist der SCD4x.
+> **Anmerkung zum SDC30:** Dieser Sensor wird nicht mehr empfohlen. Er sollte - wenn überhaupt - nur mit einem Watchdog genutzt werden (siehe Kapitel Watchdog-Unterstützung). Mit diesem Sensor kommt es zu sporadischen "Hängern", deren Ursache nicht bekannt ist. Für einen CO<sub>2</sub>-Sensor ist der SCD4x die bessere (und günstigere) Wahl.
 
 ## **Standardsensoren - Helligkeit**
 
 Erscheint nur, wenn der angeschlossene Sensor auch einen Messwert für Helligkeit liefert.
 
-Einstellungen für Helligkeit werden wie unter Standardsensoren beschrieben vorgenommen. Alle Angaben für Helligkeit werden in Lux vorgenommen.
+Alle Angaben für Helligkeit werden in Lux vorgenommen. Die Helligkeit kann um &pm;120 Lux angepasst werden.
 
 ## **Standardsensoren - Entfernung**
 
 Erscheint nur, wenn der angeschlossene Sensor auch einen Messwert für Entfernung liefert.
 
-Einstellungen für Entfernung werden wie unter Standardsensoren beschrieben vorgenommen. Alle Angaben für Entfernung werden in Millimetern (mm) vorgenommen.
+Alle Angaben für Entfernung werden in Millimeter (mm) vorgenommen. Die Entfernung kann um &pm;125 mm angepasst werden.
 
 ## **Standardsensoren - Zusatzfunktionen**
 
 Das Sensormodul kann neben gemessenen Werten auch noch einige berechnete Werte liefern. Dazu zählen der Taupunkt, Behaglichkeit, Luftqualitätsampel und Messgenauigkeit.
 
+<!-- DOC -->
 ### **Taupunkt berechnen**
 
+<!-- DOC Skip="1" -->
 <kbd>![Taupunkt](pics/Taupunkt.png)</kbd>
 
 Wenn man hier "Ja" auswählt, kann man für den Taupunkt Einstellungen wie unter Standardsensoren beschrieben vornehmen. Alle Angaben für den Taupunkt werden in 0.1°C vorgenommen.
 
+<!-- DOC -->
 ### **Behaglichkeitszone ausgeben**
 
+<!-- DOC Skip="1" -->
 <kbd>![Behaglichkeit](pics/Behaglichkeit.png)</kbd>
 
 Wenn man hier "Ja" auswählt, wird anhand der Temperatur und Luftfeuchte eine Behaglichkeitszone berechnet und über KO 22 ausgegeben. Die Behaglichkeitszone kann jederzeit gelesen werden, wird aber nur bei Änderungen gesendet.
@@ -529,11 +568,13 @@ Folgende Behaglichkeitszonen werden berechnet:
 * 1 - noch behaglich
 * 0 - unbehaglich
 
+<!-- DOC -->
 ### **Luftqualitätsampel ausgeben**
 
+<!-- DOC Skip="1" -->
 <kbd>![Luftqualitätsampel](pics/Luftqualitaetsampel.png)</kbd>
 
-Dieser Punkt ist nur sichtbar, wenn ein angeschlossener Sensor Messwerte zur Luftqualität liefert, also nur beim BME680, SCD30 oder SCD4x.
+Dieser Punkt ist nur sichtbar, wenn ein angeschlossener Sensor Messwerte zur Luftqualität liefert, also nur beim BME680, SCD4x oder dem nicht empfohlenen SCD30.
 
 Wenn man hier "Ja" auswählt, wird anhand des gemessenen Voc-Werts (beim BME680) oder des gemessenen CO<sub>2</sub>-Werts eine Luftqualitätsampel berechnet und über KO 23 ausgegeben. Die Luftqualitätsampel kann jederzeit gelesen werden, wird aber nur bei Änderungen gesendet.
 
@@ -548,8 +589,10 @@ Es gibt 6 Luftqualitätsgrade, entsprechend deutschen Schulnoten:
 * 5 - mangelhaft (lüften)
 * 6 - ungenügend (unbedingt lüften)
 
+<!-- DOC -->
 ### **Kalibrierungsfortschritt ausgeben**
 
+<!-- DOC Skip="3" -->
 <kbd>![Kalibrierung](pics/Kalibrierung.PNG)</kbd>
 
 Wird nur sichtbar, wenn als Sensor BME680 ausgewählt ist.
@@ -564,8 +607,10 @@ Nach einiger Zeit (hängt von der Raumgröße, Luftqualität, Lüftungszustand e
 
 Der Kalibrierungsfortschritt kann mit dieser Einstellung zur Information über KO 24 ausgegeben werden, hat aber auf die Funktion keinerlei Einfluss.
 
+<!-- DOC -->
 ### **Kalibrierungsdaten löschen**
 
+<!-- DOC Skip="1" -->
 <kbd>![Bild Kalibrierungsdaten löschen](pics/KalibrierungLoeschen.PNG)</kbd>
 
 Die Applikation erlaubt auch ein explizites Löschen der Kalibrierungsdaten. Allerdings wäre es sinnlos, hierfür einen Ja-Nein-Parameter einzuführen, da dieser, einmal auf Ja gestellt, nach jedem Neustart des Gerätes die Kalibrierungsdaten löschen würde. Insofern funktioniert dieser Parameter anders als normalerweise ETS-Parameter funktionieren.
