@@ -475,11 +475,202 @@
             <Options />
           </Static>
           <Dynamic>
-            <Channel Id="%AID%_CH-1" Name="Standard" Number="1" Text="Standardsensoren">
+            <Channel Name="MainChannel" Text="Sensoren" Number="%T%" Id="%AID%_CH-%TT%" Icon="gauge" HelpContext="Empty">
+              <ParameterBlock Id="%AID%_PB-nnn" Name="Settings" Text="Sensorauswahl" Icon="cog-outline" HelpContext="Empty">
+                <ParameterSeparator Id="%AID%_PS-nnn" Text="Installierte Hardware" UIHint="Headline" />
+                <ParameterSeparator Id="%AID%_PS-nnn" Text="Im folgenden wird die verwendete bzw. installierte Hardware angegeben." />
+                <ParameterSeparator Id="%AID%_PS-nnn" Text="Die hier getroffenen Angaben beeinflussen das Verhalten der Applikation und der Firmware und müssen zur vorhandenen Hardware passen!" />
+                <ParameterRefRef RefId="%AID%_UP-%T%000200_R-%T%00020001" />
+                <ParameterRefRef RefId="%AID%_UP-%T%000201_R-%T%00020101" />
+                <ParameterRefRef RefId="%AID%_UP-%T%000202_R-%T%00020201" />
+                <ParameterRefRef RefId="%AID%_UP-%T%000203_R-%T%00020301" />
+                <ParameterRefRef RefId="%AID%_UP-%T%000204_R-%T%00020401" />
+                <ParameterRefRef RefId="%AID%_UP-%T%000205_R-%T%00020501" />
+                <ParameterRefRef RefId="%AID%_UP-%T%000206_R-%T%00020601" />
+
+                <!-- We dererive some flags for further processing from sensor selections -->
+                <!-- Merker für BME280 wird verwendet -->
+                <ParameterRefRef RefId="%AID%_P-%T%000210_R-%T%00021001" />
+                <!-- Merker für Kalibrierungsdaten löschen anzeigen? -->
+                <ParameterRefRef RefId="%AID%_P-%T%000217_R-%T%00021701" />
+                <!-- Merker für echten Co2-Sensor Verwendung? -->
+                <ParameterRefRef RefId="%AID%_P-%T%000213_R-%T%00021301" />
+                <!-- Merker für Kalibrierung anzeigen? -->
+                <ParameterRefRef RefId="%AID%_P-%T%000216_R-%T%00021601" />
+                <!-- Merker für Zusatzfunktionen anzeigen? -->
+                <ParameterRefRef RefId="%AID%_P-%T%000215_R-%T%00021501" />
+                <!-- Merker für Luftgüteampel -->
+                <ParameterRefRef RefId="%AID%_P-%T%000212_R-%T%00021201" />
+                <!-- Merker für I2C 100kHz -->
+                <ParameterRefRef RefId="%AID%_P-%T%000214_R-%T%00021401" />
+                <!-- Merker für BME680 wird verwendet -->
+                <ParameterRefRef RefId="%AID%_P-%T%000211_R-%T%00021101" />
+
+                <!-- Temp -->
+                <choose ParamRefId="%AID%_UP-%T%000200_R-%T%00020001">
+                  <when test="2">
+                    <!-- BME280 wird verwendet -->
+                    <Assign TargetParamRefRef="%AID%_P-%T%000210_R-%T%00021001" Value="1" />
+                  </when>
+                  <when test="3">
+                    <!-- BME680 wird verwendet -->
+                    <Assign TargetParamRefRef="%AID%_P-%T%000211_R-%T%00021101" Value="1" />
+                    <!-- Zusatzfunktionen anzeigen? -->
+                    <Assign TargetParamRefRef="%AID%_P-%T%000215_R-%T%00021501" Value="1" />
+                    <!-- Kalibrierung anzeigen? -->
+                    <Assign TargetParamRefRef="%AID%_P-%T%000216_R-%T%00021601" Value="1" />
+                    <!-- Kalibrierung löschen anzeigen? -->
+                    <Assign TargetParamRefRef="%AID%_P-%T%000217_R-%T%00021701" Value="1" />
+                  </when>
+                  <when test="4 9">
+                    <!-- Wird echter CO2 verwendet? -->
+                    <Assign TargetParamRefRef="%AID%_P-%T%000213_R-%T%00021301" Value="1" />
+                    <!-- Wird 100kHz I2C benötigt -->
+                    <Assign TargetParamRefRef="%AID%_P-%T%000214_R-%T%00021401" Value="1" />
+                  </when>
+                </choose>
+                <!-- Hum -->
+                <choose ParamRefId="%AID%_UP-%T%000201_R-%T%00020101">
+                  <when test=">0">
+                    <choose ParamRefId="%AID%_UP-%T%000200_R-%T%00020001">
+                      <when test=">0">
+                        <!-- Zusatzfunktionen anzeigen? -->
+                        <Assign TargetParamRefRef="%AID%_P-%T%000215_R-%T%00021501" Value="1" />
+                      </when>
+                    </choose>
+                  </when>
+                  <when test="2">
+                    <!-- BME280 wird verwendet -->
+                    <Assign TargetParamRefRef="%AID%_P-%T%000210_R-%T%00021001" Value="1" />
+                  </when>
+                  <when test="3">
+                    <!-- BME680 wird verwendet -->
+                    <Assign TargetParamRefRef="%AID%_P-%T%000211_R-%T%00021101" Value="1" />
+                    <!-- Zusatzfunktionen anzeigen? -->
+                    <Assign TargetParamRefRef="%AID%_P-%T%000215_R-%T%00021501" Value="1" />
+                    <!-- Kalibrierung anzeigen? -->
+                    <Assign TargetParamRefRef="%AID%_P-%T%000216_R-%T%00021601" Value="1" />
+                    <!-- Kalibrierung löschen anzeigen? -->
+                    <Assign TargetParamRefRef="%AID%_P-%T%000217_R-%T%00021701" Value="1" />
+                  </when>
+                  <when test="4 9">
+                    <!-- Wird echter CO2 verwendet? -->
+                    <Assign TargetParamRefRef="%AID%_P-%T%000213_R-%T%00021301" Value="1" />
+                    <!-- Wird 100kHz I2C benötigt -->
+                    <Assign TargetParamRefRef="%AID%_P-%T%000214_R-%T%00021401" Value="1" />
+                  </when>
+                </choose>
+                <!-- Pre -->
+                <choose ParamRefId="%AID%_UP-%T%000202_R-%T%00020201">
+                  <when test="2">
+                    <!-- BME280 wird verwendet -->
+                    <Assign TargetParamRefRef="%AID%_P-%T%000210_R-%T%00021001" Value="1" />
+                  </when>
+                  <when test="3">
+                    <!-- BME680 wird verwendet -->
+                    <Assign TargetParamRefRef="%AID%_P-%T%000211_R-%T%00021101" Value="1" />
+                    <!-- Zusatzfunktionen anzeigen? -->
+                    <Assign TargetParamRefRef="%AID%_P-%T%000215_R-%T%00021501" Value="1" />
+                    <!-- Kalibrierung anzeigen? -->
+                    <Assign TargetParamRefRef="%AID%_P-%T%000216_R-%T%00021601" Value="1" />
+                    <!-- Kalibrierung löschen anzeigen? -->
+                    <Assign TargetParamRefRef="%AID%_P-%T%000217_R-%T%00021701" Value="1" />
+                  </when>
+                </choose>
+                <!-- Voc -->
+                <choose ParamRefId="%AID%_UP-%T%000203_R-%T%00020301">
+                  <when test=">0">
+                    <!-- Zusatzfunktionen anzeigen? -->
+                    <Assign TargetParamRefRef="%AID%_P-%T%000215_R-%T%00021501" Value="1" />
+                    <!-- Luftgüteampel -->
+                    <Assign TargetParamRefRef="%AID%_P-%T%000212_R-%T%00021201" Value="1" />
+                  </when>
+                  <when test="3">
+                    <!-- BME680 wird verwendet -->
+                    <Assign TargetParamRefRef="%AID%_P-%T%000211_R-%T%00021101" Value="1" />
+                  </when>
+                  <when test="5">
+                    <!-- Kalibrierung anzeigen? -->
+                    <Assign TargetParamRefRef="%AID%_P-%T%000216_R-%T%00021601" Value="1" />
+                    <!-- Wird 100kHz I2C benötigt -->
+                    <Assign TargetParamRefRef="%AID%_P-%T%000214_R-%T%00021401" Value="1" />
+                  </when>
+                  <when test="3 8">
+                    <!-- Kalibrierung anzeigen? -->
+                    <Assign TargetParamRefRef="%AID%_P-%T%000216_R-%T%00021601" Value="1" />
+                    <!-- Kalibrierung löschen anzeigen? -->
+                    <Assign TargetParamRefRef="%AID%_P-%T%000217_R-%T%00021701" Value="1" />
+                  </when>
+                </choose>
+                <!-- Co2 -->
+                <choose ParamRefId="%AID%_UP-%T%000204_R-%T%00020401">
+                  <when test=">0">
+                    <!-- Zusatzfunktionen anzeigen? -->
+                    <Assign TargetParamRefRef="%AID%_P-%T%000215_R-%T%00021501" Value="1" />
+                    <!-- Luftgüteampel -->
+                    <Assign TargetParamRefRef="%AID%_P-%T%000212_R-%T%00021201" Value="1" />
+                  </when>
+                  <when test="3">
+                    <!-- BME680 wird verwendet -->
+                    <Assign TargetParamRefRef="%AID%_P-%T%000211_R-%T%00021101" Value="1" />
+                  </when>
+                  <when test="5">
+                    <!-- Kalibrierung anzeigen? -->
+                    <Assign TargetParamRefRef="%AID%_P-%T%000216_R-%T%00021601" Value="1" />
+                  </when>
+                  <when test="3 8">
+                    <!-- Kalibrierung anzeigen? -->
+                    <Assign TargetParamRefRef="%AID%_P-%T%000216_R-%T%00021601" Value="1" />
+                    <!-- Kalibrierung löschen anzeigen? -->
+                    <Assign TargetParamRefRef="%AID%_P-%T%000217_R-%T%00021701" Value="1" />
+                  </when>
+                  <when test="4 5 9">
+                    <!-- Wird 100kHz I2C benötigt -->
+                    <Assign TargetParamRefRef="%AID%_P-%T%000214_R-%T%00021401" Value="1" />
+                  </when>
+                  <when test="4 9">
+                    <!-- Wird echter CO2 verwendet? -->
+                    <Assign TargetParamRefRef="%AID%_P-%T%000213_R-%T%00021301" Value="1" />
+                  </when>
+                </choose>
+
+                <!-- Lux -->
+                <choose ParamRefId="%AID%_UP-%T%000205_R-%T%00020501">
+                  <when test=">0">
+                  </when>
+                </choose>
+                <!-- Tof -->
+                <choose ParamRefId="%AID%_UP-%T%000206_R-%T%00020601">
+                  <when test=">0">
+                  </when>
+                </choose>
+                <!-- Error if BME280 and BME680 are selected -->
+                <choose ParamRefId="%AID%_P-%T%000210_R-%T%00021001">
+                  <when test=">0">
+                    <choose ParamRefId="%AID%_P-%T%000211_R-%T%00021101">
+                      <when test=">0">
+                        <!-- Fehlermeldung in rot -->
+                        <ParameterSeparator Id="%AID%_PS-nnn" Text="Es wurde sowohl der BME280 wie auch der BME680 ausgewählt. Dies ist technisch nicht möglich, da beide Sensoren die gleiche Adresse besitzen und somit nicht einzeln angesprochen werden können. Das Sensormodul wird so nicht funktinieren!" UIHint="Error" />
+                      </when>
+                    </choose>
+                  </when>
+                </choose>
+                <ParameterRefRef RefId="%AID%_UP-%T%000168_R-%T%00016801" />
+                <choose ParamRefId="%AID%_UP-%T%000168_R-%T%00016801">
+                  <when test="1">
+                    <!-- <Assign TargetParamRefRef="%AID%_P-2000029_R-200002901" Value="1" /> -->
+                    <choose ParamRefId="%AID%_P-%T%000214_R-%T%00021401">
+                      <when test="1">
+                        <ParameterSeparator Id="%AID%_PS-nnn" Text="Es wurden Sensoren ausgewählt, die kritisch im Timing sind (IAQCore, SCD30 oder SDC41). Damit funktiniert 1-Wire nur eingeschränkt, Abfragen von I/O und iButton können mehr als eine Sekunde dauern (sonst 0.3 Sekunden)" UIHint="Information" />
+                      </when>
+                    </choose>
+                  </when>
+                </choose>
+              </ParameterBlock>
               <!-- Temp -->
               <choose ParamRefId="%AID%_UP-%T%000200_R-%T%00020001">
                 <when test=">0">
-                  <ParameterBlock Id="%AID%_PB-70" Name="Temperatur" Text="Temperatur">
+                  <ParameterBlock Id="%AID%_PB-70" Name="Temperatur" Text="Temperatur" Icon="thermometer" HelpContext="Empty">
                     <ParameterSeparator Id="%AID%_PS-nnn" Text="Temperatur" UIHint="Headline" />
                     <ParameterRefRef RefId="%AID%_UP-%T%000110_R-%T%00011001" HelpContext="SENS-Messwert-anpassen" />
                     <ParameterSeparator Id="%AID%_PS-79" Text="" UIHint="HorizontalRuler" />
@@ -538,7 +729,7 @@
               <!-- Hum -->
               <choose ParamRefId="%AID%_UP-%T%000201_R-%T%00020101">
                 <when test=">0">
-                  <ParameterBlock Id="%AID%_PB-71" Name="Luftfeuchte" Text="Luftfeuchte">
+                  <ParameterBlock Id="%AID%_PB-71" Name="Luftfeuchte" Text="Luftfeuchte" Icon="water-percent" HelpContext="Empty">
                     <ParameterSeparator Id="%AID%_PS-nnn" Text="Luftfeuchte" UIHint="Headline" />
                     <ParameterRefRef RefId="%AID%_UP-%T%000120_R-%T%00012001" HelpContext="SENS-Messwert-anpassen" />
                     <ParameterSeparator Id="%AID%_PS-81" Text="" UIHint="HorizontalRuler" />
@@ -597,7 +788,7 @@
               <!-- Pre -->
               <choose ParamRefId="%AID%_UP-%T%000202_R-%T%00020201">
                 <when test=">0">
-                  <ParameterBlock Id="%AID%_PB-72" Name="Luftdruck" Text="Luftdruck">
+                  <ParameterBlock Id="%AID%_PB-72" Name="Luftdruck" Text="Luftdruck" Icon="location-enter" HelpContext="Empty">
                     <ParameterSeparator Id="%AID%_PS-nnn" Text="Luftdruck" UIHint="Headline" />
                     <ParameterRefRef RefId="%AID%_UP-%T%000130_R-%T%00013001" HelpContext="SENS-Messwert-anpassen" />
                     <ParameterSeparator Id="%AID%_PS-83" Text="" UIHint="HorizontalRuler" />
@@ -656,7 +847,7 @@
               <!-- Voc -->
               <choose ParamRefId="%AID%_UP-%T%000203_R-%T%00020301">
                 <when test=">0">
-                  <ParameterBlock Id="%AID%_PB-73" Name="Voc" Text="Voc">
+                  <ParameterBlock Id="%AID%_PB-73" Name="Voc" Text="Voc" Icon="hexagon-multiple-outline" HelpContext="Empty">
                     <ParameterSeparator Id="%AID%_PS-nnn" Text="Voc" UIHint="Headline" />
                     <ParameterRefRef RefId="%AID%_UP-%T%000140_R-%T%00014001" HelpContext="SENS-Messwert-anpassen" />
                     <ParameterSeparator Id="%AID%_PS-70" Text="" UIHint="HorizontalRuler" />
@@ -715,7 +906,7 @@
               <!-- Co2 -->
               <choose ParamRefId="%AID%_UP-%T%000204_R-%T%00020401">
                 <when test=">0">
-                  <ParameterBlock Id="%AID%_PB-74" Name="Co2" Text="CO2">
+                  <ParameterBlock Id="%AID%_PB-74" Name="Co2" Text="CO2" Icon="molecule-co2" HelpContext="Empty">
                     <ParameterSeparator Id="%AID%_PS-nnn" Text="CO2" UIHint="Headline" />
                     <ParameterRefRef RefId="%AID%_UP-%T%000150_R-%T%00015001" HelpContext="SENS-Messwert-anpassen" />
                     <ParameterSeparator Id="%AID%_PS-74" Text="" UIHint="HorizontalRuler" />
@@ -787,7 +978,7 @@
               <!-- Lux -->
               <choose ParamRefId="%AID%_UP-%T%000205_R-%T%00020501">
                 <when test=">0">
-                  <ParameterBlock Id="%AID%_PB-77" Name="Lux" Text="Helligkeit">
+                  <ParameterBlock Id="%AID%_PB-77" Name="Lux" Text="Helligkeit" Icon="lightbulb-outline" HelpContext="Empty">
                     <ComObjectRefRef RefId="%AID%_O-%T%000050_R-%T%00005001" />
                     <ParameterSeparator Id="%AID%_PS-nnn" Text="Helligkeit" UIHint="Headline" />
                     <ParameterRefRef RefId="%AID%_UP-%T%000180_R-%T%00018001" HelpContext="SENS-Messwert-anpassen" />
@@ -847,7 +1038,7 @@
               <!-- Tof -->
               <choose ParamRefId="%AID%_UP-%T%000206_R-%T%00020601">
                 <when test=">0">
-                  <ParameterBlock Id="%AID%_PB-77" Name="Tof" Text="Entfernung">
+                  <ParameterBlock Id="%AID%_PB-77" Name="Tof" Text="Entfernung" Icon="wrap-disabled" HelpContext="Empty">
                     <ComObjectRefRef RefId="%AID%_O-%T%000050_R-%T%00005001" />
                     <ParameterSeparator Id="%AID%_PS-nnn" Text="Entfernung" UIHint="Headline" />
                     <ParameterRefRef RefId="%AID%_UP-%T%000190_R-%T%00019001" HelpContext="SENS-Messwert-anpassen" />
@@ -907,7 +1098,7 @@
               <choose ParamRefId="%AID%_P-%T%000215_R-%T%00021501">
                 <!-- Zusatzfunktionen anzeigen? -->
                 <when test="1">
-                  <ParameterBlock Id="%AID%_PB-76" Name="Zusatzfunktionen" Text="Zusatzfunktionen">
+                  <ParameterBlock Id="%AID%_PB-76" Name="Zusatzfunktionen" Text="Zusatzfunktionen" Icon="loupe" HelpContext="Empty">
                     <!-- Taupunkt / Wohlfühldiagramm -->
                     <choose ParamRefId="%AID%_UP-%T%000200_R-%T%00020001">
                       <when test=">0">
