@@ -8,7 +8,7 @@
 #include "SensorBME680.h"
 // #include "SensorSGP30.h"
 
-SensorModule* SensorModule::sInstance = nullptr;
+SensorModule openknxSensorModule;
 
 SensorModule::SensorModule()
 {
@@ -129,14 +129,11 @@ void SensorModule::sensorDelayCallback(uint32_t iMillis)
     uint32_t lMillis = millis();
     while (millis() - lMillis < iMillis)
     {
-        if (sInstance != nullptr)
-        {
-            // CHECKv1
-            sInstance->gCallbackProcessing = true;
-            openknx.loop();
-            openknx.common.skipLooptimeWarning();
-            sInstance->gCallbackProcessing = false;
-        }
+        // CHECKv1
+        openknxSensorModule.gCallbackProcessing = true;
+        openknx.loop();
+        openknx.common.skipLooptimeWarning();
+        openknxSensorModule.gCallbackProcessing = false;
     }
     // printDebug("sensorDelayCallback: Left after %lu ms\n", millis() - lMillis);
 }
@@ -613,10 +610,6 @@ void SensorModule::loop()
         return;
     if (gCallbackProcessing)
         return;
-
-    // set backreference, at this point it is also an "isRunning" info
-    if (sInstance == nullptr)
-        sInstance = this;
 
     // at Startup, we want to send all values immediately
     processSensors(gForceSensorRead);

@@ -26,8 +26,6 @@ struct sPoint
 class SensorModule : public OpenKNX::Module
 {
   private:
-    static SensorModule* sInstance;
-
     // the entries have the same order as the KOs starting with "Ext"
     uint8_t gIsExternalValueValid[14] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     // polygon definition for comfort calculation
@@ -84,3 +82,5 @@ class SensorModule : public OpenKNX::Module
     // void onBeforeRestartHandler();
     // void onBeforeTablesUnloadHandler();
 };
+
+extern SensorModule openknxSensorModule;
