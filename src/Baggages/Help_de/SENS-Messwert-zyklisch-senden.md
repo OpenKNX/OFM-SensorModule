@@ -1,4 +1,4 @@
-﻿### **Messwert zyklisch senden (0 = nicht senden)**
+﻿### Messwert zyklisch senden (0 = nicht senden)
 
 Der Messwert kann in bestimmten Zeitintervallen auf den Bus gesendet werden. Hier wird das Zeitintervall in Sekunden angegeben.
 

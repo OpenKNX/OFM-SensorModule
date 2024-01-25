@@ -1,4 +1,4 @@
-﻿### **Messwert bei relativer Abweichung senden (0 = nicht senden)**
+﻿### Messwert bei relativer Abweichung senden (0 = nicht senden)
 
 Der Messwert kann auch gesendet werden, wenn der aktuell gemessene Wert um einen bestimmten Prozentsatz von dem zuletzt gesendeten Wert nach oben oder unten abweicht.
 

@@ -1,4 +1,4 @@
-﻿### **Behaglichkeitszone ausgeben**
+﻿### Behaglichkeitszone ausgeben
 
 
 Wenn man hier "Ja" auswählt, wird anhand der Temperatur und Luftfeuchte eine Behaglichkeitszone berechnet und über KO 22 ausgegeben. Die Behaglichkeitszone kann jederzeit gelesen werden, wird aber nur bei Änderungen gesendet.

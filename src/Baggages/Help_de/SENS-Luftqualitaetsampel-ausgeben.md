@@ -1,4 +1,4 @@
-﻿### **Luftqualitätsampel ausgeben**
+﻿### Luftqualitätsampel ausgeben
 
 
 Dieser Punkt ist nur sichtbar, wenn ein angeschlossener Sensor Messwerte zur Luftqualität liefert, also nur beim BME680, SCD4x oder dem nicht empfohlenen SCD30.

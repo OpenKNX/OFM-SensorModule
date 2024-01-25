@@ -479,6 +479,10 @@ Wird eine 0 angegeben, wird bei einer relativen Abweichung nicht gesendet.
 
 Falls der Sensor zu empfindlich ist und man starke Schwankungen im Messwert hat, kann man eine Glättungsfunktion nutzen, um starke Messwertschwankungen abzumildern. Die hier verwendete Funktion ist vergleichbar mit einer Durchschnittsberechnung über eine gewisse Anzahl vergangener Messwerte, funktioniert aber im Detail anders.
 
+<!-- DOCCONTENT
+Für Details zur Berechnung der Glättung bitte in der Applikationsbeschreibung nachlesen.
+DOCCONTENT -->
+<!-- DOCEND -->
 Es wird folgende Glättungsformel verwendet:
 
 X<sub>neu</sub> = X<sub>alt</sub> + (M - X<sub>alt</sub>) / P
