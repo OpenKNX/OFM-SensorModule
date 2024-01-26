@@ -123,344 +123,344 @@
               <!-- Parameter for this device, channel independent -->
               <Union SizeInBit="8">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="0" BitOffset="0" />
-                <Parameter Id="%AID%_UP-%T%000100" Name="Error"      ParameterType="%AID%_PT-OnOffYesNo" Offset="0" BitOffset="0" Text="Fehlerobjekt für Standardmesswerte anzeigen" Value="0" />
-                <Parameter Id="%AID%_UP-%T%000101" Name="Dewpoint"   ParameterType="%AID%_PT-OnOffYesNo" Offset="0" BitOffset="1" Text="Taupunkt berechnen" Value="0" />
-                <Parameter Id="%AID%_UP-%T%000102" Name="Comfort"    ParameterType="%AID%_PT-OnOffYesNo" Offset="0" BitOffset="2" Text="Behaglichkeitszone ausgeben" Value="0" />
-                <Parameter Id="%AID%_UP-%T%000103" Name="Airquality" ParameterType="%AID%_PT-OnOffYesNo" Offset="0" BitOffset="3" Text="Luftqualitätsampel ausgeben" Value="0" />
-                <Parameter Id="%AID%_UP-%T%000104" Name="Accuracy"   ParameterType="%AID%_PT-OnOffYesNo" Offset="0" BitOffset="4" Text="Kalibrierungsfortschritt ausgeben" Value="0" />
-                <Parameter Id="%AID%_UP-%T%000105" Name="DeleteData" ParameterType="%AID%_PT-DeleteData" Offset="0" BitOffset="5" Text="Kalibrierungsdaten löschen" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00100" Name="Error"      ParameterType="%AID%_PT-OnOffYesNo" Offset="0" BitOffset="0" Text="Fehlerobjekt für Standardmesswerte anzeigen" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00101" Name="Dewpoint"   ParameterType="%AID%_PT-OnOffYesNo" Offset="0" BitOffset="1" Text="Taupunkt berechnen" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00102" Name="Comfort"    ParameterType="%AID%_PT-OnOffYesNo" Offset="0" BitOffset="2" Text="Behaglichkeitszone ausgeben" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00103" Name="Airquality" ParameterType="%AID%_PT-OnOffYesNo" Offset="0" BitOffset="3" Text="Luftqualitätsampel ausgeben" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00104" Name="Accuracy"   ParameterType="%AID%_PT-OnOffYesNo" Offset="0" BitOffset="4" Text="Kalibrierungsfortschritt ausgeben" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00105" Name="DeleteData" ParameterType="%AID%_PT-DeleteData" Offset="0" BitOffset="5" Text="Kalibrierungsdaten löschen" Value="0" />
               </Union>
               <Union SizeInBit="88">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="1" BitOffset="0" />
-                <Parameter Id="%AID%_UP-%T%000110" Name="TempOffset"       ParameterType="%AID%_PT-OffsetTemp"   Offset="0" BitOffset="0"  Text="Temperatur anpassen (interner Messwert)"                               SuffixText="x 0.1 °C" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00110" Name="TempOffset"       ParameterType="%AID%_PT-OffsetTemp"   Offset="0" BitOffset="0"  Text="Temperatur anpassen (interner Messwert)"                               SuffixText="x 0.1 °C" Value="0" />
                 <!-- Delay pattern -->
-                <Parameter Id="%AID%_UP-%T%000111" Name="TempCycleBase"    ParameterType="%AID%_PT-DelayBase"    Offset="1" BitOffset="0"  Text="Zeitbasis" Value="0" />
-                <Parameter Id="%AID%_UP-%T%000311" Name="TempCycleTime"    ParameterType="%AID%_PT-DelayTime"    Offset="1" BitOffset="2"  Text="Zeit"      Value="0" />
-                <Parameter Id="%AID%_UP-%T%000112" Name="TempDeltaAbs"     ParameterType="%AID%_PT-DeltaAbsTemp" Offset="3" BitOffset="0"  Text="Temperatur bei absoluter Abweichung senden&#10;(0=nicht senden)"           SuffixText="x 0.1 °C" Value="0" />
-                <Parameter Id="%AID%_UP-%T%000113" Name="TempDeltaPercent" ParameterType="%AID%_PT-Percent"      Offset="5" BitOffset="0"  Text="Temperatur bei Abweichung vom vorherigen Wert senden&#10;(0=nicht senden)" SuffixText="%"        Value="0" />
-                <Parameter Id="%AID%_UP-%T%000114" Name="TempSmooth"       ParameterType="%AID%_PT-Smooth"       Offset="6" BitOffset="0"  Text="Temperatur glätten: P ="                                               SuffixText=""         Value="1" />
-                <Parameter Id="%AID%_UP-%T%000115" Name="TempExtCount"     ParameterType="%AID%_PT-ExtCount"     Offset="7" BitOffset="6"  Text="Externe Messwerte berücksichtigen" Value="0" />
-                <Parameter Id="%AID%_UP-%T%000116" Name="TempExtRead"      ParameterType="%AID%_PT-OnOffYesNo"   Offset="7" BitOffset="5"  Text="    Externe Messwerte beim Start lesen" Value="0" />
-                <Parameter Id="%AID%_UP-%T%000117" Name="TempIntPercent"   ParameterType="%AID%_PT-Percent"      Offset="8" BitOffset="0"  Text="    Anteil interner Messwert"   SuffixText="Anteil(e)" Value="1" />
-                <Parameter Id="%AID%_UP-%T%000118" Name="TempExt1Percent"  ParameterType="%AID%_PT-Percent"      Offset="9" BitOffset="0"  Text="    Anteil externer Messwert 1" SuffixText="Anteil(e)" Value="0" />
-                <Parameter Id="%AID%_UP-%T%000119" Name="TempExt2Percent"  ParameterType="%AID%_PT-Percent"      Offset="10" BitOffset="0" Text="    Anteil externer Messwert 2" SuffixText="Anteil(e)" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00111" Name="TempCycleBase"    ParameterType="%AID%_PT-DelayBase"    Offset="1" BitOffset="0"  Text="Zeitbasis" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00311" Name="TempCycleTime"    ParameterType="%AID%_PT-DelayTime"    Offset="1" BitOffset="2"  Text="Zeit"      Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00112" Name="TempDeltaAbs"     ParameterType="%AID%_PT-DeltaAbsTemp" Offset="3" BitOffset="0"  Text="Temperatur bei absoluter Abweichung senden&#10;(0=nicht senden)"           SuffixText="x 0.1 °C" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00113" Name="TempDeltaPercent" ParameterType="%AID%_PT-Percent"      Offset="5" BitOffset="0"  Text="Temperatur bei Abweichung vom vorherigen Wert senden&#10;(0=nicht senden)" SuffixText="%"        Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00114" Name="TempSmooth"       ParameterType="%AID%_PT-Smooth"       Offset="6" BitOffset="0"  Text="Temperatur glätten: P ="                                               SuffixText=""         Value="1" />
+                <Parameter Id="%AID%_UP-%TT%00115" Name="TempExtCount"     ParameterType="%AID%_PT-ExtCount"     Offset="7" BitOffset="6"  Text="Externe Messwerte berücksichtigen" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00116" Name="TempExtRead"      ParameterType="%AID%_PT-OnOffYesNo"   Offset="7" BitOffset="5"  Text="    Externe Messwerte beim Start lesen" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00117" Name="TempIntPercent"   ParameterType="%AID%_PT-Percent"      Offset="8" BitOffset="0"  Text="    Anteil interner Messwert"   SuffixText="Anteil(e)" Value="1" />
+                <Parameter Id="%AID%_UP-%TT%00118" Name="TempExt1Percent"  ParameterType="%AID%_PT-Percent"      Offset="9" BitOffset="0"  Text="    Anteil externer Messwert 1" SuffixText="Anteil(e)" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00119" Name="TempExt2Percent"  ParameterType="%AID%_PT-Percent"      Offset="10" BitOffset="0" Text="    Anteil externer Messwert 2" SuffixText="Anteil(e)" Value="0" />
               </Union>
               <Union SizeInBit="88">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="12" BitOffset="0" />
-                <Parameter Id="%AID%_UP-%T%000120" Name="HumOffset"        ParameterType="%AID%_PT-OffsetHum"    Offset="0" BitOffset="0"  Text="Luftfeuchte anpassen (interner Messwert)"                               SuffixText="%"        Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00120" Name="HumOffset"        ParameterType="%AID%_PT-OffsetHum"    Offset="0" BitOffset="0"  Text="Luftfeuchte anpassen (interner Messwert)"                               SuffixText="%"        Value="0" />
                 <!-- Delay pattern -->
-                <Parameter Id="%AID%_UP-%T%000121" Name="HumCycleBase"     ParameterType="%AID%_PT-DelayBase"    Offset="1" BitOffset="0"  Text="Zeitbasis" Value="0" />
-                <Parameter Id="%AID%_UP-%T%000321" Name="HumCycleTime"     ParameterType="%AID%_PT-DelayTime"    Offset="1" BitOffset="2"  Text="Zeit"      Value="0" />
-                <Parameter Id="%AID%_UP-%T%000122" Name="HumDeltaAbs"      ParameterType="%AID%_PT-DeltaAbsHum"  Offset="3" BitOffset="0"  Text="Luftfeuchte bei absoluter Abweichung senden&#10;(0=nicht senden)"           SuffixText="%"        Value="0" />
-                <Parameter Id="%AID%_UP-%T%000123" Name="HumDeltaPercent"  ParameterType="%AID%_PT-Percent"      Offset="5" BitOffset="0"  Text="Luftfeuchte bei Abweichung vom vorherigem Wert senden&#10;(0=nicht senden)" SuffixText="%"        Value="0" />
-                <Parameter Id="%AID%_UP-%T%000124" Name="HumSmooth"        ParameterType="%AID%_PT-Smooth"       Offset="6" BitOffset="0"  Text="Luftfeuchte glätten: P ="                                               SuffixText=""         Value="1" />
-                <Parameter Id="%AID%_UP-%T%000125" Name="HumExtCount"      ParameterType="%AID%_PT-ExtCount"     Offset="7" BitOffset="6"  Text="Externe Messwerte berücksichtigen" Value="0" />
-                <Parameter Id="%AID%_UP-%T%000126" Name="HumExtRead"       ParameterType="%AID%_PT-OnOffYesNo"   Offset="7" BitOffset="5"  Text="    Externe Messwerte beim Start lesen" Value="0" />
-                <Parameter Id="%AID%_UP-%T%000127" Name="HumIntPercent"    ParameterType="%AID%_PT-Percent"      Offset="8" BitOffset="0"  Text="    Anteil interner Messwert"   SuffixText="Anteil(e)" Value="1" />
-                <Parameter Id="%AID%_UP-%T%000128" Name="HumExt1Percent"   ParameterType="%AID%_PT-Percent"      Offset="9" BitOffset="0"  Text="    Anteil externer Messwert 1" SuffixText="Anteil(e)" Value="0" />
-                <Parameter Id="%AID%_UP-%T%000129" Name="HumExt2Percent"   ParameterType="%AID%_PT-Percent"      Offset="10" BitOffset="0" Text="    Anteil externer Messwert 2" SuffixText="Anteil(e)" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00121" Name="HumCycleBase"     ParameterType="%AID%_PT-DelayBase"    Offset="1" BitOffset="0"  Text="Zeitbasis" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00321" Name="HumCycleTime"     ParameterType="%AID%_PT-DelayTime"    Offset="1" BitOffset="2"  Text="Zeit"      Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00122" Name="HumDeltaAbs"      ParameterType="%AID%_PT-DeltaAbsHum"  Offset="3" BitOffset="0"  Text="Luftfeuchte bei absoluter Abweichung senden&#10;(0=nicht senden)"           SuffixText="%"        Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00123" Name="HumDeltaPercent"  ParameterType="%AID%_PT-Percent"      Offset="5" BitOffset="0"  Text="Luftfeuchte bei Abweichung vom vorherigem Wert senden&#10;(0=nicht senden)" SuffixText="%"        Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00124" Name="HumSmooth"        ParameterType="%AID%_PT-Smooth"       Offset="6" BitOffset="0"  Text="Luftfeuchte glätten: P ="                                               SuffixText=""         Value="1" />
+                <Parameter Id="%AID%_UP-%TT%00125" Name="HumExtCount"      ParameterType="%AID%_PT-ExtCount"     Offset="7" BitOffset="6"  Text="Externe Messwerte berücksichtigen" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00126" Name="HumExtRead"       ParameterType="%AID%_PT-OnOffYesNo"   Offset="7" BitOffset="5"  Text="    Externe Messwerte beim Start lesen" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00127" Name="HumIntPercent"    ParameterType="%AID%_PT-Percent"      Offset="8" BitOffset="0"  Text="    Anteil interner Messwert"   SuffixText="Anteil(e)" Value="1" />
+                <Parameter Id="%AID%_UP-%TT%00128" Name="HumExt1Percent"   ParameterType="%AID%_PT-Percent"      Offset="9" BitOffset="0"  Text="    Anteil externer Messwert 1" SuffixText="Anteil(e)" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00129" Name="HumExt2Percent"   ParameterType="%AID%_PT-Percent"      Offset="10" BitOffset="0" Text="    Anteil externer Messwert 2" SuffixText="Anteil(e)" Value="0" />
               </Union>
               <Union SizeInBit="88">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="23" BitOffset="0" />
-                <Parameter Id="%AID%_UP-%T%000130" Name="PreOffset"        ParameterType="%AID%_PT-OffsetPre"    Offset="0" BitOffset="0"  Text="Luftdruck anpassen (interner Messwert)"                               SuffixText="mbar"     Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00130" Name="PreOffset"        ParameterType="%AID%_PT-OffsetPre"    Offset="0" BitOffset="0"  Text="Luftdruck anpassen (interner Messwert)"                               SuffixText="mbar"     Value="0" />
                 <!-- Delay pattern -->
-                <Parameter Id="%AID%_UP-%T%000131" Name="PreCycleBase"     ParameterType="%AID%_PT-DelayBase"    Offset="1" BitOffset="0"  Text="Zeitbasis" Value="0" />
-                <Parameter Id="%AID%_UP-%T%000331" Name="PreCycleTime"     ParameterType="%AID%_PT-DelayTime"    Offset="1" BitOffset="2"  Text="Zeit"      Value="0" />
-                <Parameter Id="%AID%_UP-%T%000132" Name="PreDeltaAbs"      ParameterType="%AID%_PT-DeltaAbsPre"  Offset="3" BitOffset="0"  Text="Luftdruck bei absoluter Abweichung senden&#10;(0=nicht senden)"           SuffixText="mbar"     Value="0" />
-                <Parameter Id="%AID%_UP-%T%000133" Name="PreDeltaPercent"  ParameterType="%AID%_PT-Percent"      Offset="5" BitOffset="0"  Text="Luftdruck bei Abweichung vom vorherigem Wert senden&#10;(0=nicht senden)" SuffixText="%"        Value="0" />
-                <Parameter Id="%AID%_UP-%T%000134" Name="PreSmooth"        ParameterType="%AID%_PT-Smooth"       Offset="6" BitOffset="0"  Text="Luftdruck glätten: P ="                                               SuffixText=""         Value="1" />
-                <Parameter Id="%AID%_UP-%T%000135" Name="PreExtCount"      ParameterType="%AID%_PT-ExtCount"     Offset="7" BitOffset="6"  Text="Externe Messwerte berücksichtigen" Value="0" />
-                <Parameter Id="%AID%_UP-%T%000136" Name="PreExtRead"       ParameterType="%AID%_PT-OnOffYesNo"   Offset="7" BitOffset="5"  Text="    Externe Messwerte beim Start lesen" Value="0" />
-                <Parameter Id="%AID%_UP-%T%000137" Name="PreIntPercent"    ParameterType="%AID%_PT-Percent"      Offset="8" BitOffset="0"  Text="    Anteil interner Messwert"   SuffixText="Anteil(e)" Value="1" />
-                <Parameter Id="%AID%_UP-%T%000138" Name="PreExt1Percent"   ParameterType="%AID%_PT-Percent"      Offset="9" BitOffset="0"  Text="    Anteil externer Messwert 1" SuffixText="Anteil(e)" Value="0" />
-                <Parameter Id="%AID%_UP-%T%000139" Name="PreExt2Percent"   ParameterType="%AID%_PT-Percent"      Offset="10" BitOffset="0" Text="    Anteil externer Messwert 2" SuffixText="Anteil(e)" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00131" Name="PreCycleBase"     ParameterType="%AID%_PT-DelayBase"    Offset="1" BitOffset="0"  Text="Zeitbasis" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00331" Name="PreCycleTime"     ParameterType="%AID%_PT-DelayTime"    Offset="1" BitOffset="2"  Text="Zeit"      Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00132" Name="PreDeltaAbs"      ParameterType="%AID%_PT-DeltaAbsPre"  Offset="3" BitOffset="0"  Text="Luftdruck bei absoluter Abweichung senden&#10;(0=nicht senden)"           SuffixText="mbar"     Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00133" Name="PreDeltaPercent"  ParameterType="%AID%_PT-Percent"      Offset="5" BitOffset="0"  Text="Luftdruck bei Abweichung vom vorherigem Wert senden&#10;(0=nicht senden)" SuffixText="%"        Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00134" Name="PreSmooth"        ParameterType="%AID%_PT-Smooth"       Offset="6" BitOffset="0"  Text="Luftdruck glätten: P ="                                               SuffixText=""         Value="1" />
+                <Parameter Id="%AID%_UP-%TT%00135" Name="PreExtCount"      ParameterType="%AID%_PT-ExtCount"     Offset="7" BitOffset="6"  Text="Externe Messwerte berücksichtigen" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00136" Name="PreExtRead"       ParameterType="%AID%_PT-OnOffYesNo"   Offset="7" BitOffset="5"  Text="    Externe Messwerte beim Start lesen" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00137" Name="PreIntPercent"    ParameterType="%AID%_PT-Percent"      Offset="8" BitOffset="0"  Text="    Anteil interner Messwert"   SuffixText="Anteil(e)" Value="1" />
+                <Parameter Id="%AID%_UP-%TT%00138" Name="PreExt1Percent"   ParameterType="%AID%_PT-Percent"      Offset="9" BitOffset="0"  Text="    Anteil externer Messwert 1" SuffixText="Anteil(e)" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00139" Name="PreExt2Percent"   ParameterType="%AID%_PT-Percent"      Offset="10" BitOffset="0" Text="    Anteil externer Messwert 2" SuffixText="Anteil(e)" Value="0" />
               </Union>
 
               <Union SizeInBit="88">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="34" BitOffset="0" />
-                <Parameter Id="%AID%_UP-%T%000140" Name="VocOffset"        ParameterType="%AID%_PT-OffsetVoc"    Offset="0"  BitOffset="0" Text="Voc anpassen (interner Messwert)" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00140" Name="VocOffset"        ParameterType="%AID%_PT-OffsetVoc"    Offset="0"  BitOffset="0" Text="Voc anpassen (interner Messwert)" Value="0" />
                 <!-- Delay pattern -->
-                <Parameter Id="%AID%_UP-%T%000141" Name="VocCycleBase"     ParameterType="%AID%_PT-DelayBase"    Offset="1" BitOffset="0"  Text="Zeitbasis" Value="0" />
-                <Parameter Id="%AID%_UP-%T%000341" Name="VocCycleTime"     ParameterType="%AID%_PT-DelayTime"    Offset="1" BitOffset="2"  Text="Zeit"      Value="0" />
-                <Parameter Id="%AID%_UP-%T%000142" Name="VocDeltaAbs"      ParameterType="%AID%_PT-DeltaAbsVoc"  Offset="3"  BitOffset="0" Text="Voc bei absoluter Abweichung senden&#10;(0=nicht senden)" Value="0" />
-                <Parameter Id="%AID%_UP-%T%000143" Name="VocDeltPercent"   ParameterType="%AID%_PT-Percent"      Offset="5"  BitOffset="0" Text="Voc bei Abweichung vom vorherigem Wert senden&#10;(0=nicht senden)" SuffixText="%" Value="0" />
-                <Parameter Id="%AID%_UP-%T%000144" Name="VocSmooth"        ParameterType="%AID%_PT-Smooth"       Offset="6"  BitOffset="0" Text="Voc glätten: P =" SuffixText="" Value="1" />
-                <Parameter Id="%AID%_UP-%T%000145" Name="VocExtCount"      ParameterType="%AID%_PT-ExtCount"     Offset="7"  BitOffset="6" Text="Externe Messwerte berücksichtigen" Value="0" />
-                <Parameter Id="%AID%_UP-%T%000146" Name="VocExtRead"       ParameterType="%AID%_PT-OnOffYesNo"   Offset="7"  BitOffset="5" Text="    Externe Messwerte beim Start lesen" Value="0" />
-                <Parameter Id="%AID%_UP-%T%000147" Name="VocIntPercent"    ParameterType="%AID%_PT-Percent"      Offset="8"  BitOffset="0" Text="    Anteil interner Messwert"   SuffixText="Anteil(e)" Value="1" />
-                <Parameter Id="%AID%_UP-%T%000148" Name="VocExt1Percent"   ParameterType="%AID%_PT-Percent"      Offset="9"  BitOffset="0" Text="    Anteil externer Messwert 1" SuffixText="Anteil(e)" Value="0" />
-                <Parameter Id="%AID%_UP-%T%000149" Name="VocExt2Percent"   ParameterType="%AID%_PT-Percent"      Offset="10" BitOffset="0" Text="    Anteil externer Messwert 2" SuffixText="Anteil(e)" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00141" Name="VocCycleBase"     ParameterType="%AID%_PT-DelayBase"    Offset="1" BitOffset="0"  Text="Zeitbasis" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00341" Name="VocCycleTime"     ParameterType="%AID%_PT-DelayTime"    Offset="1" BitOffset="2"  Text="Zeit"      Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00142" Name="VocDeltaAbs"      ParameterType="%AID%_PT-DeltaAbsVoc"  Offset="3"  BitOffset="0" Text="Voc bei absoluter Abweichung senden&#10;(0=nicht senden)" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00143" Name="VocDeltPercent"   ParameterType="%AID%_PT-Percent"      Offset="5"  BitOffset="0" Text="Voc bei Abweichung vom vorherigem Wert senden&#10;(0=nicht senden)" SuffixText="%" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00144" Name="VocSmooth"        ParameterType="%AID%_PT-Smooth"       Offset="6"  BitOffset="0" Text="Voc glätten: P =" SuffixText="" Value="1" />
+                <Parameter Id="%AID%_UP-%TT%00145" Name="VocExtCount"      ParameterType="%AID%_PT-ExtCount"     Offset="7"  BitOffset="6" Text="Externe Messwerte berücksichtigen" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00146" Name="VocExtRead"       ParameterType="%AID%_PT-OnOffYesNo"   Offset="7"  BitOffset="5" Text="    Externe Messwerte beim Start lesen" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00147" Name="VocIntPercent"    ParameterType="%AID%_PT-Percent"      Offset="8"  BitOffset="0" Text="    Anteil interner Messwert"   SuffixText="Anteil(e)" Value="1" />
+                <Parameter Id="%AID%_UP-%TT%00148" Name="VocExt1Percent"   ParameterType="%AID%_PT-Percent"      Offset="9"  BitOffset="0" Text="    Anteil externer Messwert 1" SuffixText="Anteil(e)" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00149" Name="VocExt2Percent"   ParameterType="%AID%_PT-Percent"      Offset="10" BitOffset="0" Text="    Anteil externer Messwert 2" SuffixText="Anteil(e)" Value="0" />
               </Union>
 
               <Union SizeInBit="88">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="45" BitOffset="0" />
-                <Parameter Id="%AID%_UP-%T%000150" Name="Co2Offset"        ParameterType="%AID%_PT-OffsetCo2"    Offset="0" BitOffset="0"  Text="CO2 anpassen (interner Messwert)"                               SuffixText="ppm"      Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00150" Name="Co2Offset"        ParameterType="%AID%_PT-OffsetCo2"    Offset="0" BitOffset="0"  Text="CO2 anpassen (interner Messwert)"                               SuffixText="ppm"      Value="0" />
                 <!-- Delay pattern -->
-                <Parameter Id="%AID%_UP-%T%000151" Name="Co2CycleBase"     ParameterType="%AID%_PT-DelayBase"    Offset="1" BitOffset="0"  Text="Zeitbasis" Value="0" />
-                <Parameter Id="%AID%_UP-%T%000351" Name="Co2CycleTime"     ParameterType="%AID%_PT-DelayTime"    Offset="1" BitOffset="2"  Text="Zeit"      Value="0" />
-                <Parameter Id="%AID%_UP-%T%000152" Name="Co2DeltaAbs"      ParameterType="%AID%_PT-DeltaAbsCo2"  Offset="3" BitOffset="0"  Text="CO2 bei absoluter Abweichung senden&#10;(0=nicht senden)"           SuffixText="ppm"      Value="0" />
-                <Parameter Id="%AID%_UP-%T%000153" Name="Co2DeltaPercent"  ParameterType="%AID%_PT-Percent"      Offset="5" BitOffset="0"  Text="CO2 bei Abweichung vom vorherigem Wert senden&#10;(0=nicht senden)" SuffixText="%"        Value="0" />
-                <Parameter Id="%AID%_UP-%T%000154" Name="Co2Smooth"        ParameterType="%AID%_PT-Smooth"       Offset="6" BitOffset="0"  Text="CO2 glätten: P ="                                               SuffixText=""         Value="1" />
-                <Parameter Id="%AID%_UP-%T%000155" Name="Co2ExtCount"      ParameterType="%AID%_PT-ExtCount"     Offset="7" BitOffset="6"  Text="Externe Messwerte berücksichtigen" Value="0" />
-                <Parameter Id="%AID%_UP-%T%000156" Name="Co2ExtRead"       ParameterType="%AID%_PT-OnOffYesNo"   Offset="7" BitOffset="5"  Text="    Externe Messwerte beim Start lesen" Value="0" />
-                <Parameter Id="%AID%_UP-%T%000157" Name="Co2IntPercent"    ParameterType="%AID%_PT-Percent"      Offset="8" BitOffset="0"  Text="    Anteil interner Messwert"   SuffixText="Anteil(e)" Value="1" />
-                <Parameter Id="%AID%_UP-%T%000158" Name="Co2Ext1Percent"   ParameterType="%AID%_PT-Percent"      Offset="9" BitOffset="0"  Text="    Anteil externer Messwert 1" SuffixText="Anteil(e)" Value="0" />
-                <Parameter Id="%AID%_UP-%T%000159" Name="Co2Ext2Percent"   ParameterType="%AID%_PT-Percent"      Offset="10" BitOffset="0" Text="    Anteil externer Messwert 2" SuffixText="Anteil(e)" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00151" Name="Co2CycleBase"     ParameterType="%AID%_PT-DelayBase"    Offset="1" BitOffset="0"  Text="Zeitbasis" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00351" Name="Co2CycleTime"     ParameterType="%AID%_PT-DelayTime"    Offset="1" BitOffset="2"  Text="Zeit"      Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00152" Name="Co2DeltaAbs"      ParameterType="%AID%_PT-DeltaAbsCo2"  Offset="3" BitOffset="0"  Text="CO2 bei absoluter Abweichung senden&#10;(0=nicht senden)"           SuffixText="ppm"      Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00153" Name="Co2DeltaPercent"  ParameterType="%AID%_PT-Percent"      Offset="5" BitOffset="0"  Text="CO2 bei Abweichung vom vorherigem Wert senden&#10;(0=nicht senden)" SuffixText="%"        Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00154" Name="Co2Smooth"        ParameterType="%AID%_PT-Smooth"       Offset="6" BitOffset="0"  Text="CO2 glätten: P ="                                               SuffixText=""         Value="1" />
+                <Parameter Id="%AID%_UP-%TT%00155" Name="Co2ExtCount"      ParameterType="%AID%_PT-ExtCount"     Offset="7" BitOffset="6"  Text="Externe Messwerte berücksichtigen" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00156" Name="Co2ExtRead"       ParameterType="%AID%_PT-OnOffYesNo"   Offset="7" BitOffset="5"  Text="    Externe Messwerte beim Start lesen" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00157" Name="Co2IntPercent"    ParameterType="%AID%_PT-Percent"      Offset="8" BitOffset="0"  Text="    Anteil interner Messwert"   SuffixText="Anteil(e)" Value="1" />
+                <Parameter Id="%AID%_UP-%TT%00158" Name="Co2Ext1Percent"   ParameterType="%AID%_PT-Percent"      Offset="9" BitOffset="0"  Text="    Anteil externer Messwert 1" SuffixText="Anteil(e)" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00159" Name="Co2Ext2Percent"   ParameterType="%AID%_PT-Percent"      Offset="10" BitOffset="0" Text="    Anteil externer Messwert 2" SuffixText="Anteil(e)" Value="0" />
               </Union>
               <Union SizeInBit="8">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="56" BitOffset="0" />
-                <!-- <Parameter Id="%AID%_UP-%T%000160" Name="SensorDevice" ParameterType="%AID%_PT-SensorDevices" Offset="0" BitOffset="1" Text="Sensorkombination" Value="12" /> -->
-                <Parameter Id="%AID%_UP-%T%000168" Name="Sensor1Wire"     ParameterType="%AID%_PT-CheckBox"      Offset="0" BitOffset="7" Text="1 Wire aktivieren?" Value="0" />
+                <!-- <Parameter Id="%AID%_UP-%TT%00160" Name="SensorDevice" ParameterType="%AID%_PT-SensorDevices" Offset="0" BitOffset="1" Text="Sensorkombination" Value="12" /> -->
+                <Parameter Id="%AID%_UP-%TT%00168" Name="Sensor1Wire"     ParameterType="%AID%_PT-CheckBox"      Offset="0" BitOffset="7" Text="1 Wire aktivieren?" Value="0" />
               </Union>
 
               <!-- parameters 161-169 (except 168) were used in app v2.x and should not be used anymore -->
               <Union SizeInBit="56">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="57" BitOffset="0" />
-                <Parameter Id="%AID%_UP-%T%000170" Name="DewOffset"       ParameterType="%AID%_PT-OffsetTemp"   Offset="0" BitOffset="0" Text="Taupunkt anpassen"                                                   SuffixText="x 0.1 °C" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00170" Name="DewOffset"       ParameterType="%AID%_PT-OffsetTemp"   Offset="0" BitOffset="0" Text="Taupunkt anpassen"                                                   SuffixText="x 0.1 °C" Value="0" />
                 <!-- Delay pattern -->
-                <Parameter Id="%AID%_UP-%T%000171" Name="DewCycleBase"    ParameterType="%AID%_PT-DelayBase"    Offset="1" BitOffset="0" Text="Zeitbasis" Value="0" />
-                <Parameter Id="%AID%_UP-%T%000371" Name="DewCycleTime"    ParameterType="%AID%_PT-DelayTime"    Offset="1" BitOffset="2" Text="Zeit"      Value="0" />
-                <Parameter Id="%AID%_UP-%T%000172" Name="DewDeltaAbs"     ParameterType="%AID%_PT-DeltaAbsTemp" Offset="3" BitOffset="0" Text="Taupunkt bei absoluter Abweichung senden&#10;(0=nicht senden)"           SuffixText="x 0.1 °C" Value="0" />
-                <Parameter Id="%AID%_UP-%T%000173" Name="DewDeltaPercent" ParameterType="%AID%_PT-Percent"      Offset="5" BitOffset="0" Text="Taupunkt bei Abweichung vom vorherigen Wert senden&#10;(0=nicht senden)" SuffixText="%"        Value="0" />
-                <Parameter Id="%AID%_UP-%T%000174" Name="DewSmooth"       ParameterType="%AID%_PT-Smooth"       Offset="6" BitOffset="0" Text="Taupunkt glätten: P ="                                               SuffixText=""         Value="1" />
+                <Parameter Id="%AID%_UP-%TT%00171" Name="DewCycleBase"    ParameterType="%AID%_PT-DelayBase"    Offset="1" BitOffset="0" Text="Zeitbasis" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00371" Name="DewCycleTime"    ParameterType="%AID%_PT-DelayTime"    Offset="1" BitOffset="2" Text="Zeit"      Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00172" Name="DewDeltaAbs"     ParameterType="%AID%_PT-DeltaAbsTemp" Offset="3" BitOffset="0" Text="Taupunkt bei absoluter Abweichung senden&#10;(0=nicht senden)"           SuffixText="x 0.1 °C" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00173" Name="DewDeltaPercent" ParameterType="%AID%_PT-Percent"      Offset="5" BitOffset="0" Text="Taupunkt bei Abweichung vom vorherigen Wert senden&#10;(0=nicht senden)" SuffixText="%"        Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00174" Name="DewSmooth"       ParameterType="%AID%_PT-Smooth"       Offset="6" BitOffset="0" Text="Taupunkt glätten: P ="                                               SuffixText=""         Value="1" />
               </Union>
               <Union SizeInBit="88">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="64" BitOffset="0" />
-                <Parameter Id="%AID%_UP-%T%000180" Name="LuxOffset"        ParameterType="%AID%_PT-OffsetLux"    Offset="0"  BitOffset="0" Text="Helligkeit anpassen&#10;(Bereich in der Nähe von 0 Lux)"                   SuffixText="Lux"      Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00180" Name="LuxOffset"        ParameterType="%AID%_PT-OffsetLux"    Offset="0"  BitOffset="0" Text="Helligkeit anpassen&#10;(Bereich in der Nähe von 0 Lux)"                   SuffixText="Lux"      Value="0" />
                 <!-- Delay pattern -->
-                <Parameter Id="%AID%_UP-%T%000181" Name="LuxCycleBase"     ParameterType="%AID%_PT-DelayBase"    Offset="1"  BitOffset="0" Text="Zeitbasis" Value="0" />
-                <Parameter Id="%AID%_UP-%T%000381" Name="LuxCycleTime"     ParameterType="%AID%_PT-DelayTime"    Offset="1"  BitOffset="2" Text="Zeit"      Value="0" />
-                <Parameter Id="%AID%_UP-%T%000182" Name="LuxDeltaAbs"      ParameterType="%AID%_PT-DeltaAbsLux"  Offset="3"  BitOffset="0" Text="Helligkeit bei absoluter Abweichung senden&#10;(0=nicht senden)"           SuffixText="Lux"      Value="0" />
-                <Parameter Id="%AID%_UP-%T%000183" Name="LuxDeltPercent"   ParameterType="%AID%_PT-Percent"      Offset="5"  BitOffset="0" Text="Helligkeit bei Abweichung vom vorherigem Wert senden&#10;(0=nicht senden)" SuffixText="%"        Value="0" />
-                <Parameter Id="%AID%_UP-%T%000184" Name="LuxSmooth"        ParameterType="%AID%_PT-Smooth"       Offset="6"  BitOffset="0" Text="Helligkeit glätten: P ="                                               SuffixText=""         Value="1" />
-                <Parameter Id="%AID%_UP-%T%000185" Name="LuxExtCount"      ParameterType="%AID%_PT-ExtCount"     Offset="7"  BitOffset="6" Text="Externe Messwerte berücksichtigen" Value="0" />
-                <Parameter Id="%AID%_UP-%T%000186" Name="LuxExtRead"       ParameterType="%AID%_PT-OnOffYesNo"   Offset="7"  BitOffset="5" Text="    Externe Messwerte beim Start lesen" Value="0" />
-                <Parameter Id="%AID%_UP-%T%000187" Name="LuxIntPercent"    ParameterType="%AID%_PT-Percent"      Offset="8"  BitOffset="0" Text="    Anteil interner Messwert"   SuffixText="Anteil(e)" Value="1" />
-                <Parameter Id="%AID%_UP-%T%000188" Name="LuxExt1Percent"   ParameterType="%AID%_PT-Percent"      Offset="9"  BitOffset="0" Text="    Anteil externer Messwert 1" SuffixText="Anteil(e)" Value="0" />
-                <Parameter Id="%AID%_UP-%T%000189" Name="LuxExt2Percent"   ParameterType="%AID%_PT-Percent"      Offset="10" BitOffset="0" Text="    Anteil externer Messwert 2" SuffixText="Anteil(e)" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00181" Name="LuxCycleBase"     ParameterType="%AID%_PT-DelayBase"    Offset="1"  BitOffset="0" Text="Zeitbasis" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00381" Name="LuxCycleTime"     ParameterType="%AID%_PT-DelayTime"    Offset="1"  BitOffset="2" Text="Zeit"      Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00182" Name="LuxDeltaAbs"      ParameterType="%AID%_PT-DeltaAbsLux"  Offset="3"  BitOffset="0" Text="Helligkeit bei absoluter Abweichung senden&#10;(0=nicht senden)"           SuffixText="Lux"      Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00183" Name="LuxDeltPercent"   ParameterType="%AID%_PT-Percent"      Offset="5"  BitOffset="0" Text="Helligkeit bei Abweichung vom vorherigem Wert senden&#10;(0=nicht senden)" SuffixText="%"        Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00184" Name="LuxSmooth"        ParameterType="%AID%_PT-Smooth"       Offset="6"  BitOffset="0" Text="Helligkeit glätten: P ="                                               SuffixText=""         Value="1" />
+                <Parameter Id="%AID%_UP-%TT%00185" Name="LuxExtCount"      ParameterType="%AID%_PT-ExtCount"     Offset="7"  BitOffset="6" Text="Externe Messwerte berücksichtigen" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00186" Name="LuxExtRead"       ParameterType="%AID%_PT-OnOffYesNo"   Offset="7"  BitOffset="5" Text="    Externe Messwerte beim Start lesen" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00187" Name="LuxIntPercent"    ParameterType="%AID%_PT-Percent"      Offset="8"  BitOffset="0" Text="    Anteil interner Messwert"   SuffixText="Anteil(e)" Value="1" />
+                <Parameter Id="%AID%_UP-%TT%00188" Name="LuxExt1Percent"   ParameterType="%AID%_PT-Percent"      Offset="9"  BitOffset="0" Text="    Anteil externer Messwert 1" SuffixText="Anteil(e)" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00189" Name="LuxExt2Percent"   ParameterType="%AID%_PT-Percent"      Offset="10" BitOffset="0" Text="    Anteil externer Messwert 2" SuffixText="Anteil(e)" Value="0" />
               </Union>
 
               <Union SizeInBit="88">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="75" BitOffset="0" />
-                <Parameter Id="%AID%_UP-%T%000190" Name="TofOffset"        ParameterType="%AID%_PT-OffsetTof"    Offset="0" BitOffset="0"  Text="Entfernung anpassen (interner Messwert)"                               SuffixText="mm"       Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00190" Name="TofOffset"        ParameterType="%AID%_PT-OffsetTof"    Offset="0" BitOffset="0"  Text="Entfernung anpassen (interner Messwert)"                               SuffixText="mm"       Value="0" />
                 <!-- Delay pattern -->
-                <Parameter Id="%AID%_UP-%T%000191" Name="TofCycleBase"     ParameterType="%AID%_PT-DelayBase"    Offset="1" BitOffset="0"  Text="Zeitbasis" Value="0" />
-                <Parameter Id="%AID%_UP-%T%000391" Name="TofCycleTime"     ParameterType="%AID%_PT-DelayTime"    Offset="1" BitOffset="2"  Text="Zeit"      Value="0" />
-                <Parameter Id="%AID%_UP-%T%000192" Name="TofDeltaAbs"      ParameterType="%AID%_PT-DeltaAbsTof"  Offset="3" BitOffset="0"  Text="Entfernung bei absoluter Abweichung senden&#10;(0=nicht senden)"           SuffixText="mm"       Value="0" />
-                <Parameter Id="%AID%_UP-%T%000193" Name="TofDeltaPercent"  ParameterType="%AID%_PT-Percent"      Offset="5" BitOffset="0"  Text="Entfernung bei Abweichung vom vorherigem Wert senden&#10;(0=nicht senden)" SuffixText="%"        Value="0" />
-                <Parameter Id="%AID%_UP-%T%000194" Name="TofSmooth"        ParameterType="%AID%_PT-Smooth"       Offset="6" BitOffset="0"  Text="Entfernung glätten: P ="                                               SuffixText=""         Value="1" />
-                <Parameter Id="%AID%_UP-%T%000195" Name="TofExtCount"      ParameterType="%AID%_PT-ExtCount"     Offset="7" BitOffset="6"  Text="Externe Messwerte berücksichtigen" Value="0" />
-                <Parameter Id="%AID%_UP-%T%000196" Name="TofExtRead"       ParameterType="%AID%_PT-OnOffYesNo"   Offset="7" BitOffset="5"  Text="    Externe Messwerte beim Start lesen" Value="0" />
-                <Parameter Id="%AID%_UP-%T%000197" Name="TofIntPercent"    ParameterType="%AID%_PT-Percent"      Offset="8" BitOffset="0"  Text="    Anteil interner Messwert"   SuffixText="Anteil(e)" Value="1" />
-                <Parameter Id="%AID%_UP-%T%000198" Name="TofExt1Percent"   ParameterType="%AID%_PT-Percent"      Offset="9" BitOffset="0"  Text="    Anteil externer Messwert 1" SuffixText="Anteil(e)" Value="0" />
-                <Parameter Id="%AID%_UP-%T%000199" Name="TofExt2Percent"   ParameterType="%AID%_PT-Percent"      Offset="10" BitOffset="0" Text="    Anteil externer Messwert 2" SuffixText="Anteil(e)" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00191" Name="TofCycleBase"     ParameterType="%AID%_PT-DelayBase"    Offset="1" BitOffset="0"  Text="Zeitbasis" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00391" Name="TofCycleTime"     ParameterType="%AID%_PT-DelayTime"    Offset="1" BitOffset="2"  Text="Zeit"      Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00192" Name="TofDeltaAbs"      ParameterType="%AID%_PT-DeltaAbsTof"  Offset="3" BitOffset="0"  Text="Entfernung bei absoluter Abweichung senden&#10;(0=nicht senden)"           SuffixText="mm"       Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00193" Name="TofDeltaPercent"  ParameterType="%AID%_PT-Percent"      Offset="5" BitOffset="0"  Text="Entfernung bei Abweichung vom vorherigem Wert senden&#10;(0=nicht senden)" SuffixText="%"        Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00194" Name="TofSmooth"        ParameterType="%AID%_PT-Smooth"       Offset="6" BitOffset="0"  Text="Entfernung glätten: P ="                                               SuffixText=""         Value="1" />
+                <Parameter Id="%AID%_UP-%TT%00195" Name="TofExtCount"      ParameterType="%AID%_PT-ExtCount"     Offset="7" BitOffset="6"  Text="Externe Messwerte berücksichtigen" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00196" Name="TofExtRead"       ParameterType="%AID%_PT-OnOffYesNo"   Offset="7" BitOffset="5"  Text="    Externe Messwerte beim Start lesen" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00197" Name="TofIntPercent"    ParameterType="%AID%_PT-Percent"      Offset="8" BitOffset="0"  Text="    Anteil interner Messwert"   SuffixText="Anteil(e)" Value="1" />
+                <Parameter Id="%AID%_UP-%TT%00198" Name="TofExt1Percent"   ParameterType="%AID%_PT-Percent"      Offset="9" BitOffset="0"  Text="    Anteil externer Messwert 1" SuffixText="Anteil(e)" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00199" Name="TofExt2Percent"   ParameterType="%AID%_PT-Percent"      Offset="10" BitOffset="0" Text="    Anteil externer Messwert 2" SuffixText="Anteil(e)" Value="0" />
               </Union>
 
               <Union SizeInBit="32">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="86" BitOffset="0" />
-                <Parameter Id="%AID%_UP-%T%000200" Name="TempSensor"       ParameterType="%AID%_PT-TempSensors"  Offset="0" BitOffset="0"  Text="Temperatursensor"      Value="0" />
-                <Parameter Id="%AID%_UP-%T%000201" Name="HumSensor"        ParameterType="%AID%_PT-HumSensors"   Offset="0" BitOffset="4"  Text="Luftfeuchtesensor"     Value="0" />
-                <Parameter Id="%AID%_UP-%T%000202" Name="PreSensor"        ParameterType="%AID%_PT-PreSensors"   Offset="1" BitOffset="0"  Text="Luftdrucksensor"       Value="0" />
-                <Parameter Id="%AID%_UP-%T%000203" Name="VocSensor"        ParameterType="%AID%_PT-VocSensors"   Offset="1" BitOffset="4"  Text="Voc-Sensor"            Value="0" />
-                <Parameter Id="%AID%_UP-%T%000204" Name="Co2Sensor"        ParameterType="%AID%_PT-Co2Sensors"   Offset="2" BitOffset="0"  Text="Co2-Sensor"            Value="0" />
-                <Parameter Id="%AID%_UP-%T%000205" Name="LuxSensor"        ParameterType="%AID%_PT-LuxSensors"   Offset="2" BitOffset="4"  Text="Helligkeitssensor"     Value="0" />
-                <Parameter Id="%AID%_UP-%T%000206" Name="TofSensor"        ParameterType="%AID%_PT-TofSensors"   Offset="3" BitOffset="0"  Text="Näherungssensor"       Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00200" Name="TempSensor"       ParameterType="%AID%_PT-TempSensors"  Offset="0" BitOffset="0"  Text="Temperatursensor"      Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00201" Name="HumSensor"        ParameterType="%AID%_PT-HumSensors"   Offset="0" BitOffset="4"  Text="Luftfeuchtesensor"     Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00202" Name="PreSensor"        ParameterType="%AID%_PT-PreSensors"   Offset="1" BitOffset="0"  Text="Luftdrucksensor"       Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00203" Name="VocSensor"        ParameterType="%AID%_PT-VocSensors"   Offset="1" BitOffset="4"  Text="Voc-Sensor"            Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00204" Name="Co2Sensor"        ParameterType="%AID%_PT-Co2Sensors"   Offset="2" BitOffset="0"  Text="Co2-Sensor"            Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00205" Name="LuxSensor"        ParameterType="%AID%_PT-LuxSensors"   Offset="2" BitOffset="4"  Text="Helligkeitssensor"     Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00206" Name="TofSensor"        ParameterType="%AID%_PT-TofSensors"   Offset="3" BitOffset="0"  Text="Näherungssensor"       Value="0" />
               </Union>
 
               <!-- the following parameters are just for internal reasons (for logical OR evaluation) -->
-              <Parameter Id="%AID%_P-%T%000210" Name="IsBME280"           ParameterType="%AID%_PT-OnOffYesNo" Text="Es wird ein BME280 verwendet"        Value="0" />
-              <Parameter Id="%AID%_P-%T%000211" Name="IsBME680"           ParameterType="%AID%_PT-OnOffYesNo" Text="Es wird ein BME680 verwendet"        Value="0" />
-              <Parameter Id="%AID%_P-%T%000212" Name="IsAirQuality"       ParameterType="%AID%_PT-OnOffYesNo" Text="Mit Luftqualität"                    Value="0" />
-              <Parameter Id="%AID%_P-%T%000213" Name="IsCo2Sensor"        ParameterType="%AID%_PT-OnOffYesNo" Text="Echter Co2-Sensor?"                  Value="0" />
-              <Parameter Id="%AID%_P-%T%000214" Name="IsI2C100kHz"        ParameterType="%AID%_PT-OnOffYesNo" Text="Kann nur 100kHz I2C"                 Value="0" />
-              <Parameter Id="%AID%_P-%T%000215" Name="ShowExtendedTab"    ParameterType="%AID%_PT-OnOffYesNo" Text="Zusatzfunktionen anzeigen?"          Value="0" />
-              <Parameter Id="%AID%_P-%T%000216" Name="ShowCalibration"    ParameterType="%AID%_PT-OnOffYesNo" Text="Kalibrierungsdaten anzeigen?"        Value="0" />
-              <Parameter Id="%AID%_P-%T%000217" Name="ShowCalibrationDel" ParameterType="%AID%_PT-OnOffYesNo" Text="Kalibrierungsdaten löschen zeigen?"  Value="0" />
+              <Parameter Id="%AID%_P-%TT%00210" Name="IsBME280"           ParameterType="%AID%_PT-OnOffYesNo" Text="Es wird ein BME280 verwendet"        Value="0" />
+              <Parameter Id="%AID%_P-%TT%00211" Name="IsBME680"           ParameterType="%AID%_PT-OnOffYesNo" Text="Es wird ein BME680 verwendet"        Value="0" />
+              <Parameter Id="%AID%_P-%TT%00212" Name="IsAirQuality"       ParameterType="%AID%_PT-OnOffYesNo" Text="Mit Luftqualität"                    Value="0" />
+              <Parameter Id="%AID%_P-%TT%00213" Name="IsCo2Sensor"        ParameterType="%AID%_PT-OnOffYesNo" Text="Echter Co2-Sensor?"                  Value="0" />
+              <Parameter Id="%AID%_P-%TT%00214" Name="IsI2C100kHz"        ParameterType="%AID%_PT-OnOffYesNo" Text="Kann nur 100kHz I2C"                 Value="0" />
+              <Parameter Id="%AID%_P-%TT%00215" Name="ShowExtendedTab"    ParameterType="%AID%_PT-OnOffYesNo" Text="Zusatzfunktionen anzeigen?"          Value="0" />
+              <Parameter Id="%AID%_P-%TT%00216" Name="ShowCalibration"    ParameterType="%AID%_PT-OnOffYesNo" Text="Kalibrierungsdaten anzeigen?"        Value="0" />
+              <Parameter Id="%AID%_P-%TT%00217" Name="ShowCalibrationDel" ParameterType="%AID%_PT-OnOffYesNo" Text="Kalibrierungsdaten löschen zeigen?"  Value="0" />
 
             </Parameters>
             <ParameterRefs>
-              <ParameterRef Id="%AID%_UP-%T%000100_R-%T%00010001" RefId="%AID%_UP-%T%000100" />
-              <ParameterRef Id="%AID%_UP-%T%000101_R-%T%00010101" RefId="%AID%_UP-%T%000101" />
-              <ParameterRef Id="%AID%_UP-%T%000102_R-%T%00010201" RefId="%AID%_UP-%T%000102" />
-              <ParameterRef Id="%AID%_UP-%T%000103_R-%T%00010301" RefId="%AID%_UP-%T%000103" />
-              <ParameterRef Id="%AID%_UP-%T%000104_R-%T%00010401" RefId="%AID%_UP-%T%000104" />
-              <ParameterRef Id="%AID%_UP-%T%000105_R-%T%00010501" RefId="%AID%_UP-%T%000105" />
+              <ParameterRef Id="%AID%_UP-%TT%00100_R-%TT%0010001" RefId="%AID%_UP-%TT%00100" />
+              <ParameterRef Id="%AID%_UP-%TT%00101_R-%TT%0010101" RefId="%AID%_UP-%TT%00101" />
+              <ParameterRef Id="%AID%_UP-%TT%00102_R-%TT%0010201" RefId="%AID%_UP-%TT%00102" />
+              <ParameterRef Id="%AID%_UP-%TT%00103_R-%TT%0010301" RefId="%AID%_UP-%TT%00103" />
+              <ParameterRef Id="%AID%_UP-%TT%00104_R-%TT%0010401" RefId="%AID%_UP-%TT%00104" />
+              <ParameterRef Id="%AID%_UP-%TT%00105_R-%TT%0010501" RefId="%AID%_UP-%TT%00105" />
               <!-- Temp -->
-              <ParameterRef Id="%AID%_UP-%T%000110_R-%T%00011001" RefId="%AID%_UP-%T%000110" />
-              <ParameterRef Id="%AID%_UP-%T%000111_R-%T%00011101" RefId="%AID%_UP-%T%000111" />
-              <ParameterRef Id="%AID%_UP-%T%000311_R-%T%00031101" RefId="%AID%_UP-%T%000311" />
-              <ParameterRef Id="%AID%_UP-%T%000112_R-%T%00011201" RefId="%AID%_UP-%T%000112" />
-              <ParameterRef Id="%AID%_UP-%T%000113_R-%T%00011301" RefId="%AID%_UP-%T%000113" />
-              <ParameterRef Id="%AID%_UP-%T%000114_R-%T%00011401" RefId="%AID%_UP-%T%000114" />
-              <ParameterRef Id="%AID%_UP-%T%000115_R-%T%00011501" RefId="%AID%_UP-%T%000115" />
-              <ParameterRef Id="%AID%_UP-%T%000116_R-%T%00011601" RefId="%AID%_UP-%T%000116" />
-              <ParameterRef Id="%AID%_UP-%T%000117_R-%T%00011701" RefId="%AID%_UP-%T%000117" />
-              <ParameterRef Id="%AID%_UP-%T%000118_R-%T%00011801" RefId="%AID%_UP-%T%000118" />
-              <ParameterRef Id="%AID%_UP-%T%000119_R-%T%00011901" RefId="%AID%_UP-%T%000119" />
+              <ParameterRef Id="%AID%_UP-%TT%00110_R-%TT%0011001" RefId="%AID%_UP-%TT%00110" />
+              <ParameterRef Id="%AID%_UP-%TT%00111_R-%TT%0011101" RefId="%AID%_UP-%TT%00111" />
+              <ParameterRef Id="%AID%_UP-%TT%00311_R-%TT%0031101" RefId="%AID%_UP-%TT%00311" />
+              <ParameterRef Id="%AID%_UP-%TT%00112_R-%TT%0011201" RefId="%AID%_UP-%TT%00112" />
+              <ParameterRef Id="%AID%_UP-%TT%00113_R-%TT%0011301" RefId="%AID%_UP-%TT%00113" />
+              <ParameterRef Id="%AID%_UP-%TT%00114_R-%TT%0011401" RefId="%AID%_UP-%TT%00114" />
+              <ParameterRef Id="%AID%_UP-%TT%00115_R-%TT%0011501" RefId="%AID%_UP-%TT%00115" />
+              <ParameterRef Id="%AID%_UP-%TT%00116_R-%TT%0011601" RefId="%AID%_UP-%TT%00116" />
+              <ParameterRef Id="%AID%_UP-%TT%00117_R-%TT%0011701" RefId="%AID%_UP-%TT%00117" />
+              <ParameterRef Id="%AID%_UP-%TT%00118_R-%TT%0011801" RefId="%AID%_UP-%TT%00118" />
+              <ParameterRef Id="%AID%_UP-%TT%00119_R-%TT%0011901" RefId="%AID%_UP-%TT%00119" />
               <!-- Hum -->
-              <ParameterRef Id="%AID%_UP-%T%000120_R-%T%00012001" RefId="%AID%_UP-%T%000120" />
-              <ParameterRef Id="%AID%_UP-%T%000121_R-%T%00012101" RefId="%AID%_UP-%T%000121" />
-              <ParameterRef Id="%AID%_UP-%T%000321_R-%T%00032101" RefId="%AID%_UP-%T%000321" />
-              <ParameterRef Id="%AID%_UP-%T%000122_R-%T%00012201" RefId="%AID%_UP-%T%000122" />
-              <ParameterRef Id="%AID%_UP-%T%000123_R-%T%00012301" RefId="%AID%_UP-%T%000123" />
-              <ParameterRef Id="%AID%_UP-%T%000124_R-%T%00012401" RefId="%AID%_UP-%T%000124" />
-              <ParameterRef Id="%AID%_UP-%T%000125_R-%T%00012501" RefId="%AID%_UP-%T%000125" />
-              <ParameterRef Id="%AID%_UP-%T%000126_R-%T%00012601" RefId="%AID%_UP-%T%000126" />
-              <ParameterRef Id="%AID%_UP-%T%000127_R-%T%00012701" RefId="%AID%_UP-%T%000127" />
-              <ParameterRef Id="%AID%_UP-%T%000128_R-%T%00012801" RefId="%AID%_UP-%T%000128" />
-              <ParameterRef Id="%AID%_UP-%T%000129_R-%T%00012901" RefId="%AID%_UP-%T%000129" />
+              <ParameterRef Id="%AID%_UP-%TT%00120_R-%TT%0012001" RefId="%AID%_UP-%TT%00120" />
+              <ParameterRef Id="%AID%_UP-%TT%00121_R-%TT%0012101" RefId="%AID%_UP-%TT%00121" />
+              <ParameterRef Id="%AID%_UP-%TT%00321_R-%TT%0032101" RefId="%AID%_UP-%TT%00321" />
+              <ParameterRef Id="%AID%_UP-%TT%00122_R-%TT%0012201" RefId="%AID%_UP-%TT%00122" />
+              <ParameterRef Id="%AID%_UP-%TT%00123_R-%TT%0012301" RefId="%AID%_UP-%TT%00123" />
+              <ParameterRef Id="%AID%_UP-%TT%00124_R-%TT%0012401" RefId="%AID%_UP-%TT%00124" />
+              <ParameterRef Id="%AID%_UP-%TT%00125_R-%TT%0012501" RefId="%AID%_UP-%TT%00125" />
+              <ParameterRef Id="%AID%_UP-%TT%00126_R-%TT%0012601" RefId="%AID%_UP-%TT%00126" />
+              <ParameterRef Id="%AID%_UP-%TT%00127_R-%TT%0012701" RefId="%AID%_UP-%TT%00127" />
+              <ParameterRef Id="%AID%_UP-%TT%00128_R-%TT%0012801" RefId="%AID%_UP-%TT%00128" />
+              <ParameterRef Id="%AID%_UP-%TT%00129_R-%TT%0012901" RefId="%AID%_UP-%TT%00129" />
               <!-- Pre -->
-              <ParameterRef Id="%AID%_UP-%T%000130_R-%T%00013001" RefId="%AID%_UP-%T%000130" />
-              <ParameterRef Id="%AID%_UP-%T%000131_R-%T%00013101" RefId="%AID%_UP-%T%000131" />
-              <ParameterRef Id="%AID%_UP-%T%000331_R-%T%00033101" RefId="%AID%_UP-%T%000331" />
-              <ParameterRef Id="%AID%_UP-%T%000132_R-%T%00013201" RefId="%AID%_UP-%T%000132" />
-              <ParameterRef Id="%AID%_UP-%T%000133_R-%T%00013301" RefId="%AID%_UP-%T%000133" />
-              <ParameterRef Id="%AID%_UP-%T%000134_R-%T%00013401" RefId="%AID%_UP-%T%000134" />
-              <ParameterRef Id="%AID%_UP-%T%000135_R-%T%00013501" RefId="%AID%_UP-%T%000135" />
-              <ParameterRef Id="%AID%_UP-%T%000136_R-%T%00013601" RefId="%AID%_UP-%T%000136" />
-              <ParameterRef Id="%AID%_UP-%T%000137_R-%T%00013701" RefId="%AID%_UP-%T%000137" />
-              <ParameterRef Id="%AID%_UP-%T%000138_R-%T%00013801" RefId="%AID%_UP-%T%000138" />
-              <ParameterRef Id="%AID%_UP-%T%000139_R-%T%00013901" RefId="%AID%_UP-%T%000139" />
+              <ParameterRef Id="%AID%_UP-%TT%00130_R-%TT%0013001" RefId="%AID%_UP-%TT%00130" />
+              <ParameterRef Id="%AID%_UP-%TT%00131_R-%TT%0013101" RefId="%AID%_UP-%TT%00131" />
+              <ParameterRef Id="%AID%_UP-%TT%00331_R-%TT%0033101" RefId="%AID%_UP-%TT%00331" />
+              <ParameterRef Id="%AID%_UP-%TT%00132_R-%TT%0013201" RefId="%AID%_UP-%TT%00132" />
+              <ParameterRef Id="%AID%_UP-%TT%00133_R-%TT%0013301" RefId="%AID%_UP-%TT%00133" />
+              <ParameterRef Id="%AID%_UP-%TT%00134_R-%TT%0013401" RefId="%AID%_UP-%TT%00134" />
+              <ParameterRef Id="%AID%_UP-%TT%00135_R-%TT%0013501" RefId="%AID%_UP-%TT%00135" />
+              <ParameterRef Id="%AID%_UP-%TT%00136_R-%TT%0013601" RefId="%AID%_UP-%TT%00136" />
+              <ParameterRef Id="%AID%_UP-%TT%00137_R-%TT%0013701" RefId="%AID%_UP-%TT%00137" />
+              <ParameterRef Id="%AID%_UP-%TT%00138_R-%TT%0013801" RefId="%AID%_UP-%TT%00138" />
+              <ParameterRef Id="%AID%_UP-%TT%00139_R-%TT%0013901" RefId="%AID%_UP-%TT%00139" />
               <!-- Voc -->
-              <ParameterRef Id="%AID%_UP-%T%000140_R-%T%00014001" RefId="%AID%_UP-%T%000140" />
-              <ParameterRef Id="%AID%_UP-%T%000141_R-%T%00014101" RefId="%AID%_UP-%T%000141" />
-              <ParameterRef Id="%AID%_UP-%T%000341_R-%T%00034101" RefId="%AID%_UP-%T%000341" />
-              <ParameterRef Id="%AID%_UP-%T%000142_R-%T%00014201" RefId="%AID%_UP-%T%000142" />
-              <ParameterRef Id="%AID%_UP-%T%000143_R-%T%00014301" RefId="%AID%_UP-%T%000143" />
-              <ParameterRef Id="%AID%_UP-%T%000144_R-%T%00014401" RefId="%AID%_UP-%T%000144" />
-              <ParameterRef Id="%AID%_UP-%T%000145_R-%T%00014501" RefId="%AID%_UP-%T%000145" />
-              <ParameterRef Id="%AID%_UP-%T%000146_R-%T%00014601" RefId="%AID%_UP-%T%000146" />
-              <ParameterRef Id="%AID%_UP-%T%000147_R-%T%00014701" RefId="%AID%_UP-%T%000147" />
-              <ParameterRef Id="%AID%_UP-%T%000148_R-%T%00014801" RefId="%AID%_UP-%T%000148" />
-              <ParameterRef Id="%AID%_UP-%T%000149_R-%T%00014901" RefId="%AID%_UP-%T%000149" />
+              <ParameterRef Id="%AID%_UP-%TT%00140_R-%TT%0014001" RefId="%AID%_UP-%TT%00140" />
+              <ParameterRef Id="%AID%_UP-%TT%00141_R-%TT%0014101" RefId="%AID%_UP-%TT%00141" />
+              <ParameterRef Id="%AID%_UP-%TT%00341_R-%TT%0034101" RefId="%AID%_UP-%TT%00341" />
+              <ParameterRef Id="%AID%_UP-%TT%00142_R-%TT%0014201" RefId="%AID%_UP-%TT%00142" />
+              <ParameterRef Id="%AID%_UP-%TT%00143_R-%TT%0014301" RefId="%AID%_UP-%TT%00143" />
+              <ParameterRef Id="%AID%_UP-%TT%00144_R-%TT%0014401" RefId="%AID%_UP-%TT%00144" />
+              <ParameterRef Id="%AID%_UP-%TT%00145_R-%TT%0014501" RefId="%AID%_UP-%TT%00145" />
+              <ParameterRef Id="%AID%_UP-%TT%00146_R-%TT%0014601" RefId="%AID%_UP-%TT%00146" />
+              <ParameterRef Id="%AID%_UP-%TT%00147_R-%TT%0014701" RefId="%AID%_UP-%TT%00147" />
+              <ParameterRef Id="%AID%_UP-%TT%00148_R-%TT%0014801" RefId="%AID%_UP-%TT%00148" />
+              <ParameterRef Id="%AID%_UP-%TT%00149_R-%TT%0014901" RefId="%AID%_UP-%TT%00149" />
               <!-- Co2 -->
-              <ParameterRef Id="%AID%_UP-%T%000150_R-%T%00015001" RefId="%AID%_UP-%T%000150" />
-              <ParameterRef Id="%AID%_UP-%T%000151_R-%T%00015101" RefId="%AID%_UP-%T%000151" />
-              <ParameterRef Id="%AID%_UP-%T%000351_R-%T%00035101" RefId="%AID%_UP-%T%000351" />
-              <ParameterRef Id="%AID%_UP-%T%000152_R-%T%00015201" RefId="%AID%_UP-%T%000152" />
-              <ParameterRef Id="%AID%_UP-%T%000153_R-%T%00015301" RefId="%AID%_UP-%T%000153" />
-              <ParameterRef Id="%AID%_UP-%T%000154_R-%T%00015401" RefId="%AID%_UP-%T%000154" />
-              <ParameterRef Id="%AID%_UP-%T%000155_R-%T%00015501" RefId="%AID%_UP-%T%000155" />
-              <ParameterRef Id="%AID%_UP-%T%000156_R-%T%00015601" RefId="%AID%_UP-%T%000156" />
-              <ParameterRef Id="%AID%_UP-%T%000157_R-%T%00015701" RefId="%AID%_UP-%T%000157" />
-              <ParameterRef Id="%AID%_UP-%T%000158_R-%T%00015801" RefId="%AID%_UP-%T%000158" />
-              <ParameterRef Id="%AID%_UP-%T%000159_R-%T%00015901" RefId="%AID%_UP-%T%000159" />
+              <ParameterRef Id="%AID%_UP-%TT%00150_R-%TT%0015001" RefId="%AID%_UP-%TT%00150" />
+              <ParameterRef Id="%AID%_UP-%TT%00151_R-%TT%0015101" RefId="%AID%_UP-%TT%00151" />
+              <ParameterRef Id="%AID%_UP-%TT%00351_R-%TT%0035101" RefId="%AID%_UP-%TT%00351" />
+              <ParameterRef Id="%AID%_UP-%TT%00152_R-%TT%0015201" RefId="%AID%_UP-%TT%00152" />
+              <ParameterRef Id="%AID%_UP-%TT%00153_R-%TT%0015301" RefId="%AID%_UP-%TT%00153" />
+              <ParameterRef Id="%AID%_UP-%TT%00154_R-%TT%0015401" RefId="%AID%_UP-%TT%00154" />
+              <ParameterRef Id="%AID%_UP-%TT%00155_R-%TT%0015501" RefId="%AID%_UP-%TT%00155" />
+              <ParameterRef Id="%AID%_UP-%TT%00156_R-%TT%0015601" RefId="%AID%_UP-%TT%00156" />
+              <ParameterRef Id="%AID%_UP-%TT%00157_R-%TT%0015701" RefId="%AID%_UP-%TT%00157" />
+              <ParameterRef Id="%AID%_UP-%TT%00158_R-%TT%0015801" RefId="%AID%_UP-%TT%00158" />
+              <ParameterRef Id="%AID%_UP-%TT%00159_R-%TT%0015901" RefId="%AID%_UP-%TT%00159" />
               <!-- checkboxes -->
-              <!-- <ParameterRef Id="%AID%_UP-%T%000160_R-%T%00016001" RefId="%AID%_UP-%T%000160" /> Access="Read" /> -->
-              <ParameterRef Id="%AID%_UP-%T%000168_R-%T%00016801" RefId="%AID%_UP-%T%000168" />
+              <!-- <ParameterRef Id="%AID%_UP-%TT%00160_R-%TT%0016001" RefId="%AID%_UP-%TT%00160" /> Access="Read" /> -->
+              <ParameterRef Id="%AID%_UP-%TT%00168_R-%TT%0016801" RefId="%AID%_UP-%TT%00168" />
 
               <!-- Dewpoint -->
-              <ParameterRef Id="%AID%_UP-%T%000170_R-%T%00017001" RefId="%AID%_UP-%T%000170" />
-              <ParameterRef Id="%AID%_UP-%T%000171_R-%T%00017101" RefId="%AID%_UP-%T%000171" />
-              <ParameterRef Id="%AID%_UP-%T%000371_R-%T%00037101" RefId="%AID%_UP-%T%000371" />
-              <ParameterRef Id="%AID%_UP-%T%000172_R-%T%00017201" RefId="%AID%_UP-%T%000172" />
-              <ParameterRef Id="%AID%_UP-%T%000173_R-%T%00017301" RefId="%AID%_UP-%T%000173" />
-              <ParameterRef Id="%AID%_UP-%T%000174_R-%T%00017401" RefId="%AID%_UP-%T%000174" />
+              <ParameterRef Id="%AID%_UP-%TT%00170_R-%TT%0017001" RefId="%AID%_UP-%TT%00170" />
+              <ParameterRef Id="%AID%_UP-%TT%00171_R-%TT%0017101" RefId="%AID%_UP-%TT%00171" />
+              <ParameterRef Id="%AID%_UP-%TT%00371_R-%TT%0037101" RefId="%AID%_UP-%TT%00371" />
+              <ParameterRef Id="%AID%_UP-%TT%00172_R-%TT%0017201" RefId="%AID%_UP-%TT%00172" />
+              <ParameterRef Id="%AID%_UP-%TT%00173_R-%TT%0017301" RefId="%AID%_UP-%TT%00173" />
+              <ParameterRef Id="%AID%_UP-%TT%00174_R-%TT%0017401" RefId="%AID%_UP-%TT%00174" />
               <!-- additional sensors for v2.8 -->
-              <ParameterRef Id="%AID%_UP-%T%000180_R-%T%00018001" RefId="%AID%_UP-%T%000180" />
-              <ParameterRef Id="%AID%_UP-%T%000181_R-%T%00018101" RefId="%AID%_UP-%T%000181" />
-              <ParameterRef Id="%AID%_UP-%T%000381_R-%T%00038101" RefId="%AID%_UP-%T%000381" />
-              <ParameterRef Id="%AID%_UP-%T%000182_R-%T%00018201" RefId="%AID%_UP-%T%000182" />
-              <ParameterRef Id="%AID%_UP-%T%000183_R-%T%00018301" RefId="%AID%_UP-%T%000183" />
-              <ParameterRef Id="%AID%_UP-%T%000184_R-%T%00018401" RefId="%AID%_UP-%T%000184" />
-              <ParameterRef Id="%AID%_UP-%T%000185_R-%T%00018501" RefId="%AID%_UP-%T%000185" />
-              <ParameterRef Id="%AID%_UP-%T%000186_R-%T%00018601" RefId="%AID%_UP-%T%000186" />
-              <ParameterRef Id="%AID%_UP-%T%000187_R-%T%00018701" RefId="%AID%_UP-%T%000187" />
-              <ParameterRef Id="%AID%_UP-%T%000188_R-%T%00018801" RefId="%AID%_UP-%T%000188" />
-              <ParameterRef Id="%AID%_UP-%T%000189_R-%T%00018901" RefId="%AID%_UP-%T%000189" />
-              <ParameterRef Id="%AID%_UP-%T%000190_R-%T%00019001" RefId="%AID%_UP-%T%000190" />
-              <ParameterRef Id="%AID%_UP-%T%000191_R-%T%00019101" RefId="%AID%_UP-%T%000191" />
-              <ParameterRef Id="%AID%_UP-%T%000391_R-%T%00039101" RefId="%AID%_UP-%T%000391" />
-              <ParameterRef Id="%AID%_UP-%T%000192_R-%T%00019201" RefId="%AID%_UP-%T%000192" />
-              <ParameterRef Id="%AID%_UP-%T%000193_R-%T%00019301" RefId="%AID%_UP-%T%000193" />
-              <ParameterRef Id="%AID%_UP-%T%000194_R-%T%00019401" RefId="%AID%_UP-%T%000194" />
-              <ParameterRef Id="%AID%_UP-%T%000195_R-%T%00019501" RefId="%AID%_UP-%T%000195" />
-              <ParameterRef Id="%AID%_UP-%T%000196_R-%T%00019601" RefId="%AID%_UP-%T%000196" />
-              <ParameterRef Id="%AID%_UP-%T%000197_R-%T%00019701" RefId="%AID%_UP-%T%000197" />
-              <ParameterRef Id="%AID%_UP-%T%000198_R-%T%00019801" RefId="%AID%_UP-%T%000198" />
-              <ParameterRef Id="%AID%_UP-%T%000199_R-%T%00019901" RefId="%AID%_UP-%T%000199" />
-              <ParameterRef Id="%AID%_UP-%T%000200_R-%T%00020001" RefId="%AID%_UP-%T%000200" />
-              <ParameterRef Id="%AID%_UP-%T%000201_R-%T%00020101" RefId="%AID%_UP-%T%000201" />
-              <ParameterRef Id="%AID%_UP-%T%000202_R-%T%00020201" RefId="%AID%_UP-%T%000202" />
-              <ParameterRef Id="%AID%_UP-%T%000203_R-%T%00020301" RefId="%AID%_UP-%T%000203" />
-              <ParameterRef Id="%AID%_UP-%T%000204_R-%T%00020401" RefId="%AID%_UP-%T%000204" />
-              <!-- <ParameterRef Id="%AID%_UP-%T%000200_R-%T%00020002" RefId="%AID%_UP-%T%000200" Access="Read" />
-              <ParameterRef Id="%AID%_UP-%T%000201_R-%T%00020102" RefId="%AID%_UP-%T%000201" Access="Read" />
-              <ParameterRef Id="%AID%_UP-%T%000202_R-%T%00020202" RefId="%AID%_UP-%T%000202" Access="Read" />
-              <ParameterRef Id="%AID%_UP-%T%000203_R-%T%00020302" RefId="%AID%_UP-%T%000203" Access="Read" />
-              <ParameterRef Id="%AID%_UP-%T%000204_R-%T%00020402" RefId="%AID%_UP-%T%000204" Access="Read" /> -->
-              <ParameterRef Id="%AID%_UP-%T%000205_R-%T%00020501" RefId="%AID%_UP-%T%000205" />
-              <ParameterRef Id="%AID%_UP-%T%000206_R-%T%00020601" RefId="%AID%_UP-%T%000206" />
-              <ParameterRef Id="%AID%_P-%T%000210_R-%T%00021001" RefId="%AID%_P-%T%000210" Access="None" />
-              <ParameterRef Id="%AID%_P-%T%000211_R-%T%00021101" RefId="%AID%_P-%T%000211" Access="None" />
-              <ParameterRef Id="%AID%_P-%T%000212_R-%T%00021201" RefId="%AID%_P-%T%000212" Access="None" />
-              <ParameterRef Id="%AID%_P-%T%000213_R-%T%00021301" RefId="%AID%_P-%T%000213" Access="None" />
-              <ParameterRef Id="%AID%_P-%T%000214_R-%T%00021401" RefId="%AID%_P-%T%000214" Access="None" />
-              <ParameterRef Id="%AID%_P-%T%000215_R-%T%00021501" RefId="%AID%_P-%T%000215" Access="None" />
-              <ParameterRef Id="%AID%_P-%T%000216_R-%T%00021601" RefId="%AID%_P-%T%000216" Access="None" />
-              <ParameterRef Id="%AID%_P-%T%000217_R-%T%00021701" RefId="%AID%_P-%T%000217" Access="None" />
+              <ParameterRef Id="%AID%_UP-%TT%00180_R-%TT%0018001" RefId="%AID%_UP-%TT%00180" />
+              <ParameterRef Id="%AID%_UP-%TT%00181_R-%TT%0018101" RefId="%AID%_UP-%TT%00181" />
+              <ParameterRef Id="%AID%_UP-%TT%00381_R-%TT%0038101" RefId="%AID%_UP-%TT%00381" />
+              <ParameterRef Id="%AID%_UP-%TT%00182_R-%TT%0018201" RefId="%AID%_UP-%TT%00182" />
+              <ParameterRef Id="%AID%_UP-%TT%00183_R-%TT%0018301" RefId="%AID%_UP-%TT%00183" />
+              <ParameterRef Id="%AID%_UP-%TT%00184_R-%TT%0018401" RefId="%AID%_UP-%TT%00184" />
+              <ParameterRef Id="%AID%_UP-%TT%00185_R-%TT%0018501" RefId="%AID%_UP-%TT%00185" />
+              <ParameterRef Id="%AID%_UP-%TT%00186_R-%TT%0018601" RefId="%AID%_UP-%TT%00186" />
+              <ParameterRef Id="%AID%_UP-%TT%00187_R-%TT%0018701" RefId="%AID%_UP-%TT%00187" />
+              <ParameterRef Id="%AID%_UP-%TT%00188_R-%TT%0018801" RefId="%AID%_UP-%TT%00188" />
+              <ParameterRef Id="%AID%_UP-%TT%00189_R-%TT%0018901" RefId="%AID%_UP-%TT%00189" />
+              <ParameterRef Id="%AID%_UP-%TT%00190_R-%TT%0019001" RefId="%AID%_UP-%TT%00190" />
+              <ParameterRef Id="%AID%_UP-%TT%00191_R-%TT%0019101" RefId="%AID%_UP-%TT%00191" />
+              <ParameterRef Id="%AID%_UP-%TT%00391_R-%TT%0039101" RefId="%AID%_UP-%TT%00391" />
+              <ParameterRef Id="%AID%_UP-%TT%00192_R-%TT%0019201" RefId="%AID%_UP-%TT%00192" />
+              <ParameterRef Id="%AID%_UP-%TT%00193_R-%TT%0019301" RefId="%AID%_UP-%TT%00193" />
+              <ParameterRef Id="%AID%_UP-%TT%00194_R-%TT%0019401" RefId="%AID%_UP-%TT%00194" />
+              <ParameterRef Id="%AID%_UP-%TT%00195_R-%TT%0019501" RefId="%AID%_UP-%TT%00195" />
+              <ParameterRef Id="%AID%_UP-%TT%00196_R-%TT%0019601" RefId="%AID%_UP-%TT%00196" />
+              <ParameterRef Id="%AID%_UP-%TT%00197_R-%TT%0019701" RefId="%AID%_UP-%TT%00197" />
+              <ParameterRef Id="%AID%_UP-%TT%00198_R-%TT%0019801" RefId="%AID%_UP-%TT%00198" />
+              <ParameterRef Id="%AID%_UP-%TT%00199_R-%TT%0019901" RefId="%AID%_UP-%TT%00199" />
+              <ParameterRef Id="%AID%_UP-%TT%00200_R-%TT%0020001" RefId="%AID%_UP-%TT%00200" />
+              <ParameterRef Id="%AID%_UP-%TT%00201_R-%TT%0020101" RefId="%AID%_UP-%TT%00201" />
+              <ParameterRef Id="%AID%_UP-%TT%00202_R-%TT%0020201" RefId="%AID%_UP-%TT%00202" />
+              <ParameterRef Id="%AID%_UP-%TT%00203_R-%TT%0020301" RefId="%AID%_UP-%TT%00203" />
+              <ParameterRef Id="%AID%_UP-%TT%00204_R-%TT%0020401" RefId="%AID%_UP-%TT%00204" />
+              <!-- <ParameterRef Id="%AID%_UP-%TT%00200_R-%TT%0020002" RefId="%AID%_UP-%TT%00200" Access="Read" />
+              <ParameterRef Id="%AID%_UP-%TT%00201_R-%TT%0020102" RefId="%AID%_UP-%TT%00201" Access="Read" />
+              <ParameterRef Id="%AID%_UP-%TT%00202_R-%TT%0020202" RefId="%AID%_UP-%TT%00202" Access="Read" />
+              <ParameterRef Id="%AID%_UP-%TT%00203_R-%TT%0020302" RefId="%AID%_UP-%TT%00203" Access="Read" />
+              <ParameterRef Id="%AID%_UP-%TT%00204_R-%TT%0020402" RefId="%AID%_UP-%TT%00204" Access="Read" /> -->
+              <ParameterRef Id="%AID%_UP-%TT%00205_R-%TT%0020501" RefId="%AID%_UP-%TT%00205" />
+              <ParameterRef Id="%AID%_UP-%TT%00206_R-%TT%0020601" RefId="%AID%_UP-%TT%00206" />
+              <ParameterRef Id="%AID%_P-%TT%00210_R-%TT%0021001" RefId="%AID%_P-%TT%00210" Access="None" />
+              <ParameterRef Id="%AID%_P-%TT%00211_R-%TT%0021101" RefId="%AID%_P-%TT%00211" Access="None" />
+              <ParameterRef Id="%AID%_P-%TT%00212_R-%TT%0021201" RefId="%AID%_P-%TT%00212" Access="None" />
+              <ParameterRef Id="%AID%_P-%TT%00213_R-%TT%0021301" RefId="%AID%_P-%TT%00213" Access="None" />
+              <ParameterRef Id="%AID%_P-%TT%00214_R-%TT%0021401" RefId="%AID%_P-%TT%00214" Access="None" />
+              <ParameterRef Id="%AID%_P-%TT%00215_R-%TT%0021501" RefId="%AID%_P-%TT%00215" Access="None" />
+              <ParameterRef Id="%AID%_P-%TT%00216_R-%TT%0021601" RefId="%AID%_P-%TT%00216" Access="None" />
+              <ParameterRef Id="%AID%_P-%TT%00217_R-%TT%0021701" RefId="%AID%_P-%TT%00217" Access="None" />
             </ParameterRefs>
             <ComObjectTable>
-              <ComObject Id="%AID%_O-%T%000050" Name="RequestValues" Text="Sensorwerte anfordern" Number="50" FunctionText="Alle Werte senden" ObjectSize="1 Bit" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-16" />
-              <ComObject Id="%AID%_O-%T%000051" Name="Error" Text="Sensorfehler" Number="51" FunctionText="Bitleiste" ObjectSize="2 Bytes" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-7-1" />
+              <ComObject Id="%AID%_O-%TT%00050" Name="RequestValues" Text="Sensorwerte anfordern" Number="50" FunctionText="Alle Werte senden" ObjectSize="1 Bit" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-16" />
+              <ComObject Id="%AID%_O-%TT%00051" Name="Error" Text="Sensorfehler" Number="51" FunctionText="Bitleiste" ObjectSize="2 Bytes" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-7-1" />
               <!-- KO 52-53 free for future extensions -->
               <!-- KO 54-59 free for future inputs -->
-              <ComObject Id="%AID%_O-%T%000060" Name="Temp" Text="Temperatur" Number="60" FunctionText="Messwert in °C" ObjectSize="2 Bytes" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-9-1" />
-              <ComObject Id="%AID%_O-%T%000061" Name="Hum" Text="Luftfeuchte" Number="61" FunctionText="Messwert in %" ObjectSize="2 Bytes" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-9-7" />
-              <ComObject Id="%AID%_O-%T%000062" Name="Pre" Text="Luftdruck" Number="62" FunctionText="Messwert in mBar" ObjectSize="2 Bytes" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-9-6" />
-              <ComObject Id="%AID%_O-%T%000063" Name="VOC" Text="VOC" Number="63" FunctionText="Messwert (ohne Einheit)" ObjectSize="2 Bytes" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPT-9" />
-              <ComObject Id="%AID%_O-%T%000064" Name="Co2" Text="CO2" Number="64" FunctionText="Messwert in ppm" ObjectSize="2 Bytes" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-9-8" />
-              <ComObject Id="%AID%_O-%T%000065" Name="Co2b" Text="CO2-VOC" Number="65" FunctionText="Messwert (berechnet) in ppm" ObjectSize="2 Bytes" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-9-8" />
-              <ComObject Id="%AID%_O-%T%000066" Name="Dewpoint" Text="Taupunkt" Number="66" FunctionText="Messwert in °C" ObjectSize="2 Bytes" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-9-1" />
-              <ComObject Id="%AID%_O-%T%000067" Name="Comfort" Text="Behaglichkeit" Number="67" FunctionText="2=behaglich, 1=geht noch, 0=unbehaglich" ObjectSize="1 Byte" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-5-5" />
-              <ComObject Id="%AID%_O-%T%000068" Name="Airquality" Text="Luftqualitätsampel (1-6)" Number="68" FunctionText="1-6 nach (deutschen) Schulnoten" ObjectSize="1 Byte" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-5-5" />
-              <ComObject Id="%AID%_O-%T%000069" Name="SensorAccuracy" Text="Kalibrierungfortschritt" Number="69" FunctionText="Erfolg der Sensorkalibrierung" ObjectSize="1 Byte" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-5-1" />
-              <ComObject Id="%AID%_O-%T%000070" Name="Ext1Temp" Text="Externe Temperatur 1" Number="70" FunctionText="Messwert in °C" ObjectSize="2 Bytes" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled" ReadOnInitFlag="Disabled" DatapointType="DPST-9-1" />
-              <ComObject Id="%AID%_O-%T%000071" Name="Ext2Temp" Text="Externe Temperatur 2" Number="71" FunctionText="Messwert in °C" ObjectSize="2 Bytes" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled" ReadOnInitFlag="Disabled" DatapointType="DPST-9-1" />
-              <ComObject Id="%AID%_O-%T%000072" Name="Ext1Hum" Text="Externe Luftfeuchte 1" Number="72" FunctionText="Messwert in %" ObjectSize="2 Bytes" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled" ReadOnInitFlag="Disabled" DatapointType="DPST-9-7" />
-              <ComObject Id="%AID%_O-%T%000073" Name="Ext2Hum" Text="Externe Luftfeuchte 2" Number="73" FunctionText="Messwert in %" ObjectSize="2 Bytes" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled" ReadOnInitFlag="Disabled" DatapointType="DPST-9-7" />
-              <ComObject Id="%AID%_O-%T%000074" Name="Ext1Pre" Text="Externer Luftdruck 1" Number="74" FunctionText="Messwert in mBar" ObjectSize="2 Bytes" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled" ReadOnInitFlag="Disabled" DatapointType="DPST-9-6" />
-              <ComObject Id="%AID%_O-%T%000075" Name="Ext2Pre" Text="Externer Luftdruck 2" Number="75" FunctionText="Messwert in mBar" ObjectSize="2 Bytes" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled" ReadOnInitFlag="Disabled" DatapointType="DPST-9-6" />
-              <ComObject Id="%AID%_O-%T%000076" Name="Ext1VOC" Text="Externer VOC 1" Number="76" FunctionText="Messwert (ohne Einheit)" ObjectSize="2 Bytes" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled" ReadOnInitFlag="Disabled" DatapointType="DPT-9" />
-              <ComObject Id="%AID%_O-%T%000077" Name="Ext2VOC" Text="Externer VOC 2" Number="77" FunctionText="Messwert (ohne Einheit)" ObjectSize="2 Bytes" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled" ReadOnInitFlag="Disabled" DatapointType="DPT-9" />
-              <ComObject Id="%AID%_O-%T%000078" Name="Ext1Co2" Text="Externer CO2 1" Number="78" FunctionText="Messwert in ppm" ObjectSize="2 Bytes" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled" ReadOnInitFlag="Disabled" DatapointType="DPST-9-8" />
-              <ComObject Id="%AID%_O-%T%000079" Name="Ext2Co2" Text="Externer CO2 2" Number="79" FunctionText="Messwert in ppm" ObjectSize="2 Bytes" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled" ReadOnInitFlag="Disabled" DatapointType="DPST-9-8" />
-              <ComObject Id="%AID%_O-%T%000080" Name="Ext1Lux" Text="Externe Helligkeit 1" Number="80" FunctionText="Messwert in Lux" ObjectSize="2 Bytes" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled" ReadOnInitFlag="Disabled" DatapointType="DPST-9-4" />
-              <ComObject Id="%AID%_O-%T%000081" Name="Ext2Lux" Text="Externe Helligkeit 2" Number="81" FunctionText="Messwert in Lux" ObjectSize="2 Bytes" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled" ReadOnInitFlag="Disabled" DatapointType="DPST-9-4" />
-              <ComObject Id="%AID%_O-%T%000082" Name="Ext1Tof" Text="Externe Entfernung 1" Number="82" FunctionText="Messwert in mm" ObjectSize="2 Bytes" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled" ReadOnInitFlag="Disabled" DatapointType="DPST-7-11" />
-              <ComObject Id="%AID%_O-%T%000083" Name="Ext2Tof" Text="Externe Entfernung 2" Number="83" FunctionText="Messwert in mm" ObjectSize="2 Bytes" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled" ReadOnInitFlag="Disabled" DatapointType="DPST-7-11" />
-              <ComObject Id="%AID%_O-%T%000087" Name="Lux" Text="Helligkeit" Number="87" FunctionText="Messwert in Lux" ObjectSize="2 Bytes" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-9-4" />
-              <ComObject Id="%AID%_O-%T%000088" Name="Tof" Text="Entfernung" Number="88" FunctionText="Messwert in mm" ObjectSize="2 Bytes" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-7-11" />
+              <ComObject Id="%AID%_O-%TT%00060" Name="Temp" Text="Temperatur" Number="60" FunctionText="Messwert in °C" ObjectSize="2 Bytes" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-9-1" />
+              <ComObject Id="%AID%_O-%TT%00061" Name="Hum" Text="Luftfeuchte" Number="61" FunctionText="Messwert in %" ObjectSize="2 Bytes" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-9-7" />
+              <ComObject Id="%AID%_O-%TT%00062" Name="Pre" Text="Luftdruck" Number="62" FunctionText="Messwert in mBar" ObjectSize="2 Bytes" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-9-6" />
+              <ComObject Id="%AID%_O-%TT%00063" Name="VOC" Text="VOC" Number="63" FunctionText="Messwert (ohne Einheit)" ObjectSize="2 Bytes" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPT-9" />
+              <ComObject Id="%AID%_O-%TT%00064" Name="Co2" Text="CO2" Number="64" FunctionText="Messwert in ppm" ObjectSize="2 Bytes" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-9-8" />
+              <ComObject Id="%AID%_O-%TT%00065" Name="Co2b" Text="CO2-VOC" Number="65" FunctionText="Messwert (berechnet) in ppm" ObjectSize="2 Bytes" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-9-8" />
+              <ComObject Id="%AID%_O-%TT%00066" Name="Dewpoint" Text="Taupunkt" Number="66" FunctionText="Messwert in °C" ObjectSize="2 Bytes" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-9-1" />
+              <ComObject Id="%AID%_O-%TT%00067" Name="Comfort" Text="Behaglichkeit" Number="67" FunctionText="2=behaglich, 1=geht noch, 0=unbehaglich" ObjectSize="1 Byte" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-5-5" />
+              <ComObject Id="%AID%_O-%TT%00068" Name="Airquality" Text="Luftqualitätsampel (1-6)" Number="68" FunctionText="1-6 nach (deutschen) Schulnoten" ObjectSize="1 Byte" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-5-5" />
+              <ComObject Id="%AID%_O-%TT%00069" Name="SensorAccuracy" Text="Kalibrierungfortschritt" Number="69" FunctionText="Erfolg der Sensorkalibrierung" ObjectSize="1 Byte" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-5-1" />
+              <ComObject Id="%AID%_O-%TT%00070" Name="Ext1Temp" Text="Externe Temperatur 1" Number="70" FunctionText="Messwert in °C" ObjectSize="2 Bytes" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled" ReadOnInitFlag="Disabled" DatapointType="DPST-9-1" />
+              <ComObject Id="%AID%_O-%TT%00071" Name="Ext2Temp" Text="Externe Temperatur 2" Number="71" FunctionText="Messwert in °C" ObjectSize="2 Bytes" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled" ReadOnInitFlag="Disabled" DatapointType="DPST-9-1" />
+              <ComObject Id="%AID%_O-%TT%00072" Name="Ext1Hum" Text="Externe Luftfeuchte 1" Number="72" FunctionText="Messwert in %" ObjectSize="2 Bytes" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled" ReadOnInitFlag="Disabled" DatapointType="DPST-9-7" />
+              <ComObject Id="%AID%_O-%TT%00073" Name="Ext2Hum" Text="Externe Luftfeuchte 2" Number="73" FunctionText="Messwert in %" ObjectSize="2 Bytes" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled" ReadOnInitFlag="Disabled" DatapointType="DPST-9-7" />
+              <ComObject Id="%AID%_O-%TT%00074" Name="Ext1Pre" Text="Externer Luftdruck 1" Number="74" FunctionText="Messwert in mBar" ObjectSize="2 Bytes" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled" ReadOnInitFlag="Disabled" DatapointType="DPST-9-6" />
+              <ComObject Id="%AID%_O-%TT%00075" Name="Ext2Pre" Text="Externer Luftdruck 2" Number="75" FunctionText="Messwert in mBar" ObjectSize="2 Bytes" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled" ReadOnInitFlag="Disabled" DatapointType="DPST-9-6" />
+              <ComObject Id="%AID%_O-%TT%00076" Name="Ext1VOC" Text="Externer VOC 1" Number="76" FunctionText="Messwert (ohne Einheit)" ObjectSize="2 Bytes" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled" ReadOnInitFlag="Disabled" DatapointType="DPT-9" />
+              <ComObject Id="%AID%_O-%TT%00077" Name="Ext2VOC" Text="Externer VOC 2" Number="77" FunctionText="Messwert (ohne Einheit)" ObjectSize="2 Bytes" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled" ReadOnInitFlag="Disabled" DatapointType="DPT-9" />
+              <ComObject Id="%AID%_O-%TT%00078" Name="Ext1Co2" Text="Externer CO2 1" Number="78" FunctionText="Messwert in ppm" ObjectSize="2 Bytes" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled" ReadOnInitFlag="Disabled" DatapointType="DPST-9-8" />
+              <ComObject Id="%AID%_O-%TT%00079" Name="Ext2Co2" Text="Externer CO2 2" Number="79" FunctionText="Messwert in ppm" ObjectSize="2 Bytes" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled" ReadOnInitFlag="Disabled" DatapointType="DPST-9-8" />
+              <ComObject Id="%AID%_O-%TT%00080" Name="Ext1Lux" Text="Externe Helligkeit 1" Number="80" FunctionText="Messwert in Lux" ObjectSize="2 Bytes" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled" ReadOnInitFlag="Disabled" DatapointType="DPST-9-4" />
+              <ComObject Id="%AID%_O-%TT%00081" Name="Ext2Lux" Text="Externe Helligkeit 2" Number="81" FunctionText="Messwert in Lux" ObjectSize="2 Bytes" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled" ReadOnInitFlag="Disabled" DatapointType="DPST-9-4" />
+              <ComObject Id="%AID%_O-%TT%00082" Name="Ext1Tof" Text="Externe Entfernung 1" Number="82" FunctionText="Messwert in mm" ObjectSize="2 Bytes" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled" ReadOnInitFlag="Disabled" DatapointType="DPST-7-11" />
+              <ComObject Id="%AID%_O-%TT%00083" Name="Ext2Tof" Text="Externe Entfernung 2" Number="83" FunctionText="Messwert in mm" ObjectSize="2 Bytes" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled" ReadOnInitFlag="Disabled" DatapointType="DPST-7-11" />
+              <ComObject Id="%AID%_O-%TT%00087" Name="Lux" Text="Helligkeit" Number="87" FunctionText="Messwert in Lux" ObjectSize="2 Bytes" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-9-4" />
+              <ComObject Id="%AID%_O-%TT%00088" Name="Tof" Text="Entfernung" Number="88" FunctionText="Messwert in mm" ObjectSize="2 Bytes" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-7-11" />
             </ComObjectTable>
             <ComObjectRefs>
-              <ComObjectRef Id="%AID%_O-%T%000050_R-%T%00005001" RefId="%AID%_O-%T%000050" />
-              <ComObjectRef Id="%AID%_O-%T%000051_R-%T%00005101" RefId="%AID%_O-%T%000051" />
-              <ComObjectRef Id="%AID%_O-%T%000060_R-%T%00006001" RefId="%AID%_O-%T%000060" />
-              <ComObjectRef Id="%AID%_O-%T%000061_R-%T%00006101" RefId="%AID%_O-%T%000061" />
-              <ComObjectRef Id="%AID%_O-%T%000062_R-%T%00006201" RefId="%AID%_O-%T%000062" />
-              <ComObjectRef Id="%AID%_O-%T%000063_R-%T%00006301" RefId="%AID%_O-%T%000063" />
-              <ComObjectRef Id="%AID%_O-%T%000064_R-%T%00006401" RefId="%AID%_O-%T%000064" />
-              <ComObjectRef Id="%AID%_O-%T%000065_R-%T%00006501" RefId="%AID%_O-%T%000065" />
-              <ComObjectRef Id="%AID%_O-%T%000066_R-%T%00006601" RefId="%AID%_O-%T%000066" />
-              <ComObjectRef Id="%AID%_O-%T%000067_R-%T%00006701" RefId="%AID%_O-%T%000067" />
-              <ComObjectRef Id="%AID%_O-%T%000068_R-%T%00006801" RefId="%AID%_O-%T%000068" />
-              <ComObjectRef Id="%AID%_O-%T%000069_R-%T%00006901" RefId="%AID%_O-%T%000069" />
-              <ComObjectRef Id="%AID%_O-%T%000070_R-%T%00007001" RefId="%AID%_O-%T%000070" />
-              <ComObjectRef Id="%AID%_O-%T%000071_R-%T%00007101" RefId="%AID%_O-%T%000071" />
-              <ComObjectRef Id="%AID%_O-%T%000072_R-%T%00007201" RefId="%AID%_O-%T%000072" />
-              <ComObjectRef Id="%AID%_O-%T%000073_R-%T%00007301" RefId="%AID%_O-%T%000073" />
-              <ComObjectRef Id="%AID%_O-%T%000074_R-%T%00007401" RefId="%AID%_O-%T%000074" />
-              <ComObjectRef Id="%AID%_O-%T%000075_R-%T%00007501" RefId="%AID%_O-%T%000075" />
-              <ComObjectRef Id="%AID%_O-%T%000076_R-%T%00007601" RefId="%AID%_O-%T%000076" />
-              <ComObjectRef Id="%AID%_O-%T%000077_R-%T%00007701" RefId="%AID%_O-%T%000077" />
-              <ComObjectRef Id="%AID%_O-%T%000078_R-%T%00007801" RefId="%AID%_O-%T%000078" />
-              <ComObjectRef Id="%AID%_O-%T%000079_R-%T%00007901" RefId="%AID%_O-%T%000079" />
-              <ComObjectRef Id="%AID%_O-%T%000080_R-%T%00008001" RefId="%AID%_O-%T%000080" />
-              <ComObjectRef Id="%AID%_O-%T%000081_R-%T%00008101" RefId="%AID%_O-%T%000081" />
-              <ComObjectRef Id="%AID%_O-%T%000082_R-%T%00008201" RefId="%AID%_O-%T%000082" />
-              <ComObjectRef Id="%AID%_O-%T%000083_R-%T%00008301" RefId="%AID%_O-%T%000083" />
-              <ComObjectRef Id="%AID%_O-%T%000087_R-%T%00008701" RefId="%AID%_O-%T%000087" />
-              <ComObjectRef Id="%AID%_O-%T%000088_R-%T%00008801" RefId="%AID%_O-%T%000088" />
+              <ComObjectRef Id="%AID%_O-%TT%00050_R-%TT%0005001" RefId="%AID%_O-%TT%00050" />
+              <ComObjectRef Id="%AID%_O-%TT%00051_R-%TT%0005101" RefId="%AID%_O-%TT%00051" />
+              <ComObjectRef Id="%AID%_O-%TT%00060_R-%TT%0006001" RefId="%AID%_O-%TT%00060" />
+              <ComObjectRef Id="%AID%_O-%TT%00061_R-%TT%0006101" RefId="%AID%_O-%TT%00061" />
+              <ComObjectRef Id="%AID%_O-%TT%00062_R-%TT%0006201" RefId="%AID%_O-%TT%00062" />
+              <ComObjectRef Id="%AID%_O-%TT%00063_R-%TT%0006301" RefId="%AID%_O-%TT%00063" />
+              <ComObjectRef Id="%AID%_O-%TT%00064_R-%TT%0006401" RefId="%AID%_O-%TT%00064" />
+              <ComObjectRef Id="%AID%_O-%TT%00065_R-%TT%0006501" RefId="%AID%_O-%TT%00065" />
+              <ComObjectRef Id="%AID%_O-%TT%00066_R-%TT%0006601" RefId="%AID%_O-%TT%00066" />
+              <ComObjectRef Id="%AID%_O-%TT%00067_R-%TT%0006701" RefId="%AID%_O-%TT%00067" />
+              <ComObjectRef Id="%AID%_O-%TT%00068_R-%TT%0006801" RefId="%AID%_O-%TT%00068" />
+              <ComObjectRef Id="%AID%_O-%TT%00069_R-%TT%0006901" RefId="%AID%_O-%TT%00069" />
+              <ComObjectRef Id="%AID%_O-%TT%00070_R-%TT%0007001" RefId="%AID%_O-%TT%00070" />
+              <ComObjectRef Id="%AID%_O-%TT%00071_R-%TT%0007101" RefId="%AID%_O-%TT%00071" />
+              <ComObjectRef Id="%AID%_O-%TT%00072_R-%TT%0007201" RefId="%AID%_O-%TT%00072" />
+              <ComObjectRef Id="%AID%_O-%TT%00073_R-%TT%0007301" RefId="%AID%_O-%TT%00073" />
+              <ComObjectRef Id="%AID%_O-%TT%00074_R-%TT%0007401" RefId="%AID%_O-%TT%00074" />
+              <ComObjectRef Id="%AID%_O-%TT%00075_R-%TT%0007501" RefId="%AID%_O-%TT%00075" />
+              <ComObjectRef Id="%AID%_O-%TT%00076_R-%TT%0007601" RefId="%AID%_O-%TT%00076" />
+              <ComObjectRef Id="%AID%_O-%TT%00077_R-%TT%0007701" RefId="%AID%_O-%TT%00077" />
+              <ComObjectRef Id="%AID%_O-%TT%00078_R-%TT%0007801" RefId="%AID%_O-%TT%00078" />
+              <ComObjectRef Id="%AID%_O-%TT%00079_R-%TT%0007901" RefId="%AID%_O-%TT%00079" />
+              <ComObjectRef Id="%AID%_O-%TT%00080_R-%TT%0008001" RefId="%AID%_O-%TT%00080" />
+              <ComObjectRef Id="%AID%_O-%TT%00081_R-%TT%0008101" RefId="%AID%_O-%TT%00081" />
+              <ComObjectRef Id="%AID%_O-%TT%00082_R-%TT%0008201" RefId="%AID%_O-%TT%00082" />
+              <ComObjectRef Id="%AID%_O-%TT%00083_R-%TT%0008301" RefId="%AID%_O-%TT%00083" />
+              <ComObjectRef Id="%AID%_O-%TT%00087_R-%TT%0008701" RefId="%AID%_O-%TT%00087" />
+              <ComObjectRef Id="%AID%_O-%TT%00088_R-%TT%0008801" RefId="%AID%_O-%TT%00088" />
             </ComObjectRefs>
             <AddressTable MaxEntries="255" />
             <AssociationTable MaxEntries="255" />
@@ -475,179 +475,179 @@
             <Options />
           </Static>
           <Dynamic>
-            <Channel Name="MainChannel" Text="Sensoren" Number="%T%" Id="%AID%_CH-%TT%" Icon="gauge" HelpContext="Empty">
+            <Channel Name="MainChannel" Text="Sensoren" Number="%TT%" Id="%AID%_CH-%TT%" Icon="gauge" HelpContext="Empty">
               <ParameterBlock Id="%AID%_PB-nnn" Name="Settings" Text="Sensorauswahl" Icon="cog-outline" HelpContext="Empty">
                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Installierte Hardware" UIHint="Headline" />
                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Im folgenden wird die verwendete bzw. installierte Hardware angegeben." />
                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Die hier getroffenen Angaben beeinflussen das Verhalten der Applikation und der Firmware und müssen zur vorhandenen Hardware passen!" />
-                <ParameterRefRef RefId="%AID%_UP-%T%000200_R-%T%00020001" />
-                <ParameterRefRef RefId="%AID%_UP-%T%000201_R-%T%00020101" />
-                <ParameterRefRef RefId="%AID%_UP-%T%000202_R-%T%00020201" />
-                <ParameterRefRef RefId="%AID%_UP-%T%000203_R-%T%00020301" />
-                <ParameterRefRef RefId="%AID%_UP-%T%000204_R-%T%00020401" />
-                <ParameterRefRef RefId="%AID%_UP-%T%000205_R-%T%00020501" />
-                <ParameterRefRef RefId="%AID%_UP-%T%000206_R-%T%00020601" />
+                <ParameterRefRef RefId="%AID%_UP-%TT%00200_R-%TT%0020001" />
+                <ParameterRefRef RefId="%AID%_UP-%TT%00201_R-%TT%0020101" />
+                <ParameterRefRef RefId="%AID%_UP-%TT%00202_R-%TT%0020201" />
+                <ParameterRefRef RefId="%AID%_UP-%TT%00203_R-%TT%0020301" />
+                <ParameterRefRef RefId="%AID%_UP-%TT%00204_R-%TT%0020401" />
+                <ParameterRefRef RefId="%AID%_UP-%TT%00205_R-%TT%0020501" />
+                <ParameterRefRef RefId="%AID%_UP-%TT%00206_R-%TT%0020601" />
 
                 <!-- We dererive some flags for further processing from sensor selections -->
                 <!-- Merker für BME280 wird verwendet -->
-                <ParameterRefRef RefId="%AID%_P-%T%000210_R-%T%00021001" />
+                <ParameterRefRef RefId="%AID%_P-%TT%00210_R-%TT%0021001" />
                 <!-- Merker für Kalibrierungsdaten löschen anzeigen? -->
-                <ParameterRefRef RefId="%AID%_P-%T%000217_R-%T%00021701" />
+                <ParameterRefRef RefId="%AID%_P-%TT%00217_R-%TT%0021701" />
                 <!-- Merker für echten Co2-Sensor Verwendung? -->
-                <ParameterRefRef RefId="%AID%_P-%T%000213_R-%T%00021301" />
+                <ParameterRefRef RefId="%AID%_P-%TT%00213_R-%TT%0021301" />
                 <!-- Merker für Kalibrierung anzeigen? -->
-                <ParameterRefRef RefId="%AID%_P-%T%000216_R-%T%00021601" />
+                <ParameterRefRef RefId="%AID%_P-%TT%00216_R-%TT%0021601" />
                 <!-- Merker für Zusatzfunktionen anzeigen? -->
-                <ParameterRefRef RefId="%AID%_P-%T%000215_R-%T%00021501" />
+                <ParameterRefRef RefId="%AID%_P-%TT%00215_R-%TT%0021501" />
                 <!-- Merker für Luftgüteampel -->
-                <ParameterRefRef RefId="%AID%_P-%T%000212_R-%T%00021201" />
+                <ParameterRefRef RefId="%AID%_P-%TT%00212_R-%TT%0021201" />
                 <!-- Merker für I2C 100kHz -->
-                <ParameterRefRef RefId="%AID%_P-%T%000214_R-%T%00021401" />
+                <ParameterRefRef RefId="%AID%_P-%TT%00214_R-%TT%0021401" />
                 <!-- Merker für BME680 wird verwendet -->
-                <ParameterRefRef RefId="%AID%_P-%T%000211_R-%T%00021101" />
+                <ParameterRefRef RefId="%AID%_P-%TT%00211_R-%TT%0021101" />
 
                 <!-- Temp -->
-                <choose ParamRefId="%AID%_UP-%T%000200_R-%T%00020001">
+                <choose ParamRefId="%AID%_UP-%TT%00200_R-%TT%0020001">
                   <when test="2">
                     <!-- BME280 wird verwendet -->
-                    <Assign TargetParamRefRef="%AID%_P-%T%000210_R-%T%00021001" Value="1" />
+                    <Assign TargetParamRefRef="%AID%_P-%TT%00210_R-%TT%0021001" Value="1" />
                   </when>
                   <when test="3">
                     <!-- BME680 wird verwendet -->
-                    <Assign TargetParamRefRef="%AID%_P-%T%000211_R-%T%00021101" Value="1" />
+                    <Assign TargetParamRefRef="%AID%_P-%TT%00211_R-%TT%0021101" Value="1" />
                     <!-- Zusatzfunktionen anzeigen? -->
-                    <Assign TargetParamRefRef="%AID%_P-%T%000215_R-%T%00021501" Value="1" />
+                    <Assign TargetParamRefRef="%AID%_P-%TT%00215_R-%TT%0021501" Value="1" />
                     <!-- Kalibrierung anzeigen? -->
-                    <Assign TargetParamRefRef="%AID%_P-%T%000216_R-%T%00021601" Value="1" />
+                    <Assign TargetParamRefRef="%AID%_P-%TT%00216_R-%TT%0021601" Value="1" />
                     <!-- Kalibrierung löschen anzeigen? -->
-                    <Assign TargetParamRefRef="%AID%_P-%T%000217_R-%T%00021701" Value="1" />
+                    <Assign TargetParamRefRef="%AID%_P-%TT%00217_R-%TT%0021701" Value="1" />
                   </when>
                   <when test="4 9">
                     <!-- Wird echter CO2 verwendet? -->
-                    <Assign TargetParamRefRef="%AID%_P-%T%000213_R-%T%00021301" Value="1" />
+                    <Assign TargetParamRefRef="%AID%_P-%TT%00213_R-%TT%0021301" Value="1" />
                     <!-- Wird 100kHz I2C benötigt -->
-                    <Assign TargetParamRefRef="%AID%_P-%T%000214_R-%T%00021401" Value="1" />
+                    <Assign TargetParamRefRef="%AID%_P-%TT%00214_R-%TT%0021401" Value="1" />
                   </when>
                 </choose>
                 <!-- Hum -->
-                <choose ParamRefId="%AID%_UP-%T%000201_R-%T%00020101">
+                <choose ParamRefId="%AID%_UP-%TT%00201_R-%TT%0020101">
                   <when test=">0">
-                    <choose ParamRefId="%AID%_UP-%T%000200_R-%T%00020001">
+                    <choose ParamRefId="%AID%_UP-%TT%00200_R-%TT%0020001">
                       <when test=">0">
                         <!-- Zusatzfunktionen anzeigen? -->
-                        <Assign TargetParamRefRef="%AID%_P-%T%000215_R-%T%00021501" Value="1" />
+                        <Assign TargetParamRefRef="%AID%_P-%TT%00215_R-%TT%0021501" Value="1" />
                       </when>
                     </choose>
                   </when>
                   <when test="2">
                     <!-- BME280 wird verwendet -->
-                    <Assign TargetParamRefRef="%AID%_P-%T%000210_R-%T%00021001" Value="1" />
+                    <Assign TargetParamRefRef="%AID%_P-%TT%00210_R-%TT%0021001" Value="1" />
                   </when>
                   <when test="3">
                     <!-- BME680 wird verwendet -->
-                    <Assign TargetParamRefRef="%AID%_P-%T%000211_R-%T%00021101" Value="1" />
+                    <Assign TargetParamRefRef="%AID%_P-%TT%00211_R-%TT%0021101" Value="1" />
                     <!-- Zusatzfunktionen anzeigen? -->
-                    <Assign TargetParamRefRef="%AID%_P-%T%000215_R-%T%00021501" Value="1" />
+                    <Assign TargetParamRefRef="%AID%_P-%TT%00215_R-%TT%0021501" Value="1" />
                     <!-- Kalibrierung anzeigen? -->
-                    <Assign TargetParamRefRef="%AID%_P-%T%000216_R-%T%00021601" Value="1" />
+                    <Assign TargetParamRefRef="%AID%_P-%TT%00216_R-%TT%0021601" Value="1" />
                     <!-- Kalibrierung löschen anzeigen? -->
-                    <Assign TargetParamRefRef="%AID%_P-%T%000217_R-%T%00021701" Value="1" />
+                    <Assign TargetParamRefRef="%AID%_P-%TT%00217_R-%TT%0021701" Value="1" />
                   </when>
                   <when test="4 9">
                     <!-- Wird echter CO2 verwendet? -->
-                    <Assign TargetParamRefRef="%AID%_P-%T%000213_R-%T%00021301" Value="1" />
+                    <Assign TargetParamRefRef="%AID%_P-%TT%00213_R-%TT%0021301" Value="1" />
                     <!-- Wird 100kHz I2C benötigt -->
-                    <Assign TargetParamRefRef="%AID%_P-%T%000214_R-%T%00021401" Value="1" />
+                    <Assign TargetParamRefRef="%AID%_P-%TT%00214_R-%TT%0021401" Value="1" />
                   </when>
                 </choose>
                 <!-- Pre -->
-                <choose ParamRefId="%AID%_UP-%T%000202_R-%T%00020201">
+                <choose ParamRefId="%AID%_UP-%TT%00202_R-%TT%0020201">
                   <when test="2">
                     <!-- BME280 wird verwendet -->
-                    <Assign TargetParamRefRef="%AID%_P-%T%000210_R-%T%00021001" Value="1" />
+                    <Assign TargetParamRefRef="%AID%_P-%TT%00210_R-%TT%0021001" Value="1" />
                   </when>
                   <when test="3">
                     <!-- BME680 wird verwendet -->
-                    <Assign TargetParamRefRef="%AID%_P-%T%000211_R-%T%00021101" Value="1" />
+                    <Assign TargetParamRefRef="%AID%_P-%TT%00211_R-%TT%0021101" Value="1" />
                     <!-- Zusatzfunktionen anzeigen? -->
-                    <Assign TargetParamRefRef="%AID%_P-%T%000215_R-%T%00021501" Value="1" />
+                    <Assign TargetParamRefRef="%AID%_P-%TT%00215_R-%TT%0021501" Value="1" />
                     <!-- Kalibrierung anzeigen? -->
-                    <Assign TargetParamRefRef="%AID%_P-%T%000216_R-%T%00021601" Value="1" />
+                    <Assign TargetParamRefRef="%AID%_P-%TT%00216_R-%TT%0021601" Value="1" />
                     <!-- Kalibrierung löschen anzeigen? -->
-                    <Assign TargetParamRefRef="%AID%_P-%T%000217_R-%T%00021701" Value="1" />
+                    <Assign TargetParamRefRef="%AID%_P-%TT%00217_R-%TT%0021701" Value="1" />
                   </when>
                 </choose>
                 <!-- Voc -->
-                <choose ParamRefId="%AID%_UP-%T%000203_R-%T%00020301">
+                <choose ParamRefId="%AID%_UP-%TT%00203_R-%TT%0020301">
                   <when test=">0">
                     <!-- Zusatzfunktionen anzeigen? -->
-                    <Assign TargetParamRefRef="%AID%_P-%T%000215_R-%T%00021501" Value="1" />
+                    <Assign TargetParamRefRef="%AID%_P-%TT%00215_R-%TT%0021501" Value="1" />
                     <!-- Luftgüteampel -->
-                    <Assign TargetParamRefRef="%AID%_P-%T%000212_R-%T%00021201" Value="1" />
+                    <Assign TargetParamRefRef="%AID%_P-%TT%00212_R-%TT%0021201" Value="1" />
                   </when>
                   <when test="3">
                     <!-- BME680 wird verwendet -->
-                    <Assign TargetParamRefRef="%AID%_P-%T%000211_R-%T%00021101" Value="1" />
+                    <Assign TargetParamRefRef="%AID%_P-%TT%00211_R-%TT%0021101" Value="1" />
                   </when>
                   <when test="5">
                     <!-- Kalibrierung anzeigen? -->
-                    <Assign TargetParamRefRef="%AID%_P-%T%000216_R-%T%00021601" Value="1" />
+                    <Assign TargetParamRefRef="%AID%_P-%TT%00216_R-%TT%0021601" Value="1" />
                     <!-- Wird 100kHz I2C benötigt -->
-                    <Assign TargetParamRefRef="%AID%_P-%T%000214_R-%T%00021401" Value="1" />
+                    <Assign TargetParamRefRef="%AID%_P-%TT%00214_R-%TT%0021401" Value="1" />
                   </when>
                   <when test="3 8">
                     <!-- Kalibrierung anzeigen? -->
-                    <Assign TargetParamRefRef="%AID%_P-%T%000216_R-%T%00021601" Value="1" />
+                    <Assign TargetParamRefRef="%AID%_P-%TT%00216_R-%TT%0021601" Value="1" />
                     <!-- Kalibrierung löschen anzeigen? -->
-                    <Assign TargetParamRefRef="%AID%_P-%T%000217_R-%T%00021701" Value="1" />
+                    <Assign TargetParamRefRef="%AID%_P-%TT%00217_R-%TT%0021701" Value="1" />
                   </when>
                 </choose>
                 <!-- Co2 -->
-                <choose ParamRefId="%AID%_UP-%T%000204_R-%T%00020401">
+                <choose ParamRefId="%AID%_UP-%TT%00204_R-%TT%0020401">
                   <when test=">0">
                     <!-- Zusatzfunktionen anzeigen? -->
-                    <Assign TargetParamRefRef="%AID%_P-%T%000215_R-%T%00021501" Value="1" />
+                    <Assign TargetParamRefRef="%AID%_P-%TT%00215_R-%TT%0021501" Value="1" />
                     <!-- Luftgüteampel -->
-                    <Assign TargetParamRefRef="%AID%_P-%T%000212_R-%T%00021201" Value="1" />
+                    <Assign TargetParamRefRef="%AID%_P-%TT%00212_R-%TT%0021201" Value="1" />
                   </when>
                   <when test="3">
                     <!-- BME680 wird verwendet -->
-                    <Assign TargetParamRefRef="%AID%_P-%T%000211_R-%T%00021101" Value="1" />
+                    <Assign TargetParamRefRef="%AID%_P-%TT%00211_R-%TT%0021101" Value="1" />
                   </when>
                   <when test="5">
                     <!-- Kalibrierung anzeigen? -->
-                    <Assign TargetParamRefRef="%AID%_P-%T%000216_R-%T%00021601" Value="1" />
+                    <Assign TargetParamRefRef="%AID%_P-%TT%00216_R-%TT%0021601" Value="1" />
                   </when>
                   <when test="3 8">
                     <!-- Kalibrierung anzeigen? -->
-                    <Assign TargetParamRefRef="%AID%_P-%T%000216_R-%T%00021601" Value="1" />
+                    <Assign TargetParamRefRef="%AID%_P-%TT%00216_R-%TT%0021601" Value="1" />
                     <!-- Kalibrierung löschen anzeigen? -->
-                    <Assign TargetParamRefRef="%AID%_P-%T%000217_R-%T%00021701" Value="1" />
+                    <Assign TargetParamRefRef="%AID%_P-%TT%00217_R-%TT%0021701" Value="1" />
                   </when>
                   <when test="4 5 9">
                     <!-- Wird 100kHz I2C benötigt -->
-                    <Assign TargetParamRefRef="%AID%_P-%T%000214_R-%T%00021401" Value="1" />
+                    <Assign TargetParamRefRef="%AID%_P-%TT%00214_R-%TT%0021401" Value="1" />
                   </when>
                   <when test="4 9">
                     <!-- Wird echter CO2 verwendet? -->
-                    <Assign TargetParamRefRef="%AID%_P-%T%000213_R-%T%00021301" Value="1" />
+                    <Assign TargetParamRefRef="%AID%_P-%TT%00213_R-%TT%0021301" Value="1" />
                   </when>
                 </choose>
 
                 <!-- Lux -->
-                <choose ParamRefId="%AID%_UP-%T%000205_R-%T%00020501">
+                <choose ParamRefId="%AID%_UP-%TT%00205_R-%TT%0020501">
                   <when test=">0">
                   </when>
                 </choose>
                 <!-- Tof -->
-                <choose ParamRefId="%AID%_UP-%T%000206_R-%T%00020601">
+                <choose ParamRefId="%AID%_UP-%TT%00206_R-%TT%0020601">
                   <when test=">0">
                   </when>
                 </choose>
                 <!-- Error if BME280 and BME680 are selected -->
-                <choose ParamRefId="%AID%_P-%T%000210_R-%T%00021001">
+                <choose ParamRefId="%AID%_P-%TT%00210_R-%TT%0021001">
                   <when test=">0">
-                    <choose ParamRefId="%AID%_P-%T%000211_R-%T%00021101">
+                    <choose ParamRefId="%AID%_P-%TT%00211_R-%TT%0021101">
                       <when test=">0">
                         <!-- Fehlermeldung in rot -->
                         <ParameterSeparator Id="%AID%_PS-nnn" Text="Es wurde sowohl der BME280 wie auch der BME680 ausgewählt. Dies ist technisch nicht möglich, da beide Sensoren die gleiche Adresse besitzen und somit nicht einzeln angesprochen werden können. Das Sensormodul wird so nicht funktinieren!" UIHint="Error" />
@@ -655,11 +655,11 @@
                     </choose>
                   </when>
                 </choose>
-                <ParameterRefRef RefId="%AID%_UP-%T%000168_R-%T%00016801" />
-                <choose ParamRefId="%AID%_UP-%T%000168_R-%T%00016801">
+                <ParameterRefRef RefId="%AID%_UP-%TT%00168_R-%TT%0016801" />
+                <choose ParamRefId="%AID%_UP-%TT%00168_R-%TT%0016801">
                   <when test="1">
                     <!-- <Assign TargetParamRefRef="%AID%_P-2000029_R-200002901" Value="1" /> -->
-                    <choose ParamRefId="%AID%_P-%T%000214_R-%T%00021401">
+                    <choose ParamRefId="%AID%_P-%TT%00214_R-%TT%0021401">
                       <when test="1">
                         <ParameterSeparator Id="%AID%_PS-nnn" Text="Es wurden Sensoren ausgewählt, die kritisch im Timing sind (IAQCore, SCD30 oder SDC41). Damit funktiniert 1-Wire nur eingeschränkt, Abfragen von I/O und iButton können mehr als eine Sekunde dauern (sonst 0.3 Sekunden)" UIHint="Information" />
                       </when>
@@ -668,29 +668,29 @@
                 </choose>
               </ParameterBlock>
               <!-- Temp -->
-              <choose ParamRefId="%AID%_UP-%T%000200_R-%T%00020001">
+              <choose ParamRefId="%AID%_UP-%TT%00200_R-%TT%0020001">
                 <when test=">0">
                   <ParameterBlock Id="%AID%_PB-70" Name="Temperatur" Text="Temperatur" Icon="thermometer" HelpContext="Empty">
                     <ParameterSeparator Id="%AID%_PS-nnn" Text="Temperatur" UIHint="Headline" />
-                    <ParameterRefRef RefId="%AID%_UP-%T%000110_R-%T%00011001" HelpContext="SENS-Messwert-anpassen" />
+                    <ParameterRefRef RefId="%AID%_UP-%TT%00110_R-%TT%0011001" HelpContext="SENS-Messwert-anpassen" />
                     <ParameterSeparator Id="%AID%_PS-79" Text="" UIHint="HorizontalRuler" />
                     <ParameterSeparator Id="%AID%_PS-nnn" Text="Externe Werte" UIHint="Headline" />
-                    <ParameterRefRef RefId="%AID%_UP-%T%000115_R-%T%00011501" HelpContext="%DOC%" />
-                    <choose ParamRefId="%AID%_UP-%T%000115_R-%T%00011501">
+                    <ParameterRefRef RefId="%AID%_UP-%TT%00115_R-%TT%0011501" HelpContext="%DOC%" />
+                    <choose ParamRefId="%AID%_UP-%TT%00115_R-%TT%0011501">
                       <when test=">0">
-                        <ParameterRefRef RefId="%AID%_UP-%T%000117_R-%T%00011701" HelpContext="%DOC%" />
-                        <ParameterRefRef RefId="%AID%_UP-%T%000118_R-%T%00011801" HelpContext="%DOC%" />
-                        <ComObjectRefRef RefId="%AID%_O-%T%000070_R-%T%00007001" />
+                        <ParameterRefRef RefId="%AID%_UP-%TT%00117_R-%TT%0011701" HelpContext="%DOC%" />
+                        <ParameterRefRef RefId="%AID%_UP-%TT%00118_R-%TT%0011801" HelpContext="%DOC%" />
+                        <ComObjectRefRef RefId="%AID%_O-%TT%00070_R-%TT%0007001" />
                       </when>
                       <when test="1">
-                        <ParameterRefRef RefId="%AID%_UP-%T%000116_R-%T%00011601" HelpContext="%DOC%" />
+                        <ParameterRefRef RefId="%AID%_UP-%TT%00116_R-%TT%0011601" HelpContext="%DOC%" />
                         <ParameterSeparator Id="%AID%_PS-78" Text="Die Messwerte werden in dem hier angegebenen Verhältnis ( Int : Ext1 ) verrechnet und das Ergebnis bei den nachfolgenden Bedingungen verwendet. Solange ein externer Messwert nicht empfangen wurde, ist sein Anteil 0." />
                       </when>
                       <when test="2">
-                        <ParameterRefRef RefId="%AID%_UP-%T%000119_R-%T%00011901" HelpContext="%DOC%" />
-                        <ParameterRefRef RefId="%AID%_UP-%T%000116_R-%T%00011601" HelpContext="%DOC%" />
+                        <ParameterRefRef RefId="%AID%_UP-%TT%00119_R-%TT%0011901" HelpContext="%DOC%" />
+                        <ParameterRefRef RefId="%AID%_UP-%TT%00116_R-%TT%0011601" HelpContext="%DOC%" />
                         <ParameterSeparator Id="%AID%_PS-85" Text="Die Messwerte werden in dem hier angegebenen Verhältnis ( Int : Ext1 : Ext2 ) verrechnet und das Ergebnis bei den nachfolgenden Bedingungen verwendet. Solange ein externer Messwert nicht empfangen wurde, ist sein Anteil 0." />
-                        <ComObjectRefRef RefId="%AID%_O-%T%000071_R-%T%00007101" />
+                        <ComObjectRefRef RefId="%AID%_O-%TT%00071_R-%TT%0007101" />
                       </when>
                     </choose>
                     <ParameterSeparator Id="%AID%_PS-80" Text="" UIHint="HorizontalRuler" />
@@ -706,50 +706,50 @@
                         <Column Id="%AID%_PB-nnn_C-3" Name="Col3" Width="20%" />
                       </Columns>
                       <ParameterSeparator Id="%AID%_PS-nnn" Text="Temperatur zyklisch senden&#10;(0 = nicht senden)" Cell="1,1" />
-                      <ParameterRefRef RefId="%AID%_UP-%T%000311_R-%T%00031101" Cell="1,2" HelpContext="SENS-Messwert-zyklisch-senden" />
-                      <ParameterRefRef RefId="%AID%_UP-%T%000111_R-%T%00011101" Cell="1,3" HelpContext="SENS-Messwert-zyklisch-senden" />
+                      <ParameterRefRef RefId="%AID%_UP-%TT%00311_R-%TT%0031101" Cell="1,2" HelpContext="SENS-Messwert-zyklisch-senden" />
+                      <ParameterRefRef RefId="%AID%_UP-%TT%00111_R-%TT%0011101" Cell="1,3" HelpContext="SENS-Messwert-zyklisch-senden" />
                     </ParameterBlock>
-                    <ParameterRefRef RefId="%AID%_UP-%T%000112_R-%T%00011201" HelpContext="SENS-Messwert-bei-absoluter-Abweichung-senden" />
-                    <ParameterRefRef RefId="%AID%_UP-%T%000113_R-%T%00011301" HelpContext="SENS-Messwert-bei-relativer-Abweichung-senden" />
+                    <ParameterRefRef RefId="%AID%_UP-%TT%00112_R-%TT%0011201" HelpContext="SENS-Messwert-bei-absoluter-Abweichung-senden" />
+                    <ParameterRefRef RefId="%AID%_UP-%TT%00113_R-%TT%0011301" HelpContext="SENS-Messwert-bei-relativer-Abweichung-senden" />
                     <ParameterSeparator Id="%AID%_PS-93" Text="" UIHint="HorizontalRuler" />
                     <ParameterSeparator Id="%AID%_PS-nnn" Text="Glättungsfunktion" UIHint="Headline" />
-                    <ParameterRefRef RefId="%AID%_UP-%T%000114_R-%T%00011401" HelpContext="SENS-Messwert-glaetten" />
+                    <ParameterRefRef RefId="%AID%_UP-%TT%00114_R-%TT%0011401" HelpContext="SENS-Messwert-glaetten" />
                     <ParameterSeparator Id="%AID%_PS-94" Text="Glättungsformel: Xneu = Xalt + (M - Xalt) / P mit" />
                     <ParameterSeparator Id="%AID%_PS-95" Text="  Xneu: neu errechneter Messwert" />
                     <ParameterSeparator Id="%AID%_PS-16" Text="  Xalt: letzter errechneter Messwert" />
                     <ParameterSeparator Id="%AID%_PS-17" Text="     M: aktueller Messwert vom Sensor" />
                     <ParameterSeparator Id="%AID%_PS-18" Text="     P: einzugebender Parameter" />
                     <ParameterSeparator Id="%AID%_PS-19" Text="Je größer P, desto länger dauert es, bis eine plötzliche Änderung beim gemessenen Wert auch auf den Bus gesendet wird" />
-                    <ComObjectRefRef RefId="%AID%_O-%T%000060_R-%T%00006001" />
+                    <ComObjectRefRef RefId="%AID%_O-%TT%00060_R-%TT%0006001" />
                     <!-- request sensor values -->
-                    <ComObjectRefRef RefId="%AID%_O-%T%000050_R-%T%00005001" />
+                    <ComObjectRefRef RefId="%AID%_O-%TT%00050_R-%TT%0005001" />
                   </ParameterBlock>
                 </when>
               </choose>
               <!-- Hum -->
-              <choose ParamRefId="%AID%_UP-%T%000201_R-%T%00020101">
+              <choose ParamRefId="%AID%_UP-%TT%00201_R-%TT%0020101">
                 <when test=">0">
                   <ParameterBlock Id="%AID%_PB-71" Name="Luftfeuchte" Text="Luftfeuchte" Icon="water-percent" HelpContext="Empty">
                     <ParameterSeparator Id="%AID%_PS-nnn" Text="Luftfeuchte" UIHint="Headline" />
-                    <ParameterRefRef RefId="%AID%_UP-%T%000120_R-%T%00012001" HelpContext="SENS-Messwert-anpassen" />
+                    <ParameterRefRef RefId="%AID%_UP-%TT%00120_R-%TT%0012001" HelpContext="SENS-Messwert-anpassen" />
                     <ParameterSeparator Id="%AID%_PS-81" Text="" UIHint="HorizontalRuler" />
                     <ParameterSeparator Id="%AID%_PS-nnn" Text="Externe Werte" UIHint="Headline" />
-                    <ParameterRefRef RefId="%AID%_UP-%T%000125_R-%T%00012501" HelpContext="%DOC%" />
-                    <choose ParamRefId="%AID%_UP-%T%000125_R-%T%00012501">
+                    <ParameterRefRef RefId="%AID%_UP-%TT%00125_R-%TT%0012501" HelpContext="%DOC%" />
+                    <choose ParamRefId="%AID%_UP-%TT%00125_R-%TT%0012501">
                       <when test=">0">
-                        <ParameterRefRef RefId="%AID%_UP-%T%000127_R-%T%00012701" HelpContext="%DOC%" />
-                        <ParameterRefRef RefId="%AID%_UP-%T%000128_R-%T%00012801" HelpContext="%DOC%" />
-                        <ComObjectRefRef RefId="%AID%_O-%T%000072_R-%T%00007201" />
+                        <ParameterRefRef RefId="%AID%_UP-%TT%00127_R-%TT%0012701" HelpContext="%DOC%" />
+                        <ParameterRefRef RefId="%AID%_UP-%TT%00128_R-%TT%0012801" HelpContext="%DOC%" />
+                        <ComObjectRefRef RefId="%AID%_O-%TT%00072_R-%TT%0007201" />
                       </when>
                       <when test="1">
-                        <ParameterRefRef RefId="%AID%_UP-%T%000126_R-%T%00012601" HelpContext="%DOC%" />
+                        <ParameterRefRef RefId="%AID%_UP-%TT%00126_R-%TT%0012601" HelpContext="%DOC%" />
                         <ParameterSeparator Id="%AID%_PS-77" Text="Die Messwerte werden in dem hier angegebenen Verhältnis ( Int : Ext1 ) verrechnet und das Ergebnis bei den nachfolgenden Bedingungen verwendet. Solange ein externer Messwert nicht empfangen wurde, ist sein Anteil 0." />
                       </when>
                       <when test="2">
-                        <ParameterRefRef RefId="%AID%_UP-%T%000129_R-%T%00012901" HelpContext="%DOC%" />
-                        <ParameterRefRef RefId="%AID%_UP-%T%000126_R-%T%00012601" HelpContext="%DOC%" />
+                        <ParameterRefRef RefId="%AID%_UP-%TT%00129_R-%TT%0012901" HelpContext="%DOC%" />
+                        <ParameterRefRef RefId="%AID%_UP-%TT%00126_R-%TT%0012601" HelpContext="%DOC%" />
                         <ParameterSeparator Id="%AID%_PS-86" Text="Die Messwerte werden in dem hier angegebenen Verhältnis ( Int : Ext1 : Ext2 ) verrechnet und das Ergebnis bei den nachfolgenden Bedingungen verwendet. Solange ein externer Messwert nicht empfangen wurde, ist sein Anteil 0." />
-                        <ComObjectRefRef RefId="%AID%_O-%T%000073_R-%T%00007301" />
+                        <ComObjectRefRef RefId="%AID%_O-%TT%00073_R-%TT%0007301" />
                       </when>
                     </choose>
                     <ParameterSeparator Id="%AID%_PS-82" Text="" UIHint="HorizontalRuler" />
@@ -765,50 +765,50 @@
                         <Column Id="%AID%_PB-nnn_C-3" Name="Col3" Width="20%" />
                       </Columns>
                       <ParameterSeparator Id="%AID%_PS-nnn" Text="Luftfeuchte zyklisch senden&#10;(0 = nicht senden)" Cell="1,1" />
-                      <ParameterRefRef RefId="%AID%_UP-%T%000321_R-%T%00032101" Cell="1,2" HelpContext="SENS-Messwert-zyklisch-senden" />
-                      <ParameterRefRef RefId="%AID%_UP-%T%000121_R-%T%00012101" Cell="1,3" HelpContext="SENS-Messwert-zyklisch-senden" />
+                      <ParameterRefRef RefId="%AID%_UP-%TT%00321_R-%TT%0032101" Cell="1,2" HelpContext="SENS-Messwert-zyklisch-senden" />
+                      <ParameterRefRef RefId="%AID%_UP-%TT%00121_R-%TT%0012101" Cell="1,3" HelpContext="SENS-Messwert-zyklisch-senden" />
                     </ParameterBlock>
-                    <ParameterRefRef RefId="%AID%_UP-%T%000122_R-%T%00012201" HelpContext="SENS-Messwert-bei-absoluter-Abweichung-senden" />
-                    <ParameterRefRef RefId="%AID%_UP-%T%000123_R-%T%00012301" HelpContext="SENS-Messwert-bei-relativer-Abweichung-senden" />
+                    <ParameterRefRef RefId="%AID%_UP-%TT%00122_R-%TT%0012201" HelpContext="SENS-Messwert-bei-absoluter-Abweichung-senden" />
+                    <ParameterRefRef RefId="%AID%_UP-%TT%00123_R-%TT%0012301" HelpContext="SENS-Messwert-bei-relativer-Abweichung-senden" />
                     <ParameterSeparator Id="%AID%_PS-20" Text="" UIHint="HorizontalRuler" />
                     <ParameterSeparator Id="%AID%_PS-nnn" Text="Glättungsfunktion" UIHint="Headline" />
-                    <ParameterRefRef RefId="%AID%_UP-%T%000124_R-%T%00012401" HelpContext="SENS-Messwert-glaetten" />
+                    <ParameterRefRef RefId="%AID%_UP-%TT%00124_R-%TT%0012401" HelpContext="SENS-Messwert-glaetten" />
                     <ParameterSeparator Id="%AID%_PS-21" Text="Glättungsformel: Xneu = Xalt + (M - Xalt) / P mit" />
                     <ParameterSeparator Id="%AID%_PS-22" Text="  Xneu: neu errechneter Messwert" />
                     <ParameterSeparator Id="%AID%_PS-23" Text="  Xalt: letzter errechneter Messwert" />
                     <ParameterSeparator Id="%AID%_PS-24" Text="     M: aktueller Messwert vom Sensor" />
                     <ParameterSeparator Id="%AID%_PS-25" Text="     P: einzugebender Parameter" />
                     <ParameterSeparator Id="%AID%_PS-26" Text="Je größer P, desto länger dauert es, bis eine plötzliche Änderung beim gemessenen Wert auch auf den Bus gesendet wird" />
-                    <ComObjectRefRef RefId="%AID%_O-%T%000061_R-%T%00006101" />
+                    <ComObjectRefRef RefId="%AID%_O-%TT%00061_R-%TT%0006101" />
                     <!-- request sensor values -->
-                    <ComObjectRefRef RefId="%AID%_O-%T%000050_R-%T%00005001" />
+                    <ComObjectRefRef RefId="%AID%_O-%TT%00050_R-%TT%0005001" />
                   </ParameterBlock>
                 </when>
               </choose>
               <!-- Pre -->
-              <choose ParamRefId="%AID%_UP-%T%000202_R-%T%00020201">
+              <choose ParamRefId="%AID%_UP-%TT%00202_R-%TT%0020201">
                 <when test=">0">
                   <ParameterBlock Id="%AID%_PB-72" Name="Luftdruck" Text="Luftdruck" Icon="location-enter" HelpContext="Empty">
                     <ParameterSeparator Id="%AID%_PS-nnn" Text="Luftdruck" UIHint="Headline" />
-                    <ParameterRefRef RefId="%AID%_UP-%T%000130_R-%T%00013001" HelpContext="SENS-Messwert-anpassen" />
+                    <ParameterRefRef RefId="%AID%_UP-%TT%00130_R-%TT%0013001" HelpContext="SENS-Messwert-anpassen" />
                     <ParameterSeparator Id="%AID%_PS-83" Text="" UIHint="HorizontalRuler" />
                     <ParameterSeparator Id="%AID%_PS-nnn" Text="Externe Werte" UIHint="Headline" />
-                    <ParameterRefRef RefId="%AID%_UP-%T%000135_R-%T%00013501" HelpContext="%DOC%" />
-                    <choose ParamRefId="%AID%_UP-%T%000135_R-%T%00013501">
+                    <ParameterRefRef RefId="%AID%_UP-%TT%00135_R-%TT%0013501" HelpContext="%DOC%" />
+                    <choose ParamRefId="%AID%_UP-%TT%00135_R-%TT%0013501">
                       <when test=">0">
-                        <ParameterRefRef RefId="%AID%_UP-%T%000137_R-%T%00013701" HelpContext="%DOC%" />
-                        <ParameterRefRef RefId="%AID%_UP-%T%000138_R-%T%00013801" HelpContext="%DOC%" />
-                        <ComObjectRefRef RefId="%AID%_O-%T%000074_R-%T%00007401" />
+                        <ParameterRefRef RefId="%AID%_UP-%TT%00137_R-%TT%0013701" HelpContext="%DOC%" />
+                        <ParameterRefRef RefId="%AID%_UP-%TT%00138_R-%TT%0013801" HelpContext="%DOC%" />
+                        <ComObjectRefRef RefId="%AID%_O-%TT%00074_R-%TT%0007401" />
                       </when>
                       <when test="1">
-                        <ParameterRefRef RefId="%AID%_UP-%T%000136_R-%T%00013601" HelpContext="%DOC%" />
+                        <ParameterRefRef RefId="%AID%_UP-%TT%00136_R-%TT%0013601" HelpContext="%DOC%" />
                         <ParameterSeparator Id="%AID%_PS-76" Text="Die Messwerte werden in dem hier angegebenen Verhältnis ( Int : Ext1 ) verrechnet und das Ergebnis bei den nachfolgenden Bedingungen verwendet. Solange ein externer Messwert nicht empfangen wurde, ist sein Anteil 0." />
                       </when>
                       <when test="2">
-                        <ParameterRefRef RefId="%AID%_UP-%T%000139_R-%T%00013901" HelpContext="%DOC%" />
-                        <ParameterRefRef RefId="%AID%_UP-%T%000136_R-%T%00013601" HelpContext="%DOC%" />
+                        <ParameterRefRef RefId="%AID%_UP-%TT%00139_R-%TT%0013901" HelpContext="%DOC%" />
+                        <ParameterRefRef RefId="%AID%_UP-%TT%00136_R-%TT%0013601" HelpContext="%DOC%" />
                         <ParameterSeparator Id="%AID%_PS-87" Text="Die Messwerte werden in dem hier angegebenen Verhältnis ( Int : Ext1 : Ext2 ) verrechnet und das Ergebnis bei den nachfolgenden Bedingungen verwendet. Solange ein externer Messwert nicht empfangen wurde, ist sein Anteil 0." />
-                        <ComObjectRefRef RefId="%AID%_O-%T%000075_R-%T%00007501" />
+                        <ComObjectRefRef RefId="%AID%_O-%TT%00075_R-%TT%0007501" />
                       </when>
                     </choose>
                     <ParameterSeparator Id="%AID%_PS-84" Text="" UIHint="HorizontalRuler" />
@@ -824,50 +824,50 @@
                         <Column Id="%AID%_PB-nnn_C-3" Name="Col3" Width="20%" />
                       </Columns>
                       <ParameterSeparator Id="%AID%_PS-nnn" Text="Luftdruck zyklisch senden&#10;(0 = nicht senden)" Cell="1,1" />
-                      <ParameterRefRef RefId="%AID%_UP-%T%000331_R-%T%00033101" Cell="1,2" HelpContext="SENS-Messwert-zyklisch-senden" />
-                      <ParameterRefRef RefId="%AID%_UP-%T%000131_R-%T%00013101" Cell="1,3" HelpContext="SENS-Messwert-zyklisch-senden" />
+                      <ParameterRefRef RefId="%AID%_UP-%TT%00331_R-%TT%0033101" Cell="1,2" HelpContext="SENS-Messwert-zyklisch-senden" />
+                      <ParameterRefRef RefId="%AID%_UP-%TT%00131_R-%TT%0013101" Cell="1,3" HelpContext="SENS-Messwert-zyklisch-senden" />
                     </ParameterBlock>
-                    <ParameterRefRef RefId="%AID%_UP-%T%000132_R-%T%00013201" HelpContext="SENS-Messwert-bei-absoluter-Abweichung-senden" />
-                    <ParameterRefRef RefId="%AID%_UP-%T%000133_R-%T%00013301" HelpContext="SENS-Messwert-bei-relativer-Abweichung-senden" />
+                    <ParameterRefRef RefId="%AID%_UP-%TT%00132_R-%TT%0013201" HelpContext="SENS-Messwert-bei-absoluter-Abweichung-senden" />
+                    <ParameterRefRef RefId="%AID%_UP-%TT%00133_R-%TT%0013301" HelpContext="SENS-Messwert-bei-relativer-Abweichung-senden" />
                     <ParameterSeparator Id="%AID%_PS-27" Text="" UIHint="HorizontalRuler" />
                     <ParameterSeparator Id="%AID%_PS-nnn" Text="Glättungsfunktion" UIHint="Headline" />
-                    <ParameterRefRef RefId="%AID%_UP-%T%000134_R-%T%00013401" HelpContext="SENS-Messwert-glaetten" />
+                    <ParameterRefRef RefId="%AID%_UP-%TT%00134_R-%TT%0013401" HelpContext="SENS-Messwert-glaetten" />
                     <ParameterSeparator Id="%AID%_PS-28" Text="Glättungsformel: Xneu = Xalt + (M - Xalt) / P mit" />
                     <ParameterSeparator Id="%AID%_PS-29" Text="  Xneu: neu errechneter Messwert" />
                     <ParameterSeparator Id="%AID%_PS-30" Text="  Xalt: letzter errechneter Messwert" />
                     <ParameterSeparator Id="%AID%_PS-31" Text="     M: aktueller Messwert vom Sensor" />
                     <ParameterSeparator Id="%AID%_PS-32" Text="     P: einzugebender Parameter" />
                     <ParameterSeparator Id="%AID%_PS-33" Text="Je größer P, desto länger dauert es, bis eine plötzliche Änderung beim gemessenen Wert auch auf den Bus gesendet wird" />
-                    <ComObjectRefRef RefId="%AID%_O-%T%000062_R-%T%00006201" />
+                    <ComObjectRefRef RefId="%AID%_O-%TT%00062_R-%TT%0006201" />
                     <!-- request sensor values -->
-                    <ComObjectRefRef RefId="%AID%_O-%T%000050_R-%T%00005001" />
+                    <ComObjectRefRef RefId="%AID%_O-%TT%00050_R-%TT%0005001" />
                   </ParameterBlock>
                 </when>
               </choose>
               <!-- Voc -->
-              <choose ParamRefId="%AID%_UP-%T%000203_R-%T%00020301">
+              <choose ParamRefId="%AID%_UP-%TT%00203_R-%TT%0020301">
                 <when test=">0">
                   <ParameterBlock Id="%AID%_PB-73" Name="Voc" Text="Voc" Icon="hexagon-multiple-outline" HelpContext="Empty">
                     <ParameterSeparator Id="%AID%_PS-nnn" Text="Voc" UIHint="Headline" />
-                    <ParameterRefRef RefId="%AID%_UP-%T%000140_R-%T%00014001" HelpContext="SENS-Messwert-anpassen" />
+                    <ParameterRefRef RefId="%AID%_UP-%TT%00140_R-%TT%0014001" HelpContext="SENS-Messwert-anpassen" />
                     <ParameterSeparator Id="%AID%_PS-70" Text="" UIHint="HorizontalRuler" />
                     <ParameterSeparator Id="%AID%_PS-nnn" Text="Externe Werte" UIHint="Headline" />
-                    <ParameterRefRef RefId="%AID%_UP-%T%000145_R-%T%00014501" HelpContext="%DOC%" />
-                    <choose ParamRefId="%AID%_UP-%T%000145_R-%T%00014501">
+                    <ParameterRefRef RefId="%AID%_UP-%TT%00145_R-%TT%0014501" HelpContext="%DOC%" />
+                    <choose ParamRefId="%AID%_UP-%TT%00145_R-%TT%0014501">
                       <when test=">0">
-                        <ParameterRefRef RefId="%AID%_UP-%T%000147_R-%T%00014701" HelpContext="%DOC%" />
-                        <ParameterRefRef RefId="%AID%_UP-%T%000148_R-%T%00014801" HelpContext="%DOC%" />
-                        <ComObjectRefRef RefId="%AID%_O-%T%000076_R-%T%00007601" />
+                        <ParameterRefRef RefId="%AID%_UP-%TT%00147_R-%TT%0014701" HelpContext="%DOC%" />
+                        <ParameterRefRef RefId="%AID%_UP-%TT%00148_R-%TT%0014801" HelpContext="%DOC%" />
+                        <ComObjectRefRef RefId="%AID%_O-%TT%00076_R-%TT%0007601" />
                       </when>
                       <when test="1">
-                        <ParameterRefRef RefId="%AID%_UP-%T%000146_R-%T%00014601" HelpContext="%DOC%" />
+                        <ParameterRefRef RefId="%AID%_UP-%TT%00146_R-%TT%0014601" HelpContext="%DOC%" />
                         <ParameterSeparator Id="%AID%_PS-72" Text="Die Messwerte werden in dem hier angegebenen Verhältnis ( Int : Ext1 ) verrechnet und das Ergebnis bei den nachfolgenden Bedingungen verwendet. Solange ein externer Messwert nicht empfangen wurde, ist sein Anteil 0." />
                       </when>
                       <when test="2">
-                        <ParameterRefRef RefId="%AID%_UP-%T%000149_R-%T%00014901" HelpContext="%DOC%" />
-                        <ParameterRefRef RefId="%AID%_UP-%T%000146_R-%T%00014601" HelpContext="%DOC%" />
+                        <ParameterRefRef RefId="%AID%_UP-%TT%00149_R-%TT%0014901" HelpContext="%DOC%" />
+                        <ParameterRefRef RefId="%AID%_UP-%TT%00146_R-%TT%0014601" HelpContext="%DOC%" />
                         <ParameterSeparator Id="%AID%_PS-88" Text="Die Messwerte werden in dem hier angegebenen Verhältnis ( Int : Ext1 : Ext2 ) verrechnet und das Ergebnis bei den nachfolgenden Bedingungen verwendet. Solange ein externer Messwert nicht empfangen wurde, ist sein Anteil 0." />
-                        <ComObjectRefRef RefId="%AID%_O-%T%000077_R-%T%00007701" />
+                        <ComObjectRefRef RefId="%AID%_O-%TT%00077_R-%TT%0007701" />
                       </when>
                     </choose>
                     <ParameterSeparator Id="%AID%_PS-71" Text="" UIHint="HorizontalRuler" />
@@ -883,50 +883,50 @@
                         <Column Id="%AID%_PB-nnn_C-3" Name="Col3" Width="20%" />
                       </Columns>
                       <ParameterSeparator Id="%AID%_PS-nnn" Text="Voc zyklisch senden&#10;(0 = nicht senden)" Cell="1,1" />
-                      <ParameterRefRef RefId="%AID%_UP-%T%000341_R-%T%00034101" Cell="1,2" HelpContext="SENS-Messwert-zyklisch-senden" />
-                      <ParameterRefRef RefId="%AID%_UP-%T%000141_R-%T%00014101" Cell="1,3" HelpContext="SENS-Messwert-zyklisch-senden" />
+                      <ParameterRefRef RefId="%AID%_UP-%TT%00341_R-%TT%0034101" Cell="1,2" HelpContext="SENS-Messwert-zyklisch-senden" />
+                      <ParameterRefRef RefId="%AID%_UP-%TT%00141_R-%TT%0014101" Cell="1,3" HelpContext="SENS-Messwert-zyklisch-senden" />
                     </ParameterBlock>
-                    <ParameterRefRef RefId="%AID%_UP-%T%000142_R-%T%00014201" HelpContext="SENS-Messwert-bei-absoluter-Abweichung-senden" />
-                    <ParameterRefRef RefId="%AID%_UP-%T%000143_R-%T%00014301" HelpContext="SENS-Messwert-bei-relativer-Abweichung-senden" />
+                    <ParameterRefRef RefId="%AID%_UP-%TT%00142_R-%TT%0014201" HelpContext="SENS-Messwert-bei-absoluter-Abweichung-senden" />
+                    <ParameterRefRef RefId="%AID%_UP-%TT%00143_R-%TT%0014301" HelpContext="SENS-Messwert-bei-relativer-Abweichung-senden" />
                     <ParameterSeparator Id="%AID%_PS-34" Text="" UIHint="HorizontalRuler" />
                     <ParameterSeparator Id="%AID%_PS-nnn" Text="Glättungsfunktion" UIHint="Headline" />
-                    <ParameterRefRef RefId="%AID%_UP-%T%000144_R-%T%00014401" HelpContext="SENS-Messwert-glaetten" />
+                    <ParameterRefRef RefId="%AID%_UP-%TT%00144_R-%TT%0014401" HelpContext="SENS-Messwert-glaetten" />
                     <ParameterSeparator Id="%AID%_PS-35" Text="Glättungsformel: Xneu = Xalt + (M - Xalt) / P mit" />
                     <ParameterSeparator Id="%AID%_PS-36" Text="  Xneu: neu errechneter Messwert" />
                     <ParameterSeparator Id="%AID%_PS-37" Text="  Xalt: letzter errechneter Messwert" />
                     <ParameterSeparator Id="%AID%_PS-38" Text="     M: aktueller Messwert vom Sensor" />
                     <ParameterSeparator Id="%AID%_PS-39" Text="     P: einzugebender Parameter" />
                     <ParameterSeparator Id="%AID%_PS-40" Text="Je größer P, desto länger dauert es, bis eine plötzliche Änderung beim gemessenen Wert auch auf den Bus gesendet wird" />
-                    <ComObjectRefRef RefId="%AID%_O-%T%000063_R-%T%00006301" />
+                    <ComObjectRefRef RefId="%AID%_O-%TT%00063_R-%TT%0006301" />
                     <!-- request sensor values -->
-                    <ComObjectRefRef RefId="%AID%_O-%T%000050_R-%T%00005001" />
+                    <ComObjectRefRef RefId="%AID%_O-%TT%00050_R-%TT%0005001" />
                   </ParameterBlock>
                 </when>
               </choose>
               <!-- Co2 -->
-              <choose ParamRefId="%AID%_UP-%T%000204_R-%T%00020401">
+              <choose ParamRefId="%AID%_UP-%TT%00204_R-%TT%0020401">
                 <when test=">0">
                   <ParameterBlock Id="%AID%_PB-74" Name="Co2" Text="CO2" Icon="molecule-co2" HelpContext="Empty">
                     <ParameterSeparator Id="%AID%_PS-nnn" Text="CO2" UIHint="Headline" />
-                    <ParameterRefRef RefId="%AID%_UP-%T%000150_R-%T%00015001" HelpContext="SENS-Messwert-anpassen" />
+                    <ParameterRefRef RefId="%AID%_UP-%TT%00150_R-%TT%0015001" HelpContext="SENS-Messwert-anpassen" />
                     <ParameterSeparator Id="%AID%_PS-74" Text="" UIHint="HorizontalRuler" />
                     <ParameterSeparator Id="%AID%_PS-nnn" Text="Externe Werte" UIHint="Headline" />
-                    <ParameterRefRef RefId="%AID%_UP-%T%000155_R-%T%00015501" HelpContext="%DOC%" />
-                    <choose ParamRefId="%AID%_UP-%T%000155_R-%T%00015501">
+                    <ParameterRefRef RefId="%AID%_UP-%TT%00155_R-%TT%0015501" HelpContext="%DOC%" />
+                    <choose ParamRefId="%AID%_UP-%TT%00155_R-%TT%0015501">
                       <when test=">0">
-                        <ParameterRefRef RefId="%AID%_UP-%T%000157_R-%T%00015701" HelpContext="%DOC%" />
-                        <ParameterRefRef RefId="%AID%_UP-%T%000158_R-%T%00015801" HelpContext="%DOC%" />
-                        <ComObjectRefRef RefId="%AID%_O-%T%000078_R-%T%00007801" />
+                        <ParameterRefRef RefId="%AID%_UP-%TT%00157_R-%TT%0015701" HelpContext="%DOC%" />
+                        <ParameterRefRef RefId="%AID%_UP-%TT%00158_R-%TT%0015801" HelpContext="%DOC%" />
+                        <ComObjectRefRef RefId="%AID%_O-%TT%00078_R-%TT%0007801" />
                       </when>
                       <when test="1">
-                        <ParameterRefRef RefId="%AID%_UP-%T%000156_R-%T%00015601" HelpContext="%DOC%" />
+                        <ParameterRefRef RefId="%AID%_UP-%TT%00156_R-%TT%0015601" HelpContext="%DOC%" />
                         <ParameterSeparator Id="%AID%_PS-73" Text="Die Messwerte werden in dem hier angegebenen Verhältnis ( Int : Ext1 ) verrechnet und das Ergebnis bei den nachfolgenden Bedingungen verwendet. Solange ein externer Messwert nicht empfangen wurde, ist sein Anteil 0." />
                       </when>
                       <when test="2">
-                        <ParameterRefRef RefId="%AID%_UP-%T%000159_R-%T%00015901" HelpContext="%DOC%" />
-                        <ParameterRefRef RefId="%AID%_UP-%T%000156_R-%T%00015601" HelpContext="%DOC%" />
+                        <ParameterRefRef RefId="%AID%_UP-%TT%00159_R-%TT%0015901" HelpContext="%DOC%" />
+                        <ParameterRefRef RefId="%AID%_UP-%TT%00156_R-%TT%0015601" HelpContext="%DOC%" />
                         <ParameterSeparator Id="%AID%_PS-89" Text="Die Messwerte werden in dem hier angegebenen Verhältnis ( Int : Ext1 : Ext2 ) verrechnet und das Ergebnis bei den nachfolgenden Bedingungen verwendet. Solange ein externer Messwert nicht empfangen wurde, ist sein Anteil 0." />
-                        <ComObjectRefRef RefId="%AID%_O-%T%000079_R-%T%00007901" />
+                        <ComObjectRefRef RefId="%AID%_O-%TT%00079_R-%TT%0007901" />
                       </when>
                     </choose>
                     <ParameterSeparator Id="%AID%_PS-75" Text="" UIHint="HorizontalRuler" />
@@ -942,14 +942,14 @@
                         <Column Id="%AID%_PB-nnn_C-3" Name="Col3" Width="20%" />
                       </Columns>
                       <ParameterSeparator Id="%AID%_PS-nnn" Text="CO2 zyklisch senden&#10;(0 = nicht senden)" Cell="1,1" />
-                      <ParameterRefRef RefId="%AID%_UP-%T%000351_R-%T%00035101" Cell="1,2" HelpContext="SENS-Messwert-zyklisch-senden" />
-                      <ParameterRefRef RefId="%AID%_UP-%T%000151_R-%T%00015101" Cell="1,3" HelpContext="SENS-Messwert-zyklisch-senden" />
+                      <ParameterRefRef RefId="%AID%_UP-%TT%00351_R-%TT%0035101" Cell="1,2" HelpContext="SENS-Messwert-zyklisch-senden" />
+                      <ParameterRefRef RefId="%AID%_UP-%TT%00151_R-%TT%0015101" Cell="1,3" HelpContext="SENS-Messwert-zyklisch-senden" />
                     </ParameterBlock>
-                    <ParameterRefRef RefId="%AID%_UP-%T%000152_R-%T%00015201" HelpContext="SENS-Messwert-bei-absoluter-Abweichung-senden" />
-                    <ParameterRefRef RefId="%AID%_UP-%T%000153_R-%T%00015301" HelpContext="SENS-Messwert-bei-relativer-Abweichung-senden" />
+                    <ParameterRefRef RefId="%AID%_UP-%TT%00152_R-%TT%0015201" HelpContext="SENS-Messwert-bei-absoluter-Abweichung-senden" />
+                    <ParameterRefRef RefId="%AID%_UP-%TT%00153_R-%TT%0015301" HelpContext="SENS-Messwert-bei-relativer-Abweichung-senden" />
                     <ParameterSeparator Id="%AID%_PS-41" Text="" UIHint="HorizontalRuler" />
                     <ParameterSeparator Id="%AID%_PS-nnn" Text="Glättungsfunktion" UIHint="Headline" />
-                    <ParameterRefRef RefId="%AID%_UP-%T%000154_R-%T%00015401" HelpContext="SENS-Messwert-glaetten" />
+                    <ParameterRefRef RefId="%AID%_UP-%TT%00154_R-%TT%0015401" HelpContext="SENS-Messwert-glaetten" />
                     <ParameterSeparator Id="%AID%_PS-42" Text="Glättungsformel: Xneu = Xalt + (M - Xalt) / P mit" />
                     <ParameterSeparator Id="%AID%_PS-43" Text="  Xneu: neu errechneter Messwert" />
                     <ParameterSeparator Id="%AID%_PS-44" Text="  Xalt: letzter errechneter Messwert" />
@@ -957,49 +957,49 @@
                     <ParameterSeparator Id="%AID%_PS-46" Text="     P: einzugebender Parameter" />
                     <ParameterSeparator Id="%AID%_PS-47" Text="Je größer P, desto länger dauert es, bis eine plötzliche Änderung beim gemessenen Wert auch auf den Bus gesendet wird" />
                     <!-- request sensor values -->
-                    <ComObjectRefRef RefId="%AID%_O-%T%000050_R-%T%00005001" />
+                    <ComObjectRefRef RefId="%AID%_O-%TT%00050_R-%TT%0005001" />
                   </ParameterBlock>
                 </when>
                 <when test="3 5 8">
                   <!-- BME680, IAQCore, SGP30 output Co2Calc -->
-                  <ComObjectRefRef RefId="%AID%_O-%T%000065_R-%T%00006501" />
+                  <ComObjectRefRef RefId="%AID%_O-%TT%00065_R-%TT%0006501" />
                 </when>
                 <when test="4 9">
                   <!-- SCD30, SCD41 output Co2 -->
-                  <ComObjectRefRef RefId="%AID%_O-%T%000064_R-%T%00006401" />
-                  <choose ParamRefId="%AID%_UP-%T%000203_R-%T%00020301">
+                  <ComObjectRefRef RefId="%AID%_O-%TT%00064_R-%TT%0006401" />
+                  <choose ParamRefId="%AID%_UP-%TT%00203_R-%TT%0020301">
                     <!-- if there is also a voc sensor specified, we return Co2Calc, too  -->
                     <when test=">0">
-                      <ComObjectRefRef RefId="%AID%_O-%T%000065_R-%T%00006501" />
+                      <ComObjectRefRef RefId="%AID%_O-%TT%00065_R-%TT%0006501" />
                     </when>
                   </choose>
                 </when>
               </choose>
               <!-- Lux -->
-              <choose ParamRefId="%AID%_UP-%T%000205_R-%T%00020501">
+              <choose ParamRefId="%AID%_UP-%TT%00205_R-%TT%0020501">
                 <when test=">0">
                   <ParameterBlock Id="%AID%_PB-77" Name="Lux" Text="Helligkeit" Icon="lightbulb-outline" HelpContext="Empty">
-                    <ComObjectRefRef RefId="%AID%_O-%T%000050_R-%T%00005001" />
+                    <ComObjectRefRef RefId="%AID%_O-%TT%00050_R-%TT%0005001" />
                     <ParameterSeparator Id="%AID%_PS-nnn" Text="Helligkeit" UIHint="Headline" />
-                    <ParameterRefRef RefId="%AID%_UP-%T%000180_R-%T%00018001" HelpContext="SENS-Messwert-anpassen" />
+                    <ParameterRefRef RefId="%AID%_UP-%TT%00180_R-%TT%0018001" HelpContext="SENS-Messwert-anpassen" />
                     <ParameterSeparator Id="%AID%_PS-89" Text="" UIHint="HorizontalRuler" />
                     <ParameterSeparator Id="%AID%_PS-nnn" Text="Externe Werte" UIHint="Headline" />
-                    <ParameterRefRef RefId="%AID%_UP-%T%000185_R-%T%00018501" HelpContext="%DOC%" />
-                    <choose ParamRefId="%AID%_UP-%T%000185_R-%T%00018501">
+                    <ParameterRefRef RefId="%AID%_UP-%TT%00185_R-%TT%0018501" HelpContext="%DOC%" />
+                    <choose ParamRefId="%AID%_UP-%TT%00185_R-%TT%0018501">
                       <when test=">0">
-                        <ParameterRefRef RefId="%AID%_UP-%T%000187_R-%T%00018701" HelpContext="%DOC%" />
-                        <ParameterRefRef RefId="%AID%_UP-%T%000188_R-%T%00018801" HelpContext="%DOC%" />
-                        <ComObjectRefRef RefId="%AID%_O-%T%000080_R-%T%00008001" />
+                        <ParameterRefRef RefId="%AID%_UP-%TT%00187_R-%TT%0018701" HelpContext="%DOC%" />
+                        <ParameterRefRef RefId="%AID%_UP-%TT%00188_R-%TT%0018801" HelpContext="%DOC%" />
+                        <ComObjectRefRef RefId="%AID%_O-%TT%00080_R-%TT%0008001" />
                       </when>
                       <when test="1">
-                        <ParameterRefRef RefId="%AID%_UP-%T%000186_R-%T%00018601" HelpContext="%DOC%" />
+                        <ParameterRefRef RefId="%AID%_UP-%TT%00186_R-%TT%0018601" HelpContext="%DOC%" />
                         <ParameterSeparator Id="%AID%_PS-90" Text="Die Messwerte werden in dem hier angegebenen Verhältnis ( Int : Ext1 ) verrechnet und das Ergebnis bei den nachfolgenden Bedingungen verwendet. Solange ein externer Messwert nicht empfangen wurde, ist sein Anteil 0." />
                       </when>
                       <when test="2">
-                        <ParameterRefRef RefId="%AID%_UP-%T%000189_R-%T%00018901" HelpContext="%DOC%" />
-                        <ParameterRefRef RefId="%AID%_UP-%T%000186_R-%T%00018601" HelpContext="%DOC%" />
+                        <ParameterRefRef RefId="%AID%_UP-%TT%00189_R-%TT%0018901" HelpContext="%DOC%" />
+                        <ParameterRefRef RefId="%AID%_UP-%TT%00186_R-%TT%0018601" HelpContext="%DOC%" />
                         <ParameterSeparator Id="%AID%_PS-91" Text="Die Messwerte werden in dem hier angegebenen Verhältnis ( Int : Ext1 : Ext2 ) verrechnet und das Ergebnis bei den nachfolgenden Bedingungen verwendet. Solange ein externer Messwert nicht empfangen wurde, ist sein Anteil 0." />
-                        <ComObjectRefRef RefId="%AID%_O-%T%000081_R-%T%00008101" />
+                        <ComObjectRefRef RefId="%AID%_O-%TT%00081_R-%TT%0008101" />
                       </when>
                     </choose>
                     <ParameterSeparator Id="%AID%_PS-92" Text="" UIHint="HorizontalRuler" />
@@ -1015,51 +1015,51 @@
                         <Column Id="%AID%_PB-nnn_C-3" Name="Col3" Width="20%" />
                       </Columns>
                       <ParameterSeparator Id="%AID%_PS-nnn" Text="Helligkeit zyklisch senden&#10;(0 = nicht senden)" Cell="1,1" />
-                      <ParameterRefRef RefId="%AID%_UP-%T%000381_R-%T%00038101" Cell="1,2" HelpContext="SENS-Messwert-zyklisch-senden" />
-                      <ParameterRefRef RefId="%AID%_UP-%T%000181_R-%T%00018101" Cell="1,3" HelpContext="SENS-Messwert-zyklisch-senden" />
+                      <ParameterRefRef RefId="%AID%_UP-%TT%00381_R-%TT%0038101" Cell="1,2" HelpContext="SENS-Messwert-zyklisch-senden" />
+                      <ParameterRefRef RefId="%AID%_UP-%TT%00181_R-%TT%0018101" Cell="1,3" HelpContext="SENS-Messwert-zyklisch-senden" />
                     </ParameterBlock>
-                    <ParameterRefRef RefId="%AID%_UP-%T%000182_R-%T%00018201" HelpContext="SENS-Messwert-bei-absoluter-Abweichung-senden" />
-                    <ParameterRefRef RefId="%AID%_UP-%T%000183_R-%T%00018301" HelpContext="SENS-Messwert-bei-relativer-Abweichung-senden" />
+                    <ParameterRefRef RefId="%AID%_UP-%TT%00182_R-%TT%0018201" HelpContext="SENS-Messwert-bei-absoluter-Abweichung-senden" />
+                    <ParameterRefRef RefId="%AID%_UP-%TT%00183_R-%TT%0018301" HelpContext="SENS-Messwert-bei-relativer-Abweichung-senden" />
                     <ParameterSeparator Id="%AID%_PS-93" Text="" UIHint="HorizontalRuler" />
                     <ParameterSeparator Id="%AID%_PS-nnn" Text="Glättungsfunktion" UIHint="Headline" />
-                    <ParameterRefRef RefId="%AID%_UP-%T%000184_R-%T%00018401" HelpContext="SENS-Messwert-glaetten" />
+                    <ParameterRefRef RefId="%AID%_UP-%TT%00184_R-%TT%0018401" HelpContext="SENS-Messwert-glaetten" />
                     <ParameterSeparator Id="%AID%_PS-94" Text="Glättungsformel: Xneu = Xalt + (M - Xalt) / P mit" />
                     <ParameterSeparator Id="%AID%_PS-95" Text="  Xneu: neu errechneter Messwert" />
                     <ParameterSeparator Id="%AID%_PS-16" Text="  Xalt: letzter errechneter Messwert" />
                     <ParameterSeparator Id="%AID%_PS-17" Text="     M: aktueller Messwert vom Sensor" />
                     <ParameterSeparator Id="%AID%_PS-18" Text="     P: einzugebender Parameter" />
                     <ParameterSeparator Id="%AID%_PS-19" Text="Je größer P, desto länger dauert es, bis eine plötzliche Änderung beim gemessenen Wert auch auf den Bus gesendet wird" />
-                    <ComObjectRefRef RefId="%AID%_O-%T%000087_R-%T%00008701" />
+                    <ComObjectRefRef RefId="%AID%_O-%TT%00087_R-%TT%0008701" />
                     <!-- request sensor values -->
-                    <ComObjectRefRef RefId="%AID%_O-%T%000050_R-%T%00005001" />
+                    <ComObjectRefRef RefId="%AID%_O-%TT%00050_R-%TT%0005001" />
                   </ParameterBlock>
                 </when>
               </choose>
               <!-- Tof -->
-              <choose ParamRefId="%AID%_UP-%T%000206_R-%T%00020601">
+              <choose ParamRefId="%AID%_UP-%TT%00206_R-%TT%0020601">
                 <when test=">0">
                   <ParameterBlock Id="%AID%_PB-77" Name="Tof" Text="Entfernung" Icon="wrap-disabled" HelpContext="Empty">
-                    <ComObjectRefRef RefId="%AID%_O-%T%000050_R-%T%00005001" />
+                    <ComObjectRefRef RefId="%AID%_O-%TT%00050_R-%TT%0005001" />
                     <ParameterSeparator Id="%AID%_PS-nnn" Text="Entfernung" UIHint="Headline" />
-                    <ParameterRefRef RefId="%AID%_UP-%T%000190_R-%T%00019001" HelpContext="SENS-Messwert-anpassen" />
+                    <ParameterRefRef RefId="%AID%_UP-%TT%00190_R-%TT%0019001" HelpContext="SENS-Messwert-anpassen" />
                     <ParameterSeparator Id="%AID%_PS-89" Text="" UIHint="HorizontalRuler" />
                     <ParameterSeparator Id="%AID%_PS-nnn" Text="Externe Werte" UIHint="Headline" />
-                    <ParameterRefRef RefId="%AID%_UP-%T%000195_R-%T%00019501" HelpContext="%DOC%" />
-                    <choose ParamRefId="%AID%_UP-%T%000195_R-%T%00019501">
+                    <ParameterRefRef RefId="%AID%_UP-%TT%00195_R-%TT%0019501" HelpContext="%DOC%" />
+                    <choose ParamRefId="%AID%_UP-%TT%00195_R-%TT%0019501">
                       <when test=">0">
-                        <ParameterRefRef RefId="%AID%_UP-%T%000197_R-%T%00019701" HelpContext="%DOC%" />
-                        <ParameterRefRef RefId="%AID%_UP-%T%000198_R-%T%00019801" HelpContext="%DOC%" />
-                        <ComObjectRefRef RefId="%AID%_O-%T%000082_R-%T%00008201" />
+                        <ParameterRefRef RefId="%AID%_UP-%TT%00197_R-%TT%0019701" HelpContext="%DOC%" />
+                        <ParameterRefRef RefId="%AID%_UP-%TT%00198_R-%TT%0019801" HelpContext="%DOC%" />
+                        <ComObjectRefRef RefId="%AID%_O-%TT%00082_R-%TT%0008201" />
                       </when>
                       <when test="1">
-                        <ParameterRefRef RefId="%AID%_UP-%T%000196_R-%T%00019601" HelpContext="%DOC%" />
+                        <ParameterRefRef RefId="%AID%_UP-%TT%00196_R-%TT%0019601" HelpContext="%DOC%" />
                         <ParameterSeparator Id="%AID%_PS-90" Text="Die Messwerte werden in dem hier angegebenen Verhältnis ( Int : Ext1 ) verrechnet und das Ergebnis bei den nachfolgenden Bedingungen verwendet. Solange ein externer Messwert nicht empfangen wurde, ist sein Anteil 0." />
                       </when>
                       <when test="2">
-                        <ParameterRefRef RefId="%AID%_UP-%T%000199_R-%T%00019901" HelpContext="%DOC%" />
-                        <ParameterRefRef RefId="%AID%_UP-%T%000196_R-%T%00019601" HelpContext="%DOC%" />
+                        <ParameterRefRef RefId="%AID%_UP-%TT%00199_R-%TT%0019901" HelpContext="%DOC%" />
+                        <ParameterRefRef RefId="%AID%_UP-%TT%00196_R-%TT%0019601" HelpContext="%DOC%" />
                         <ParameterSeparator Id="%AID%_PS-91" Text="Die Messwerte werden in dem hier angegebenen Verhältnis ( Int : Ext1 : Ext2 ) verrechnet und das Ergebnis bei den nachfolgenden Bedingungen verwendet. Solange ein externer Messwert nicht empfangen wurde, ist sein Anteil 0." />
-                        <ComObjectRefRef RefId="%AID%_O-%T%000083_R-%T%00008301" />
+                        <ComObjectRefRef RefId="%AID%_O-%TT%00083_R-%TT%0008301" />
                       </when>
                     </choose>
                     <ParameterSeparator Id="%AID%_PS-92" Text="" UIHint="HorizontalRuler" />
@@ -1075,40 +1075,40 @@
                         <Column Id="%AID%_PB-nnn_C-3" Name="Col3" Width="20%" />
                       </Columns>
                       <ParameterSeparator Id="%AID%_PS-nnn" Text="Entfernung zyklisch senden&#10;(0 = nicht senden)" Cell="1,1" />
-                      <ParameterRefRef RefId="%AID%_UP-%T%000391_R-%T%00039101" Cell="1,2" HelpContext="SENS-Messwert-zyklisch-senden" />
-                      <ParameterRefRef RefId="%AID%_UP-%T%000191_R-%T%00019101" Cell="1,3" HelpContext="SENS-Messwert-zyklisch-senden" />
+                      <ParameterRefRef RefId="%AID%_UP-%TT%00391_R-%TT%0039101" Cell="1,2" HelpContext="SENS-Messwert-zyklisch-senden" />
+                      <ParameterRefRef RefId="%AID%_UP-%TT%00191_R-%TT%0019101" Cell="1,3" HelpContext="SENS-Messwert-zyklisch-senden" />
                     </ParameterBlock>
-                    <ParameterRefRef RefId="%AID%_UP-%T%000192_R-%T%00019201" HelpContext="SENS-Messwert-bei-absoluter-Abweichung-senden" />
-                    <ParameterRefRef RefId="%AID%_UP-%T%000193_R-%T%00019301" HelpContext="SENS-Messwert-bei-relativer-Abweichung-senden" />
+                    <ParameterRefRef RefId="%AID%_UP-%TT%00192_R-%TT%0019201" HelpContext="SENS-Messwert-bei-absoluter-Abweichung-senden" />
+                    <ParameterRefRef RefId="%AID%_UP-%TT%00193_R-%TT%0019301" HelpContext="SENS-Messwert-bei-relativer-Abweichung-senden" />
                     <ParameterSeparator Id="%AID%_PS-93" Text="" UIHint="HorizontalRuler" />
                     <ParameterSeparator Id="%AID%_PS-nnn" Text="Glättungsfunktion" UIHint="Headline" />
-                    <ParameterRefRef RefId="%AID%_UP-%T%000194_R-%T%00019401" HelpContext="SENS-Messwert-glaetten" />
+                    <ParameterRefRef RefId="%AID%_UP-%TT%00194_R-%TT%0019401" HelpContext="SENS-Messwert-glaetten" />
                     <ParameterSeparator Id="%AID%_PS-94" Text="Glättungsformel: Xneu = Xalt + (M - Xalt) / P mit" />
                     <ParameterSeparator Id="%AID%_PS-95" Text="  Xneu: neu errechneter Messwert" />
                     <ParameterSeparator Id="%AID%_PS-16" Text="  Xalt: letzter errechneter Messwert" />
                     <ParameterSeparator Id="%AID%_PS-17" Text="     M: aktueller Messwert vom Sensor" />
                     <ParameterSeparator Id="%AID%_PS-18" Text="     P: einzugebender Parameter" />
                     <ParameterSeparator Id="%AID%_PS-19" Text="Je größer P, desto länger dauert es, bis eine plötzliche Änderung beim gemessenen Wert auch auf den Bus gesendet wird" />
-                    <ComObjectRefRef RefId="%AID%_O-%T%000088_R-%T%00008801" />
+                    <ComObjectRefRef RefId="%AID%_O-%TT%00088_R-%TT%0008801" />
                     <!-- request sensor values -->
-                    <ComObjectRefRef RefId="%AID%_O-%T%000050_R-%T%00005001" />
+                    <ComObjectRefRef RefId="%AID%_O-%TT%00050_R-%TT%0005001" />
                   </ParameterBlock>
                 </when>
               </choose>
-              <choose ParamRefId="%AID%_P-%T%000215_R-%T%00021501">
+              <choose ParamRefId="%AID%_P-%TT%00215_R-%TT%0021501">
                 <!-- Zusatzfunktionen anzeigen? -->
                 <when test="1">
                   <ParameterBlock Id="%AID%_PB-76" Name="Zusatzfunktionen" Text="Zusatzfunktionen" Icon="loupe" HelpContext="Empty">
                     <!-- Taupunkt / Wohlfühldiagramm -->
-                    <choose ParamRefId="%AID%_UP-%T%000200_R-%T%00020001">
+                    <choose ParamRefId="%AID%_UP-%TT%00200_R-%TT%0020001">
                       <when test=">0">
-                        <choose ParamRefId="%AID%_UP-%T%000201_R-%T%00020101">
+                        <choose ParamRefId="%AID%_UP-%TT%00201_R-%TT%0020101">
                           <when test=">0">
                             <ParameterSeparator Id="%AID%_PS-nnn" Text="Taupunkt" UIHint="Headline" />
-                            <ParameterRefRef RefId="%AID%_UP-%T%000101_R-%T%00010101" HelpContext="%DOC%" />
-                            <choose ParamRefId="%AID%_UP-%T%000101_R-%T%00010101">
+                            <ParameterRefRef RefId="%AID%_UP-%TT%00101_R-%TT%0010101" HelpContext="%DOC%" />
+                            <choose ParamRefId="%AID%_UP-%TT%00101_R-%TT%0010101">
                               <when test="1">
-                                <ParameterRefRef RefId="%AID%_UP-%T%000170_R-%T%00017001" HelpContext="SENS-Messwert-anpassen" />
+                                <ParameterRefRef RefId="%AID%_UP-%TT%00170_R-%TT%0017001" HelpContext="SENS-Messwert-anpassen" />
                                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Sendeverhalten" UIHint="Headline" />
                                 <!-- Dew Delay pattern -->
                                 <ParameterBlock Id="%AID%_PB-nnn" Name="DewDelayCycle" Inline="true" Layout="Grid" HelpContext="SENS-Messwert-zyklisch-senden">
@@ -1121,29 +1121,29 @@
                                     <Column Id="%AID%_PB-nnn_C-3" Name="Col3" Width="20%" />
                                   </Columns>
                                   <ParameterSeparator Id="%AID%_PS-nnn" Text="Taupunkt zyklisch senden&#10;(0 = nicht senden)" Cell="1,1" />
-                                  <ParameterRefRef RefId="%AID%_UP-%T%000371_R-%T%00037101" Cell="1,2" HelpContext="SENS-Messwert-zyklisch-senden" />
-                                  <ParameterRefRef RefId="%AID%_UP-%T%000171_R-%T%00017101" Cell="1,3" HelpContext="SENS-Messwert-zyklisch-senden" />
+                                  <ParameterRefRef RefId="%AID%_UP-%TT%00371_R-%TT%0037101" Cell="1,2" HelpContext="SENS-Messwert-zyklisch-senden" />
+                                  <ParameterRefRef RefId="%AID%_UP-%TT%00171_R-%TT%0017101" Cell="1,3" HelpContext="SENS-Messwert-zyklisch-senden" />
                                 </ParameterBlock>
-                                <ParameterRefRef RefId="%AID%_UP-%T%000172_R-%T%00017201" HelpContext="SENS-Messwert-bei-absoluter-Abweichung-senden" />
-                                <ParameterRefRef RefId="%AID%_UP-%T%000173_R-%T%00017301" HelpContext="SENS-Messwert-bei-relativer-Abweichung-senden" />
+                                <ParameterRefRef RefId="%AID%_UP-%TT%00172_R-%TT%0017201" HelpContext="SENS-Messwert-bei-absoluter-Abweichung-senden" />
+                                <ParameterRefRef RefId="%AID%_UP-%TT%00173_R-%TT%0017301" HelpContext="SENS-Messwert-bei-relativer-Abweichung-senden" />
                                 <ParameterSeparator Id="%AID%_PS-48" Text="" UIHint="HorizontalRuler" />
                                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Glättungsfunktion" UIHint="Headline" />
-                                <ParameterRefRef RefId="%AID%_UP-%T%000174_R-%T%00017401" HelpContext="SENS-Messwert-glaetten" />
+                                <ParameterRefRef RefId="%AID%_UP-%TT%00174_R-%TT%0017401" HelpContext="SENS-Messwert-glaetten" />
                                 <ParameterSeparator Id="%AID%_PS-49" Text="Glättungsformel: Xneu = Xalt + (M - Xalt) / P mit" />
                                 <ParameterSeparator Id="%AID%_PS-50" Text="  Xneu: neu errechneter Messwert" />
                                 <ParameterSeparator Id="%AID%_PS-51" Text="  Xalt: letzter errechneter Messwert" />
                                 <ParameterSeparator Id="%AID%_PS-52" Text="     M: aktueller Messwert vom Sensor" />
                                 <ParameterSeparator Id="%AID%_PS-53" Text="     P: einzugebender Parameter" />
                                 <ParameterSeparator Id="%AID%_PS-54" Text="Je größer P, desto länger dauert es, bis eine plötzliche Änderung beim gemessenen Wert auch auf den Bus gesendet wird" />
-                                <ComObjectRefRef RefId="%AID%_O-%T%000066_R-%T%00006601" />
+                                <ComObjectRefRef RefId="%AID%_O-%TT%00066_R-%TT%0006601" />
                               </when>
                             </choose>
                             <ParameterSeparator Id="%AID%_PS-55" Text="" UIHint="HorizontalRuler" />
                             <ParameterSeparator Id="%AID%_PS-nnn" Text="Behaglichkeit" UIHint="Headline" />
-                            <ParameterRefRef RefId="%AID%_UP-%T%000102_R-%T%00010201" HelpContext="%DOC%" />
-                            <choose ParamRefId="%AID%_UP-%T%000102_R-%T%00010201">
+                            <ParameterRefRef RefId="%AID%_UP-%TT%00102_R-%TT%0010201" HelpContext="%DOC%" />
+                            <choose ParamRefId="%AID%_UP-%TT%00102_R-%TT%0010201">
                               <when test="1">
-                                <ComObjectRefRef RefId="%AID%_O-%T%000067_R-%T%00006701" />
+                                <ComObjectRefRef RefId="%AID%_O-%TT%00067_R-%TT%0006701" />
                                 <ParameterSeparator Id="%AID%_PS-56" Text="Es gibt 3 Behaglichkeitszonen, die von Temperatur und Luftfeuchte abhängen: " />
                                 <ParameterSeparator Id="%AID%_PS-57" Text="  2 - Behaglich " />
                                 <ParameterSeparator Id="%AID%_PS-58" Text="  1 - noch Behaglich " />
@@ -1156,13 +1156,13 @@
                       </when>
                     </choose>
                     <!-- Luftgüteampel -->
-                    <choose ParamRefId="%AID%_P-%T%000212_R-%T%00021201">
+                    <choose ParamRefId="%AID%_P-%TT%00212_R-%TT%0021201">
                       <when test="1">
                         <ParameterSeparator Id="%AID%_PS-nnn" Text="Luftgüte" UIHint="Headline" />
-                        <ParameterRefRef RefId="%AID%_UP-%T%000103_R-%T%00010301" HelpContext="%DOC%" />
-                        <choose ParamRefId="%AID%_UP-%T%000103_R-%T%00010301">
+                        <ParameterRefRef RefId="%AID%_UP-%TT%00103_R-%TT%0010301" HelpContext="%DOC%" />
+                        <choose ParamRefId="%AID%_UP-%TT%00103_R-%TT%0010301">
                           <when test="1">
-                            <ComObjectRefRef RefId="%AID%_O-%T%000068_R-%T%00006801" />
+                            <ComObjectRefRef RefId="%AID%_O-%TT%00068_R-%TT%0006801" />
                             <ParameterSeparator Id="%AID%_PS-61" Text="Es gibt 6 Luftqualitätsgrade, analog zu deutschen Schulnoten: " />
                             <ParameterSeparator Id="%AID%_PS-62" Text="  1 - sehr gut " />
                             <ParameterSeparator Id="%AID%_PS-63" Text="  2 - gut " />
@@ -1176,13 +1176,13 @@
                       </when>
                     </choose>
                     <!-- Kalibrierung Voc -->
-                    <choose ParamRefId="%AID%_P-%T%000216_R-%T%00021601">
+                    <choose ParamRefId="%AID%_P-%TT%00216_R-%TT%0021601">
                       <when test=">0">
                         <ParameterSeparator Id="%AID%_PS-nnn" Text="Kalibrierung" UIHint="Headline" />
-                        <ParameterRefRef RefId="%AID%_UP-%T%000104_R-%T%00010401" HelpContext="%DOC%" />
-                        <choose ParamRefId="%AID%_UP-%T%000104_R-%T%00010401">
+                        <ParameterRefRef RefId="%AID%_UP-%TT%00104_R-%TT%0010401" HelpContext="%DOC%" />
+                        <choose ParamRefId="%AID%_UP-%TT%00104_R-%TT%0010401">
                           <when test="1">
-                            <ComObjectRefRef RefId="%AID%_O-%T%000069_R-%T%00006901" />
+                            <ComObjectRefRef RefId="%AID%_O-%TT%00069_R-%TT%0006901" />
                             <ParameterSeparator Id="%AID%_PS-69" Text="Der VOC-Sensor braucht bis zu 2 Tage für die Kalibrierung, das KO 24 gibt den Fortschritt in % aus" />
                           </when>
                         </choose>
@@ -1190,10 +1190,10 @@
                       </when>
                     </choose>
                     <!-- Kalibrierung Voc zurücksetzen für BME680 und SGP30 -->
-                    <choose ParamRefId="%AID%_P-%T%000217_R-%T%00021701">
+                    <choose ParamRefId="%AID%_P-%TT%00217_R-%TT%0021701">
                       <when test=">0">
                         <ParameterSeparator Id="%AID%_PS-nnn" Text="Zurücksetzen" UIHint="Headline" />
-                        <ParameterRefRef RefId="%AID%_UP-%T%000105_R-%T%00010501" HelpContext="%DOC%" />
+                        <ParameterRefRef RefId="%AID%_UP-%TT%00105_R-%TT%0010501" HelpContext="%DOC%" />
                         <ParameterSeparator Id="%AID%_PS-100" Text="Es ist vollkommen egal, welchen Wert dieser Parameter hat. Die Kalibrierungsdaten werden zurückgesetzt, wenn sich der Wert dieses Parameters ändert und die Applikation hochgeladen wurde. Danach bleiben die Daten erhalten, bis sich der Wert wieder ändert." UIHint="Information" />
                         <ParameterSeparator Id="%AID%_PS-99" Text="" UIHint="HorizontalRuler" />
                       </when>
