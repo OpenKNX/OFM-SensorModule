@@ -11,62 +11,62 @@
               <!-- align here to constants SENX_XXXX in Sensor.h -->
               <ParameterType Id="%AID%_PT-TempSensors" Name="TempSensors">
                 <TypeRestriction Base="Value" SizeInBit="4">
-                  <Enumeration Text="Kein Sensor" Value="0" Id="%AID%_PT-TempSensors_EN-0" />
-                  <Enumeration Text="SHT3x"       Value="1" Id="%AID%_PT-TempSensors_EN-1" />
-                  <Enumeration Text="BME280"      Value="2" Id="%AID%_PT-TempSensors_EN-2" />
-                  <Enumeration Text="BME680"      Value="3" Id="%AID%_PT-TempSensors_EN-3" />
-                  <Enumeration Text="SCD30"       Value="4" Id="%AID%_PT-TempSensors_EN-4" />
-                  <Enumeration Text="SCD41"       Value="9" Id="%AID%_PT-TempSensors_EN-9" />
+                  <Enumeration Text="Kein Sensor" Value="0" Id="%ENID%" />
+                  <Enumeration Text="SHT3x"       Value="1" Id="%ENID%" />
+                  <Enumeration Text="BME280"      Value="2" Id="%ENID%" />
+                  <Enumeration Text="BME680"      Value="3" Id="%ENID%" />
+                  <Enumeration Text="SCD30"       Value="4" Id="%ENID%" />
+                  <Enumeration Text="SCD41"       Value="9" Id="%ENID%" />
                 </TypeRestriction>
               </ParameterType>
               <!-- align here to constants SENX_XXXX in Sensor.h -->
               <ParameterType Id="%AID%_PT-HumSensors" Name="HumSensors">
                 <TypeRestriction Base="Value" SizeInBit="4">
-                  <Enumeration Text="Kein Sensor" Value="0" Id="%AID%_PT-HumSensors_EN-0" />
-                  <Enumeration Text="SHT3x"       Value="1" Id="%AID%_PT-HumSensors_EN-1" />
-                  <Enumeration Text="BME280"      Value="2" Id="%AID%_PT-HumSensors_EN-2" />
-                  <Enumeration Text="BME680"      Value="3" Id="%AID%_PT-HumSensors_EN-3" />
-                  <Enumeration Text="SCD30"       Value="4" Id="%AID%_PT-HumSensors_EN-4" />
-                  <Enumeration Text="SCD41"       Value="9" Id="%AID%_PT-HumSensors_EN-9" />
+                  <Enumeration Text="Kein Sensor" Value="0" Id="%ENID%" />
+                  <Enumeration Text="SHT3x"       Value="1" Id="%ENID%" />
+                  <Enumeration Text="BME280"      Value="2" Id="%ENID%" />
+                  <Enumeration Text="BME680"      Value="3" Id="%ENID%" />
+                  <Enumeration Text="SCD30"       Value="4" Id="%ENID%" />
+                  <Enumeration Text="SCD41"       Value="9" Id="%ENID%" />
                 </TypeRestriction>
               </ParameterType>
               <!-- align here to constants SENX_XXXX in Sensor.h -->
               <ParameterType Id="%AID%_PT-PreSensors" Name="PreSensors">
                 <TypeRestriction Base="Value" SizeInBit="4">
-                  <Enumeration Text="Kein Sensor" Value="0" Id="%AID%_PT-PreSensors_EN-0" />
-                  <Enumeration Text="BME280"      Value="2" Id="%AID%_PT-PreSensors_EN-1" />
-                  <Enumeration Text="BME680"      Value="3" Id="%AID%_PT-PreSensors_EN-2" />
+                  <Enumeration Text="Kein Sensor" Value="0" Id="%ENID%" />
+                  <Enumeration Text="BME280"      Value="2" Id="%ENID%" />
+                  <Enumeration Text="BME680"      Value="3" Id="%ENID%" />
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="%AID%_PT-VocSensors" Name="VocSensors">
                 <TypeRestriction Base="Value" SizeInBit="4">
-                  <Enumeration Text="Kein Sensor" Value="0" Id="%AID%_PT-VocSensors_EN-0" />
-                  <Enumeration Text="BME680"      Value="3" Id="%AID%_PT-VocSensors_EN-1" />
-                  <Enumeration Text="IAQCore"     Value="5" Id="%AID%_PT-VocSensors_EN-2" />
-                  <Enumeration Text="SGP30"       Value="8" Id="%AID%_PT-VocSensors_EN-3" />
+                  <Enumeration Text="Kein Sensor" Value="0" Id="%ENID%" />
+                  <Enumeration Text="BME680"      Value="3" Id="%ENID%" />
+                  <Enumeration Text="IAQCore"     Value="5" Id="%ENID%" />
+                  <Enumeration Text="SGP30"       Value="8" Id="%ENID%" />
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="%AID%_PT-Co2Sensors" Name="C02Sensors">
                 <TypeRestriction Base="Value" SizeInBit="4">
-                  <Enumeration Text="Kein Sensor" Value="0" Id="%AID%_PT-Co2Sensors_EN-0" />
-                  <Enumeration Text="BME680"      Value="3" Id="%AID%_PT-Co2Sensors_EN-1" />
-                  <Enumeration Text="IAQCore"     Value="5" Id="%AID%_PT-Co2Sensors_EN-2" />
-                  <Enumeration Text="SGP30"       Value="8" Id="%AID%_PT-Co2Sensors_EN-3" />
-                  <Enumeration Text="SCD30"       Value="4" Id="%AID%_PT-Co2Sensors_EN-4" />
-                  <Enumeration Text="SCD41"       Value="9" Id="%AID%_PT-Co2Sensors_EN-5" />
+                  <Enumeration Text="Kein Sensor" Value="0" Id="%ENID%" />
+                  <Enumeration Text="BME680"      Value="3" Id="%ENID%" />
+                  <Enumeration Text="IAQCore"     Value="5" Id="%ENID%" />
+                  <Enumeration Text="SGP30"       Value="8" Id="%ENID%" />
+                  <Enumeration Text="SCD30"       Value="4" Id="%ENID%" />
+                  <Enumeration Text="SCD41"       Value="9" Id="%ENID%" />
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="%AID%_PT-LuxSensors" Name="LuxSensors">
                 <TypeRestriction Base="Value" SizeInBit="4">
-                  <Enumeration Text="Kein Sensor"  Value="0" Id="%AID%_PT-LuxSensors_EN-0" />
-                  <Enumeration Text="OPT3001"      Value="6" Id="%AID%_PT-LuxSensors_EN-6" />
-                  <Enumeration Text="VEML7700"    Value="11" Id="%AID%_PT-LuxSensors_EN-11" />
+                  <Enumeration Text="Kein Sensor"  Value="0" Id="%ENID%" />
+                  <Enumeration Text="OPT3001"      Value="6" Id="%ENID%" />
+                  <Enumeration Text="VEML7700"    Value="11" Id="%ENID%" />
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="%AID%_PT-TofSensors" Name="TofSensors">
                 <TypeRestriction Base="Value" SizeInBit="4">
-                  <Enumeration Text="Kein Sensor" Value="0" Id="%AID%_PT-TofSensors_EN-0" />
-                  <Enumeration Text="VL53L1X"     Value="7" Id="%AID%_PT-TofSensors_EN-1" />
+                  <Enumeration Text="Kein Sensor" Value="0" Id="%ENID%" />
+                  <Enumeration Text="VL53L1X"     Value="7" Id="%ENID%" />
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="%AID%_PT-OffsetHum" Name="OffsetHum">
@@ -107,15 +107,15 @@
               </ParameterType>
               <ParameterType Id="%AID%_PT-ExtCount" Name="ExternalCount">
                 <TypeRestriction Base="Value" SizeInBit="2">
-                  <Enumeration Text="0" Value="0" Id="%AID%_PT-ExtCount_EN-0" />
-                  <Enumeration Text="1" Value="1" Id="%AID%_PT-ExtCount_EN-1" />
-                  <Enumeration Text="2" Value="2" Id="%AID%_PT-ExtCount_EN-2" />
+                  <Enumeration Text="0" Value="0" Id="%ENID%" />
+                  <Enumeration Text="1" Value="1" Id="%ENID%" />
+                  <Enumeration Text="2" Value="2" Id="%ENID%" />
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="%AID%_PT-DeleteData" Name="DeleteData">
                 <TypeRestriction Base="Value" SizeInBit="1">
-                  <Enumeration Text="17" Value="0" Id="%AID%_PT-DeleteData_EN-0" />
-                  <Enumeration Text="23" Value="1" Id="%AID%_PT-DeleteData_EN-1" />
+                  <Enumeration Text="17" Value="0" Id="%ENID%" />
+                  <Enumeration Text="23" Value="1" Id="%ENID%" />
                 </TypeRestriction>
               </ParameterType>
             </ParameterTypes>
