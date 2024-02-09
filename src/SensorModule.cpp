@@ -9,6 +9,7 @@
 // #include "SensorSGP30.h"
 
 SensorModule openknxSensorModule;
+Sensor* SensorModule::sSensorBME680 = nullptr;
 
 SensorModule::SensorModule()
 {
@@ -127,14 +128,14 @@ void SensorModule::sensorDelayCallback(uint32_t iMillis)
 {
     // printDebug("sensorDelayCallback: Called with a delay of %lu ms\n", iMillis);
     uint32_t lMillis = millis();
+    // CHECKv1
+    ((SensorBME680*)sSensorBME680)->delayCallbackActive(true);
     while (millis() - lMillis < iMillis)
     {
-        // CHECKv1
-        openknxSensorModule.gCallbackProcessing = true;
         openknx.loop();
         openknx.common.skipLooptimeWarning();
-        openknxSensorModule.gCallbackProcessing = false;
     }
+    ((SensorBME680*)sSensorBME680)->delayCallbackActive(false);
     // printDebug("sensorDelayCallback: Left after %lu ms\n", millis() - lMillis);
 }
 
@@ -146,6 +147,7 @@ void SensorModule::addSensorMetadata(Sensor* iSensor, uint8_t iSensorId, Measure
     {
         ((SensorBME680*)iSensor)->delayCallback(sensorDelayCallback);
         ((SensorBME680*)iSensor)->setMagicKeyOffset(lMagicWordOffset);
+        sSensorBME680 = iSensor;
     }
     else if (iSensorId == SENS_SGP30)
     {
@@ -607,8 +609,6 @@ void SensorModule::processInputKo(GroupObject& iKo)
 void SensorModule::loop()
 {
     if (!knx.configured())
-        return;
-    if (gCallbackProcessing)
         return;
 
     // at Startup, we want to send all values immediately

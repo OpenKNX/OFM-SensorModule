@@ -45,7 +45,7 @@ class SensorModule : public OpenKNX::Module
     int8_t gTempOffset = 0;
 
     uint16_t gSensor = 0;
-    bool gCallbackProcessing = false;
+    static Sensor* sSensorBME680;
 
     static void sensorDelayCallback(uint32_t iMillis);
     static bool calculateDewValue(MeasureType iMeasureType, float& eValue);
