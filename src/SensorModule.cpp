@@ -131,10 +131,8 @@ void SensorModule::sensorDelayCallback(uint32_t iMillis)
     // CHECKv1
     ((SensorBME680*)sSensorBME680)->delayCallbackActive(true);
     while (millis() - lMillis < iMillis)
-    {
         openknx.loop();
-        openknx.common.skipLooptimeWarning();
-    }
+    openknx.common.skipLooptimeWarning();
     ((SensorBME680*)sSensorBME680)->delayCallbackActive(false);
     // printDebug("sensorDelayCallback: Left after %lu ms\n", millis() - lMillis);
 }
