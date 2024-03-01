@@ -3,9 +3,9 @@
 #include "Logic.h"
 // #include <cmath>
 #include "ModuleVersionCheck.h"
-
 #include "Sensor.h"
 #include "SensorBME680.h"
+#include "SensorDevices.h"
 // #include "SensorSGP30.h"
 
 SensorModule openknxSensorModule;
@@ -171,58 +171,58 @@ void SensorModule::startSensor()
     if (lSensorId > 0)
     {
         gSensor |= BIT_Temp;
-        lSensor = Sensor::factory(lSensorId, Temperature);
+        lSensor = openknxSensorDevicesModule.factory(lSensorId, Temperature);
         addSensorMetadata(lSensor, lSensorId, Temperature);
     }
     lSensorId = (knx.paramByte(SENS_HumSensor) & SENS_HumSensorMask) >> SENS_HumSensorShift;
     if (lSensorId > 0)
     {
         gSensor |= BIT_Hum;
-        lSensor = Sensor::factory(lSensorId, Humidity);
+        lSensor = openknxSensorDevicesModule.factory(lSensorId, Humidity);
         addSensorMetadata(lSensor, lSensorId, Humidity);
     }
     lSensorId = (knx.paramByte(SENS_PreSensor) & SENS_PreSensorMask) >> SENS_PreSensorShift;
     if (lSensorId > 0)
     {
         gSensor |= BIT_Pre;
-        lSensor = Sensor::factory(lSensorId, Pressure);
+        lSensor = openknxSensorDevicesModule.factory(lSensorId, Pressure);
         addSensorMetadata(lSensor, lSensorId, Pressure);
     }
     lSensorId = (knx.paramByte(SENS_VocSensor) & SENS_VocSensorMask) >> SENS_VocSensorShift;
     if (lSensorId > 0)
     {
         gSensor |= BIT_Voc | BIT_Co2Calc;
-        lSensor = Sensor::factory(lSensorId, static_cast<MeasureType>(Voc | Accuracy | Co2Calc));
+        lSensor = openknxSensorDevicesModule.factory(lSensorId, static_cast<MeasureType>(Voc | Accuracy | Co2Calc));
         addSensorMetadata(lSensor, lSensorId, static_cast<MeasureType>(Voc | Accuracy | Co2Calc));
     }
     lSensorId = (knx.paramByte(SENS_Co2Sensor) & SENS_Co2SensorMask) >> SENS_Co2SensorShift;
     if (lSensorId > 0)
     {
         gSensor |= BIT_Co2;
-        lSensor = Sensor::factory(lSensorId, Co2);
+        lSensor = openknxSensorDevicesModule.factory(lSensorId, Co2);
         addSensorMetadata(lSensor, lSensorId, Co2);
     }
     lSensorId = (knx.paramByte(SENS_LuxSensor) & SENS_LuxSensorMask) >> SENS_LuxSensorShift;
     if (lSensorId > 0)
     {
         gSensor |= BIT_LUX;
-        lSensor = Sensor::factory(lSensorId, Lux);
+        lSensor = openknxSensorDevicesModule.factory(lSensorId, Lux);
         addSensorMetadata(lSensor, lSensorId, Lux);
     }
     lSensorId = (knx.paramByte(SENS_TofSensor) & SENS_TofSensorMask) >> SENS_TofSensorShift;
     if (lSensorId > 0)
     {
         gSensor |= BIT_TOF;
-        lSensor = Sensor::factory(lSensorId, Tof);
+        lSensor = openknxSensorDevicesModule.factory(lSensorId, Tof);
         addSensorMetadata(lSensor, lSensorId, Tof);
     }
     // now start all sensors at the correct speed
-    Sensor::beginSensors();
+    openknxSensorDevicesModule.beginSensors();
 }
 
 bool SensorModule::readSensorValue(MeasureType iMeasureType, float& eValue)
 {
-    return Sensor::measureValue(iMeasureType, eValue);
+    return openknxSensorDevicesModule.measureValue(iMeasureType, eValue);
 }
 
 // generic sensor processing
@@ -417,7 +417,7 @@ void SensorModule::calculateAccuracy(bool iForce /*= false*/)
         {
             // get accuracy
             float lAccuracyMeasure;
-            bool lSuccess = Sensor::measureValue(Accuracy, lAccuracyMeasure);
+            bool lSuccess = openknxSensorDevicesModule.measureValue(Accuracy, lAccuracyMeasure);
             if (lSuccess)
             {
                 uint8_t lAccuracy = (uint8_t)lAccuracyMeasure;
@@ -469,9 +469,9 @@ void SensorModule::calculateAirquality(bool iForce /*= false*/)
             if ((gSensor & BIT_Co2))
             {
                 // do not calculate if underlying measures are not yet available
-                if (Sensor::measureValue(Co2, lValue))
+                if (openknxSensorDevicesModule.measureValue(Co2, lValue))
                     lValue = knx.getGroupObject(SENS_KoCo2).value(getDPT(VAL_DPT_9));
-                else if (Sensor::measureValue(Co2Calc, lValue))
+                else if (openknxSensorDevicesModule.measureValue(Co2Calc, lValue))
                     lValue = knx.getGroupObject(SENS_KoCo2b).value(getDPT(VAL_DPT_9));
                 else
                     return;
@@ -479,7 +479,7 @@ void SensorModule::calculateAirquality(bool iForce /*= false*/)
             }
             else if ((gSensor & BIT_Voc))
             {
-                if (!Sensor::measureValue(Voc, lValue))
+                if (!openknxSensorDevicesModule.measureValue(Voc, lValue))
                     return;
                 lValue = knx.getGroupObject(SENS_KoVOC).value(getDPT(VAL_DPT_9));
                 lAirquality = getAirquality(lValue, sVocLimits);
@@ -518,32 +518,32 @@ void SensorModule::processSensors(bool iForce /*= false*/)
     switch (sMeasureType)
     {
         case BIT_Temp:
-            processSensor(&gTemp, Sensor::measureValue, Temperature, 10.0f, 1.0f, SENS_TempOffset, SENS_KoTemp, VAL_DPT_9);
+            processSensor(&gTemp, readSensorValue, Temperature, 10.0f, 1.0f, SENS_TempOffset, SENS_KoTemp, VAL_DPT_9);
             break;
         case BIT_Hum:
-            processSensor(&gHum, Sensor::measureValue, Humidity, 1.0f, 1.0f, SENS_HumOffset, SENS_KoHum, VAL_DPT_9);
+            processSensor(&gHum, readSensorValue, Humidity, 1.0f, 1.0f, SENS_HumOffset, SENS_KoHum, VAL_DPT_9);
             break;
         case BIT_Pre:
-            processSensor(&gPre, Sensor::measureValue, Pressure, 1.0f, 100.0f, SENS_PreOffset, SENS_KoPre, VAL_DPT_9);
+            processSensor(&gPre, readSensorValue, Pressure, 1.0f, 100.0f, SENS_PreOffset, SENS_KoPre, VAL_DPT_9);
             break;
         case BIT_Voc:
-            processSensor(&gVoc, Sensor::measureValue, Voc, 1.0f, 1.0f, SENS_VocOffset, SENS_KoVOC, VAL_DPT_9);
+            processSensor(&gVoc, readSensorValue, Voc, 1.0f, 1.0f, SENS_VocOffset, SENS_KoVOC, VAL_DPT_9);
             break;
         case BIT_Co2:
-            processSensor(&gCo2, Sensor::measureValue, Co2, 1.0f, 1.0f, SENS_Co2Offset, SENS_KoCo2, VAL_DPT_9);
+            processSensor(&gCo2, readSensorValue, Co2, 1.0f, 1.0f, SENS_Co2Offset, SENS_KoCo2, VAL_DPT_9);
             break;
         case BIT_Co2Calc:
-            processSensor(&gCo2b, Sensor::measureValue, Co2Calc, 1.0f, 1.0f, SENS_Co2Offset, SENS_KoCo2b, VAL_DPT_9);
+            processSensor(&gCo2b, readSensorValue, Co2Calc, 1.0f, 1.0f, SENS_Co2Offset, SENS_KoCo2b, VAL_DPT_9);
             break;
         case BIT_LOGIC: // dew value, this constant is misleading...
             if ((gSensor & (BIT_Temp | BIT_Hum)) == (BIT_Temp | BIT_Hum))
                 processSensor(&gDew, SensorModule::calculateDewValue, static_cast<MeasureType>(Temperature | Humidity), 10.0f, 1.0f, SENS_DewOffset, SENS_KoDewpoint, VAL_DPT_9);
             break;
         case BIT_LUX:
-            processSensor(&gLux, Sensor::measureValue, Lux, 1.0f, 1.0f, SENS_LuxOffset, SENS_KoLux, VAL_DPT_9);
+            processSensor(&gLux, readSensorValue, Lux, 1.0f, 1.0f, SENS_LuxOffset, SENS_KoLux, VAL_DPT_9);
             break;
         case BIT_TOF:
-            processSensor(&gTof, Sensor::measureValue, Tof, 1.0f, 1.0f, SENS_TofOffset, SENS_KoTof, VAL_DPT_7);
+            processSensor(&gTof, readSensorValue, Tof, 1.0f, 1.0f, SENS_TofOffset, SENS_KoTof, VAL_DPT_7);
             break;
         case 0x400:
             if ((gSensor & (BIT_Temp | BIT_Hum)) == (BIT_Temp | BIT_Hum))
@@ -563,7 +563,7 @@ void SensorModule::processSensors(bool iForce /*= false*/)
         default:
             sMeasureType = 1;
             // error processing
-            uint8_t lError = Sensor::getError();
+            uint8_t lError = openknxSensorDevicesModule.getError();
             if (lError != getError())
             {
                 setError(lError);
@@ -580,7 +580,7 @@ bool SensorModule::processDiagnoseCommand(char* iBuffer)
     bool lOutput = false;
     if (iBuffer[0] == 'c')
     {
-        sprintf(iBuffer, "%d00 kHz", Sensor::getMaxI2cSpeed());
+        sprintf(iBuffer, "%d00 kHz", openknxSensorDevicesModule.getMaxI2cSpeed());
         lOutput = true;
     }
     return lOutput;
@@ -614,7 +614,7 @@ void SensorModule::loop()
     gForceSensorRead = false;
     // Schedule::loop();
 
-    Sensor::sensorLoop();
+    // Sensor::sensorLoop();
 }
 
 // void SensorModule::onBeforeRestartHandler()
@@ -654,16 +654,17 @@ void SensorModule::readFlash(const uint8_t* iBuffer, const uint16_t iSize)
         logDebugP("Wrong version of flash data (%i)", lVersion);
         return;
     }
-    Sensor::readFlash(iBuffer, iSize);
+    // Sensor::readFlash(iBuffer, iSize);
 }
 
 void SensorModule::writeFlash()
 {
     openknx.flash.writeByte(1); // Version
-    Sensor::writeFlash();
+    // Sensor::writeFlash();
 }
 
 uint16_t SensorModule::flashSize()
 {
-    return 1 + Sensor::flashSize();
+    return 1;
+    // +Sensor::flashSize();
 }
