@@ -4,12 +4,11 @@
     <op:param name="%Messwert%" value="Temperatur" />
     <op:param name="%Kuerzel%" value="Temp" />
     <op:param name="%MesswertIcon%" value="thermometer" />
-    <op:param name="%PPP%" value="110" />
-    <op:param name="%KONR0%" value="60" />
-    <op:param name="%KONR1%" value="70" />
-    <op:param name="%DPST%" value="DPST-9-1" />
+    <op:param name="%PPP%" value="100" />
+    <op:param name="%PPK%" value="10" />
+    <op:param name="%KONR%" value="60" />
     <op:param name="%ParamOffset%" value="1" />
-    <op:param name="%Einheit%" value="in °C" />
+    <op:param name="%Einheit%" value="°C" />
     <op:param name="%Suffix%" value="x 0.1 °C" />
     <ManufacturerData>
         <Manufacturer RefId="M-00FA">
@@ -22,21 +21,20 @@
                                 <Parameter Id="%AID%_UP-%TT%00%PPP+0%" Name="%Kuerzel%Offset" ParameterType="%AID%_PT-Offset%Kuerzel%" Offset="0" BitOffset="0" Text="%Messwert% anpassen (interner Messwert)" SuffixText="%Suffix%" Value="0" />
                                 <!-- Delay pattern -->
                                 <Parameter Id="%AID%_UP-%TT%00%PPP+1%" Name="%Kuerzel%CycleBase" ParameterType="%AID%_PT-DelayBase" Offset="1" BitOffset="0" Text="Zeitbasis" Value="0" />
-                                <Parameter Id="%AID%_UP-%TT%00%PPP+201%" Name="%Kuerzel%CycleTime" ParameterType="%AID%_PT-DelayTime" Offset="1" BitOffset="2" Text="Zeit" Value="0" />
-                                <Parameter Id="%AID%_UP-%TT%00%PPP+2%" Name="%Kuerzel%DeltaAbs" ParameterType="%AID%_PT-DeltaAbs%Kuerzel%" Offset="3" BitOffset="0" Text="%Messwert% bei absoluter Abweichung senden&#10;(0=nicht senden)" SuffixText="%Suffix%" Value="0" />
-                                <Parameter Id="%AID%_UP-%TT%00%PPP+3%" Name="%Kuerzel%DeltaPercent" ParameterType="%AID%_PT-Percent" Offset="5" BitOffset="0" Text="%Messwert% bei Abweichung vom vorherigen Wert senden&#10;(0=nicht senden)" SuffixText="%" Value="0" />
-                                <Parameter Id="%AID%_UP-%TT%00%PPP+4%" Name="%Kuerzel%Smooth" ParameterType="%AID%_PT-Smooth" Offset="6" BitOffset="0" Text="%Messwert% glätten: P =" SuffixText="" Value="1" />
-                                <Parameter Id="%AID%_UP-%TT%00%PPP+5%" Name="%Kuerzel%ExtCount" ParameterType="%AID%_PT-ExtCount" Offset="7" BitOffset="6" Text="Externe Messwerte berücksichtigen" Value="0" />
-                                <Parameter Id="%AID%_UP-%TT%00%PPP+6%" Name="%Kuerzel%ExtRead" ParameterType="%AID%_PT-OnOffYesNo" Offset="7" BitOffset="5" Text="    Externe Messwerte beim Start lesen" Value="0" />
-                                <Parameter Id="%AID%_UP-%TT%00%PPP+7%" Name="%Kuerzel%IntPercent" ParameterType="%AID%_PT-Percent" Offset="8" BitOffset="0" Text="    Anteil interner Messwert" SuffixText="Anteil(e)" Value="1" />
-                                <Parameter Id="%AID%_UP-%TT%00%PPP+8%" Name="%Kuerzel%Ext1Percent" ParameterType="%AID%_PT-Percent" Offset="9" BitOffset="0" Text="    Anteil externer Messwert 1" SuffixText="Anteil(e)" Value="0" />
-                                <Parameter Id="%AID%_UP-%TT%00%PPP+9%" Name="%Kuerzel%Ext2Percent" ParameterType="%AID%_PT-Percent" Offset="10" BitOffset="0" Text="    Anteil externer Messwert 2" SuffixText="Anteil(e)" Value="0" />
+                                <Parameter Id="%AID%_UP-%TT%00%PPP+2%" Name="%Kuerzel%CycleTime" ParameterType="%AID%_PT-DelayTime" Offset="1" BitOffset="2" Text="Zeit" Value="0" />
+                                <Parameter Id="%AID%_UP-%TT%00%PPP+3%" Name="%Kuerzel%DeltaAbs" ParameterType="%AID%_PT-DeltaAbs%Kuerzel%" Offset="3" BitOffset="0" Text="%Messwert% bei absoluter Abweichung senden&#10;(0=nicht senden)" SuffixText="%Suffix%" Value="0" />
+                                <Parameter Id="%AID%_UP-%TT%00%PPP+4%" Name="%Kuerzel%DeltaPercent" ParameterType="%AID%_PT-Percent" Offset="5" BitOffset="0" Text="%Messwert% bei Abweichung vom vorherigen Wert senden&#10;(0=nicht senden)" SuffixText="%" Value="0" />
+                                <Parameter Id="%AID%_UP-%TT%00%PPP+5%" Name="%Kuerzel%Smooth" ParameterType="%AID%_PT-Smooth" Offset="6" BitOffset="0" Text="%Messwert% glätten: P =" SuffixText="" Value="1" />
+                                <Parameter Id="%AID%_UP-%TT%00%PPP+6%" Name="%Kuerzel%ExtCount" ParameterType="%AID%_PT-ExtCount" Offset="7" BitOffset="6" Text="Externe Messwerte berücksichtigen" Value="0" />
+                                <Parameter Id="%AID%_UP-%TT%00%PPP+7%" Name="%Kuerzel%ExtRead" ParameterType="%AID%_PT-OnOffYesNo" Offset="7" BitOffset="5" Text="    Externe Messwerte beim Start lesen" Value="0" />
+                                <Parameter Id="%AID%_UP-%TT%00%PPP+8%" Name="%Kuerzel%IntPercent" ParameterType="%AID%_PT-Percent" Offset="8" BitOffset="0" Text="    Anteil interner Messwert" SuffixText="Anteil(e)" Value="1" />
+                                <Parameter Id="%AID%_UP-%TT%00%PPP+9%" Name="%Kuerzel%Ext1Percent" ParameterType="%AID%_PT-Percent" Offset="9" BitOffset="0" Text="    Anteil externer Messwert 1" SuffixText="Anteil(e)" Value="0" />
+                                <Parameter Id="%AID%_UP-%TT%00%PPP+10%" Name="%Kuerzel%Ext2Percent" ParameterType="%AID%_PT-Percent" Offset="10" BitOffset="0" Text="    Anteil externer Messwert 2" SuffixText="Anteil(e)" Value="0" />
                             </Union>
                         </Parameters>
                         <ParameterRefs>
                             <ParameterRef Id="%AID%_UP-%TT%00%PPP+0%_R-%TT%00%PPP+0%01" RefId="%AID%_UP-%TT%00%PPP+0%" />
                             <ParameterRef Id="%AID%_UP-%TT%00%PPP+1%_R-%TT%00%PPP+1%01" RefId="%AID%_UP-%TT%00%PPP+1%" />
-                            <ParameterRef Id="%AID%_UP-%TT%00%PPP+201%_R-%TT%00%PPP+201%01" RefId="%AID%_UP-%TT%00%PPP+201%" />
                             <ParameterRef Id="%AID%_UP-%TT%00%PPP+2%_R-%TT%00%PPP+2%01" RefId="%AID%_UP-%TT%00%PPP+2%" />
                             <ParameterRef Id="%AID%_UP-%TT%00%PPP+3%_R-%TT%00%PPP+3%01" RefId="%AID%_UP-%TT%00%PPP+3%" />
                             <ParameterRef Id="%AID%_UP-%TT%00%PPP+4%_R-%TT%00%PPP+4%01" RefId="%AID%_UP-%TT%00%PPP+4%" />
@@ -45,16 +43,17 @@
                             <ParameterRef Id="%AID%_UP-%TT%00%PPP+7%_R-%TT%00%PPP+7%01" RefId="%AID%_UP-%TT%00%PPP+7%" />
                             <ParameterRef Id="%AID%_UP-%TT%00%PPP+8%_R-%TT%00%PPP+8%01" RefId="%AID%_UP-%TT%00%PPP+8%" />
                             <ParameterRef Id="%AID%_UP-%TT%00%PPP+9%_R-%TT%00%PPP+9%01" RefId="%AID%_UP-%TT%00%PPP+9%" />
+                            <ParameterRef Id="%AID%_UP-%TT%00%PPP+10%_R-%TT%00%PPP+10%01" RefId="%AID%_UP-%TT%00%PPP+10%" />
                         </ParameterRefs>
                         <ComObjectTable>
-                            <ComObject Id="%AID%_O-%TT%000%KONR0%" Name="%Kuerzel%" Text="%Messwert%" Number="%KONR0+0%" FunctionText="Messwert %Einheit%" ObjectSize="2 Bytes" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="%DPST%" />
-                            <ComObject Id="%AID%_O-%TT%000%KONR1%" Name="Ext1%Kuerzel%" Text="Extern: %Messwert% 1" Number="%KONR1+0%" FunctionText="Messwert %Einheit%" ObjectSize="2 Bytes" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled" ReadOnInitFlag="Disabled" DatapointType="%DPST%" />
-                            <ComObject Id="%AID%_O-%TT%000%KONR1+1%" Name="Ext2%Kuerzel%" Text="Extern: %Messwert% 2" Number="%KONR1+1%" FunctionText="Messwert %Einheit%" ObjectSize="2 Bytes" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled" ReadOnInitFlag="Disabled" DatapointType="%DPST%" />
+                            <ComObject Id="%AID%_O-%TT%00%PPK+0%" Name="%Kuerzel%" Text="%Messwert%" Number="%KONR+0%" FunctionText="Messwert in %Einheit%" ObjectSize="2 Bytes" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-9-1" />
+                            <ComObject Id="%AID%_O-%TT%00%PPK+1%" Name="Ext1%Kuerzel%" Text="Extern: %Messwert% 1" Number="%KONR+10%" FunctionText="Messwert in %Einheit%" ObjectSize="2 Bytes" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled" ReadOnInitFlag="Disabled" DatapointType="DPST-9-1" />
+                            <ComObject Id="%AID%_O-%TT%00%PPK+2%" Name="Ext2%Kuerzel%" Text="Extern: %Messwert% 2" Number="%KONR+11%" FunctionText="Messwert in %Einheit%" ObjectSize="2 Bytes" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled" ReadOnInitFlag="Disabled" DatapointType="DPST-9-1" />
                         </ComObjectTable>
                         <ComObjectRefs>
-                            <ComObjectRef Id="%AID%_O-%TT%000%KONR0%_R-%TT%000%KONR0%01" RefId="%AID%_O-%TT%000%KONR0%" />
-                            <ComObjectRef Id="%AID%_O-%TT%000%KONR1%_R-%TT%000%KONR1%01" RefId="%AID%_O-%TT%000%KONR1%" />
-                            <ComObjectRef Id="%AID%_O-%TT%000%KONR1+1%_R-%TT%000%KONR1+1%01" RefId="%AID%_O-%TT%000%KONR1+1%" />
+                            <ComObjectRef Id="%AID%_O-%TT%00%PPK+0%_R-%TT%00%PPK+0%01" RefId="%AID%_O-%TT%00%PPK+0%" />
+                            <ComObjectRef Id="%AID%_O-%TT%00%PPK+1%_R-%TT%00%PPK+1%01" RefId="%AID%_O-%TT%00%PPK+1%" />
+                            <ComObjectRef Id="%AID%_O-%TT%00%PPK+2%_R-%TT%00%PPK+2%01" RefId="%AID%_O-%TT%00%PPK+2%" />
                         </ComObjectRefs>
                     </Static>
                     <Dynamic>
@@ -64,28 +63,28 @@
                                 <ParameterRefRef RefId="%AID%_UP-%TT%00%PPP+0%_R-%TT%00%PPP+0%01" HelpContext="SENS-Messwert-anpassen" />
                                 <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
                                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Externe Werte" UIHint="Headline" />
-                                <ParameterRefRef RefId="%AID%_UP-%TT%00%PPP+5%_R-%TT%00%PPP+5%01" HelpContext="%DOC%" />
-                                <choose ParamRefId="%AID%_UP-%TT%00%PPP+5%_R-%TT%00%PPP+5%01">
+                                <ParameterRefRef RefId="%AID%_UP-%TT%00%PPP+6%_R-%TT%00%PPP+6%01" HelpContext="%DOC%" />
+                                <choose ParamRefId="%AID%_UP-%TT%00%PPP+6%_R-%TT%00%PPP+6%01">
                                     <when test=">0">
-                                        <ParameterRefRef RefId="%AID%_UP-%TT%00%PPP+7%_R-%TT%00%PPP+7%01" HelpContext="%DOC%" />
                                         <ParameterRefRef RefId="%AID%_UP-%TT%00%PPP+8%_R-%TT%00%PPP+8%01" HelpContext="%DOC%" />
+                                        <ParameterRefRef RefId="%AID%_UP-%TT%00%PPP+9%_R-%TT%00%PPP+9%01" HelpContext="%DOC%" />
                                     </when>
                                     <when test="1">
-                                        <ParameterRefRef RefId="%AID%_UP-%TT%00%PPP+6%_R-%TT%00%PPP+6%01" HelpContext="%DOC%" />
+                                        <ParameterRefRef RefId="%AID%_UP-%TT%00%PPP+7%_R-%TT%00%PPP+7%01" HelpContext="%DOC%" />
                                         <ParameterSeparator Id="%AID%_PS-nnn" Text="Die Messwerte werden in dem hier angegebenen Verhältnis ( Int : Ext1 ) verrechnet und das Ergebnis bei den nachfolgenden Bedingungen verwendet. Solange ein externer Messwert nicht empfangen wurde, ist sein Anteil 0." />
-                                        <ComObjectRefRef RefId="%AID%_O-%TT%000%KONR1%_R-%TT%000%KONR1%01" />
+                                        <ComObjectRefRef RefId="%AID%_O-%TT%00%PPK+1%_R-%TT%00%PPK+1%01" />
                                     </when>
                                     <when test="2">
-                                        <ParameterRefRef RefId="%AID%_UP-%TT%00%PPP+9%_R-%TT%00%PPP+9%01" HelpContext="%DOC%" />
-                                        <ParameterRefRef RefId="%AID%_UP-%TT%00%PPP+6%_R-%TT%00%PPP+6%01" HelpContext="%DOC%" />
+                                        <ParameterRefRef RefId="%AID%_UP-%TT%00%PPP+10%_R-%TT%00%PPP+10%01" HelpContext="%DOC%" />
+                                        <ParameterRefRef RefId="%AID%_UP-%TT%00%PPP+7%_R-%TT%00%PPP+7%01" HelpContext="%DOC%" />
                                         <ParameterSeparator Id="%AID%_PS-nnn" Text="Die Messwerte werden in dem hier angegebenen Verhältnis ( Int : Ext1 : Ext2 ) verrechnet und das Ergebnis bei den nachfolgenden Bedingungen verwendet. Solange ein externer Messwert nicht empfangen wurde, ist sein Anteil 0." />
-                                        <ComObjectRefRef RefId="%AID%_O-%TT%000%KONR1+1%_R-%TT%000%KONR1+1%01" />
+                                        <ComObjectRefRef RefId="%AID%_O-%TT%00%PPK+2%_R-%TT%00%PPK+2%01" />
                                     </when>
                                 </choose>
                                 <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
                                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Sendeverhalten" UIHint="Headline" />
                                 <!-- %Messwert% Delay pattern -->
-                                <ParameterBlock Id="%AID%_PB-nnn" Name="%Kuerzel%DelayCycle" Inline="true" Layout="Grid" HelpContext="SENS-Messwert-zyklisch-senden">
+                                <ParameterBlock Id="%AID%_PB-nnn" Name="%Messwert%DelayCycle" Inline="true" Layout="Grid" HelpContext="SENS-Messwert-zyklisch-senden">
                                     <Rows>
                                         <Row Id="%AID%_PB-nnn_R-1" Name="Row1" />
                                     </Rows>
@@ -95,21 +94,21 @@
                                         <Column Id="%AID%_PB-nnn_C-3" Name="Col3" Width="20%" />
                                     </Columns>
                                     <ParameterSeparator Id="%AID%_PS-nnn" Text="%Messwert% zyklisch senden&#10;(0 = nicht senden)" Cell="1,1" />
-                                    <ParameterRefRef RefId="%AID%_UP-%TT%00%PPP+201%_R-%TT%00%PPP+201%01" Cell="1,2" HelpContext="SENS-Messwert-zyklisch-senden" />
+                                    <ParameterRefRef RefId="%AID%_UP-%TT%00%PPP+2%_R-%TT%00%PPP+2%01" Cell="1,2" HelpContext="SENS-Messwert-zyklisch-senden" />
                                     <ParameterRefRef RefId="%AID%_UP-%TT%00%PPP+1%_R-%TT%00%PPP+1%01" Cell="1,3" HelpContext="SENS-Messwert-zyklisch-senden" />
                                 </ParameterBlock>
-                                <ParameterRefRef RefId="%AID%_UP-%TT%00%PPP+2%_R-%TT%00%PPP+2%01" HelpContext="SENS-Messwert-bei-absoluter-Abweichung-senden" />
-                                <ParameterRefRef RefId="%AID%_UP-%TT%00%PPP+3%_R-%TT%00%PPP+3%01" HelpContext="SENS-Messwert-bei-relativer-Abweichung-senden" />
+                                <ParameterRefRef RefId="%AID%_UP-%TT%00%PPP+3%_R-%TT%00%PPP+3%01" HelpContext="SENS-Messwert-bei-absoluter-Abweichung-senden" />
+                                <ParameterRefRef RefId="%AID%_UP-%TT%00%PPP+4%_R-%TT%00%PPP+4%01" HelpContext="SENS-Messwert-bei-relativer-Abweichung-senden" />
                                 <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
                                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Glättungsfunktion" UIHint="Headline" />
-                                <ParameterRefRef RefId="%AID%_UP-%TT%00%PPP+4%_R-%TT%00%PPP+4%01" HelpContext="SENS-Messwert-glaetten" />
+                                <ParameterRefRef RefId="%AID%_UP-%TT%00%PPP+5%_R-%TT%00%PPP+5%01" HelpContext="SENS-Messwert-glaetten" />
                                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Glättungsformel: Xneu = Xalt + (M - Xalt) / P mit" />
                                 <ParameterSeparator Id="%AID%_PS-nnn" Text="  Xneu: neu errechneter Messwert" />
                                 <ParameterSeparator Id="%AID%_PS-nnn" Text="  Xalt: letzter errechneter Messwert" />
                                 <ParameterSeparator Id="%AID%_PS-nnn" Text="     M: aktueller Messwert vom Sensor" />
                                 <ParameterSeparator Id="%AID%_PS-nnn" Text="     P: einzugebender Parameter" />
                                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Je größer P, desto länger dauert es, bis eine plötzliche Änderung beim gemessenen Wert auch auf den Bus gesendet wird" />
-                                <ComObjectRefRef RefId="%AID%_O-%TT%000%KONR0%_R-%TT%000%KONR0%01" />
+                                <ComObjectRefRef RefId="%AID%_O-%TT%00%PPK+0%_R-%TT%00%PPK+0%01" />
                                 <!-- request sensor values -->
                                 <ComObjectRefRef RefId="%AID%_O-%TT%00050_R-%TT%0005001" />
                             </ParameterBlock>

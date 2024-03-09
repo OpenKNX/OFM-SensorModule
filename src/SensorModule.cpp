@@ -83,8 +83,8 @@ void SensorModule::processReadRequests(uint32_t iStartupDelay, uint32_t iReadReq
             sReadRequestsCalled += 1;
             if (knx.paramByte(SENS_VocExtRead) & SENS_VocExtReadMask)
             {
-                knx.getGroupObject(SENS_KoExt1VOC).requestObjectRead();
-                knx.getGroupObject(SENS_KoExt2VOC).requestObjectRead();
+                knx.getGroupObject(SENS_KoExt1Voc).requestObjectRead();
+                knx.getGroupObject(SENS_KoExt2Voc).requestObjectRead();
             }
         }
         if (sReadRequestsCalled == 5 && delayCheck(iStartupDelay, iReadRequestDelay + sReadRequestsCalled * 1000))
@@ -481,7 +481,7 @@ void SensorModule::calculateAirquality(bool iForce /*= false*/)
             {
                 if (!openknxSensorDevicesModule.measureValue(Voc, lValue))
                     return;
-                lValue = knx.getGroupObject(SENS_KoVOC).value(getDPT(VAL_DPT_9));
+                lValue = knx.getGroupObject(SENS_KoVoc).value(getDPT(VAL_DPT_9));
                 lAirquality = getAirquality(lValue, sVocLimits);
             }
             if ((uint8_t)knx.getGroupObject(SENS_KoAirquality).value(getDPT(VAL_DPT_5)) != lAirquality)
@@ -527,7 +527,7 @@ void SensorModule::processSensors(bool iForce /*= false*/)
             processSensor(&gPre, readSensorValue, Pressure, 1.0f, 100.0f, SENS_PreOffset, SENS_KoPre, VAL_DPT_9);
             break;
         case BIT_Voc:
-            processSensor(&gVoc, readSensorValue, Voc, 1.0f, 1.0f, SENS_VocOffset, SENS_KoVOC, VAL_DPT_9);
+            processSensor(&gVoc, readSensorValue, Voc, 1.0f, 1.0f, SENS_VocOffset, SENS_KoVoc, VAL_DPT_9);
             break;
         case BIT_Co2:
             processSensor(&gCo2, readSensorValue, Co2, 1.0f, 1.0f, SENS_Co2Offset, SENS_KoCo2, VAL_DPT_9);
