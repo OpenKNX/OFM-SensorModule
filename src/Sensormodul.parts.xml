@@ -1,20 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <?xml-model href="../../Organization/knxprod-support/knx_project_20/knx-editor.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <KNX xmlns:op="http://github.com/OpenKNX/OpenKNXproducer" xmlns="http://knx.org/xml/project/20" CreatedBy="KNX MT" ToolVersion="5.1.255.16695">
-    <op:param name="%Messwert%" value="Temperatur" />
-    <op:param name="%Kuerzel%" value="Temp" />
-    <op:param name="%MesswertIcon%" value="thermometer" />
-    <op:param name="%PPP%" value="110" />
-    <op:param name="%KONR0%" value="60" />
-    <op:param name="%KONR1%" value="70" />
-    <op:param name="%DPST%" value="DPST-9-1" />
-    <op:param name="%ParamOffset%" value="1" />
-    <op:param name="%Einheit%" value="in °C" />
-    <op:param name="%Suffix%" value="x 0.1 °C" />
     <ManufacturerData>
         <Manufacturer RefId="M-00FA">
         <ApplicationPrograms>
             <ApplicationProgram Id="%AID%" ApplicationNumber="103" ApplicationVersion="10" ProgramType="ApplicationProgram" MaskVersion="MV-07B0" Name="WP-Sensor-Logic" LoadProcedureStyle="MergedProcedure" PeiType="0" DefaultLanguage="de" DynamicTableManagement="false" Linkable="true" MinEtsVersion="4.0">
+                    <op:partParams name="INPUT">
+                        <!-- this ist just for documentation reasons, as an example for the caller -->
+                        <op:param name="%Messwert%" value="Temperatur" />
+                        <op:param name="%Kuerzel%" value="Temp" />
+                        <op:param name="%MesswertIcon%" value="thermometer" />
+                        <op:param name="%PPP%" value="110" />
+                        <op:param name="%KONR0%" value="60" />
+                        <op:param name="%KONR1%" value="70" />
+                        <op:param name="%DPST%" value="DPST-9-1" />
+                        <op:param name="%ParamOffset%" value="1" />
+                        <op:param name="%Einheit%" value="in °C" />
+                        <op:param name="%Suffix%" value="x 0.1 °C" />
+                    </op:partParams>
                     <Static>
                         <Parameters>
                             <Union SizeInBit="88">
@@ -47,13 +50,13 @@
                             <ParameterRef Id="%AID%_UP-%TT%00%PPP+9%_R-%TT%00%PPP+9%01" RefId="%AID%_UP-%TT%00%PPP+9%" />
                         </ParameterRefs>
                         <ComObjectTable>
-                            <ComObject Id="%AID%_O-%TT%000%KONR0%" Name="%Kuerzel%" Text="%Messwert%" Number="%KONR0+0%" FunctionText="Messwert %Einheit%" ObjectSize="2 Bytes" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="%DPST%" />
-                            <ComObject Id="%AID%_O-%TT%000%KONR1%" Name="Ext1%Kuerzel%" Text="Extern: %Messwert% 1" Number="%KONR1+0%" FunctionText="Messwert %Einheit%" ObjectSize="2 Bytes" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled" ReadOnInitFlag="Disabled" DatapointType="%DPST%" />
+                            <ComObject Id="%AID%_O-%TT%000%KONR0+0%" Name="%Kuerzel%" Text="%Messwert%" Number="%KONR0+0%" FunctionText="Messwert %Einheit%" ObjectSize="2 Bytes" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="%DPST%" />
+                            <ComObject Id="%AID%_O-%TT%000%KONR1+0%" Name="Ext1%Kuerzel%" Text="Extern: %Messwert% 1" Number="%KONR1+0%" FunctionText="Messwert %Einheit%" ObjectSize="2 Bytes" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled" ReadOnInitFlag="Disabled" DatapointType="%DPST%" />
                             <ComObject Id="%AID%_O-%TT%000%KONR1+1%" Name="Ext2%Kuerzel%" Text="Extern: %Messwert% 2" Number="%KONR1+1%" FunctionText="Messwert %Einheit%" ObjectSize="2 Bytes" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled" ReadOnInitFlag="Disabled" DatapointType="%DPST%" />
                         </ComObjectTable>
                         <ComObjectRefs>
-                            <ComObjectRef Id="%AID%_O-%TT%000%KONR0%_R-%TT%000%KONR0%01" RefId="%AID%_O-%TT%000%KONR0%" />
-                            <ComObjectRef Id="%AID%_O-%TT%000%KONR1%_R-%TT%000%KONR1%01" RefId="%AID%_O-%TT%000%KONR1%" />
+                            <ComObjectRef Id="%AID%_O-%TT%000%KONR0+0%_R-%TT%000%KONR0+0%01" RefId="%AID%_O-%TT%000%KONR0+0%" />
+                            <ComObjectRef Id="%AID%_O-%TT%000%KONR1+0%_R-%TT%000%KONR1+0%01" RefId="%AID%_O-%TT%000%KONR1+0%" />
                             <ComObjectRef Id="%AID%_O-%TT%000%KONR1+1%_R-%TT%000%KONR1+1%01" RefId="%AID%_O-%TT%000%KONR1+1%" />
                         </ComObjectRefs>
                     </Static>
@@ -73,7 +76,7 @@
                                     <when test="1">
                                         <ParameterRefRef RefId="%AID%_UP-%TT%00%PPP+6%_R-%TT%00%PPP+6%01" HelpContext="%DOC%" />
                                         <ParameterSeparator Id="%AID%_PS-nnn" Text="Die Messwerte werden in dem hier angegebenen Verhältnis ( Int : Ext1 ) verrechnet und das Ergebnis bei den nachfolgenden Bedingungen verwendet. Solange ein externer Messwert nicht empfangen wurde, ist sein Anteil 0." />
-                                        <ComObjectRefRef RefId="%AID%_O-%TT%000%KONR1%_R-%TT%000%KONR1%01" />
+                                        <ComObjectRefRef RefId="%AID%_O-%TT%000%KONR1+0%_R-%TT%000%KONR1+0%01" />
                                     </when>
                                     <when test="2">
                                         <ParameterRefRef RefId="%AID%_UP-%TT%00%PPP+9%_R-%TT%00%PPP+9%01" HelpContext="%DOC%" />
@@ -109,7 +112,7 @@
                                 <ParameterSeparator Id="%AID%_PS-nnn" Text="     M: aktueller Messwert vom Sensor" />
                                 <ParameterSeparator Id="%AID%_PS-nnn" Text="     P: einzugebender Parameter" />
                                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Je größer P, desto länger dauert es, bis eine plötzliche Änderung beim gemessenen Wert auch auf den Bus gesendet wird" />
-                                <ComObjectRefRef RefId="%AID%_O-%TT%000%KONR0%_R-%TT%000%KONR0%01" />
+                                <ComObjectRefRef RefId="%AID%_O-%TT%000%KONR0+0%_R-%TT%000%KONR0+0%01" />
                                 <!-- request sensor values -->
                                 <ComObjectRefRef RefId="%AID%_O-%TT%00050_R-%TT%0005001" />
                             </ParameterBlock>

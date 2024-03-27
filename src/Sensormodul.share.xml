@@ -5,7 +5,19 @@
     <Manufacturer RefId="M-00FA">
       <ApplicationPrograms>
         <ApplicationProgram Id="%AID%" ApplicationNumber="103" ApplicationVersion="10" ProgramType="ApplicationProgram" MaskVersion="MV-07B0" Name="WP-Sensor-Logic" LoadProcedureStyle="MergedProcedure" PeiType="0" DefaultLanguage="de" DynamicTableManagement="false" Linkable="true" MinEtsVersion="4.0">
-          <op:part href="Sensormodul.parts.xml" instance="TEMP">
+          <op:part href="Sensormodul.parts.xml" name="MESS" instances="7">
+            <op:param name="%Messwert%" values="Temperatur Luftfeuchte Luftdruck Voc CO2 Helligkeit Entfernung" />
+            <op:param name="%Kuerzel%" values="Temp Hum Pre Voc Co2 Lux Tof" />
+            <op:param name="%MesswertIcon%" values="thermometer water-percent location-enter hexagon-multiple-outline molecule-co2 lightbulb-outline wrap-disabled" />
+            <op:param name="%PPP%" values="110 120 130 140 150 180 190" digits="3" />
+            <op:param name="%KONR0%" values="60 61 62 63 64 87 88" />
+            <op:param name="%KONR1%" value="70" increment="2" />
+            <op:param name="%DPST%" values="DPST-9-1 DPST-9-7 DPST-9-6 DPT-9 DPST-9-8 DPST-9-4 DPST-7-11" />
+            <op:param name="%ParamOffset%" values="1 12 23 34 45 64 75" />
+            <op:param name="%Einheit%" list="," values="in °C,in %,in mBar,(ohne Einheit),in ppm,in Lux,in mm" />
+            <op:param name="%Suffix%" list="," values="x 0.1 °C,%,mBar,,ppm,Lux,mm" />
+          </op:part>
+          <!-- <op:part href="Sensormodul.parts.xml" name="TEMP" instances="2">
             <op:param name="%Messwert%" value="Temperatur" />
             <op:param name="%Kuerzel%" value="Temp" />
             <op:param name="%MesswertIcon%" value="thermometer" />
@@ -17,7 +29,7 @@
             <op:param name="%Einheit%" value="in °C" />
             <op:param name="%Suffix%" value="x 0.1 °C" />
           </op:part>
-          <op:part href="Sensormodul.parts.xml" instance="HUM">
+          <op:part href="Sensormodul.parts.xml" name="HUM">
             <op:param name="%Messwert%" value="Luftfeuchte" />
             <op:param name="%Kuerzel%" value="Hum" />
             <op:param name="%MesswertIcon%" value="water-percent" />
@@ -29,7 +41,7 @@
             <op:param name="%Einheit%" value="in %" />
             <op:param name="%Suffix%" value="%" />
           </op:part>
-          <op:part href="Sensormodul.parts.xml" instance="PRE">
+          <op:part href="Sensormodul.parts.xml" name="PRE">
             <op:param name="%Messwert%" value="Luftdruck" />
             <op:param name="%Kuerzel%" value="Pre" />
             <op:param name="%MesswertIcon%" value="location-enter" />
@@ -41,7 +53,7 @@
             <op:param name="%Einheit%" value="in mBar" />
             <op:param name="%Suffix%" value="mBar" />
           </op:part>
-          <op:part href="Sensormodul.parts.xml" instance="VOC">
+          <op:part href="Sensormodul.parts.xml" name="VOC">
             <op:param name="%Messwert%" value="Voc" />
             <op:param name="%Kuerzel%" value="Voc" />
             <op:param name="%MesswertIcon%" value="hexagon-multiple-outline" />
@@ -53,7 +65,7 @@
             <op:param name="%Einheit%" value="(ohne Einheit)" />
             <op:param name="%Suffix%" value="" />
           </op:part>
-          <op:part href="Sensormodul.parts.xml" instance="CO2">
+          <op:part href="Sensormodul.parts.xml" name="CO2">
             <op:param name="%Messwert%" value="CO2" />
             <op:param name="%Kuerzel%" value="Co2" />
             <op:param name="%MesswertIcon%" value="molecule-co2" />
@@ -65,7 +77,7 @@
             <op:param name="%Einheit%" value="in ppm" />
             <op:param name="%Suffix%" value="ppm" />
           </op:part>
-          <op:part href="Sensormodul.parts.xml" instance="LUX">
+          <op:part href="Sensormodul.parts.xml" name="LUX">
             <op:param name="%Messwert%" value="Helligkeit" />
             <op:param name="%Kuerzel%" value="Lux" />
             <op:param name="%MesswertIcon%" value="lightbulb-outline" />
@@ -77,7 +89,7 @@
             <op:param name="%Einheit%" value="in Lux" />
             <op:param name="%Suffix%" value="Lux" />
           </op:part>
-          <op:part href="Sensormodul.parts.xml" instance="TOF">
+          <op:part href="Sensormodul.parts.xml" name="TOF">
             <op:param name="%Messwert%" value="Entfernung" />
             <op:param name="%Kuerzel%" value="Tof" />
             <op:param name="%MesswertIcon%" value="wrap-disabled" />
@@ -88,7 +100,7 @@
             <op:param name="%ParamOffset%" value="75" />
             <op:param name="%Einheit%" value="in mm" />
             <op:param name="%Suffix%" value="mm" />
-          </op:part>
+          </op:part> -->
           <Static>
             <ParameterTypes>
               <!-- Parameter types for Sensormodule -->
@@ -214,11 +226,7 @@
                 <Parameter Id="%AID%_UP-%TT%00104" Name="Accuracy" ParameterType="%AID%_PT-OnOffYesNo" Offset="0" BitOffset="4" Text="Kalibrierungsfortschritt ausgeben" Value="0" />
                 <Parameter Id="%AID%_UP-%TT%00105" Name="DeleteData" ParameterType="%AID%_PT-DeleteData" Offset="0" BitOffset="5" Text="Kalibrierungsdaten löschen" Value="0" />
               </Union>
-              <op:include href="Sensormodul.parts.xml" xpath="//Parameters/*" type="part" instance="TEMP" />
-              <op:include href="Sensormodul.parts.xml" xpath="//Parameters/*" type="part" instance="HUM" />
-              <op:include href="Sensormodul.parts.xml" xpath="//Parameters/*" type="part" instance="PRE" />
-              <op:include href="Sensormodul.parts.xml" xpath="//Parameters/*" type="part" instance="VOC" />
-              <op:include href="Sensormodul.parts.xml" xpath="//Parameters/*" type="part" instance="CO2" />
+              <op:usePart name="MESS" xpath="//Parameters/*" instanceTo="5" />
 
               <!-- parameters 161-169 (except 168) were used in app v2.x and should not be used anymore -->
               <!-- TODO: 1 Byte free, change offset accordingly to 56 -->
@@ -232,8 +240,7 @@
                 <Parameter Id="%AID%_UP-%TT%00173" Name="DewDeltaPercent" ParameterType="%AID%_PT-Percent" Offset="5" BitOffset="0" Text="Taupunkt bei Abweichung vom vorherigen Wert senden&#10;(0=nicht senden)" SuffixText="%" Value="0" />
                 <Parameter Id="%AID%_UP-%TT%00174" Name="DewSmooth" ParameterType="%AID%_PT-Smooth" Offset="6" BitOffset="0" Text="Taupunkt glätten: P =" SuffixText="" Value="1" />
               </Union>
-              <op:include href="Sensormodul.parts.xml" xpath="//Parameters/*" type="part" instance="LUX" />
-              <op:include href="Sensormodul.parts.xml" xpath="//Parameters/*" type="part" instance="TOF" />
+              <op:usePart name="MESS" xpath="//Parameters/*" instanceFrom="6" />
 
               <Union SizeInBit="32">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="86" BitOffset="0" />
@@ -265,15 +272,12 @@
               <ParameterRef Id="%AID%_UP-%TT%00104_R-%TT%0010401" RefId="%AID%_UP-%TT%00104" />
               <ParameterRef Id="%AID%_UP-%TT%00105_R-%TT%0010501" RefId="%AID%_UP-%TT%00105" />
               <!-- Temp -->
-              <op:include href="Sensormodul.parts.xml" xpath="//ParameterRefs/*" type="part" instance="TEMP" />
               <!-- Hum -->
-              <op:include href="Sensormodul.parts.xml" xpath="//ParameterRefs/*" type="part" instance="HUM" />
               <!-- Pre -->
-              <op:include href="Sensormodul.parts.xml" xpath="//ParameterRefs/*" type="part" instance="PRE" />
               <!-- Voc -->
-              <op:include href="Sensormodul.parts.xml" xpath="//ParameterRefs/*" type="part" instance="VOC" />
               <!-- Co2 -->
-              <op:include href="Sensormodul.parts.xml" xpath="//ParameterRefs/*" type="part" instance="CO2" />
+
+              <op:usePart name="MESS" xpath="//ParameterRefs/*" instanceTo="5" />
               <!-- checkboxes -->
               <!-- <ParameterRef Id="%AID%_UP-%TT%00160_R-%TT%0016001" RefId="%AID%_UP-%TT%00160" /> Access="Read" /> -->
               <!-- <ParameterRef Id="%AID%_UP-%TT%00168_R-%TT%0016801" RefId="%AID%_UP-%TT%00168" /> -->
@@ -286,8 +290,7 @@
               <ParameterRef Id="%AID%_UP-%TT%00173_R-%TT%0017301" RefId="%AID%_UP-%TT%00173" />
               <ParameterRef Id="%AID%_UP-%TT%00174_R-%TT%0017401" RefId="%AID%_UP-%TT%00174" />
               <!-- additional sensors for v2.8 -->
-              <op:include href="Sensormodul.parts.xml" xpath="//ParameterRefs/*" type="part" instance="LUX" />
-              <op:include href="Sensormodul.parts.xml" xpath="//ParameterRefs/*" type="part" instance="TOF" />
+              <op:usePart name="MESS" xpath="//ParameterRefs/*" instanceFrom="6" />
 
               <ParameterRef Id="%AID%_UP-%TT%00200_R-%TT%0020001" RefId="%AID%_UP-%TT%00200" />
               <ParameterRef Id="%AID%_UP-%TT%00201_R-%TT%0020101" RefId="%AID%_UP-%TT%00201" />
@@ -315,13 +318,7 @@
               <ComObject Id="%AID%_O-%TT%00051" Name="Error" Text="Sensorfehler" Number="51" FunctionText="Bitleiste" ObjectSize="2 Bytes" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-7-1" />
               <!-- KO 52-53 free for future extensions -->
               <!-- KO 54-59 free for future inputs -->
-              <op:include href="Sensormodul.parts.xml" xpath="//ComObjectTable/*" type="part" instance="TEMP" />
-              <op:include href="Sensormodul.parts.xml" xpath="//ComObjectTable/*" type="part" instance="HUM" />
-              <op:include href="Sensormodul.parts.xml" xpath="//ComObjectTable/*" type="part" instance="PRE" />
-              <op:include href="Sensormodul.parts.xml" xpath="//ComObjectTable/*" type="part" instance="VOC" />
-              <op:include href="Sensormodul.parts.xml" xpath="//ComObjectTable/*" type="part" instance="CO2" />
-              <op:include href="Sensormodul.parts.xml" xpath="//ComObjectTable/*" type="part" instance="LUX" />
-              <op:include href="Sensormodul.parts.xml" xpath="//ComObjectTable/*" type="part" instance="TOF" />
+              <op:usePart name="MESS" xpath="//ComObjectTable/*" />
 
               <ComObject Id="%AID%_O-%TT%00065" Name="Co2b" Text="CO2-VOC" Number="65" FunctionText="Messwert (berechnet) in ppm" ObjectSize="2 Bytes" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-9-8" />
               <ComObject Id="%AID%_O-%TT%00066" Name="Dewpoint" Text="Taupunkt" Number="66" FunctionText="Messwert in °C" ObjectSize="2 Bytes" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-9-1" />
@@ -333,13 +330,7 @@
               <ComObjectRef Id="%AID%_O-%TT%00050_R-%TT%0005001" RefId="%AID%_O-%TT%00050" />
               <ComObjectRef Id="%AID%_O-%TT%00051_R-%TT%0005101" RefId="%AID%_O-%TT%00051" />
 
-              <op:include href="Sensormodul.parts.xml" xpath="//ComObjectRefs/*" type="part" instance="TEMP" />
-              <op:include href="Sensormodul.parts.xml" xpath="//ComObjectRefs/*" type="part" instance="HUM" />
-              <op:include href="Sensormodul.parts.xml" xpath="//ComObjectRefs/*" type="part" instance="PRE" />
-              <op:include href="Sensormodul.parts.xml" xpath="//ComObjectRefs/*" type="part" instance="VOC" />
-              <op:include href="Sensormodul.parts.xml" xpath="//ComObjectRefs/*" type="part" instance="CO2" />
-              <op:include href="Sensormodul.parts.xml" xpath="//ComObjectRefs/*" type="part" instance="LUX" />
-              <op:include href="Sensormodul.parts.xml" xpath="//ComObjectRefs/*" type="part" instance="TOF" />
+              <op:usePart name="MESS" xpath="//ComObjectRefs/*" />
 
               <!-- <ComObjectRef Id="%AID%_O-%TT%00064_R-%TT%0006401" RefId="%AID%_O-%TT%00064" />
               <ComObjectRef Id="%AID%_O-%TT%00078_R-%TT%0007801" RefId="%AID%_O-%TT%00078" />
@@ -556,31 +547,31 @@
               <!-- Temp -->
               <choose ParamRefId="%AID%_UP-%TT%00200_R-%TT%0020001">
                 <when test=">0">
-                  <op:include href="Sensormodul.parts.xml" xpath="//Dynamic/ChannelIndependentBlock/*" type="part" instance="TEMP" />
+                  <op:usePart name="MESS" xpath="//Dynamic/ChannelIndependentBlock/*" instance="1" />
                 </when>
               </choose>
               <!-- Hum -->
               <choose ParamRefId="%AID%_UP-%TT%00201_R-%TT%0020101">
                 <when test=">0">
-                  <op:include href="Sensormodul.parts.xml" xpath="//Dynamic/ChannelIndependentBlock/*" type="part" instance="HUM" />
+                  <op:usePart name="MESS" xpath="//Dynamic/ChannelIndependentBlock/*" instance="2" />
                 </when>
               </choose>
               <!-- Pre -->
               <choose ParamRefId="%AID%_UP-%TT%00202_R-%TT%0020201">
                 <when test=">0">
-                  <op:include href="Sensormodul.parts.xml" xpath="//Dynamic/ChannelIndependentBlock/*" type="part" instance="PRE" />
+                  <op:usePart name="MESS" xpath="//Dynamic/ChannelIndependentBlock/*" instance="3" />
                 </when>
               </choose>
               <!-- Voc -->
               <choose ParamRefId="%AID%_UP-%TT%00203_R-%TT%0020301">
                 <when test=">0">
-                  <op:include href="Sensormodul.parts.xml" xpath="//Dynamic/ChannelIndependentBlock/*" type="part" instance="VOC" />
+                  <op:usePart name="MESS" xpath="//Dynamic/ChannelIndependentBlock/*" instance="4" />
                 </when>
               </choose>
               <!-- Co2 -->
               <choose ParamRefId="%AID%_UP-%TT%00204_R-%TT%0020401">
                 <when test=">0">
-                  <op:include href="Sensormodul.parts.xml" xpath="//Dynamic/ChannelIndependentBlock/*" type="part" instance="CO2" />
+                  <op:usePart name="MESS" xpath="//Dynamic/ChannelIndependentBlock/*" instance="5" />
                 </when>
                 <when test="3 5 8">
                   <!-- BME680, IAQCore, SGP30 output Co2Calc -->
@@ -600,13 +591,13 @@
               <!-- Lux -->
               <choose ParamRefId="%AID%_UP-%TT%00205_R-%TT%0020501">
                 <when test=">0">
-                  <op:include href="Sensormodul.parts.xml" xpath="//Dynamic/ChannelIndependentBlock/*" type="part" instance="LUX" />
+                  <op:usePart name="MESS" xpath="//Dynamic/ChannelIndependentBlock/*" instance="6" />
                 </when>
               </choose>
               <!-- Tof -->
               <choose ParamRefId="%AID%_UP-%TT%00206_R-%TT%0020601">
                 <when test=">0">
-                  <op:include href="Sensormodul.parts.xml" xpath="//Dynamic/ChannelIndependentBlock/*" type="part" instance="TOF" />
+                  <op:usePart name="MESS" xpath="//Dynamic/ChannelIndependentBlock/*" instance="7" />
                 </when>
               </choose>
               <choose ParamRefId="%AID%_P-%TT%00215_R-%TT%0021501">

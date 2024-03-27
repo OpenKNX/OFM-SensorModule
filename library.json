@@ -3,14 +3,6 @@
     "version": "2.0.0",
     "description": "SensorModule module for the knx stack, can be embedded in an ETS application",
     "dependencies": {
-        "adafruit/Adafruit VEML7700 Library": "2.1.0",
-        "adafruit/Adafruit BusIO": "^1.14.1",
-        "adafruit/Adafruit BME280 Library": "2.1.2",
-        "adafruit/Adafruit Unified Sensor": "1.1.13",
-        "sparkfun/SparkFun SCD30 Arduino Library": "1.0.14",
-        "sensirion/Sensirion I2C SCD4x": "0.4.0",
-        "sensirion/Sensirion Core": "0.6.0",
-        "pololu/VL53L1X": "1.2.1"
     },
     "homepage": "https://openknx.de",
     "authors": {

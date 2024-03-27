@@ -1,19 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <?xml-model href="../../Organization/knxprod-support/knx_project_20/knx-editor.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <KNX xmlns:op="http://github.com/OpenKNX/OpenKNXproducer" xmlns="http://knx.org/xml/project/20" CreatedBy="KNX MT" ToolVersion="5.1.255.16695">
-    <op:param name="%Messwert%" value="Temperatur" />
-    <op:param name="%Kuerzel%" value="Temp" />
-    <op:param name="%MesswertIcon%" value="thermometer" />
-    <op:param name="%PPP%" value="100" />
-    <op:param name="%PPK%" value="10" />
-    <op:param name="%KONR%" value="60" />
-    <op:param name="%ParamOffset%" value="1" />
-    <op:param name="%Einheit%" value="°C" />
-    <op:param name="%Suffix%" value="x 0.1 °C" />
     <ManufacturerData>
         <Manufacturer RefId="M-00FA">
         <ApplicationPrograms>
             <ApplicationProgram Id="%AID%" ApplicationNumber="103" ApplicationVersion="10" ProgramType="ApplicationProgram" MaskVersion="MV-07B0" Name="WP-Sensor-Logic" LoadProcedureStyle="MergedProcedure" PeiType="0" DefaultLanguage="de" DynamicTableManagement="false" Linkable="true" MinEtsVersion="4.0">
+                    <op:part name="INPUT" href="Sensormodul.parts.new.xml">
+                        <!-- this ist just for documentation reasons, as an example for the caller -->
+                        <op:param name="%Messwert%" value="Temperatur" />
+                        <op:param name="%Kuerzel%" value="Temp" />
+                        <op:param name="%MesswertIcon%" value="thermometer" />
+                        <op:param name="%PPP%" value="100" />
+                        <op:param name="%PPK%" value="10" />
+                        <op:param name="%KONR%" value="60" />
+                        <op:param name="%ParamOffset%" value="1" />
+                        <op:param name="%Einheit%" value="°C" />
+                        <op:param name="%Suffix%" value="x 0.1 °C" />
+                    </op:part>
                     <Static>
                         <Parameters>
                             <Union SizeInBit="88">
@@ -56,7 +59,7 @@
                             <ComObjectRef Id="%AID%_O-%TT%00%PPK+2%_R-%TT%00%PPK+2%01" RefId="%AID%_O-%TT%00%PPK+2%" />
                         </ComObjectRefs>
                     </Static>
-                    <Dynamic>
+                    <Dynamic> 
                         <ChannelIndependentBlock>
                             <ParameterBlock Id="%AID%_PB-nnn" Name="%Messwert%" Text="%Messwert%" Icon="%MesswertIcon%" HelpContext="Empty">
                                 <ParameterSeparator Id="%AID%_PS-nnn" Text="%Messwert%" UIHint="Headline" />
