@@ -142,7 +142,7 @@
                   <Enumeration Text="SGP30" Value="8" Id="%ENID%" />
                 </TypeRestriction>
               </ParameterType>
-              <ParameterType Id="%AID%_PT-Co2Sensors" Name="C02Sensors">
+              <ParameterType Id="%AID%_PT-Co2Sensors" Name="Co2Sensors">
                 <TypeRestriction Base="Value" SizeInBit="4">
                   <Enumeration Text="Kein Sensor" Value="0" Id="%ENID%" />
                   <Enumeration Text="BME680" Value="3" Id="%ENID%" />
@@ -201,7 +201,7 @@
               <ParameterType Id="%AID%_PT-DeltaAbsTof" Name="DeltaAbsTof">
                 <TypeNumber SizeInBit="16" Type="unsignedInt" minInclusive="0" maxInclusive="4000" />
               </ParameterType>
-              <ParameterType Id="%AID%_PT-ExtCount" Name="ExternalCount">
+              <ParameterType Id="%AID%_PT-ExtCount" Name="ExtCount">
                 <TypeRestriction Base="Value" SizeInBit="2">
                   <Enumeration Text="0" Value="0" Id="%ENID%" />
                   <Enumeration Text="1" Value="1" Id="%ENID%" />
@@ -219,7 +219,7 @@
               <!-- Parameter for this device, channel independent -->
               <Union SizeInBit="8">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="0" BitOffset="0" />
-                <Parameter Id="%AID%_UP-%TT%00100" Name="Error" ParameterType="%AID%_PT-OnOffYesNo" Offset="0" BitOffset="0" Text="Fehlerobjekt für Standardmesswerte anzeigen" Value="0" />
+                <!-- <Parameter Id="%AID%_UP-%TT%00100" Name="Error" ParameterType="%AID%_PT-OnOffYesNo" Offset="0" BitOffset="0" Text="Fehlerobjekt für Standardmesswerte anzeigen" Value="0" /> -->
                 <Parameter Id="%AID%_UP-%TT%00101" Name="Dewpoint" ParameterType="%AID%_PT-OnOffYesNo" Offset="0" BitOffset="1" Text="Taupunkt berechnen" Value="0" />
                 <Parameter Id="%AID%_UP-%TT%00102" Name="Comfort" ParameterType="%AID%_PT-OnOffYesNo" Offset="0" BitOffset="2" Text="Behaglichkeitszone ausgeben" Value="0" />
                 <Parameter Id="%AID%_UP-%TT%00103" Name="Airquality" ParameterType="%AID%_PT-OnOffYesNo" Offset="0" BitOffset="3" Text="Luftqualitätsampel ausgeben" Value="0" />
@@ -265,7 +265,7 @@
 
             </Parameters>
             <ParameterRefs>
-              <ParameterRef Id="%AID%_UP-%TT%00100_R-%TT%0010001" RefId="%AID%_UP-%TT%00100" />
+              <!-- <ParameterRef Id="%AID%_UP-%TT%00100_R-%TT%0010001" RefId="%AID%_UP-%TT%00100" /> -->
               <ParameterRef Id="%AID%_UP-%TT%00101_R-%TT%0010101" RefId="%AID%_UP-%TT%00101" />
               <ParameterRef Id="%AID%_UP-%TT%00102_R-%TT%0010201" RefId="%AID%_UP-%TT%00102" />
               <ParameterRef Id="%AID%_UP-%TT%00103_R-%TT%0010301" RefId="%AID%_UP-%TT%00103" />
@@ -315,7 +315,7 @@
             </ParameterRefs>
             <ComObjectTable>
               <ComObject Id="%AID%_O-%TT%00050" Name="RequestValues" Text="Sensorwerte anfordern" Number="50" FunctionText="Alle Werte senden" ObjectSize="1 Bit" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-16" />
-              <ComObject Id="%AID%_O-%TT%00051" Name="Error" Text="Sensorfehler" Number="51" FunctionText="Bitleiste" ObjectSize="2 Bytes" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-7-1" />
+              <!-- <ComObject Id="%AID%_O-%TT%00051" Name="Error" Text="Sensorfehler" Number="51" FunctionText="Bitleiste" ObjectSize="2 Bytes" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-7-1" /> -->
               <!-- KO 52-53 free for future extensions -->
               <!-- KO 54-59 free for future inputs -->
               <op:usePart name="MESS" xpath="//ComObjectTable/*" />
@@ -328,7 +328,7 @@
             </ComObjectTable>
             <ComObjectRefs>
               <ComObjectRef Id="%AID%_O-%TT%00050_R-%TT%0005001" RefId="%AID%_O-%TT%00050" />
-              <ComObjectRef Id="%AID%_O-%TT%00051_R-%TT%0005101" RefId="%AID%_O-%TT%00051" />
+              <!-- <ComObjectRef Id="%AID%_O-%TT%00051_R-%TT%0005101" RefId="%AID%_O-%TT%00051" /> -->
 
               <op:usePart name="MESS" xpath="//ComObjectRefs/*" />
 
@@ -361,8 +361,15 @@
             <Options />
           </Static>
           <Dynamic>
-            <Channel Name="MainChannel" Text="Sensoren" Number="%TT%" Id="%AID%_CH-%TT%" Icon="gauge" HelpContext="Empty">
-              <ParameterBlock Id="%AID%_PB-nnn" Name="Settings" Text="Sensorauswahl" Icon="cog-outline" HelpContext="Empty">
+            <Channel Id="%AID%_CH-%PREFIX%" Number="%PREFIX%" Name="Main" Text="Sensoren" Icon="gauge" HelpContext="Empty">
+              <!-- <ParameterBlock Id="%AID%_PB-nnn" Name="Settings" Text="Einstellungen" Icon="cog-outline" HelpContext="Empty">
+                <ParameterSeparator Id="%AID%_PS-nnn" Text="Sensormodul Version %ModuleVersion%" UIHint="Headline" />
+                <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
+                <ParameterSeparator Id="%AID%_PS-nnn" Text="Kanalauswahl" UIHint="Headline" />
+                <ParameterRefRef RefId="%AID%_UP-%TT%00020_R-%TT%0002001" HelpContext="BASE-Verfuegbare-Kanaele" IndentLevel="1" />
+                <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
+              </ParameterBlock> -->
+              <ParameterBlock Id="%AID%_PB-nnn" Name="Sensors" Text="Sensorauswahl" ShowInComObjectTree="true" Icon="leak" HelpContext="Empty">
                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Installierte Hardware" UIHint="Headline" />
                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Im folgenden wird die verwendete bzw. installierte Hardware angegeben." />
                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Die hier getroffenen Angaben beeinflussen das Verhalten der Applikation und der Firmware und müssen zur vorhandenen Hardware passen!" />
@@ -568,24 +575,28 @@
                   <op:usePart name="MESS" xpath="//Dynamic/ChannelIndependentBlock/*" instance="4" />
                 </when>
               </choose>
-              <!-- Co2 -->
+              <!-- Co2 (special case with additional KO for calculated CO2)-->
               <choose ParamRefId="%AID%_UP-%TT%00204_R-%TT%0020401">
                 <when test=">0">
-                  <op:usePart name="MESS" xpath="//Dynamic/ChannelIndependentBlock/*" instance="5" />
-                </when>
-                <when test="3 5 8">
-                  <!-- BME680, IAQCore, SGP30 output Co2Calc -->
-                  <ComObjectRefRef RefId="%AID%_O-%TT%00065_R-%TT%0006501" />
-                </when>
-                <when test="4 9">
-                  <!-- SCD30, SCD41 output Co2 -->
-                  <ComObjectRefRef RefId="%AID%_O-%TT%00064_R-%TT%0006401" />
-                  <choose ParamRefId="%AID%_UP-%TT%00203_R-%TT%0020301">
-                    <!-- if there is also a voc sensor specified, we return Co2Calc, too  -->
-                    <when test=">0">
-                      <ComObjectRefRef RefId="%AID%_O-%TT%00065_R-%TT%0006501" />
-                    </when>
-                  </choose>
+                  <ParameterBlock Id="%AID%_PB-nnn" Name="CO2" Text="CO2" ShowInComObjectTree="true" Icon="molecule-co2" HelpContext="Empty">
+                    <op:usePart name="MESS" xpath="//Dynamic/ChannelIndependentBlock/ParameterBlock/*" instance="5" />
+                    <choose ParamRefId="%AID%_UP-%TT%00204_R-%TT%0020401">
+                      <when test="3 5 8">
+                        <!-- BME680, IAQCore, SGP30 output Co2Calc -->
+                        <ComObjectRefRef RefId="%AID%_O-%TT%00065_R-%TT%0006501" />
+                      </when>
+                      <when test="4 9">
+                        <!-- SCD30, SCD41 output Co2 -->
+                        <ComObjectRefRef RefId="%AID%_O-%TT%00064_R-%TT%0006401" />
+                        <choose ParamRefId="%AID%_UP-%TT%00203_R-%TT%0020301">
+                          <!-- if there is also a voc sensor specified, we return Co2Calc, too  -->
+                          <when test=">0">
+                            <ComObjectRefRef RefId="%AID%_O-%TT%00065_R-%TT%0006501" />
+                          </when>
+                        </choose>
+                      </when>
+                    </choose>
+                  </ParameterBlock>
                 </when>
               </choose>
               <!-- Lux -->
@@ -603,7 +614,7 @@
               <choose ParamRefId="%AID%_P-%TT%00215_R-%TT%0021501">
                 <!-- Zusatzfunktionen anzeigen? -->
                 <when test="1">
-                  <ParameterBlock Id="%AID%_PB-76" Name="Zusatzfunktionen" Text="Zusatzfunktionen" Icon="loupe" HelpContext="Empty">
+                  <ParameterBlock Id="%AID%_PB-76" Name="Zusatzfunktionen" Text="Zusatzfunktionen" ShowInComObjectTree="true" Icon="loupe" HelpContext="Empty">
                     <!-- Taupunkt / Wohlfühldiagramm -->
                     <choose ParamRefId="%AID%_UP-%TT%00200_R-%TT%0020001">
                       <when test=">0">
