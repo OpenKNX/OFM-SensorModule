@@ -103,16 +103,6 @@
           </op:part> -->
           <Static>
             <ParameterTypes>
-              <!-- ParameterType for virtual buton -->
-              <ParameterType Id="%AID%_PT-BTNInputs" Name="BTNInputs">
-                <TypeRestriction Base="Value" SizeInBit="16">
-                  <Enumeration Text="Externes KO" Value="0" Id="%ENID%" />
-                  <Enumeration Text="Binäreingang A" Value="41" Id="%ENID%" />
-                  <Enumeration Text="Binäreingang B" Value="42" Id="%ENID%" />
-                  <Enumeration Text="Binäreingang C" Value="43" Id="%ENID%" />
-                  <Enumeration Text="Binäreingang D" Value="44" Id="%ENID%" />
-                </TypeRestriction>
-              </ParameterType>
               <!-- Parameter types for Sensormodule -->
               <!-- align here to constants SENX_XXXX in Sensor.h -->
               <ParameterType Id="%AID%_PT-TempSensors" Name="TempSensors">
