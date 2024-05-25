@@ -111,8 +111,9 @@
                   <Enumeration Text="SHT3x" Value="1" Id="%ENID%" />
                   <Enumeration Text="BME280" Value="2" Id="%ENID%" />
                   <Enumeration Text="BME680" Value="3" Id="%ENID%" />
-                  <Enumeration Text="SCD30" Value="4" Id="%ENID%" />
-                  <Enumeration Text="SCD41" Value="9" Id="%ENID%" />
+                  <Enumeration Text="SCD30 (nicht empfohlen)" Value="4" Id="%ENID%" />
+                  <Enumeration Text="SCD40" Value="9" Id="%ENID%" />
+                  <Enumeration Text="SCD41" Value="13" Id="%ENID%" />
                 </TypeRestriction>
               </ParameterType>
               <!-- align here to constants SENX_XXXX in Sensor.h -->
@@ -122,8 +123,9 @@
                   <Enumeration Text="SHT3x" Value="1" Id="%ENID%" />
                   <Enumeration Text="BME280" Value="2" Id="%ENID%" />
                   <Enumeration Text="BME680" Value="3" Id="%ENID%" />
-                  <Enumeration Text="SCD30" Value="4" Id="%ENID%" />
-                  <Enumeration Text="SCD41" Value="9" Id="%ENID%" />
+                  <Enumeration Text="SCD30 (nicht empfohlen)" Value="4" Id="%ENID%" />
+                  <Enumeration Text="SCD40" Value="9" Id="%ENID%" />
+                  <Enumeration Text="SCD41" Value="13" Id="%ENID%" />
                 </TypeRestriction>
               </ParameterType>
               <!-- align here to constants SENX_XXXX in Sensor.h -->
@@ -139,7 +141,7 @@
                   <Enumeration Text="Kein Sensor" Value="0" Id="%ENID%" />
                   <Enumeration Text="BME680" Value="3" Id="%ENID%" />
                   <Enumeration Text="IAQCore" Value="5" Id="%ENID%" />
-                  <Enumeration Text="SGP30" Value="8" Id="%ENID%" />
+                  <!-- <Enumeration Text="SGP30" Value="8" Id="%ENID%" /> -->
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="%AID%_PT-Co2Sensors" Name="Co2Sensors">
@@ -147,9 +149,10 @@
                   <Enumeration Text="Kein Sensor" Value="0" Id="%ENID%" />
                   <Enumeration Text="BME680" Value="3" Id="%ENID%" />
                   <Enumeration Text="IAQCore" Value="5" Id="%ENID%" />
-                  <Enumeration Text="SGP30" Value="8" Id="%ENID%" />
-                  <Enumeration Text="SCD30" Value="4" Id="%ENID%" />
-                  <Enumeration Text="SCD41" Value="9" Id="%ENID%" />
+                  <!-- <Enumeration Text="SGP30" Value="8" Id="%ENID%" /> -->
+                  <Enumeration Text="SCD30 (nicht empfohlen)" Value="4" Id="%ENID%" />
+                  <Enumeration Text="SCD40" Value="9" Id="%ENID%" />
+                  <Enumeration Text="SCD41" Value="13" Id="%ENID%" />
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="%AID%_PT-LuxSensors" Name="LuxSensors">
@@ -160,7 +163,7 @@
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="%AID%_PT-TofSensors" Name="TofSensors">
-                <TypeRestriction Base="Value" SizeInBit="4">
+                <TypeRestriction Base="Value" SizeInBit="4" UIHint="DropDown">
                   <Enumeration Text="Kein Sensor" Value="0" Id="%ENID%" />
                   <Enumeration Text="VL53L1X" Value="7" Id="%ENID%" />
                 </TypeRestriction>
@@ -362,7 +365,7 @@
           </Static>
           <Dynamic>
             <Channel Id="%AID%_CH-%PREFIX%" Number="%PREFIX%" Name="Main" Text="Sensoren" Icon="gauge" HelpContext="Empty">
-              <!-- <ParameterBlock Id="%AID%_PB-nnn" Name="Settings" Text="Einstellungen" Icon="cog-outline" HelpContext="Empty">
+              <!-- <ParameterBlock Id="%AID%_PB-nnn" Name="Settings" Text="Allgemein" Icon="cog-outline" HelpContext="Empty">
                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Sensormodul Version %ModuleVersion%" UIHint="Headline" />
                 <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Kanalauswahl" UIHint="Headline" />
