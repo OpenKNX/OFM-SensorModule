@@ -62,6 +62,10 @@ Die nicht Sensor-spezifischen Teile der Applikation basieren auf anderen OpenKNX
 
 Im folgenden werden Änderungen an dem Dokument erfasst, damit man nicht immer das Gesamtdokument lesen muss, um Neuerungen zu erfahren.
 
+08.06.2024: Firmware 3.0, Applikation 3.0
+
+* CO2-Sensor SDC41 erlaubt jetzt eine Einstellung des Messintervalls 
+
 09.10.2023: Firmware 1.5.2, Applikation 1.5
 
 * Aktualisierung auf die neuste Logikmodul-Version 1.6, siehe dortige Änderungshistorie
@@ -592,6 +596,19 @@ Es gibt 6 Luftqualitätsgrade, entsprechend deutschen Schulnoten:
 * 4 - ausreichend (lüften empfohlen)
 * 5 - mangelhaft (lüften)
 * 6 - ungenügend (unbedingt lüften)
+
+### **Sensorspezifische Einstellungen**
+
+In diesem Bereich kann man Einstellungen für einzelne Sensoren vornehmen, sofern diese das unterstützen.
+
+<!-- DOC -->
+#### **CO2 ermitteln alle**
+
+
+<!-- DOC Skip="1" -->
+Erscheint nur, wenn der CO2-Sensor SCD41 ausgewählt wurde.
+
+Der CO2-Sensor SDC41 erlaubt die Einstellung des Messintervalls. Man kann bestimmen, alle wie viel Sekunden eine Messung vorgenommen wird. 
 
 <!-- DOC -->
 ### **Kalibrierungsfortschritt ausgeben**

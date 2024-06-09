@@ -5,6 +5,8 @@
 #include "ModuleVersionCheck.h"
 #include "Sensor.h"
 #include "SensorBME680.h"
+#include "SensorSCD41.h"
+
 #include "SensorDevices.h"
 // #include "SensorSGP30.h"
 
@@ -151,6 +153,10 @@ void SensorModule::addSensorMetadata(Sensor* iSensor, uint8_t iSensorId, Measure
     {
         // CHECKv1
         // ((SensorSGP30*)iSensor)->setMagicKeyOffset(lMagicWordOffset);
+    }
+    else if (iSensorId == SENS_SCD41)
+    {
+        ((SensorSCD41*)iSensor)->setMeasureInterval(ParamSENS_SCD41MeasureIntervalDelayTimeMS / 1000); // time in seconds
     }
     if (iMeasureType == Temperature)
     {

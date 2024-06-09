@@ -6,7 +6,7 @@
       <ApplicationPrograms>
         <ApplicationProgram Id="%AID%" ApplicationNumber="103" ApplicationVersion="10" ProgramType="ApplicationProgram" MaskVersion="MV-07B0" Name="WP-Sensor-Logic" LoadProcedureStyle="MergedProcedure" PeiType="0" DefaultLanguage="de" DynamicTableManagement="false" Linkable="true" MinEtsVersion="4.0">
           <op:part href="Sensormodul.parts.xml" name="MESS" instances="7">
-            <op:param name="%Messwert%" values="Temperatur Luftfeuchte Luftdruck Voc CO2 Helligkeit Entfernung" />
+            <op:param name="%Messwert%" values="Temperatur Luftfeuchte Luftdruck VOC CO2 Helligkeit Entfernung" />
             <op:param name="%Kuerzel%" values="Temp Hum Pre Voc Co2 Lux Tof" />
             <op:param name="%MesswertIcon%" values="thermometer water-percent location-enter hexagon-multiple-outline molecule-co2 lightbulb-outline wrap-disabled" />
             <op:param name="%PPP%" values="110 120 130 140 150 180 190" digits="3" />
@@ -256,6 +256,11 @@
                 <Parameter Id="%AID%_UP-%TT%00206" Name="TofSensor" ParameterType="%AID%_PT-TofSensors" Offset="3" BitOffset="0" Text="Näherungssensor" Value="0" />
               </Union>
 
+              <Union SizeInBit="16">
+                <Memory CodeSegment="%AID%_RS-04-00000" Offset="90" BitOffset="0" />
+                <Parameter Id="%AID%_UP-%TT%00218" Name="SCD41MeasureIntervalDelayBase" ParameterType="%AID%_PT-DelayBase" Offset="0" BitOffset="0" Text="Zeitbasis" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00219" Name="SCD41MeasureIntervalDelayTime" ParameterType="%AID%_PT-DelayTime" Offset="0" BitOffset="2" Text="Zeit" Value="30" />
+              </Union>
               <!-- the following parameters are just for internal reasons (for logical OR evaluation) -->
               <Parameter Id="%AID%_P-%TT%00210" Name="IsBME280" ParameterType="%AID%_PT-OnOffYesNo" Text="Es wird ein BME280 verwendet" Value="0" />
               <Parameter Id="%AID%_P-%TT%00211" Name="IsBME680" ParameterType="%AID%_PT-OnOffYesNo" Text="Es wird ein BME680 verwendet" Value="0" />
@@ -315,6 +320,8 @@
               <ParameterRef Id="%AID%_P-%TT%00215_R-%TT%0021501" RefId="%AID%_P-%TT%00215" Access="None" />
               <ParameterRef Id="%AID%_P-%TT%00216_R-%TT%0021601" RefId="%AID%_P-%TT%00216" Access="None" />
               <ParameterRef Id="%AID%_P-%TT%00217_R-%TT%0021701" RefId="%AID%_P-%TT%00217" Access="None" />
+              <ParameterRef Id="%AID%_UP-%TT%00218_R-%TT%0021801" RefId="%AID%_UP-%TT%00218" />
+              <ParameterRef Id="%AID%_UP-%TT%00219_R-%TT%0021901" RefId="%AID%_UP-%TT%00219" />
             </ParameterRefs>
             <ComObjectTable>
               <ComObject Id="%AID%_O-%TT%00050" Name="RequestValues" Text="Sensorwerte anfordern" Number="50" FunctionText="Alle Werte senden" ObjectSize="1 Bit" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-16" />
@@ -418,7 +425,7 @@
                     <!-- Kalibrierung löschen anzeigen? -->
                     <Assign TargetParamRefRef="%AID%_P-%TT%00217_R-%TT%0021701" Value="1" />
                   </when>
-                  <when test="4 9">
+                  <when test="4 9 13">
                     <!-- Wird echter CO2 verwendet? -->
                     <Assign TargetParamRefRef="%AID%_P-%TT%00213_R-%TT%0021301" Value="1" />
                     <!-- Wird 100kHz I2C benötigt -->
@@ -449,7 +456,7 @@
                     <!-- Kalibrierung löschen anzeigen? -->
                     <Assign TargetParamRefRef="%AID%_P-%TT%00217_R-%TT%0021701" Value="1" />
                   </when>
-                  <when test="4 9">
+                  <when test="4 9 13">
                     <!-- Wird echter CO2 verwendet? -->
                     <Assign TargetParamRefRef="%AID%_P-%TT%00213_R-%TT%0021301" Value="1" />
                     <!-- Wird 100kHz I2C benötigt -->
@@ -520,11 +527,11 @@
                     <!-- Kalibrierung löschen anzeigen? -->
                     <Assign TargetParamRefRef="%AID%_P-%TT%00217_R-%TT%0021701" Value="1" />
                   </when>
-                  <when test="4 5 9">
+                  <when test="4 5 9 13">
                     <!-- Wird 100kHz I2C benötigt -->
                     <Assign TargetParamRefRef="%AID%_P-%TT%00214_R-%TT%0021401" Value="1" />
                   </when>
-                  <when test="4 9">
+                  <when test="4 9 13">
                     <!-- Wird echter CO2 verwendet? -->
                     <Assign TargetParamRefRef="%AID%_P-%TT%00213_R-%TT%0021301" Value="1" />
                   </when>
@@ -551,8 +558,6 @@
                     </choose>
                   </when>
                 </choose>
-                <!-- TODO: Remove this -->
-                <ParameterSeparator Id="%AID%_PS-nnn" Text="Es wurden Sensoren ausgewählt, die kritisch im Timing sind (IAQCore, SCD30 oder SDC41). Damit funktiniert 1-Wire nur eingeschränkt, Abfragen von I/O und iButton können mehr als eine Sekunde dauern (sonst 0.3 Sekunden)" UIHint="Information" />
               </ParameterBlock>
               <!-- Temp -->
               <choose ParamRefId="%AID%_UP-%TT%00200_R-%TT%0020001">
@@ -588,7 +593,7 @@
                         <!-- BME680, IAQCore, SGP30 output Co2Calc -->
                         <ComObjectRefRef RefId="%AID%_O-%TT%00065_R-%TT%0006501" />
                       </when>
-                      <when test="4 9">
+                      <when test="4 9 13">
                         <!-- SCD30, SCD41 output Co2 -->
                         <ComObjectRefRef RefId="%AID%_O-%TT%00064_R-%TT%0006401" />
                         <choose ParamRefId="%AID%_UP-%TT%00203_R-%TT%0020301">
@@ -624,30 +629,31 @@
                         <choose ParamRefId="%AID%_UP-%TT%00201_R-%TT%0020101">
                           <when test=">0">
                             <ParameterSeparator Id="%AID%_PS-nnn" Text="Taupunkt" UIHint="Headline" />
-                            <ParameterRefRef RefId="%AID%_UP-%TT%00101_R-%TT%0010101" HelpContext="%DOC%" />
+                            <ParameterRefRef RefId="%AID%_UP-%TT%00101_R-%TT%0010101" HelpContext="%DOC%" IndentLevel="1" />
                             <choose ParamRefId="%AID%_UP-%TT%00101_R-%TT%0010101">
                               <when test="1">
-                                <ParameterRefRef RefId="%AID%_UP-%TT%00170_R-%TT%0017001" HelpContext="SENS-Messwert-anpassen" />
+                                <ParameterRefRef RefId="%AID%_UP-%TT%00170_R-%TT%0017001" HelpContext="SENS-Messwert-anpassen" IndentLevel="1" />
                                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Sendeverhalten" UIHint="Headline" />
                                 <!-- Dew Delay pattern -->
-                                <ParameterBlock Id="%AID%_PB-nnn" Name="DewDelayCycle" Inline="true" Layout="Grid" HelpContext="SENS-Messwert-zyklisch-senden">
+                                <ParameterBlock Id="%AID%_PB-nnn" Name="DewDelayCycle" Inline="true" Layout="Grid" HelpContext="SENS-Messwert-zyklisch-senden"> 
                                   <Rows>
                                     <Row Id="%AID%_PB-nnn_R-1" Name="Row1" />
                                   </Rows>
                                   <Columns>
-                                    <Column Id="%AID%_PB-nnn_C-1" Name="Col1" Width="45%" />
-                                    <Column Id="%AID%_PB-nnn_C-2" Name="Col2" Width="15%" />
-                                    <Column Id="%AID%_PB-nnn_C-3" Name="Col3" Width="20%" />
+                                    <Column Id="%AID%_PB-nnn_C-1" Name="Col1" Width="3%" />
+                                    <Column Id="%AID%_PB-nnn_C-2" Name="Col2" Width="42%" />
+                                    <Column Id="%AID%_PB-nnn_C-3" Name="Col3" Width="15%" />
+                                    <Column Id="%AID%_PB-nnn_C-4" Name="Col4" Width="20%" />
                                   </Columns>
-                                  <ParameterSeparator Id="%AID%_PS-nnn" Text="Taupunkt zyklisch senden&#10;(0 = nicht senden)" Cell="1,1" />
-                                  <ParameterRefRef RefId="%AID%_UP-%TT%00371_R-%TT%0037101" Cell="1,2" HelpContext="SENS-Messwert-zyklisch-senden" />
-                                  <ParameterRefRef RefId="%AID%_UP-%TT%00171_R-%TT%0017101" Cell="1,3" HelpContext="SENS-Messwert-zyklisch-senden" />
+                                  <ParameterSeparator Id="%AID%_PS-nnn" Text="Taupunkt zyklisch senden&#10;(0 = nicht senden)" Cell="1,2" />
+                                  <ParameterRefRef RefId="%AID%_UP-%TT%00371_R-%TT%0037101" Cell="1,3" HelpContext="SENS-Messwert-zyklisch-senden" />
+                                  <ParameterRefRef RefId="%AID%_UP-%TT%00171_R-%TT%0017101" Cell="1,4" HelpContext="SENS-Messwert-zyklisch-senden" />
                                 </ParameterBlock>
-                                <ParameterRefRef RefId="%AID%_UP-%TT%00172_R-%TT%0017201" HelpContext="SENS-Messwert-bei-absoluter-Abweichung-senden" />
-                                <ParameterRefRef RefId="%AID%_UP-%TT%00173_R-%TT%0017301" HelpContext="SENS-Messwert-bei-relativer-Abweichung-senden" />
+                                <ParameterRefRef RefId="%AID%_UP-%TT%00172_R-%TT%0017201" HelpContext="SENS-Messwert-bei-absoluter-Abweichung-senden" IndentLevel="1" />
+                                <ParameterRefRef RefId="%AID%_UP-%TT%00173_R-%TT%0017301" HelpContext="SENS-Messwert-bei-relativer-Abweichung-senden" IndentLevel="1" />
                                 <ParameterSeparator Id="%AID%_PS-48" Text="" UIHint="HorizontalRuler" />
                                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Glättungsfunktion" UIHint="Headline" />
-                                <ParameterRefRef RefId="%AID%_UP-%TT%00174_R-%TT%0017401" HelpContext="SENS-Messwert-glaetten" />
+                                <ParameterRefRef RefId="%AID%_UP-%TT%00174_R-%TT%0017401" HelpContext="SENS-Messwert-glaetten" IndentLevel="1" />
                                 <ParameterSeparator Id="%AID%_PS-49" Text="Glättungsformel: Xneu = Xalt + (M - Xalt) / P mit" />
                                 <ParameterSeparator Id="%AID%_PS-50" Text="  Xneu: neu errechneter Messwert" />
                                 <ParameterSeparator Id="%AID%_PS-51" Text="  Xalt: letzter errechneter Messwert" />
@@ -659,14 +665,14 @@
                             </choose>
                             <ParameterSeparator Id="%AID%_PS-55" Text="" UIHint="HorizontalRuler" />
                             <ParameterSeparator Id="%AID%_PS-nnn" Text="Behaglichkeit" UIHint="Headline" />
-                            <ParameterRefRef RefId="%AID%_UP-%TT%00102_R-%TT%0010201" HelpContext="%DOC%" />
+                            <ParameterRefRef RefId="%AID%_UP-%TT%00102_R-%TT%0010201" HelpContext="%DOC%" IndentLevel="1" />
                             <choose ParamRefId="%AID%_UP-%TT%00102_R-%TT%0010201">
                               <when test="1">
                                 <ComObjectRefRef RefId="%AID%_O-%TT%00067_R-%TT%0006701" />
-                                <ParameterSeparator Id="%AID%_PS-56" Text="Es gibt 3 Behaglichkeitszonen, die von Temperatur und Luftfeuchte abhängen: " />
-                                <ParameterSeparator Id="%AID%_PS-57" Text="  2 - Behaglich " />
-                                <ParameterSeparator Id="%AID%_PS-58" Text="  1 - noch Behaglich " />
-                                <ParameterSeparator Id="%AID%_PS-59" Text="  0 - Unbehaglich" />
+                                <ParameterSeparator Id="%AID%_PS-56" Text="  Es gibt 3 Behaglichkeitszonen, die von Temperatur und Luftfeuchte abhängen: " />
+                                <ParameterSeparator Id="%AID%_PS-57" Text="    2 - Behaglich " />
+                                <ParameterSeparator Id="%AID%_PS-58" Text="    1 - noch Behaglich " />
+                                <ParameterSeparator Id="%AID%_PS-59" Text="    0 - Unbehaglich" />
                               </when>
                             </choose>
                             <ParameterSeparator Id="%AID%_PS-60" Text="" UIHint="HorizontalRuler" />
@@ -678,43 +684,65 @@
                     <choose ParamRefId="%AID%_P-%TT%00212_R-%TT%0021201">
                       <when test="1">
                         <ParameterSeparator Id="%AID%_PS-nnn" Text="Luftgüte" UIHint="Headline" />
-                        <ParameterRefRef RefId="%AID%_UP-%TT%00103_R-%TT%0010301" HelpContext="%DOC%" />
+                        <ParameterRefRef RefId="%AID%_UP-%TT%00103_R-%TT%0010301" HelpContext="%DOC%" IndentLevel="1" />
                         <choose ParamRefId="%AID%_UP-%TT%00103_R-%TT%0010301">
                           <when test="1">
                             <ComObjectRefRef RefId="%AID%_O-%TT%00068_R-%TT%0006801" />
-                            <ParameterSeparator Id="%AID%_PS-61" Text="Es gibt 6 Luftqualitätsgrade, analog zu deutschen Schulnoten: " />
-                            <ParameterSeparator Id="%AID%_PS-62" Text="  1 - sehr gut " />
-                            <ParameterSeparator Id="%AID%_PS-63" Text="  2 - gut " />
-                            <ParameterSeparator Id="%AID%_PS-64" Text="  3 - befriedigend (bei nächster Gelegenheit lüften)" />
-                            <ParameterSeparator Id="%AID%_PS-65" Text="  4 - ausreichend (lüften empfohlen)" />
-                            <ParameterSeparator Id="%AID%_PS-66" Text="  5 - mangelhaft (lüften)" />
-                            <ParameterSeparator Id="%AID%_PS-67" Text="  6 - ungenügend (dringend lüften)" />
+                            <ParameterSeparator Id="%AID%_PS-nnn" Text="  Es gibt 6 Luftqualitätsgrade, analog zu deutschen Schulnoten: " />
+                            <ParameterSeparator Id="%AID%_PS-nnn" Text="    1 - sehr gut " />
+                            <ParameterSeparator Id="%AID%_PS-nnn" Text="    2 - gut " />
+                            <ParameterSeparator Id="%AID%_PS-nnn" Text="    3 - befriedigend (bei nächster Gelegenheit lüften)" />
+                            <ParameterSeparator Id="%AID%_PS-nnn" Text="    4 - ausreichend (lüften empfohlen)" />
+                            <ParameterSeparator Id="%AID%_PS-nnn" Text="    5 - mangelhaft (lüften)" />
+                            <ParameterSeparator Id="%AID%_PS-nnn" Text="    6 - ungenügend (dringend lüften)" />
                           </when>
                         </choose>
                         <ParameterSeparator Id="%AID%_PS-68" Text="" UIHint="HorizontalRuler" />
+                      </when>
+                    </choose>
+                    <!-- Sensorspezifische Einstellungen -->
+                    <choose ParamRefId="%AID%_UP-%TT%00204_R-%TT%0020401">
+                      <when test="13">
+                        <!-- SCD41 -->
+                        <ParameterSeparator Id="%AID%_PS-nnn" Text="Sensorspezifische Einstellungen" UIHint="Headline" />
+                        <!-- Delay pattern -->
+                        <!-- CO2-Wert ermitteln alle -->
+                        <ParameterBlock Id="%AID%_PB-nnn" Inline="true" Layout="Grid" HelpContext="SENS-CO2-ermitteln-alle">
+                          <Rows>
+                            <Row Id="%AID%_PB-nnn_R-1" Name="Row1" />
+                          </Rows>
+                          <Columns>
+                            <Column Id="%AID%_PB-nnn_C-1" Name="Col1" Width="3%" />
+                            <Column Id="%AID%_PB-nnn_C-2" Name="Col2" Width="42%" />
+                            <Column Id="%AID%_PB-nnn_C-3" Name="Col3" Width="15%" />
+                            <Column Id="%AID%_PB-nnn_C-4" Name="Col4" Width="20%" />
+                          </Columns>
+                          <ParameterSeparator Id="%AID%_PS-nnn" Text="CO2-Wert ermitteln alle" Cell="1,2" />
+                          <ParameterRefRef RefId="%AID%_UP-%TT%00219_R-%TT%0021901" Cell="1,3" HelpContext="SENS-CO2-ermitteln-alle" />
+                          <ParameterRefRef RefId="%AID%_UP-%TT%00218_R-%TT%0021801" Cell="1,4" HelpContext="SENS-CO2-ermitteln-alle" />
+                        </ParameterBlock>
+                        <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
                       </when>
                     </choose>
                     <!-- Kalibrierung Voc -->
                     <choose ParamRefId="%AID%_P-%TT%00216_R-%TT%0021601">
                       <when test=">0">
                         <ParameterSeparator Id="%AID%_PS-nnn" Text="Kalibrierung" UIHint="Headline" />
-                        <ParameterRefRef RefId="%AID%_UP-%TT%00104_R-%TT%0010401" HelpContext="%DOC%" />
+                        <ParameterRefRef RefId="%AID%_UP-%TT%00104_R-%TT%0010401" HelpContext="%DOC%" IndentLevel="1" />
                         <choose ParamRefId="%AID%_UP-%TT%00104_R-%TT%0010401">
                           <when test="1">
                             <ComObjectRefRef RefId="%AID%_O-%TT%00069_R-%TT%0006901" />
-                            <ParameterSeparator Id="%AID%_PS-69" Text="Der VOC-Sensor braucht bis zu 2 Tage für die Kalibrierung, das KO 24 gibt den Fortschritt in % aus" />
+                            <ParameterSeparator Id="%AID%_PS-nnn" Text="Der VOC-Sensor braucht bis zu 2 Tage für die Kalibrierung, das KO 24 gibt den Fortschritt in % aus" />
                           </when>
                         </choose>
-                        <ParameterSeparator Id="%AID%_PS-99" Text="" UIHint="HorizontalRuler" />
                       </when>
                     </choose>
                     <!-- Kalibrierung Voc zurücksetzen für BME680 und SGP30 -->
                     <choose ParamRefId="%AID%_P-%TT%00217_R-%TT%0021701">
                       <when test=">0">
-                        <ParameterSeparator Id="%AID%_PS-nnn" Text="Zurücksetzen" UIHint="Headline" />
-                        <ParameterRefRef RefId="%AID%_UP-%TT%00105_R-%TT%0010501" HelpContext="%DOC%" />
-                        <ParameterSeparator Id="%AID%_PS-100" Text="Es ist vollkommen egal, welchen Wert dieser Parameter hat. Die Kalibrierungsdaten werden zurückgesetzt, wenn sich der Wert dieses Parameters ändert und die Applikation hochgeladen wurde. Danach bleiben die Daten erhalten, bis sich der Wert wieder ändert." UIHint="Information" />
-                        <ParameterSeparator Id="%AID%_PS-99" Text="" UIHint="HorizontalRuler" />
+                        <ParameterRefRef RefId="%AID%_UP-%TT%00105_R-%TT%0010501" HelpContext="%DOC%" IndentLevel="1" />
+                        <ParameterSeparator Id="%AID%_PS-nnn" Text="Es ist vollkommen egal, welchen Wert dieser Parameter hat. Die Kalibrierungsdaten werden zurückgesetzt, wenn sich der Wert dieses Parameters ändert und die Applikation hochgeladen wurde. Danach bleiben die Daten erhalten, bis sich der Wert wieder ändert." UIHint="Information" />
+                        <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
                       </when>
                     </choose>
                   </ParameterBlock>

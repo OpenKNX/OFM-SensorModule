@@ -64,23 +64,23 @@
                         <ChannelIndependentBlock>
                             <ParameterBlock Id="%AID%_PB-nnn" Name="%Messwert%" Text="%Messwert%" ShowInComObjectTree="true" Icon="%MesswertIcon%" HelpContext="Empty">
                                 <ParameterSeparator Id="%AID%_PS-nnn" Text="%Messwert%" UIHint="Headline" />
-                                <ParameterRefRef RefId="%AID%_UP-%TT%00%PPP+0%_R-%TT%00%PPP+0%01" HelpContext="SENS-Messwert-anpassen" />
+                                <ParameterRefRef RefId="%AID%_UP-%TT%00%PPP+0%_R-%TT%00%PPP+0%01" HelpContext="SENS-Messwert-anpassen" IndentLevel="1" />
                                 <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
                                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Externe Werte" UIHint="Headline" />
-                                <ParameterRefRef RefId="%AID%_UP-%TT%00%PPP+5%_R-%TT%00%PPP+5%01" HelpContext="%DOC%" />
+                                <ParameterRefRef RefId="%AID%_UP-%TT%00%PPP+5%_R-%TT%00%PPP+5%01" HelpContext="%DOC%" IndentLevel="1" />
                                 <choose ParamRefId="%AID%_UP-%TT%00%PPP+5%_R-%TT%00%PPP+5%01">
                                     <when test=">0">
-                                        <ParameterRefRef RefId="%AID%_UP-%TT%00%PPP+7%_R-%TT%00%PPP+7%01" HelpContext="%DOC%" />
-                                        <ParameterRefRef RefId="%AID%_UP-%TT%00%PPP+8%_R-%TT%00%PPP+8%01" HelpContext="%DOC%" />
+                                        <ParameterRefRef RefId="%AID%_UP-%TT%00%PPP+7%_R-%TT%00%PPP+7%01" HelpContext="%DOC%" IndentLevel="1" />
+                                        <ParameterRefRef RefId="%AID%_UP-%TT%00%PPP+8%_R-%TT%00%PPP+8%01" HelpContext="%DOC%" IndentLevel="1" />
                                     </when>
                                     <when test="1">
-                                        <ParameterRefRef RefId="%AID%_UP-%TT%00%PPP+6%_R-%TT%00%PPP+6%01" HelpContext="%DOC%" />
+                                        <ParameterRefRef RefId="%AID%_UP-%TT%00%PPP+6%_R-%TT%00%PPP+6%01" HelpContext="%DOC%" IndentLevel="1" />
                                         <ParameterSeparator Id="%AID%_PS-nnn" Text="Die Messwerte werden in dem hier angegebenen Verhältnis ( Int : Ext1 ) verrechnet und das Ergebnis bei den nachfolgenden Bedingungen verwendet. Solange ein externer Messwert nicht empfangen wurde, ist sein Anteil 0." />
                                         <ComObjectRefRef RefId="%AID%_O-%TT%000%KONR1+0%_R-%TT%000%KONR1+0%01" />
                                     </when>
                                     <when test="2">
-                                        <ParameterRefRef RefId="%AID%_UP-%TT%00%PPP+9%_R-%TT%00%PPP+9%01" HelpContext="%DOC%" />
-                                        <ParameterRefRef RefId="%AID%_UP-%TT%00%PPP+6%_R-%TT%00%PPP+6%01" HelpContext="%DOC%" />
+                                        <ParameterRefRef RefId="%AID%_UP-%TT%00%PPP+9%_R-%TT%00%PPP+9%01" HelpContext="%DOC%" IndentLevel="1" />
+                                        <ParameterRefRef RefId="%AID%_UP-%TT%00%PPP+6%_R-%TT%00%PPP+6%01" HelpContext="%DOC%" IndentLevel="1" />
                                         <ParameterSeparator Id="%AID%_PS-nnn" Text="Die Messwerte werden in dem hier angegebenen Verhältnis ( Int : Ext1 : Ext2 ) verrechnet und das Ergebnis bei den nachfolgenden Bedingungen verwendet. Solange ein externer Messwert nicht empfangen wurde, ist sein Anteil 0." />
                                         <ComObjectRefRef RefId="%AID%_O-%TT%000%KONR1+1%_R-%TT%000%KONR1+1%01" />
                                     </when>
@@ -93,25 +93,26 @@
                                         <Row Id="%AID%_PB-nnn_R-1" Name="Row1" />
                                     </Rows>
                                     <Columns>
-                                        <Column Id="%AID%_PB-nnn_C-1" Name="Col1" Width="45%" />
-                                        <Column Id="%AID%_PB-nnn_C-2" Name="Col2" Width="15%" />
-                                        <Column Id="%AID%_PB-nnn_C-3" Name="Col3" Width="20%" />
+                                        <Column Id="%AID%_PB-nnn_C-1" Name="Col1" Width="3%" />
+                                        <Column Id="%AID%_PB-nnn_C-2" Name="Col2" Width="42%" />
+                                        <Column Id="%AID%_PB-nnn_C-3" Name="Col3" Width="15%" />
+                                        <Column Id="%AID%_PB-nnn_C-4" Name="Col4" Width="20%" />
                                     </Columns>
-                                    <ParameterSeparator Id="%AID%_PS-nnn" Text="%Messwert% zyklisch senden&#10;(0 = nicht senden)" Cell="1,1" />
-                                    <ParameterRefRef RefId="%AID%_UP-%TT%00%PPP+201%_R-%TT%00%PPP+201%01" Cell="1,2" HelpContext="SENS-Messwert-zyklisch-senden" />
-                                    <ParameterRefRef RefId="%AID%_UP-%TT%00%PPP+1%_R-%TT%00%PPP+1%01" Cell="1,3" HelpContext="SENS-Messwert-zyklisch-senden" />
+                                    <ParameterSeparator Id="%AID%_PS-nnn" Text="%Messwert% zyklisch senden&#10;(0 = nicht senden)" Cell="1,2" />
+                                    <ParameterRefRef RefId="%AID%_UP-%TT%00%PPP+201%_R-%TT%00%PPP+201%01" Cell="1,3" HelpContext="SENS-Messwert-zyklisch-senden" />
+                                    <ParameterRefRef RefId="%AID%_UP-%TT%00%PPP+1%_R-%TT%00%PPP+1%01" Cell="1,4" HelpContext="SENS-Messwert-zyklisch-senden" />
                                 </ParameterBlock>
-                                <ParameterRefRef RefId="%AID%_UP-%TT%00%PPP+2%_R-%TT%00%PPP+2%01" HelpContext="SENS-Messwert-bei-absoluter-Abweichung-senden" />
-                                <ParameterRefRef RefId="%AID%_UP-%TT%00%PPP+3%_R-%TT%00%PPP+3%01" HelpContext="SENS-Messwert-bei-relativer-Abweichung-senden" />
+                                <ParameterRefRef RefId="%AID%_UP-%TT%00%PPP+2%_R-%TT%00%PPP+2%01" HelpContext="SENS-Messwert-bei-absoluter-Abweichung-senden" IndentLevel="1" />
+                                <ParameterRefRef RefId="%AID%_UP-%TT%00%PPP+3%_R-%TT%00%PPP+3%01" HelpContext="SENS-Messwert-bei-relativer-Abweichung-senden" IndentLevel="1" />
                                 <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
                                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Glättungsfunktion" UIHint="Headline" />
-                                <ParameterRefRef RefId="%AID%_UP-%TT%00%PPP+4%_R-%TT%00%PPP+4%01" HelpContext="SENS-Messwert-glaetten" />
-                                <ParameterSeparator Id="%AID%_PS-nnn" Text="Glättungsformel: Xneu = Xalt + (M - Xalt) / P mit" />
-                                <ParameterSeparator Id="%AID%_PS-nnn" Text="  Xneu: neu errechneter Messwert" />
-                                <ParameterSeparator Id="%AID%_PS-nnn" Text="  Xalt: letzter errechneter Messwert" />
-                                <ParameterSeparator Id="%AID%_PS-nnn" Text="     M: aktueller Messwert vom Sensor" />
-                                <ParameterSeparator Id="%AID%_PS-nnn" Text="     P: einzugebender Parameter" />
-                                <ParameterSeparator Id="%AID%_PS-nnn" Text="Je größer P, desto länger dauert es, bis eine plötzliche Änderung beim gemessenen Wert auch auf den Bus gesendet wird" />
+                                <ParameterRefRef RefId="%AID%_UP-%TT%00%PPP+4%_R-%TT%00%PPP+4%01" HelpContext="SENS-Messwert-glaetten" IndentLevel="1" />
+                                <ParameterSeparator Id="%AID%_PS-nnn" Text="  Glättungsformel: Xneu = Xalt + (M - Xalt) / P mit" />
+                                <ParameterSeparator Id="%AID%_PS-nnn" Text="    Xneu: neu errechneter Messwert" />
+                                <ParameterSeparator Id="%AID%_PS-nnn" Text="    Xalt: letzter errechneter Messwert" />
+                                <ParameterSeparator Id="%AID%_PS-nnn" Text="       M: aktueller Messwert vom Sensor" />
+                                <ParameterSeparator Id="%AID%_PS-nnn" Text="       P: einzugebender Parameter" />
+                                <ParameterSeparator Id="%AID%_PS-nnn" Text="  Je größer P, desto länger dauert es, bis eine plötzliche Änderung beim gemessenen Wert auch auf den Bus gesendet wird" />
                                 <ComObjectRefRef RefId="%AID%_O-%TT%000%KONR0+0%_R-%TT%000%KONR0+0%01" />
                                 <!-- request sensor values -->
                                 <ComObjectRefRef RefId="%AID%_O-%TT%00050_R-%TT%0005001" />
