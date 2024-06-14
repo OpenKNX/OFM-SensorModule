@@ -383,13 +383,13 @@
                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Installierte Hardware" UIHint="Headline" />
                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Im folgenden wird die verwendete bzw. installierte Hardware angegeben." />
                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Die hier getroffenen Angaben beeinflussen das Verhalten der Applikation und der Firmware und müssen zur vorhandenen Hardware passen!" />
-                <ParameterRefRef RefId="%AID%_UP-%TT%00200_R-%TT%0020001" />
-                <ParameterRefRef RefId="%AID%_UP-%TT%00201_R-%TT%0020101" />
-                <ParameterRefRef RefId="%AID%_UP-%TT%00202_R-%TT%0020201" />
-                <ParameterRefRef RefId="%AID%_UP-%TT%00203_R-%TT%0020301" />
-                <ParameterRefRef RefId="%AID%_UP-%TT%00204_R-%TT%0020401" />
-                <ParameterRefRef RefId="%AID%_UP-%TT%00205_R-%TT%0020501" />
-                <ParameterRefRef RefId="%AID%_UP-%TT%00206_R-%TT%0020601" />
+                <ParameterRefRef RefId="%AID%_UP-%TT%00200_R-%TT%0020001" IndentLevel="1" />
+                <ParameterRefRef RefId="%AID%_UP-%TT%00201_R-%TT%0020101" IndentLevel="1" />
+                <ParameterRefRef RefId="%AID%_UP-%TT%00202_R-%TT%0020201" IndentLevel="1" />
+                <ParameterRefRef RefId="%AID%_UP-%TT%00203_R-%TT%0020301" IndentLevel="1" />
+                <ParameterRefRef RefId="%AID%_UP-%TT%00204_R-%TT%0020401" IndentLevel="1" />
+                <ParameterRefRef RefId="%AID%_UP-%TT%00205_R-%TT%0020501" IndentLevel="1" />
+                <ParameterRefRef RefId="%AID%_UP-%TT%00206_R-%TT%0020601" IndentLevel="1" />
 
                 <!-- We dererive some flags for further processing from sensor selections -->
                 <!-- Merker für BME280 wird verwendet -->
@@ -640,12 +640,12 @@
                                     <Row Id="%AID%_PB-nnn_R-1" Name="Row1" />
                                   </Rows>
                                   <Columns>
-                                    <Column Id="%AID%_PB-nnn_C-1" Name="Col1" Width="3%" />
-                                    <Column Id="%AID%_PB-nnn_C-2" Name="Col2" Width="42%" />
+                                    <Column Id="%AID%_PB-nnn_C-1" Name="Col1" Width="1%" />
+                                    <Column Id="%AID%_PB-nnn_C-2" Name="Col2" Width="44%" />
                                     <Column Id="%AID%_PB-nnn_C-3" Name="Col3" Width="15%" />
                                     <Column Id="%AID%_PB-nnn_C-4" Name="Col4" Width="20%" />
                                   </Columns>
-                                  <ParameterSeparator Id="%AID%_PS-nnn" Text="Taupunkt zyklisch senden&#10;(0 = nicht senden)" Cell="1,2" />
+                                  <ParameterSeparator Id="%AID%_PS-nnn" Text=" Taupunkt zyklisch senden&#10; (0 = nicht senden)" Cell="1,2" />
                                   <ParameterRefRef RefId="%AID%_UP-%TT%00371_R-%TT%0037101" Cell="1,3" HelpContext="SENS-Messwert-zyklisch-senden" />
                                   <ParameterRefRef RefId="%AID%_UP-%TT%00171_R-%TT%0017101" Cell="1,4" HelpContext="SENS-Messwert-zyklisch-senden" />
                                 </ParameterBlock>
@@ -654,11 +654,11 @@
                                 <ParameterSeparator Id="%AID%_PS-48" Text="" UIHint="HorizontalRuler" />
                                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Glättungsfunktion" UIHint="Headline" />
                                 <ParameterRefRef RefId="%AID%_UP-%TT%00174_R-%TT%0017401" HelpContext="SENS-Messwert-glaetten" IndentLevel="1" />
-                                <ParameterSeparator Id="%AID%_PS-49" Text="Glättungsformel: Xneu = Xalt + (M - Xalt) / P mit" />
-                                <ParameterSeparator Id="%AID%_PS-50" Text="  Xneu: neu errechneter Messwert" />
-                                <ParameterSeparator Id="%AID%_PS-51" Text="  Xalt: letzter errechneter Messwert" />
-                                <ParameterSeparator Id="%AID%_PS-52" Text="     M: aktueller Messwert vom Sensor" />
-                                <ParameterSeparator Id="%AID%_PS-53" Text="     P: einzugebender Parameter" />
+                                <ParameterSeparator Id="%AID%_PS-49" Text="  Glättungsformel: Xneu = Xalt + (M - Xalt) / P mit" />
+                                <ParameterSeparator Id="%AID%_PS-50" Text="    Xneu: neu errechneter Messwert" />
+                                <ParameterSeparator Id="%AID%_PS-51" Text="    Xalt: letzter errechneter Messwert" />
+                                <ParameterSeparator Id="%AID%_PS-52" Text="       M: aktueller Messwert vom Sensor" />
+                                <ParameterSeparator Id="%AID%_PS-53" Text="       P: einzugebender Parameter" />
                                 <ParameterSeparator Id="%AID%_PS-54" Text="Je größer P, desto länger dauert es, bis eine plötzliche Änderung beim gemessenen Wert auch auf den Bus gesendet wird" />
                                 <ComObjectRefRef RefId="%AID%_O-%TT%00066_R-%TT%0006601" />
                               </when>
@@ -712,12 +712,12 @@
                             <Row Id="%AID%_PB-nnn_R-1" Name="Row1" />
                           </Rows>
                           <Columns>
-                            <Column Id="%AID%_PB-nnn_C-1" Name="Col1" Width="3%" />
-                            <Column Id="%AID%_PB-nnn_C-2" Name="Col2" Width="42%" />
+                            <Column Id="%AID%_PB-nnn_C-1" Name="Col1" Width="1%" />
+                            <Column Id="%AID%_PB-nnn_C-2" Name="Col2" Width="44%" />
                             <Column Id="%AID%_PB-nnn_C-3" Name="Col3" Width="15%" />
                             <Column Id="%AID%_PB-nnn_C-4" Name="Col4" Width="20%" />
                           </Columns>
-                          <ParameterSeparator Id="%AID%_PS-nnn" Text="CO2-Wert ermitteln alle" Cell="1,2" />
+                          <ParameterSeparator Id="%AID%_PS-nnn" Text=" CO2-Wert ermitteln alle" Cell="1,2" />
                           <ParameterRefRef RefId="%AID%_UP-%TT%00219_R-%TT%0021901" Cell="1,3" HelpContext="SENS-CO2-ermitteln-alle" />
                           <ParameterRefRef RefId="%AID%_UP-%TT%00218_R-%TT%0021801" Cell="1,4" HelpContext="SENS-CO2-ermitteln-alle" />
                         </ParameterBlock>

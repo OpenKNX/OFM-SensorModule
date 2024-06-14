@@ -88,17 +88,17 @@
                                 <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
                                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Sendeverhalten" UIHint="Headline" />
                                 <!-- %Messwert% Delay pattern -->
-                                <ParameterBlock Id="%AID%_PB-nnn" Name="%Kuerzel%DelayCycle" Inline="true" Layout="Grid" HelpContext="SENS-Messwert-zyklisch-senden">
+                                <ParameterBlock Id="%AID%_PB-nnn" Inline="true" Layout="Grid" HelpContext="SENS-Messwert-zyklisch-senden">
                                     <Rows>
                                         <Row Id="%AID%_PB-nnn_R-1" Name="Row1" />
                                     </Rows>
                                     <Columns>
-                                        <Column Id="%AID%_PB-nnn_C-1" Name="Col1" Width="3%" />
-                                        <Column Id="%AID%_PB-nnn_C-2" Name="Col2" Width="42%" />
+                                        <Column Id="%AID%_PB-nnn_C-1" Name="Col1" Width="1%" />
+                                        <Column Id="%AID%_PB-nnn_C-2" Name="Col2" Width="44%" />
                                         <Column Id="%AID%_PB-nnn_C-3" Name="Col3" Width="15%" />
                                         <Column Id="%AID%_PB-nnn_C-4" Name="Col4" Width="20%" />
                                     </Columns>
-                                    <ParameterSeparator Id="%AID%_PS-nnn" Text="%Messwert% zyklisch senden&#10;(0 = nicht senden)" Cell="1,2" />
+                                    <ParameterSeparator Id="%AID%_PS-nnn" Text=" %Messwert% zyklisch senden&#10; (0 = nicht senden)" Cell="1,2" />
                                     <ParameterRefRef RefId="%AID%_UP-%TT%00%PPP+201%_R-%TT%00%PPP+201%01" Cell="1,3" HelpContext="SENS-Messwert-zyklisch-senden" />
                                     <ParameterRefRef RefId="%AID%_UP-%TT%00%PPP+1%_R-%TT%00%PPP+1%01" Cell="1,4" HelpContext="SENS-Messwert-zyklisch-senden" />
                                 </ParameterBlock>
@@ -112,7 +112,7 @@
                                 <ParameterSeparator Id="%AID%_PS-nnn" Text="    Xalt: letzter errechneter Messwert" />
                                 <ParameterSeparator Id="%AID%_PS-nnn" Text="       M: aktueller Messwert vom Sensor" />
                                 <ParameterSeparator Id="%AID%_PS-nnn" Text="       P: einzugebender Parameter" />
-                                <ParameterSeparator Id="%AID%_PS-nnn" Text="  Je größer P, desto länger dauert es, bis eine plötzliche Änderung beim gemessenen Wert auch auf den Bus gesendet wird" />
+                                <ParameterSeparator Id="%AID%_PS-nnn" Text="Je größer P, desto länger dauert es, bis eine plötzliche Änderung beim gemessenen Wert auch auf den Bus gesendet wird" />
                                 <ComObjectRefRef RefId="%AID%_O-%TT%000%KONR0+0%_R-%TT%000%KONR0+0%01" />
                                 <!-- request sensor values -->
                                 <ComObjectRefRef RefId="%AID%_O-%TT%00050_R-%TT%0005001" />
