@@ -379,7 +379,10 @@
                 <ParameterRefRef RefId="%AID%_UP-%TT%00020_R-%TT%0002001" HelpContext="BASE-Verfuegbare-Kanaele" IndentLevel="1" />
                 <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
               </ParameterBlock> -->
-              <ParameterBlock Id="%AID%_PB-nnn" Name="Sensors" Text="Sensorauswahl" ShowInComObjectTree="true" Icon="leak" HelpContext="Empty">
+              <ParameterBlock Id="%AID%_PB-nnn" Name="Sensors" Text="Allgemein" ShowInComObjectTree="true" Icon="cog-outline" HelpContext="Empty">
+                <ParameterSeparator Id="%AID%_PS-nnn" Text="Sensormodul" UIHint="Headline" />
+                <ParameterSeparator Id="%AID%_PS-nnn" Text="Version: %ModuleVersion%" />
+                <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Installierte Hardware" UIHint="Headline" />
                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Im folgenden wird die verwendete bzw. installierte Hardware angegeben." />
                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Die hier getroffenen Angaben beeinflussen das Verhalten der Applikation und der Firmware und müssen zur vorhandenen Hardware passen!" />

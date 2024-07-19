@@ -18,7 +18,6 @@ Die nicht Sensor-spezifischen Teile der Applikation basieren auf anderen OpenKNX
 > Achtung: Nachfolgende Auflistung teilweise abweichend von Reihenfolge im Dokument
 * [Änderungshistorie](#änderungshistorie)
 * [Einführung](#einführung)
-  * [Hardware](#hardware)
   * [Funktionsumfang](#funktionsumfang)
 * [ETS Konfiguration](#ets-konfiguration) (Übersicht aller Konfigurationsseiten und Links zu Detailbeschreibung)
   * [Kommunikationsobjekte](#übersicht-der-vorhandenen-kommunikationsobjekte)
@@ -119,88 +118,105 @@ Im folgenden werden Änderungen an dem Dokument erfasst, damit man nicht immer d
 
 ## **Einführung**
 
-Die vorliegende Software ermöglicht es, ein Do-It-Yourself (DIY) KNX-Sensormodul zu erstellen, das mit der ETS 5.7/ETS 6 programmiert werden kann. Sie besteht, wie bei KNX üblich, aus 2 Teilen:
+Die vorliegende Applikation erlaubt die Parametrisierung von vielerlei Sensoren, vorrangig zur Ermittlung vom Raumklima, Helligkeit und Entfernung.
 
-* der Firmware, die in die Hardware geladen wird
-* der ETS-Applikation (knxprod-Datei), die in die ETS geladen wird.
-
-Ferner wird das gesamte Setup zur Entwicklung, Änderung und Erstellung der Software mitgeliefert.
-
-### **Hardware**
-
-Die bevorzugte Hardware (auf der auch die Entwicklung getestet wird), ist das Sensormodul von Masifi, beschrieben als [Raum Sensormodul](https://knx-user-forum.de/forum/%C3%B6ffentlicher-bereich/knx-eib-forum/diy-do-it-yourself/1479195-raum-sensormodul-hw-thread-f%C3%BCr-temp-hum-pres-voc-co2-1-wire-buzzer) im KNX-User-Forum.
-
-Die Software kann recht einfach auf andere Hardware portiert werden, die auf einem SAMD21 basiert, die Kommunikation mit KNX kann über einen NCN5120/5130 erfolgen oder auch über eine Siemens BCU. Sensoren werden über I<sup>2</sup>C angeschlossen.
+Sie ist auf unterschiedlicher OpenKNX-Hardware lauffähig, beispielweise das Sensormodul von Masifi oder dem Präsenz-Multisensor von ab-tools.
 
 ### **Funktionsumfang**
 
-Die Applikation und die Firmware stellen sehr viele Funktionen in verschiedenen Bereichen zur Verfügung. Dabei ist zu betonen, dass diese verschiedenen Funktionalitäten nicht unbedingt in beliebiger Kombination auch funktionieren können. Gerade von der Hardware abhängige Funktionen sind nicht in beliebiger Kombinatorik gedacht und auch nicht immer möglich.
+<!-- DOCCONTENT
+Eine vollständige Applikationsbeschreibung ist unter folgendem Link verfügbar: https://github.com/OpenKNX/OFM-PresenceModule/blob/v1/doc/Applikationsbeschreibung-Sensor.md
 
-Das soll nicht von der Nutzung abhalten, es soll nur klar machen, dass die Intention der Software eine dezentrale ist: Es soll an verschiedensten Stellen im Haus die Möglichkeit gegeben werden, ein paar Kleinigkeiten zu machen (z.B. Temperatur+Luftfeuchte messen, Fensterkontakt abfragen, Sperren durch einen Piep zu bestätigen).
+Weitere Produktinformationen sind in unserem Wiki verfügbar: https://github.com/OpenKNX/OpenKNX/wiki/Produktinfo-Sensormodul
+DOCCONTENT -->
 
-Falls versucht wird, mit dem Sensormodul alle Funktionen gleichzeitig zu nutzen, also:
 
-* 5 iButtons
-* 15 1-Wire-Temperatursensoren
-* 5 1-Wire Temp-/Hum-Sensoren
-* LED-Ausgabe
-* Buzzer
-* Temperaturmessung
-* Luftfeuchtemessung
-* Luftdruckmessung
-* VOC-Messung
-* CO2-Messung
-* Helligkeitsmessung
-* Entfernungsmessung
+Das Sensormodul erlaubt die Ausgabe verschiedener Sensorwerte auf den Bus. Dabei werden die in KNX üblichen Manipulationen der Sensorwerte unterstützt. Unterstützt werden:
 
-das alles z.B. pro Stockwerk anzuschließen und dann auch noch über 80 Logikkanäle das restliche Haus zu steuern, dann wird das potenziell nicht laufen. Eventuell macht es dann mehr Sinn, die Funktionen auf 2, 3 oder 4 Sensormodule aufzuteilen und die in die einzelnen Räume zu platzieren und in den Räumen nur die Funktionalitäten in Betrieb zu nehmen, die dort sinnvoll sind.
+* Sensoren zur
 
-Es ist wichtig zu verinnerlichen, dass die vielen Funktionen nicht dafür da sind, alle in einem Gerät genutzt zu werden, sondern dass man in vielen Geräten eher einige wenige Funktionen nutzen kann.
+  * Temperaturmessung
+  * Luftfeuchtemessung
+  * Luftdruckmessung
+  * VOC-Messung
+  * CO2-Messung
+  * Helligkeitsmessung
+  * Entfernungsmessung
 
-Hardwareunabhängige Funktionen, in diesem Fall das Logikmodul, sind allerdings so konzipiert, dass sie immer in beliebiger Kombination und in vollem Umfang mit den anderen Features funktionieren und können bzw. sollen auch so genutzt werden.
+* Konfigurationen
+ 
+  * Messwert anpassen (verschieben und einen positiven oder negativen Wert)
+  * bis zu 2 weitere Messwerte berücksichtigen (Mittelwertbildung mit frei einstellbaren Anteilen pro Messwert)
+  * zyklisch Senden
+  * bei absoluter Abweichung senden
+  * bei relativer (prozentueller) Abweichung senden
+  * Messwert glätten
 
-# ETS-Konfiguration
-## **Allgemeine Parameter**
+* Abgeleitete (berechnete) Messwerte
 
-<kbd>![Allgemeine Parameter](pics/AllgemeineParameter.PNG)</kbd>
+  * Taupunkt (wenn Temperatur und Luftfeuchte gegeben ist)
+  * Behaglichkeit (abgeleitet aus Temperatur und Luftfeuchte)
+  * Luftgüte (aus VOC- oder CO2 abgeleitet)
 
-Hier werden Einstellungen getroffen, die die generelle Arbeitsweise des Sensormoduls bestimmen.
+* Sensorspezifische Zusatzfunktionen
 
-## Gerätestart
+Weitere KNX-Übliche Funktionen wie Schwellwertschalter, Hystereseschalter, auch mit über den Bus einstellbaren Schwellwerten, können über das beiliegende Logikmodul einfach abgebildet werden.
 
-### **Zeit bis das Gerät nach einem Neustart aktiv wird**
+## **Sensormodul als eigene Applikation**
 
-Hier kann man festlegen, wie viel Zeit vergehen soll, bis das Gerät nach einem Neustart seine Funktion aufnimmt. Dabei ist es egal, ob der Neustart durch einen Busspannungsausfall, einen Reset über den Bus, durch ein Drücken der Reset-Taste oder durch den Watchdog ausgelöst wurde.
+Das Sensormodul hat auch eine eigene ETS-Applikation, die es erlaubt, das Sensormodul ohne Einbettung in eine andere Applikation zu verwenden. In diesem Fall hat es zusätzliche Untermodule, einige davon sind standardmäßig in OpenKNX-Applikationen verfügbar: 
 
-Da das Gerät prinzipiell (sofern parametriert) auch Lesetelegramme auf den Bus senden kann, kann mit dieser Einstellung verhindert werden, dass bei einem Busneustart von vielen Geräten viele Lesetelegramme auf einmal gesendet werden und so der Bus überlastet wird.
+### **OpenKNX**
 
-**Anmerkung:** Auch wenn man hier technisch bis zu 16.000 Stunden Verzögerung angeben kann, sind nur Einstellungen im Sekundenbereich sinnvoll.
+Dies ist eine Seite mit allgemeinen Parametern, die unter [Applikationsbeschreibung-Common](https://github.com/OpenKNX/OGM-Common/blob/v1/doc/Applikationsbeschreibung-Common.md) beschrieben sind. 
 
-### **In Betrieb senden alle**
+### **Konfigurationstransfer**
 
-Das Gerät kann einen Status "Ich bin noch in Betrieb" über das KO 1 senden. Hier wird das Sendeintervall eingestellt.
+Der Konfigurationstransfer erlaubt einen
 
-Sollte hier eine 0 angegeben werden, wird kein "In Betrieb"-Signal gesendet und das KO 1 steht nicht zur Verfügung.
+* Export von Konfigurationen von OpenKNX-Modulen und deren Kanälen
+* Import von Konfigurationen von OpenKNX-Modulen und deren Kanälen
+* Kopieren der Konfiguration von einem OpenKNX-Modulkanal auf einen anderen
+* Zurücksetzen der Konfiguration eines OpenKNX-Modulkanals auf Standardwerte
 
-### **Uhrzeit und Datum empfangen über**
+Die Funktionen vom Konfigurationstransfer-Modul sind unter [Applikationsbeschreibung-ConfigTransfer](https://github.com/OpenKNX/OFM-ConfigTransfer/blob/v1/doc/Applikationsbeschreibung-ConfigTransfer.md) beschrieben.
 
-Dieses Gerät kann Uhrzeit und Datum vom Bus empfangen. Dabei kann man wählen, ob man Uhrzeit über ein Kommunikationsobjekt und das Datum über ein anders empfangen will oder beides, Uhrzeit und Datum, über ein kombiniertes Kommunikationsobjekt.
+### **Präsenzmelder**
 
-#### **Zwei getrennte KO Uhrzeit und Datum**
+Die Sensormodul-Applikation erlaubt die Nutzung von einigen Präsenzmelder-Kanälen. Bei der Verwendung mit passender Hardware - wie dem Presence-Multisensor von ab-tools - auch als echter Präsenzmelder, sonst als virtueller Präsenzmelder (VPM).
 
-Wählt man diesen Punkt, wird je ein Kommunikationsobjekt für Uhrzeit (DPT 10) und Datum (DPT 11) bereitgestellt. Der KNX-Zeitgeber im System muss die Uhrzeit und das Datum für die beiden Kommunikationsobjekte liefern können.
+Die Funktionen des Präsenzmelder-Moduls sind unter [Applikationsbeschreibung-Präsenz](https://github.com/OpenKNX/OFM-PresenceModule/blob/v1/doc/Applikationbeschreibung-Praesenz.md) beschrieben.
 
-#### **Ein kombiniertes KO Uhrzeit/Datum**
+### **Virtuelle Taster**
 
-Wählt man diesen Punkt, wir ein kombiniertes Kommunikationsobjekt für Uhrzeit/Datum (DPT 19) bereitgestellt. Der KNX-Zeitgeber im System muss die kombinierte Uhrzeit/Datum entsprechend liefern können.
+Ebenso wie virtuelle Präsenzmelder werden auch virtuelle Taster von der Sensormodul-Applikation angeboten. Wenn auch Binäreingänge in Hardware vorhanden sind - wie dem Sensormodul v4.2 von SmartMF - können es auch echte Taster werden.
 
-### **Uhrzeit und Datum nach einem Neustart vom Bus lesen**
+Die Funktionen des Tastermoduls sind unter [Applikationsbeschreibung-Taster](https://github.com/OpenKNX/OFM-VirtualButton/blob/v1/doc/Applikationsbeschreibung-Taster.md) beschrieben.
 
-Nach einem Neustart können Uhrzeit und Datum auch aktiv über Lesetelegramme abgefragt werden. Mit diesem Parameter wird bestimmt, ob Uhrzeit und Datum nach einem Neustart aktiv gelesen werden.
+### **Binäreingänge**
 
-Wenn dieser Parameter gesetzt ist, wird die Uhrzeit und das Datum alle 20-30 Sekunden über ein Lesetelegramm vom Bus gelesen, bis eine entsprechende Antwort kommt. Falls keine Uhr im KNX-System vorhanden ist oder die Uhr nicht auf Leseanfragen antworten kann, sollte dieser Parameter auf "Nein" gesetzt werden.
+Die Sensormodul-Applikation unterstützt auch Binäreingänge, z.B. vom Sensormodul v4.2 von SmartMF.
 
-## **Installierte Hardware**
+Die Funktionen der Binäreingänge sind unter [Applikationsbeschreibung-Binäreingang](https://github.com/OpenKNX/OFM-BinaryInput/blob/v1/doc/Applikationsbeschreibung-Binaereingang.md) beschrieben.
+
+### **Logiken**
+
+Wie die meisten OpenKNX-Applikationen enthält auch die Sensormodul-Applikation ein Logikmodul.
+
+Die Funktionen des Logikmoduls sind unter [Applikationsbeschreibung-Logik](https://github.com/OpenKNX/OFM-LogicModule/blob/v1/doc/Applikationsbeschreibung-Logik.md) beschrieben.
+
+
+
+
+## **Sensoren**
+
+Alle Funktionen vom Sensormodul finden sich unter der Seite "Sensoren" wieder.
+
+### **Allgemein**
+
+Auf dieser Seite wird die Version des Sensormoduls angegeben, die die Firmware verwendet.
+
+#### **Installierte Hardware**
 
 Die Firmware im Sensormodul unterstützt verschiedene Hardware-Sensor-Typen.
 Über die folgenden Felder kann angegeben werden, welcher der Messwerte durch welchen mit dem Sensormodul verbunden Sensor ermittelt werden soll.
@@ -283,7 +299,7 @@ Dieses Auswahlfeld erlaubt die Auswahl des Sensors, der die Temperatur liefern s
 
 Wird "Kein Sensor" ausgewählt, wird die Temperatur nicht ermittelt.
 
-Nur wenn ein Sensor für die Temperaturermittlung ausgewählt wurde, können auch im Abschnitt "Standardsensoren->Temperatur" entsprechende Einstellungen zum senden der Temperatur gemacht werden.
+Nur wenn ein Sensor für die Ermittlung der Temperatur ausgewählt wurde, erscheint eine Seite "Temperatur", auf der passende Einstellungen zum Messwert gemacht werden können.
 
 #### **Luftfeuchtesensor**
 
@@ -291,7 +307,7 @@ Dieses Auswahlfeld erlaubt die Auswahl des Sensors, der die Luftfeuchte liefern 
 
 Wird "Kein Sensor" ausgewählt, wird die Luftfeuchte nicht ermittelt.
 
-Nur wenn ein Sensor für die Ermittlung der Luftfeuchte ausgewählt wurde, können auch im Abschnitt "Standardsensoren->Luftfeuchte" entsprechende Einstellungen zum senden der Luftfeuchte gemacht werden.
+Nur wenn ein Sensor für die Ermittlung der Luftfeuchte ausgewählt wurde, erscheint eine Seite "Luftfeuchte", auf der passende Einstellungen zum Messwert gemacht werden können.
 
 #### **Luftdrucksensor**
 
@@ -299,7 +315,7 @@ Dieses Auswahlfeld erlaubt die Auswahl des Sensors, der den Luftdruck liefern so
 
 Wird "Kein Sensor" ausgewählt, wird der Luftdruck nicht ermittelt.
 
-Nur wenn ein Sensor für die Luftdruckermittlung ausgewählt wurde, können auch im Abschnitt "Standardsensoren->Luftdruck" entsprechende Einstellungen zum senden des Luftdrucks gemacht werden.
+Nur wenn ein Sensor für die Ermittlung des Luftdrucks ausgewählt wurde, erscheint eine Seite "Luftdruck", auf der passende Einstellungen zum Messwert gemacht werden können.
 
 #### **Voc-Sensor**
 
@@ -307,7 +323,7 @@ Dieses Auswahlfeld erlaubt die Auswahl des Sensors, der den Messwert für flüch
 
 Wird "Kein Sensor" ausgewählt, wird der Voc-Wert nicht ermittelt.
 
-Nur wenn ein Sensor für die Voc-Ermittlung ausgewählt wurde, können auch im Abschnitt "Standardsensoren->Voc" entsprechende Einstellungen zum senden des Voc-Wertes gemacht werden.
+Nur wenn ein Sensor für die VOC-Ermittlung ausgewählt wurde, erscheint eine Seite "VOC", auf der passende Einstellungen zum Messwert gemacht werden können.
 
 #### **Co2-Sensor**
 
@@ -315,7 +331,7 @@ Dieses Auswahlfeld erlaubt die Auswahl des Sensors, der den Messwert für Kohlen
 
 Wird "Kein Sensor" ausgewählt, wird der CO<sub>2</sub>-Wert nicht ermittelt.
 
-Nur wenn ein Sensor für die CO<sub>2</sub>-Ermittlung ausgewählt wurde, können auch im Abschnitt "Standardsensoren->CO2" entsprechende Einstellungen zum senden des CO<sub>2</sub>-Wertes gemacht werden.
+Nur wenn ein Sensor für die CO<sub>2</sub>-Ermittlung ausgewählt wurde, erscheint eine Seite "CO2", auf der passende Einstellungen zum Messwert gemacht werden können.
 
 Bei der Auswahl vom BME680, IAQCore oder SGP30 ist anzumerken, dass diese Sensoren nur ein berechnetes CO<sub>2</sub>-Äquivalent passend zum gemessenen Voc-Wert ausgeben und keinen gemessenen CO<sub>2</sub>-Wert.
 
@@ -325,7 +341,7 @@ Dieses Auswahlfeld erlaubt die Auswahl des Sensors, der die Helligkeit liefern s
 
 Wird "Kein Sensor" ausgewählt, wird die Helligkeit nicht ermittelt.
 
-Nur wenn ein Sensor für die Helligkeitsermittlung ausgewählt wurde, können auch im Abschnitt "Standardsensoren->Helligkeit" entsprechende Einstellungen zum senden der Helligkeit gemacht werden.
+Nur wenn ein Sensor für die Ermittlung der Helligkeit ausgewählt wurde, erscheint eine Seite "Helligkeit", auf der passende Einstellungen zum Messwert gemacht werden können.
 
 #### **Entfernungssensor**
 
@@ -333,31 +349,7 @@ Dieses Auswahlfeld erlaubt die Auswahl des Sensors, der die Entfernung liefern s
 
 Wird "Kein Sensor" ausgewählt, wird die Entfernung nicht ermittelt.
 
-Nur wenn ein Sensor für die Entfernungsermittlung ausgewählt wurde, können auch im Abschnitt "Standardsensoren->Entfernung" entsprechende Einstellungen zum senden der Entfernung gemacht werden.
-
-#### **1-Wire aktivieren?**
-
-Dieses Eingabefeld kann bei jedem Sensor zusätzlich ausgewählt werden, falls an das Sensormodul auch 1-Wire-Sensoren angeschlossen sind. Eine weitere Seite zur Detaileinstellungen für 1-Wire-Sensoren wird dann verfügbar.
-
-1-Wire-Sensoren erfordern eine fortlaufende Abfrage ihrer Werte und können speziell bei Input-Output-Bausteinen (IO) oder iButtons sehr zeitkritisch sein. Deswegen wird für diese zeitkritischen Abfragen in einem besonders schnellen Modus geschaltet. Bestimmte Sensoren, wie z.B. der IAQCore, der SCD30 und der SCD4x, können dieses schnellen Modus nicht unterstützen und behindern die Kommunikation mit dem 1-Wire-Sensor. In solchen Fällen erscheint folgende Meldung:
-<kbd>![Info One-Wire](pics/OneWire.png)</kbd>
-
-Die Abfragen von 1-Wire-IO und iButtons passieren dann in normaler Geschwindigkeit, was dazu führen kann, dass die Reaktionszeiten auf Eingaben größer 1 Sekunde werden oder gar dass Eingaben verpasst werden. Dies ist kein Fehler des Sensormoduls oder der Firmware, sondern eine Hardwarebeschränkung der verwendeten Bauteile, hier der beteiligten Sensoren.
-
-Anmerkung: Die Einstellungen und die Abfrage von 1-Wire-Sensoren können in der Applikationsbeschreibung WireGateway nachgelesen werden.
-
-#### **Akustischer Signalgeber vorhanden (Buzzer)?**
-
-Das Sensormodul unterstützt auch die Ausgabe von Pieptönen mittels eines Buzzers. Mit einem Haken in diesem Feld wird angegeben, ob ein Buzzer installiert ist.
-
-#### **Optischer Signalgeber vorhanden (RGB-LED)?**
-
-Das Sensormodul unterstützt auch die Ausgabe eines Lichtsignals mittels einer RGB-LED. Mit einem Haken in diesem Feld wird angegeben, ob eine RGB-LED installiert ist.
-
-Wird eine RGB-LED und ein CO<sub>2</sub>-Sensor ausgewählt, erscheint folgende Information:
-<kbd>![Info RGB-LED](pics/InfoRgbLed.PNG)</kbd>
-
-Diese Information besagt, dass der Betrieb einer RBG-LED und eines CO<sub>2</sub>-Sensors gleichzeitig nicht empfohlen wird, sofern das Sensormodul vom KNX-Bus gespeist werden soll. Da der vom KNX-Bus gelieferte Strom nicht für den Betrieb beider ausreicht, kann es zu Funktionsstörungen kommen, bis hin zu Resets des Sensormoduls und zum Funktionsausfall. Falls das Sensormodul über eine zusätzliche Stromversorgung verfügt (z.B. USB), kann diese Einstellung so belassen werden. Die Applikation wird bei dieser Einstellung nicht weiter eingeschränkt.
+Nur wenn ein Sensor für die Ermittlung der Entfernung ausgewählt wurde, erscheint eine Seite "Entfernung", auf der passende Einstellungen zum Messwert gemacht werden können.
 
 <!-- ### **Fehlerobjekt anzeigen**
 
@@ -373,33 +365,9 @@ Das Fehlerobjekt (KO 11) meldet bitweise Sensorfehler.
 * Bit 7: Fehler im 1-Wire-Busmaster
 * Bit 8-15: Fehler des jeweiligen 1-Wire-Sensors -->
 
-## Experteneinstellungen
-
-Dieser Tab ist im Detail in der Applikationsbeschreibung Logik beschrieben.
-
-### **Diagnoseobjekt anzeigen**
-
-Das Diagnoseobjekt (KO 7) ist derzeit für interne Verwendung (für Debug-Zwecke) vorgesehen und sollte in der Praxis nicht mit einer GA belegt werden.
-
-### **Watchdog aktivieren**
-
-Das Modul unterstützt auch einen Watchdog. Dies ist eine Schaltung, die dafür sorgt, dass ein undefinierter Modulzustand, in dem das Modul nicht mehr auf KNX-Telegramme reagiert, zu einem Modul-Neustart führt.
-
-Für reine Sensoren sind Watchdogs eine gute Lösung, um Hänger zu vermeiden. Ein solcher Neustart geht schnell und der Sensor liefert wieder seine Werte. Nach dem Neustart werden wie gewohnt alle Messwerte auf den Bus gesendet. Somit kommt ein Messwert außer der Reihe, also z.B. schon nach 2 Minuten und erst dann wieder alle 5 Minuten. Da man normalerweise auch Messwerte bei bestimmten Abweichungen senden lässt, die dann auch außer der Reihe kommen, ist das vertretbar.
-
-Wenn man Logiken nutzt, muss man diese so aufbauen, dass sie stabil gegenüber einem Neustart sind, der ja jederzeit vorkommen kann. Keiner will mitten in der Nacht vom Buzzer geweckt werden. Das Logikmodul erlaubt sehr viele "Startup-Einstellungen", um das möglichst feingranular steuern zu können. Allerdings muss man das auch machen! Wenn man also Logiken macht und den Watchdog benutzt, muss man die Logiken nicht nur auf Funktion, sondern auch auf Neustartverhalten testen. Der komfortabelste Weg hier ist in der ETS "Gerät zurücksetzen". Man kann diesen Befehl aber auch über eine Logik auslösen und z.B. auf eine Taste legen. So kann man in der Testphase jederzeit spontan das Gerät zurücksetzen und sehen, ob es Seiteneffekte bei Neustart gibt.
-
-Der Watchdog kann mit dieser Einstellung aktiviert werden.
-
-Derzeit wird der Watchdog bei der Verwendung vom SCD30 (CO<sub>2</sub>-Sensor) empfohlen, da dessen API zu sporadischen Hängern führt.
-
-## **Standardsensoren**
-
-Zu den Standardsensoren zählen die Sensoren, die im Kapitel "Hardwareeinstellungen" in der Tabelle aufgelistet sind. Diese Sensoren werden von der Applikation bestens unterstützt. Alle Messwerte von Standardsensoren (Temperatur, Luftfeuchte, Luftdruck, Voc, CO<sub>2</sub>, Helligkeit und Entfernung) erlauben die gleichen Einstellungen, die im Folgenden abstrakt für einen beliebigen Messwert beschrieben werden. Für die konkreten Messwerte werden dann nur noch die Einheiten genannt, in den die Eingaben zu erfolgen sind.
-
-<kbd>![Standardsensoren](pics/Standardsensoren.PNG)</kbd>
-
 ## Messwert
+
+Alle Messwerte (Temperatur, Luftfeuchte, Luftdruck, Voc, CO<sub>2</sub>, Helligkeit und Entfernung) erlauben die gleichen Einstellungen, die im Folgenden abstrakt für einen beliebigen Messwert beschrieben werden. Für die konkreten Messwerte werden dann nur noch die Einheiten genannt, in den die Eingaben zu erfolgen sind.
 
 <!-- DOC HelpContext="Messwert anpassen" -->
 ### **Messwert anpassen (interner Messwert)**
@@ -504,27 +472,27 @@ Die Glättung wird durchgeführt, bevor eine Sendebedingung für die absolute od
 
 Der neu ermittelte Wert wird alle 5 Sekunden auf das entsprechende KO geschrieben, ganz egal, ob das KO diesen Wert sendet oder nicht. Somit können vom Sensormodul alle 5 Sekunden aktuelle Sensorwerte gelesen werden, unabhängig von parametrisierten Sendebedingungen.
 
-## **Standardsensoren - Temperatur**
+## **Temperatur**
 
 Alle Temperaturangaben werden in 0.1°C vorgenommen. Die Temperatur kann um &pm;10°C angepasst werden. Der eingegebene Wert ist dann &pm;100.
 
-## **Standardsensoren - Luftfeuchte**
+## **Luftfeuchte**
 
 Alle Angaben für Luftfeuchte werden in % vorgenommen. Die Luftfeuchte kann um &pm;50% angepasst werden.
 
-## **Standardsensoren - Luftdruck**
+## **Luftdruck**
 
 Erscheint nur, wenn der angeschlossene Sensor auch einen Messwert für Luftdruck liefert.
 
 Alle Angaben für Luftdruck werden in Millibar (mBar) vorgenommen. Der Luftdruck kann um &pm;80 mBar angepasst werden.
 
-## **Standardsensoren - Voc**
+## **Voc**
 
 Erscheint nur, wenn der angeschlossene Sensor auch einen Messwert für Voc liefert.
 
 Alle Angaben für Voc sind einheitenlos und werden in ganzen Zahlen vorgenommen. Der Voc-Wert kann um &pm;100 angepasst werden.
 
-## **Standardsensoren - CO<sub>2</sub>**
+## **CO<sub>2</sub>**
 
 Erscheint nur, wenn der angeschlossene Sensor auch einen Messwert für CO<sub>2</sub> liefert.
 
@@ -536,19 +504,19 @@ Ist die Sensorkombination BME680+SCD4x installiert, werden beide CO<sub>2</sub>-
 
 > **Anmerkung zum SDC30:** Dieser Sensor wird nicht mehr empfohlen. Er sollte - wenn überhaupt - nur mit einem Watchdog genutzt werden (siehe Kapitel Watchdog-Unterstützung). Mit diesem Sensor kommt es zu sporadischen "Hängern", deren Ursache nicht bekannt ist. Für einen CO<sub>2</sub>-Sensor ist der SCD4x die bessere (und günstigere) Wahl.
 
-## **Standardsensoren - Helligkeit**
+## **Helligkeit**
 
 Erscheint nur, wenn der angeschlossene Sensor auch einen Messwert für Helligkeit liefert.
 
 Alle Angaben für Helligkeit werden in Lux vorgenommen. Die Helligkeit kann um &pm;120 Lux angepasst werden.
 
-## **Standardsensoren - Entfernung**
+## **Entfernung**
 
 Erscheint nur, wenn der angeschlossene Sensor auch einen Messwert für Entfernung liefert.
 
 Alle Angaben für Entfernung werden in Millimeter (mm) vorgenommen. Die Entfernung kann um &pm;125 mm angepasst werden.
 
-## **Standardsensoren - Zusatzfunktionen**
+## **Zusatzfunktionen**
 
 Das Sensormodul kann neben gemessenen Werten auch noch einige berechnete Werte liefern. Dazu zählen der Taupunkt, Behaglichkeit, Luftqualitätsampel und Messgenauigkeit.
 
@@ -648,75 +616,3 @@ Die Sensormodul-Applikation unterstützt die ETS-Update-Funktion. Das bedeutet, 
 
 Der Vorgang ist im [OpenKNX-Wiki](https://github.com/OpenKNX/OpenKNX/wiki/Wie-aktualisiert-man-eine-ETS-Applikation-auf-eine-aktuelle-Version) beschrieben.
 
-## **Hardware**
-
-Dieses Kapital beschreibt die von dieser Firmware unterstützte Hardware
-(noch nicht ausgearbeitet)
-
-* Sensormodul Masifi
-
-* SHT3x (neu)
-
-* BME280
-
-* BME680
-
-* SCD30 (sollte möglichst nicht verwendet werden)
-
-* SCD4x (bessere und günstigere Alternative zum SCD30)
-
-* IAQCore
-
-* OPT300x
-
-* VEML7700
-
-* VL53L1X
-
-* SGP30 (in Entwicklung)
-
-* Buzzer
-
-* RGB-LED
-
-* NCN5130
-
-* DS2484
-
-## **Übersicht der vorhandenen Kommunikationsobjekte**
-
-Die Liste zeigt nur die spezifischen Kommunikationsobjekte (KO) des Sensor-Moduls. 
-Für weitere KO, wird auf die Dokumentation der anderen in die Applikation integrierten Module verwiesen.
-
-|   KO    | Name                  | DPT   | Bedeutung                                                                                                                                                                                  |
-|:-------:|:----------------------|:------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|  1..49  |                       |       | *siehe anderer Module*                                                                                                                                                                     |
-|   50    | Sensorwerte anfordern | 1.016 | Beim Empfang vom Trigger (1) werden alle Sensorwerte auf den Bus gesendet. So kann man mehrere Leseanforderungen sparen.                                                                   |
-|   51    | Sensorfehler          | 7.001 | Gibt über eine Bitleiste an, welche Messwerte aufgrund eines aufgetretenen Fehlers nicht erfasst werden können. Falls ein ganzer Sensor ausfällt, werden mehrere Bits gleichzeitig gesetzt |
-|   60    | Temperatur            | 9.001 | Temperaturmesswert (in °C)                                                                                                                                                                 |
-|   61    | Luftfeuchte           | 9.007 | Luftfeuchte (in %)                                                                                                                                                                         |
-|   62    | Luftdruck             | 9.006 | Luftdruck (in mBar, nicht Pa!!! mBar = Pa / 100)                                                                                                                                           |
-|   63    | VOC                   | 9.*   | Voc-Messwert (einheitenlos)                                                                                                                                                                |
-|   64    | CO2                   | 9.008 | CO2-Messwert (in ppm)                                                                                                                                                                      |
-|   65    | CO2-VOC               | 9.008 | Berechneter CO2-Messwert vom VOC (in ppm)                                                                                                                                                  |
-|   66    | Taupunkt              | 9.001 | Berechneter Taupunkt (in °C)                                                                                                                                                               |
-|   67    | Behaglichkeit         | 5.005 | Behaglichkeitswert, errechnet aus Luftfeuchte im Verhältnis zur Temperatur (0-2)                                                                                                           |
-|   68    | Luftqualitätsampel    | 5.005 | Luftgüte entsprechend deutscher Schulnoten (1-6)                                                                                                                                           |
-|   69    | Kalibrierungsgrad     | 5.001 | Kalibrierungsfortschritt vom BME680 (in %)                                                                                                                                                 |
-|   70    | Externe Temperatur 1  | 9.001 | Eingang für externe Temperatur 1 (in °C)                                                                                                                                                   |
-|   71    | Externe Temperatur 2  | 9.001 | Eingang für externe Temperatur 2 (in °C)                                                                                                                                                   |
-|   72    | Externe Luftfeuchte 1 | 9.007 | Eingang für externe Luftfeuchte 1 (in %)                                                                                                                                                   |
-|   73    | Externe Luftfeuchte 2 | 9.007 | Eingang für externe Luftfeuchte 2 (in %)                                                                                                                                                   |
-|   74    | Externer Luftdruck 1  | 9.006 | Eingang für externen Luftdruck 1 (in mBar)                                                                                                                                                 |
-|   75    | Externer Luftdruck 2  | 9.006 | Eingang für externen Luftdruck 2 (in mBar)                                                                                                                                                 |
-|   76    | Externer VOC 1        | 9.*   | Eingang für externen VOC-Wert 1 (einheitenlos)                                                                                                                                             |
-|   77    | Externer VOC 2        | 9.*   | Eingang für externen VOC-Wert 2 (einheitenlos)                                                                                                                                             |
-|   78    | Externe CO2 1         | 9.008 | Eingang für externen CO<sub>2</sub>-Wert 1 (in ppm)                                                                                                                                        |
-|   79    | Externe CO2 2         | 9.008 | Eingang für externen CO<sub>2</sub>-Wert 2 (in ppm)                                                                                                                                        |
-|   80    | Externer Helligkeit 1 | 9.004 | Eingang für externe Helligkeit 1 (in Lux)                                                                                                                                                  |
-|   81    | Externer Helligkeit 2 | 9.004 | Eingang für externe Helligkeit 2 (in Lux)                                                                                                                                                  |
-|   82    | Externe Entfernung 1  | 7.011 | Eingang für externe Entfernung 1 (in mm)                                                                                                                                                   |
-|   83    | Externe Entfernung 2  | 7.011 | Eingang für externe Entfernung 2 (in mm)                                                                                                                                                   |
-|   87    | Helligkeit            | 9.004 | Helligkeit (in Lux)                                                                                                                                                                        |
-|   88    | Entfernung            | 7.011 | Entfernung (in mm)                                                                                                                                                                         |
-| &gt;=90 |                       |       | *siehe anderer Module*                                                                                                                                                                     |
