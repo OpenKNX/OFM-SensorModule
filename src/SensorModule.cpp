@@ -581,15 +581,51 @@ void SensorModule::processSensors(bool iForce /*= false*/)
     sMeasureType <<= 1;
 }
 
-bool SensorModule::processDiagnoseCommand(char* iBuffer)
+void SensorModule::showHelp()
 {
-    bool lOutput = false;
-    if (iBuffer[0] == 'c')
+    if (!knx.configured())
+        return;
+
+    openknx.console.printHelpLine("sen i2c", "print I2C speed");
+}
+
+bool SensorModule::processCommand(const std::string iCmd, bool iDebugKo)
+{
+    bool lResult = false;
+
+    if (!knx.configured())
+        return lResult;
+
+    if (iCmd.substr(0, 3) != "sen" || iCmd.length() < 5)
+        return lResult;
+
+    if (iCmd.length() == 5 && iCmd.substr(4, 1) == "h")
     {
-        sprintf(iBuffer, "%d00 kHz", openknxSensorDevicesModule.getMaxI2cSpeed());
-        lOutput = true;
+        // Command help
+        openknx.console.writeDiagenoseKo("-> i2c");
+        openknx.console.writeDiagenoseKo("");
     }
-    return lOutput;
+    else if (iCmd.length() == 7 || iCmd.substr(4, 3) == "i2c")
+    {
+        // I2C speed
+        logInfoP("%d00 kHz", openknxSensorDevicesModule.getMaxI2cSpeed());
+        if (iDebugKo)
+        {
+            openknx.console.writeDiagenoseKo("SEN %d00 kHz", openknxSensorDevicesModule.getMaxI2cSpeed());
+        }
+        lResult = true;
+    }
+    else
+    {
+        // Commands starting with sen are sensor diagnose commands
+        logInfoP("SEN command with bad args");
+        if (iDebugKo)
+        {
+            openknx.console.writeDiagenoseKo("SEN: bad args");
+        }
+        lResult = true;
+    }
+    return lResult;
 }
 
 void SensorModule::processInputKo(GroupObject& iKo)
