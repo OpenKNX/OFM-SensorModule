@@ -70,7 +70,8 @@ class SensorModule : public OpenKNX::Module
     void sendError();
     void setError(uint16_t iValue);
     void processReadRequests(uint32_t iStartupDelay, uint32_t iReadRequestDelay);
-    bool processDiagnoseCommand(char* iBuffer);
+    void showHelp() override;
+    bool processCommand(const std::string iCmd, bool iDebugKo) override;
     void processInputKo(GroupObject& iKo);
     void setup();
     void loop();
