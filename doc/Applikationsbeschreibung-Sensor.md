@@ -61,9 +61,16 @@ Die nicht Sensor-spezifischen Teile der Applikation basieren auf anderen OpenKNX
 
 Im folgenden werden Änderungen an dem Dokument erfasst, damit man nicht immer das Gesamtdokument lesen muss, um Neuerungen zu erfahren.
 
+24.07.2024: Firmware 3.1, Applikation 3.1
+
+* Aktualisierung vom Logikmodul auf die Version 3.3.1
+* Aktualisierung vom Präsenzmelder auf die Version 3.2.2
+* Aktualisierung vom virtuellen Taster auf 0.5
+
 08.06.2024: Firmware 3.0, Applikation 3.0
 
-* CO2-Sensor SDC41 erlaubt jetzt eine Einstellung des Messintervalls 
+* NEU: CO2-Sensor SDC41 erlaubt jetzt eine Einstellung des Messintervalls 
+* NEU: Binäreingänge vom  
 
 09.10.2023: Firmware 1.5.2, Applikation 1.5
 

@@ -1,9 +1,8 @@
 {
     "name": "OFM-SensorModule",
-    "version": "3.0.0",
+    "version": "3.1.1",
     "description": "SensorModule module for the knx stack, can be embedded in an ETS application",
-    "dependencies": {
-    },
+    "dependencies": {},
     "homepage": "https://openknx.de",
     "authors": {
         "name": "OpenKNX",
