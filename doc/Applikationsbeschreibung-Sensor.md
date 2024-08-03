@@ -65,8 +65,9 @@ Im folgenden werden Änderungen an dem Dokument erfasst, damit man nicht immer d
 
 * FIX: Konfigurationstransfer konnte das PM-Modul vom SensorModule-Vpm-1.6.2 nicht importieren.
 * NEU: Alle Erkenntnisse aus verschiedenen Tests mit dem neuen HLK-HF-Sensor sind in dessen Implementierung eingeflossen.
+* Konfigurationstransfer ist auf Version 0.2 aktualisiert.
 
-Alle, die von einem älteren -Vpm oder -Wire Version migrieren wollen, sollten diese Version einsetzen.
+Alle, die von einer älteren 1.x -Vpm oder -Wire Version migrieren wollen, sollten diese Version als Zielversion einsetzen.
 Alle, die den Presence-Multisensor von AB-SmartHouse.com benutzen, sollten unbedingt auf diese Version aktualisieren.
 
 Wichtig: Es gibt noch immer keiner 1-Wire-Unterstützung.
