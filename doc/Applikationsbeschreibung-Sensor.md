@@ -61,7 +61,7 @@ Die nicht Sensor-spezifischen Teile der Applikation basieren auf anderen OpenKNX
 
 Im folgenden werden Änderungen an dem Dokument erfasst, damit man nicht immer das Gesamtdokument lesen muss, um Neuerungen zu erfahren.
 
-03.08.2024: Firmware 3.2, Applikation 3.2.9
+03.08.2024: Firmware 3.2, Applikation 3.2.10
 
 * FIX: Konfigurationstransfer konnte das PM-Modul vom SensorModule-Vpm-1.6.2 nicht importieren.
 * NEU: Alle Erkenntnisse aus verschiedenen Tests mit dem neuen HLK-HF-Sensor sind in dessen Implementierung eingeflossen.
