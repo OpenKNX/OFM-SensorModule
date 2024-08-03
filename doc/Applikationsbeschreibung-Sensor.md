@@ -61,11 +61,32 @@ Die nicht Sensor-spezifischen Teile der Applikation basieren auf anderen OpenKNX
 
 Im folgenden werden Änderungen an dem Dokument erfasst, damit man nicht immer das Gesamtdokument lesen muss, um Neuerungen zu erfahren.
 
-24.07.2024: Firmware 3.1, Applikation 3.1
+03.08.2024: Firmware 3.2, Applikation 3.2.9
 
+* FIX: Konfigurationstransfer konnte das PM-Modul vom SensorModule-Vpm-1.6.2 nicht importieren.
+* NEU: Alle Erkenntnisse aus verschiedenen Tests mit dem neuen HLK-HF-Sensor sind in dessen Implementierung eingeflossen.
+
+Alle, die von einem älteren -Vpm oder -Wire Version migrieren wollen, sollten diese Version einsetzen.
+Alle, die den Presence-Multisensor von AB-SmartHouse.com benutzen, sollten unbedingt auf diese Version aktualisieren.
+
+Wichtig: Es gibt noch immer keiner 1-Wire-Unterstützung.
+
+
+24.07.2024: Firmware 3.1, Applikation 3.1.1
+
+* Die Applikation unterstützt jetzt unseren neuen Konfigurationstransfer
+* Verbesserter knx-Stack: Durch asynchrones Sende- und Empfangshandling werden Botschaften auch bei sehr hoher Buslast sicher übertragen
+* Es werden bis zu 4 Binäreingänge unterstützt (Hardware Sensormodul-4.x von smart-mf.de)
+* Update über den KNX-Bus ist jetzt möglich
+* Die Möglichkeiten der ETS für Icons werden genutzt
+* Es wird bei (fast) allen Eingabefeldern eine Kontextsensitive Hilfe angeboten
+* Es gibt ein generelles UI-Redesign, dass alle OpenKNX-Applikationen wiedererkennbar macht
+* Es wird jetzt auch der Presence-Multisensor von AB-SmartHouse.com unterstützt
 * Aktualisierung vom Logikmodul auf die Version 3.3.1
 * Aktualisierung vom Präsenzmelder auf die Version 3.2.2
 * Aktualisierung vom virtuellen Taster auf 0.5
+
+Wichtig: Es gibt noch KEINE 1-Wire Unterstützung
 
 08.06.2024: Firmware 3.0, Applikation 3.0
 
