@@ -61,7 +61,18 @@ Die nicht Sensor-spezifischen Teile der Applikation basieren auf anderen OpenKNX
 
 Im folgenden werden Änderungen an dem Dokument erfasst, damit man nicht immer das Gesamtdokument lesen muss, um Neuerungen zu erfahren.
 
-03.08.2024: Firmware 3.2, Applikation 3.2.10
+15.08.2024: Firmware 3.2.11, Applikation 3.2
+
+* NEU: Es wird jetzt auch der [SEN-UP1-8xTH](https://github.com/OpenKNX/OpenKNX/wiki/SEN-UP1-8xTH) von [Ing-Dom](https://muster.ing-dom.de) als Hardware unterstützt. Kanal E ist dann der I²C-Eingang und Kanal C und D können als 4 Binäreingänge fungieren. Die Unterstützung vom SEN-UP1-8xTH wird in Zukunft in der Sensormodul-Applikation noch ausgebaut werden.
+
+An der Funktionalität hat sich nichts geändert, für bestehende Hardware ist kein Update nötig.
+
+Wichtig: Es gibt noch immer keiner 1-Wire-Unterstützung, hierfür die Version 1.5.2 nutzen.
+
+Es gilt auch weiterhin alles für die 3.x-Versionen gesagte (z.B. keine SAMD-Unterstützung).
+
+
+03.08.2024: Firmware 3.2.10, Applikation 3.2
 
 * FIX: Konfigurationstransfer konnte das PM-Modul vom SensorModule-Vpm-1.6.2 nicht importieren.
 * NEU: Alle Erkenntnisse aus verschiedenen Tests mit dem neuen HLK-HF-Sensor sind in dessen Implementierung eingeflossen.
