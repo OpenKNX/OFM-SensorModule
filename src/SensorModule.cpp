@@ -249,7 +249,7 @@ void SensorModule::processSensor(sSensorInfo* cData, getSensorValue fGetSensorVa
         lSend = true;
 
     // process read cycle
-    if (lForce || delayCheck(cData->readDelay, 5000))
+    if (lForce || delayCheck(cData->readDelay, (iMeasureType == Tof) ? 500 : 5000))
     {
         // we waited enough, let's read the sensor
         int32_t lOffset;

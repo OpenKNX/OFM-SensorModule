@@ -1,0 +1,1 @@
+- HUM sendet ein 0% als zweites (!) Telegramm: https://knx-user-forum.de/forum/projektforen/openknx/1902798-openknx-sensormodul-release?p=1982976#post1982976
