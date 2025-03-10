@@ -54,7 +54,7 @@ Die Applikation für das SensorModule erlaubt die Parametrisierung des Sensormod
 
 Im folgenden werden Änderungen an dem Dokument erfasst, damit man nicht immer das Gesamtdokument lesen muss, um Neuerungen zu erfahren.
 
-27.02.2025: Firmware 4.2, Applikation 4.2
+27.02.2025: Firmware 4.2.5, Applikation 4.2
 
 * FIX: Die Ausgabe vom Luftdruck wurde fälschlicherweise in hPa ausgegeben, obwohl der DPT Pa ist. Dies ist nun korrigiert.
 * NEU: Die Firmware unterstützt jetzt auch Analogeingänge, verfügbar im neusten Sensormodul von Smart-MF
