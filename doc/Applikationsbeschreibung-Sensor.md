@@ -54,6 +54,14 @@ Die Applikation für das SensorModule erlaubt die Parametrisierung des Sensormod
 
 Im folgenden werden Änderungen an dem Dokument erfasst, damit man nicht immer das Gesamtdokument lesen muss, um Neuerungen zu erfahren.
 
+15.03.2025: Firmware 4.3, Applikation 4.3
+
+* NEU: Es werden jetzt bis zu 6 Binäreingänge unterstützt (verfügbar im UP1-PM-HF).
+* FIX: Das KO 50 hat eine neue KO-Nummer 43 bekommen (sollte eine Logik eine interne KO-Verknüpfung auf KO 50 haben, so muss das angepasst werden - ist sehr unwahrscheinlich, da das KO selten genutzt wird)
+* FIX: Das KO 51 hat eine neue KO-Nummer 44 bekommen (siehe oben)
+* FIX: Durch die neue Ausgabe vom Luftdruck in Pa (statt mBar) waren die Wertebereiche für die Einstellung von Offset und Abs. Abweichung viel zu klein. Diese werden jetzt als "Wert x 100 Pa" ausgewertet (faktisch also wieder mBar).
+* FIX: Limitierte Senderate für Sensoren: Die Sensoren können ihre werte nicht öfter als 1 x pro Sekunde senden. 
+
 27.02.2025: Firmware 4.2.5, Applikation 4.2
 
 * FIX: Die Ausgabe vom Luftdruck wurde fälschlicherweise in hPa ausgegeben, obwohl der DPT Pa ist. Dies ist nun korrigiert.
@@ -69,7 +77,7 @@ Im folgenden werden Änderungen an dem Dokument erfasst, damit man nicht immer d
 * NEU: Die Firmware ist jetzt auch für den UP1-PM-HF (UP1-Präsenzmelder-Plus) verfügbar
 
 * Die enthaltene Logik hat jetzt die Version 3.5.3
-* Das enthaltene Präsenzmodul hat jetzt die Version 3.6.3
+* Das enthaltene Präsenzmodul hat jetzt die Version 3.6.4
 
 12.12.2024: Firmware 4.1.2, Applikation 4.1
 

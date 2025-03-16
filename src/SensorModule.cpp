@@ -329,7 +329,9 @@ void SensorModule::processSensor(sSensorInfo* cData, getSensorValue fGetSensorVa
         }
         cData->readDelay = millis();
     }
-    if (lSend)
+
+    // send rate limitation, minimum send interval is 1 second
+    if (lSend && delayCheck(cData->sendDelay, 1000))
     {
         if ((getError() & iMeasureType) == 0)
         {
@@ -530,7 +532,7 @@ void SensorModule::processSensors(bool iForce /*= false*/)
             processSensor(&gHum, readSensorValue, Humidity, 1.0f, 1.0f, SENS_HumOffset, SENS_KoHum, VAL_DPT_9);
             break;
         case BIT_Pre:
-            processSensor(&gPre, readSensorValue, Pressure, 1.0f, 1.0f, SENS_PreOffset, SENS_KoPre, VAL_DPT_9);
+            processSensor(&gPre, readSensorValue, Pressure, 0.01f, 1.0f, SENS_PreOffset, SENS_KoPre, VAL_DPT_9);
             break;
         case BIT_Voc:
             processSensor(&gVoc, readSensorValue, Voc, 1.0f, 1.0f, SENS_VocOffset, SENS_KoVoc, VAL_DPT_9);

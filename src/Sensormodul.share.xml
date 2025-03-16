@@ -15,7 +15,7 @@
             <op:param name="%DPST%" values="DPST-9-1 DPST-9-7 DPST-9-6 DPT-9 DPST-9-8 DPST-9-4 DPST-7-11" />
             <op:param name="%ParamOffset%" values="1 12 23 34 45 64 75" />
             <op:param name="%Einheit%" list="," values="in °C,in %,in Pa,(ohne Einheit),in ppm,in Lux,in mm" />
-            <op:param name="%Suffix%" list="," values="x 0.1 °C,%,Pa,,ppm,Lux,mm" />
+            <op:param name="%Suffix%" list="," values="x 0.1 °C,%,x 100 Pa,,ppm,Lux,mm" />
           </op:part>
           <!-- <op:part href="Sensormodul.parts.xml" name="TEMP" instances="2">
             <op:param name="%Messwert%" value="Temperatur" />
@@ -175,7 +175,7 @@
                 <TypeNumber SizeInBit="16" Type="unsignedInt" minInclusive="0" maxInclusive="100" />
               </ParameterType>
               <ParameterType Id="%AID%_PT-OffsetPre" Name="OffsetPre">
-                <TypeNumber SizeInBit="8" Type="signedInt" minInclusive="-80" maxInclusive="80" />
+                <TypeNumber SizeInBit="8" Type="signedInt" minInclusive="-120" maxInclusive="120" />
               </ParameterType>
               <ParameterType Id="%AID%_PT-DeltaAbsPre" Name="DeltaAbsPre">
                 <TypeNumber SizeInBit="16" Type="unsignedInt" minInclusive="0" maxInclusive="80" />
@@ -324,8 +324,8 @@
               <ParameterRef Id="%AID%_UP-%TT%00219_R-%TT%0021901" RefId="%AID%_UP-%TT%00219" />
             </ParameterRefs>
             <ComObjectTable>
-              <ComObject Id="%AID%_O-%TT%00050" Name="RequestValues" Text="Sensorwerte anfordern" Number="50" FunctionText="Alle Werte senden" ObjectSize="1 Bit" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-16" />
-              <ComObject Id="%AID%_O-%TT%00051" Name="Error" Text="Sensorfehler" Number="51" FunctionText="Bitleiste" ObjectSize="2 Bytes" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-7-1" />
+              <ComObject Id="%AID%_O-%TT%00050" Name="RequestValues" Text="Sensorwerte anfordern" Number="43" FunctionText="Alle Werte senden" ObjectSize="1 Bit" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-16" />
+              <ComObject Id="%AID%_O-%TT%00051" Name="Error" Text="Sensorfehler" Number="44" FunctionText="Bitleiste" ObjectSize="2 Bytes" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-7-1" />
               <!-- KO 52-53 free for future extensions -->
               <!-- KO 54-59 free for future inputs -->
               <op:usePart name="MESS" xpath="//ComObjectTable/*" />
