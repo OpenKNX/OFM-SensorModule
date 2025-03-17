@@ -54,7 +54,7 @@ Die Applikation für das SensorModule erlaubt die Parametrisierung des Sensormod
 
 Im folgenden werden Änderungen an dem Dokument erfasst, damit man nicht immer das Gesamtdokument lesen muss, um Neuerungen zu erfahren.
 
-15.03.2025: Firmware 4.3, Applikation 4.3
+15.03.2025: Firmware 4.3.1, Applikation 4.3
 
 * NEU: Es werden jetzt bis zu 6 Binäreingänge unterstützt (verfügbar im UP1-PM-HF).
 * FIX: Das KO 50 hat eine neue KO-Nummer 43 bekommen (sollte eine Logik eine interne KO-Verknüpfung auf KO 50 haben, so muss das angepasst werden - ist sehr unwahrscheinlich, da das KO selten genutzt wird)
