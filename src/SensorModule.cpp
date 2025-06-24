@@ -126,7 +126,7 @@ void SensorModule::processReadRequests(uint32_t iStartupDelay, uint32_t iReadReq
 // static
 // this callback is used by BME680 during delays while measuring
 // we implement this delay, but keep normal loop processing alive
-void SensorModule::sensorDelayCallback(uint32_t iMillis)
+void SensorModule::sensorDelayCallback(uint32_t iMillis, void *intf_ptr)
 {
     // printDebug("sensorDelayCallback: Called with a delay of %lu ms\n", iMillis);
     uint32_t lMillis = millis();
