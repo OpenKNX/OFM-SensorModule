@@ -114,6 +114,7 @@
                   <Enumeration Text="SCD30 (nicht empfohlen)" Value="4" Id="%ENID%" />
                   <Enumeration Text="SCD40" Value="9" Id="%ENID%" />
                   <Enumeration Text="SCD41" Value="13" Id="%ENID%" />
+                  <Enumeration Text="PT1000" Value="14" Id="%ENID%" />
                 </TypeRestriction>
               </ParameterType>
               <!-- align here to constants SENX_XXXX in Sensor.h -->
