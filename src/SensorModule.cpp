@@ -6,6 +6,7 @@
 #include "Sensor.h"
 #include "SensorBME680.h"
 #include "SensorSCD41.h"
+#include "SensorMAX31865.h"
 
 #include "SensorDevices.h"
 // #include "SensorSGP30.h"
@@ -158,6 +159,13 @@ void SensorModule::addSensorMetadata(Sensor* iSensor, uint8_t iSensorId, Measure
     {
         ((SensorSCD41*)iSensor)->setMeasureInterval(ParamSENS_SCD41MeasureIntervalDelayTimeMS / 1000); // time in seconds
     }
+#ifdef OPENKNX_SENSOR_SPI_MISO
+    else if (iSensorId == SENS_MAX31865)
+    {
+        ((SensorMAX31865*)iSensor)->setSensorResistence(ParamSENS_PT100PT1000); // 0=PT100, 1=PT1000
+        ((SensorMAX31865*)iSensor)->setSensorWires(ParamSENS_PT1000NumWires); // 0=2-wire, 1=3-wire, 2=4-wire
+    }
+#endif
     if (iMeasureType == Temperature)
     {
         int32_t lTempOffsetInt = (int8_t)gTempOffset;

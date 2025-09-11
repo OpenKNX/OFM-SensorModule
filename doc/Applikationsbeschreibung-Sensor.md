@@ -448,6 +448,60 @@ Wird "Kein Sensor" ausgewählt, wird die Entfernung nicht ermittelt.
 
 Nur wenn ein Sensor für die Ermittlung der Entfernung ausgewählt wurde, erscheint eine Seite "Entfernung", auf der passende Einstellungen zum Messwert gemacht werden können.
 
+### **Sensorspezifische Einstellungen**
+
+In diesem Bereich kann man Einstellungen für einzelne Sensoren vornehmen, sofern diese das unterstützen.
+
+<!-- DOC -->
+#### **CO2 ermitteln alle**
+
+
+<!-- DOC Skip="1" -->
+Erscheint nur, wenn der CO2-Sensor SCD41 ausgewählt wurde.
+
+Der CO2-Sensor SDC41 erlaubt die Einstellung des Messintervalls. Man kann bestimmen, alle wie viel Sekunden eine Messung vorgenommen wird. 
+
+<!-- DOC -->
+#### **Kalibrierungsfortschritt ausgeben**
+
+<!-- DOC Skip="3" -->
+<kbd>![Kalibrierung](pics/Kalibrierung.PNG)</kbd>
+
+Wird nur sichtbar, wenn als Sensor BME680 ausgewählt ist.
+
+Manche Sensoren benötigen eine Kalibrierung, bevor sie zuverlässige Werte ausgeben können. Dies ist besonders für die Erfassung von Voc-Werten notwendig. Das Sensormodul hat für den BME680 eine Selbstkalibrierung implementiert, die ununterbrochen parallel zur Messwerterfassung läuft und die bisher ermittelten Kalibrierungswerte in den nichtflüchtigen Speicher des Prozessors speichert. Somit wird verhindert, dass nach einem Neustart des Gerätes eine erneute Kalibrierung notwendig wird.
+
+Bei einer Erstinbetriebnahme, nach dem Einspielen einen neuen Firmware oder in seltenen Fällen auch im normalen Betrieb ist es notwendig, dass sich der Sensor BME680 neu kalibriert. Dies ist daran zu erkennen, dass der Sensor für den Voc-Wert konstant eine 25 liefert und als Kalibrierungsfortschritt über das KO 24 der Wert 0% geliefert wird.
+
+Nach ca. 5 Minuten werden die ersten Voc-Werte ungleich 25 geliefert mit einem Kalibrierungsfortschritt von 33%. Diese ersten Werte sind noch immer nicht sinnvoll zu verwenden.
+
+Nach einiger Zeit (hängt von der Raumgröße, Luftqualität, Lüftungszustand etc. ab) geht der Kalibrierungsfortschritt auf 66%, gefolgt von einem Wert von 100%. Dies kann insgesamt 6 bis 48 Stunden dauern und entspricht einer normalen Funktion des BME680.
+
+Der Kalibrierungsfortschritt kann mit dieser Einstellung zur Information über KO 24 ausgegeben werden, hat aber auf die Funktion keinerlei Einfluss.
+
+<!-- DOC -->
+#### **Kalibrierungsdaten löschen**
+
+<!-- DOC Skip="1" -->
+<kbd>![Bild Kalibrierungsdaten löschen](pics/KalibrierungLoeschen.PNG)</kbd>
+
+Die Applikation erlaubt auch ein explizites Löschen der Kalibrierungsdaten. Allerdings wäre es sinnlos, hierfür einen Ja-Nein-Parameter einzuführen, da dieser, einmal auf Ja gestellt, nach jedem Neustart des Gerätes die Kalibrierungsdaten löschen würde. Insofern funktioniert dieser Parameter anders als normalerweise ETS-Parameter funktionieren.
+
+Eine Änderung des Wertes von 17 auf 23 führt nach den nächsten Upload der Applikation zum Löschen der Kalibrierungsdaten. Diese werden dann automatisch wieder aufgebaut und bleiben auch erhalten, egal wie oft die Applikation danach wieder hochgeladen wird. Die Firmware des Gerätes verbindet die aktuellen Kalibrierungsdaten mit dem Wert des Parameters, solange der Parameter seinen Wert behält, sind auch die Kalibrierungsdaten gültig.
+
+Wird irgendwann einmal der Wert wieder von 23 auf 17 geändert, werden die Kalibrierungsdaten wieder gelöscht, neu aufgebaut und mit dem Wert 17 verbunden. Will man somit wieder löschen, ändert man wieder auf 23 u.s.w.
+
+Im Allgemeinen sollte es nicht nötig sein, die Kalibrierungsdaten zu löschen. Somit sollte dieser Parameter einfach unverändert bleiben.
+
+<!-- DOC -->
+#### **Art des Analogsensors**
+
+Als Analogsensor kann sowohl der PT100 als auch der PT1000 angeschlossen werden. In der Auswahlbox wird der angeschlossene Analogsensor eingestellt.
+
+<!-- DOC -->
+##### **Anzahl Anschlussadern**
+
+Die Analogsensoren PT100 wie auch PT1000 gibt es mit 2, 3 und 4 Anschlussadern. Hier wird eingestellt, mit wie vielen Adern der Analaogsensor angeschlossen ist. 
 <!-- ### **Fehlerobjekt anzeigen**
 
 Das Fehlerobjekt (KO 11) meldet bitweise Sensorfehler.
@@ -661,51 +715,6 @@ Es gibt 6 Luftqualitätsgrade, entsprechend deutschen Schulnoten:
 * 4 - ausreichend (lüften empfohlen)
 * 5 - mangelhaft (lüften)
 * 6 - ungenügend (unbedingt lüften)
-
-### **Sensorspezifische Einstellungen**
-
-In diesem Bereich kann man Einstellungen für einzelne Sensoren vornehmen, sofern diese das unterstützen.
-
-<!-- DOC -->
-#### **CO2 ermitteln alle**
-
-
-<!-- DOC Skip="1" -->
-Erscheint nur, wenn der CO2-Sensor SCD41 ausgewählt wurde.
-
-Der CO2-Sensor SDC41 erlaubt die Einstellung des Messintervalls. Man kann bestimmen, alle wie viel Sekunden eine Messung vorgenommen wird. 
-
-<!-- DOC -->
-### **Kalibrierungsfortschritt ausgeben**
-
-<!-- DOC Skip="3" -->
-<kbd>![Kalibrierung](pics/Kalibrierung.PNG)</kbd>
-
-Wird nur sichtbar, wenn als Sensor BME680 ausgewählt ist.
-
-Manche Sensoren benötigen eine Kalibrierung, bevor sie zuverlässige Werte ausgeben können. Dies ist besonders für die Erfassung von Voc-Werten notwendig. Das Sensormodul hat für den BME680 eine Selbstkalibrierung implementiert, die ununterbrochen parallel zur Messwerterfassung läuft und die bisher ermittelten Kalibrierungswerte in den nichtflüchtigen Speicher des Prozessors speichert. Somit wird verhindert, dass nach einem Neustart des Gerätes eine erneute Kalibrierung notwendig wird.
-
-Bei einer Erstinbetriebnahme, nach dem Einspielen einen neuen Firmware oder in seltenen Fällen auch im normalen Betrieb ist es notwendig, dass sich der Sensor BME680 neu kalibriert. Dies ist daran zu erkennen, dass der Sensor für den Voc-Wert konstant eine 25 liefert und als Kalibrierungsfortschritt über das KO 24 der Wert 0% geliefert wird.
-
-Nach ca. 5 Minuten werden die ersten Voc-Werte ungleich 25 geliefert mit einem Kalibrierungsfortschritt von 33%. Diese ersten Werte sind noch immer nicht sinnvoll zu verwenden.
-
-Nach einiger Zeit (hängt von der Raumgröße, Luftqualität, Lüftungszustand etc. ab) geht der Kalibrierungsfortschritt auf 66%, gefolgt von einem Wert von 100%. Dies kann insgesamt 6 bis 48 Stunden dauern und entspricht einer normalen Funktion des BME680.
-
-Der Kalibrierungsfortschritt kann mit dieser Einstellung zur Information über KO 24 ausgegeben werden, hat aber auf die Funktion keinerlei Einfluss.
-
-<!-- DOC -->
-### **Kalibrierungsdaten löschen**
-
-<!-- DOC Skip="1" -->
-<kbd>![Bild Kalibrierungsdaten löschen](pics/KalibrierungLoeschen.PNG)</kbd>
-
-Die Applikation erlaubt auch ein explizites Löschen der Kalibrierungsdaten. Allerdings wäre es sinnlos, hierfür einen Ja-Nein-Parameter einzuführen, da dieser, einmal auf Ja gestellt, nach jedem Neustart des Gerätes die Kalibrierungsdaten löschen würde. Insofern funktioniert dieser Parameter anders als normalerweise ETS-Parameter funktionieren.
-
-Eine Änderung des Wertes von 17 auf 23 führt nach den nächsten Upload der Applikation zum Löschen der Kalibrierungsdaten. Diese werden dann automatisch wieder aufgebaut und bleiben auch erhalten, egal wie oft die Applikation danach wieder hochgeladen wird. Die Firmware des Gerätes verbindet die aktuellen Kalibrierungsdaten mit dem Wert des Parameters, solange der Parameter seinen Wert behält, sind auch die Kalibrierungsdaten gültig.
-
-Wird irgendwann einmal der Wert wieder von 23 auf 17 geändert, werden die Kalibrierungsdaten wieder gelöscht, neu aufgebaut und mit dem Wert 17 verbunden. Will man somit wieder löschen, ändert man wieder auf 23 u.s.w.
-
-Im Allgemeinen sollte es nicht nötig sein, die Kalibrierungsdaten zu löschen. Somit sollte dieser Parameter einfach unverändert bleiben.
 
 ## **Update der Applikation**
 
