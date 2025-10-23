@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<?xml-model href="../../Organization/knxprod-support/knx_project_20/knx-editor.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<?xml-model href="../../../../Organization/knxprod-support/knx_project_20/knx-editor.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <KNX xmlns:op="http://github.com/OpenKNX/OpenKNXproducer" xmlns="http://knx.org/xml/project/20" CreatedBy="KNX MT" ToolVersion="5.1.255.16695">
   <ManufacturerData>
     <Manufacturer RefId="M-00FA">
@@ -10,8 +10,10 @@
             <op:param name="%Kuerzel%" values="Temp Hum Pre Voc Co2 Lux Tof" />
             <op:param name="%MesswertIcon%" values="thermometer water-percent location-enter hexagon-multiple-outline molecule-co2 lightbulb-outline wrap-disabled" />
             <op:param name="%PPP%" values="110 120 130 140 150 180 190" digits="3" />
-            <op:param name="%KONR0%" values="60 61 62 63 64 87 88" />
-            <op:param name="%KONR1%" value="70" increment="2" />
+            <op:param name="%KOID0%" values="60 61 62 63 64 87 88" />
+            <op:param name="%KONR0%" values="2 5 8 11 14 18 21 24" />
+            <op:param name="%KOID1%" values="70 72 74 76 78 80 82" />
+            <op:param name="%KONR1%" values="3 6 9 12 16 19 22 25" />
             <op:param name="%DPST%" values="DPST-9-1 DPST-9-7 DPST-9-6 DPT-9 DPST-9-8 DPST-9-4 DPST-7-11" />
             <op:param name="%ParamOffset%" values="1 12 23 34 45 64 75" />
             <op:param name="%Einheit%" list="," values="in °C,in %,in Pa,(ohne Einheit),in ppm,in Lux,in mm" />
@@ -346,17 +348,17 @@
               <ParameterRef Id="%AID%_UP-%TT%00221_R-%TT%0022101" RefId="%AID%_UP-%TT%00221" />
             </ParameterRefs>
             <ComObjectTable>
-              <ComObject Id="%AID%_O-%TT%00050" Name="RequestValues" Text="Sensorwerte anfordern" Number="43" FunctionText="Alle Werte senden" ObjectSize="1 Bit" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-16" />
-              <ComObject Id="%AID%_O-%TT%00051" Name="Error" Text="Sensorfehler" Number="44" FunctionText="Bitleiste" ObjectSize="2 Bytes" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-7-1" />
+              <ComObject Id="%AID%_O-%TT%00050" Name="RequestValues" Text="Sensorwerte anfordern" Number="0" FunctionText="Alle Werte senden" ObjectSize="1 Bit" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-16" />
+              <ComObject Id="%AID%_O-%TT%00051" Name="Error" Text="Sensorfehler" Number="1" FunctionText="Bitleiste" ObjectSize="2 Bytes" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-7-1" />
               <!-- KO 52-53 free for future extensions -->
               <!-- KO 54-59 free for future inputs -->
               <op:usePart name="MESS" xpath="//ComObjectTable/*" />
 
-              <ComObject Id="%AID%_O-%TT%00065" Name="Co2b" Text="CO2-VOC" Number="65" FunctionText="Messwert (berechnet) in ppm" ObjectSize="2 Bytes" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-9-8" />
-              <ComObject Id="%AID%_O-%TT%00066" Name="Dewpoint" Text="Taupunkt" Number="66" FunctionText="Messwert in °C" ObjectSize="2 Bytes" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-9-1" />
-              <ComObject Id="%AID%_O-%TT%00067" Name="Comfort" Text="Behaglichkeit" Number="67" FunctionText="2=behaglich, 1=geht noch, 0=unbehaglich" ObjectSize="1 Byte" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-5-5" />
-              <ComObject Id="%AID%_O-%TT%00068" Name="Airquality" Text="Luftqualitätsampel (1-6)" Number="68" FunctionText="1-6 nach (deutschen) Schulnoten" ObjectSize="1 Byte" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-5-5" />
-              <ComObject Id="%AID%_O-%TT%00069" Name="SensorAccuracy" Text="Kalibrierungfortschritt" Number="69" FunctionText="Erfolg der Sensorkalibrierung" ObjectSize="1 Byte" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-5-1" />
+              <ComObject Id="%AID%_O-%TT%00065" Name="Co2b" Text="CO2-VOC" Number="15" FunctionText="Messwert (berechnet) in ppm" ObjectSize="2 Bytes" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-9-8" />
+              <ComObject Id="%AID%_O-%TT%00066" Name="Dewpoint" Text="Taupunkt" Number="42" FunctionText="Messwert in °C" ObjectSize="2 Bytes" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-9-1" />
+              <ComObject Id="%AID%_O-%TT%00067" Name="Comfort" Text="Behaglichkeit" Number="43" FunctionText="2=behaglich, 1=geht noch, 0=unbehaglich" ObjectSize="1 Byte" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-5-5" />
+              <ComObject Id="%AID%_O-%TT%00068" Name="Airquality" Text="Luftqualitätsampel (1-6)" Number="44" FunctionText="1-6 nach (deutschen) Schulnoten" ObjectSize="1 Byte" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-5-5" />
+              <ComObject Id="%AID%_O-%TT%00069" Name="SensorAccuracy" Text="Kalibrierungfortschritt" Number="45" FunctionText="Erfolg der Sensorkalibrierung" ObjectSize="1 Byte" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-5-1" />
             </ComObjectTable>
             <ComObjectRefs>
               <ComObjectRef Id="%AID%_O-%TT%00050_R-%TT%0005001" RefId="%AID%_O-%TT%00050" />

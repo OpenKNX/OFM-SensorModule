@@ -1,4 +1,5 @@
 // cSpell:words millis Millis Divident Dewpoint Airquality airquality
+#ifdef SENSORMODULE
 #include "SensorModule.h"
 #include "Logic.h"
 // #include <cmath>
@@ -720,3 +721,4 @@ uint16_t SensorModule::flashSize()
     return 1;
     // +Sensor::flashSize();
 }
+#endif // SENSORMODULE

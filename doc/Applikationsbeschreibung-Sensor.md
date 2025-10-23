@@ -54,6 +54,14 @@ Die Applikation für das SensorModule erlaubt die Parametrisierung des Sensormod
 
 Im folgenden werden Änderungen an dem Dokument erfasst, damit man nicht immer das Gesamtdokument lesen muss, um Neuerungen zu erfahren.
 
+15.09.2025: Firmware 4.9.1, Applikation 4.9
+
+* NEU: Die Library für den BME680-Support wurde ausgetauscht, damit in Zukunft auch RP2350 und ESP32 unterstützt werden können.
+* NEU: Mit Zusatzhardware wird jetzt auch der Analogsensor PT100 und PT1000 unterstützt.
+* NEU: Sensorspezifische Einstellungen werden jetzt direkt bei der Sensorauswahl angeboten
+* NEU: Split in Sensormodul (als echtes OpenKNX-Modul) und RaumController (der die Kombination aller Module verwaltet)
+* Die Dokumentation wurde passend zum Split überarbeitet
+
 15.03.2025: Firmware 4.3.1, Applikation 4.3
 
 * NEU: Es werden jetzt bis zu 6 Binäreingänge unterstützt (verfügbar im UP1-PM-HF).
@@ -206,9 +214,7 @@ Wichtig: Es gibt noch KEINE 1-Wire Unterstützung
 
 ## **Einführung**
 
-Die vorliegende Applikation erlaubt die Parametrisierung von vielerlei Sensoren, vorrangig zur Ermittlung vom Raumklima, Helligkeit und Entfernung.
-
-Sie ist auf unterschiedlicher OpenKNX-Hardware lauffähig, beispielweise das Sensormodul von Masifi oder dem Präsenz-Multisensor von ab-tools.
+Das vorliegende Modul erlaubt die Parametrisierung von vielerlei Sensoren, vorrangig zur Ermittlung vom Raumklima, Helligkeit und Entfernung.
 
 ### **Funktionsumfang**
 
@@ -235,7 +241,7 @@ Das Sensormodul erlaubt die Ausgabe verschiedener Sensorwerte auf den Bus. Dabei
 
 * Konfigurationen
  
-  * Messwert anpassen (verschieben und einen positiven oder negativen Wert)
+  * Messwert anpassen (verschieben um einen positiven oder negativen Wert)
   * bis zu 2 weitere Messwerte berücksichtigen (Mittelwertbildung mit frei einstellbaren Anteilen pro Messwert)
   * zyklisch Senden
   * bei absoluter Abweichung senden
@@ -251,52 +257,6 @@ Das Sensormodul erlaubt die Ausgabe verschiedener Sensorwerte auf den Bus. Dabei
 * Sensorspezifische Zusatzfunktionen
 
 Weitere KNX-Übliche Funktionen wie Schwellwertschalter, Hystereseschalter, auch mit über den Bus einstellbaren Schwellwerten, können über das beiliegende Logikmodul einfach abgebildet werden.
-
-## **Sensormodul als eigene Applikation**
-
-Das Sensormodul hat auch eine eigene ETS-Applikation, die es erlaubt, das Sensormodul ohne Einbettung in eine andere Applikation zu verwenden. In diesem Fall hat es zusätzliche Untermodule, einige davon sind standardmäßig in OpenKNX-Applikationen verfügbar: 
-
-### **OpenKNX**
-
-Dies ist eine Seite mit allgemeinen Parametern, die unter [Applikationsbeschreibung-Common](https://github.com/OpenKNX/OGM-Common/blob/v1/doc/Applikationsbeschreibung-Common.md) beschrieben sind. 
-
-### **Konfigurationstransfer**
-
-Der Konfigurationstransfer erlaubt einen
-
-* Export von Konfigurationen von OpenKNX-Modulen und deren Kanälen
-* Import von Konfigurationen von OpenKNX-Modulen und deren Kanälen
-* Kopieren der Konfiguration von einem OpenKNX-Modulkanal auf einen anderen
-* Zurücksetzen der Konfiguration eines OpenKNX-Modulkanals auf Standardwerte
-
-Die Funktionen vom Konfigurationstransfer-Modul sind unter [Applikationsbeschreibung-ConfigTransfer](https://github.com/OpenKNX/OFM-ConfigTransfer/blob/v1/doc/Applikationsbeschreibung-ConfigTransfer.md) beschrieben.
-
-### **Präsenzmelder**
-
-Die Sensormodul-Applikation erlaubt die Nutzung von einigen Präsenzmelder-Kanälen. Bei der Verwendung mit passender Hardware - wie dem Presence-Multisensor von ab-tools - auch als echter Präsenzmelder, sonst als virtueller Präsenzmelder (VPM).
-
-Die Funktionen des Präsenzmelder-Moduls sind unter [Applikationsbeschreibung-Präsenz](https://github.com/OpenKNX/OFM-PresenceModule/blob/v1/doc/Applikationbeschreibung-Praesenz.md) beschrieben.
-
-### **Virtuelle Taster**
-
-Ebenso wie virtuelle Präsenzmelder werden auch virtuelle Taster von der Sensormodul-Applikation angeboten. Wenn auch Binäreingänge in Hardware vorhanden sind - wie dem Sensormodul v4.2 von SmartMF - können es auch echte Taster werden.
-
-Die Funktionen des Tastermoduls sind unter [Applikationsbeschreibung-Taster](https://github.com/OpenKNX/OFM-VirtualButton/blob/v1/doc/Applikationsbeschreibung-Taster.md) beschrieben.
-
-### **Binäreingänge**
-
-Die Sensormodul-Applikation unterstützt auch Binäreingänge, z.B. vom Sensormodul v4.2 von SmartMF.
-
-Die Funktionen der Binäreingänge sind unter [Applikationsbeschreibung-Binäreingang](https://github.com/OpenKNX/OFM-BinaryInput/blob/v1/doc/Applikationsbeschreibung-Binaereingang.md) beschrieben.
-
-### **Logiken**
-
-Wie die meisten OpenKNX-Applikationen enthält auch die Sensormodul-Applikation ein Logikmodul.
-
-Die Funktionen des Logikmoduls sind unter [Applikationsbeschreibung-Logik](https://github.com/OpenKNX/OFM-LogicModule/blob/v1/doc/Applikationsbeschreibung-Logik.md) beschrieben.
-
-
-
 
 ## **Sensoren**
 
@@ -341,6 +301,8 @@ IAQCore | | | | X | X<sup>2)</sup>
 OPT300x | | | | | |  X
 VEML7700 | | | | | |  X
 VL53L1X | | | | | |  | X
+PT100  | X | | | | |  | 
+PT1000 | X | | | | |  | 
 
 <sup>1)</sup>Noch in Entwicklung, die ETS Applikation unterstützt bereits die Einstellungen, die Firmware kann diese Sensoren noch nicht auswerten.
 
@@ -382,6 +344,62 @@ Die in den Tabellen angegebenen Kombinationen sagen nichts darüber aus, ob die 
 >Die Verwendung von SCD30 als Sensor, vor allem in Kombination mit weiteren Sensoren, wird nur mit eingeschaltetem Watchdog empfohlen, da der Betrieb vom SCD30 manchmal zu unerwünschten "Hängern" des Sensormoduls führt. Statt des SCD30 sollte der SDC4x genutzt werden, da er günstiger ist und zuverlässiger funktioniert.
 
 <kbd>![Installierte Hardware](pics/InstallierteHardware.png)</kbd>
+
+### **Sensorspezifische Einstellungen**
+
+In diesem Bereich kann man Einstellungen für einzelne Sensoren vornehmen, sofern diese das unterstützen.
+
+<!-- DOC -->
+#### **CO2 ermitteln alle**
+
+
+<!-- DOC Skip="1" -->
+Erscheint nur, wenn der CO2-Sensor SCD41 ausgewählt wurde.
+
+Der CO2-Sensor SDC41 erlaubt die Einstellung des Messintervalls. Man kann bestimmen, alle wie viel Sekunden eine Messung vorgenommen wird. 
+
+<!-- DOC -->
+#### **Kalibrierungsfortschritt ausgeben**
+
+<!-- DOC Skip="3" -->
+<kbd>![Kalibrierung](pics/Kalibrierung.PNG)</kbd>
+
+Wird nur sichtbar, wenn als Sensor BME680 ausgewählt ist.
+
+Manche Sensoren benötigen eine Kalibrierung, bevor sie zuverlässige Werte ausgeben können. Dies ist besonders für die Erfassung von Voc-Werten notwendig. Das Sensormodul hat für den BME680 eine Selbstkalibrierung implementiert, die ununterbrochen parallel zur Messwerterfassung läuft und die bisher ermittelten Kalibrierungswerte in den nichtflüchtigen Speicher des Prozessors speichert. Somit wird verhindert, dass nach einem Neustart des Gerätes eine erneute Kalibrierung notwendig wird.
+
+Bei einer Erstinbetriebnahme, nach dem Einspielen einen neuen Firmware oder in seltenen Fällen auch im normalen Betrieb ist es notwendig, dass sich der Sensor BME680 neu kalibriert. Dies ist daran zu erkennen, dass der Sensor für den Voc-Wert konstant eine 25 liefert und als Kalibrierungsfortschritt über das KO 24 der Wert 0% geliefert wird.
+
+Nach ca. 5 Minuten werden die ersten Voc-Werte ungleich 25 geliefert mit einem Kalibrierungsfortschritt von 33%. Diese ersten Werte sind noch immer nicht sinnvoll zu verwenden.
+
+Nach einiger Zeit (hängt von der Raumgröße, Luftqualität, Lüftungszustand etc. ab) geht der Kalibrierungsfortschritt auf 66%, gefolgt von einem Wert von 100%. Dies kann insgesamt 6 bis 48 Stunden dauern und entspricht einer normalen Funktion des BME680.
+
+Der Kalibrierungsfortschritt kann mit dieser Einstellung zur Information über KO 24 ausgegeben werden, hat aber auf die Funktion keinerlei Einfluss.
+
+<!-- DOC -->
+#### **Kalibrierungsdaten löschen**
+
+<!-- DOC Skip="1" -->
+<kbd>![Bild Kalibrierungsdaten löschen](pics/KalibrierungLoeschen.PNG)</kbd>
+
+Die Applikation erlaubt auch ein explizites Löschen der Kalibrierungsdaten. Allerdings wäre es sinnlos, hierfür einen Ja-Nein-Parameter einzuführen, da dieser, einmal auf Ja gestellt, nach jedem Neustart des Gerätes die Kalibrierungsdaten löschen würde. Insofern funktioniert dieser Parameter anders als normalerweise ETS-Parameter funktionieren.
+
+Eine Änderung des Wertes von 17 auf 23 führt nach den nächsten Upload der Applikation zum Löschen der Kalibrierungsdaten. Diese werden dann automatisch wieder aufgebaut und bleiben auch erhalten, egal wie oft die Applikation danach wieder hochgeladen wird. Die Firmware des Gerätes verbindet die aktuellen Kalibrierungsdaten mit dem Wert des Parameters, solange der Parameter seinen Wert behält, sind auch die Kalibrierungsdaten gültig.
+
+Wird irgendwann einmal der Wert wieder von 23 auf 17 geändert, werden die Kalibrierungsdaten wieder gelöscht, neu aufgebaut und mit dem Wert 17 verbunden. Will man somit wieder löschen, ändert man wieder auf 23 u.s.w.
+
+Im Allgemeinen sollte es nicht nötig sein, die Kalibrierungsdaten zu löschen. Somit sollte dieser Parameter einfach unverändert bleiben.
+
+<!-- DOC -->
+#### **Art des Analogsensors**
+
+Als Analogsensor kann sowohl der PT100 als auch der PT1000 angeschlossen werden. In der Auswahlbox wird der angeschlossene Analogsensor eingestellt.
+
+<!-- DOC -->
+##### **Anzahl Anschlussadern**
+
+Die Analogsensoren PT100 wie auch PT1000 gibt es mit 2, 3 und 4 Anschlussadern. Hier wird eingestellt, mit wie vielen Adern der Analaogsensor angeschlossen ist. 
+
 
 <!-- DOC -->
 #### **Temperatursensor**
@@ -448,60 +466,6 @@ Wird "Kein Sensor" ausgewählt, wird die Entfernung nicht ermittelt.
 
 Nur wenn ein Sensor für die Ermittlung der Entfernung ausgewählt wurde, erscheint eine Seite "Entfernung", auf der passende Einstellungen zum Messwert gemacht werden können.
 
-### **Sensorspezifische Einstellungen**
-
-In diesem Bereich kann man Einstellungen für einzelne Sensoren vornehmen, sofern diese das unterstützen.
-
-<!-- DOC -->
-#### **CO2 ermitteln alle**
-
-
-<!-- DOC Skip="1" -->
-Erscheint nur, wenn der CO2-Sensor SCD41 ausgewählt wurde.
-
-Der CO2-Sensor SDC41 erlaubt die Einstellung des Messintervalls. Man kann bestimmen, alle wie viel Sekunden eine Messung vorgenommen wird. 
-
-<!-- DOC -->
-#### **Kalibrierungsfortschritt ausgeben**
-
-<!-- DOC Skip="3" -->
-<kbd>![Kalibrierung](pics/Kalibrierung.PNG)</kbd>
-
-Wird nur sichtbar, wenn als Sensor BME680 ausgewählt ist.
-
-Manche Sensoren benötigen eine Kalibrierung, bevor sie zuverlässige Werte ausgeben können. Dies ist besonders für die Erfassung von Voc-Werten notwendig. Das Sensormodul hat für den BME680 eine Selbstkalibrierung implementiert, die ununterbrochen parallel zur Messwerterfassung läuft und die bisher ermittelten Kalibrierungswerte in den nichtflüchtigen Speicher des Prozessors speichert. Somit wird verhindert, dass nach einem Neustart des Gerätes eine erneute Kalibrierung notwendig wird.
-
-Bei einer Erstinbetriebnahme, nach dem Einspielen einen neuen Firmware oder in seltenen Fällen auch im normalen Betrieb ist es notwendig, dass sich der Sensor BME680 neu kalibriert. Dies ist daran zu erkennen, dass der Sensor für den Voc-Wert konstant eine 25 liefert und als Kalibrierungsfortschritt über das KO 24 der Wert 0% geliefert wird.
-
-Nach ca. 5 Minuten werden die ersten Voc-Werte ungleich 25 geliefert mit einem Kalibrierungsfortschritt von 33%. Diese ersten Werte sind noch immer nicht sinnvoll zu verwenden.
-
-Nach einiger Zeit (hängt von der Raumgröße, Luftqualität, Lüftungszustand etc. ab) geht der Kalibrierungsfortschritt auf 66%, gefolgt von einem Wert von 100%. Dies kann insgesamt 6 bis 48 Stunden dauern und entspricht einer normalen Funktion des BME680.
-
-Der Kalibrierungsfortschritt kann mit dieser Einstellung zur Information über KO 24 ausgegeben werden, hat aber auf die Funktion keinerlei Einfluss.
-
-<!-- DOC -->
-#### **Kalibrierungsdaten löschen**
-
-<!-- DOC Skip="1" -->
-<kbd>![Bild Kalibrierungsdaten löschen](pics/KalibrierungLoeschen.PNG)</kbd>
-
-Die Applikation erlaubt auch ein explizites Löschen der Kalibrierungsdaten. Allerdings wäre es sinnlos, hierfür einen Ja-Nein-Parameter einzuführen, da dieser, einmal auf Ja gestellt, nach jedem Neustart des Gerätes die Kalibrierungsdaten löschen würde. Insofern funktioniert dieser Parameter anders als normalerweise ETS-Parameter funktionieren.
-
-Eine Änderung des Wertes von 17 auf 23 führt nach den nächsten Upload der Applikation zum Löschen der Kalibrierungsdaten. Diese werden dann automatisch wieder aufgebaut und bleiben auch erhalten, egal wie oft die Applikation danach wieder hochgeladen wird. Die Firmware des Gerätes verbindet die aktuellen Kalibrierungsdaten mit dem Wert des Parameters, solange der Parameter seinen Wert behält, sind auch die Kalibrierungsdaten gültig.
-
-Wird irgendwann einmal der Wert wieder von 23 auf 17 geändert, werden die Kalibrierungsdaten wieder gelöscht, neu aufgebaut und mit dem Wert 17 verbunden. Will man somit wieder löschen, ändert man wieder auf 23 u.s.w.
-
-Im Allgemeinen sollte es nicht nötig sein, die Kalibrierungsdaten zu löschen. Somit sollte dieser Parameter einfach unverändert bleiben.
-
-<!-- DOC -->
-#### **Art des Analogsensors**
-
-Als Analogsensor kann sowohl der PT100 als auch der PT1000 angeschlossen werden. In der Auswahlbox wird der angeschlossene Analogsensor eingestellt.
-
-<!-- DOC -->
-##### **Anzahl Anschlussadern**
-
-Die Analogsensoren PT100 wie auch PT1000 gibt es mit 2, 3 und 4 Anschlussadern. Hier wird eingestellt, mit wie vielen Adern der Analaogsensor angeschlossen ist. 
 <!-- ### **Fehlerobjekt anzeigen**
 
 Das Fehlerobjekt (KO 11) meldet bitweise Sensorfehler.
@@ -715,10 +679,4 @@ Es gibt 6 Luftqualitätsgrade, entsprechend deutschen Schulnoten:
 * 4 - ausreichend (lüften empfohlen)
 * 5 - mangelhaft (lüften)
 * 6 - ungenügend (unbedingt lüften)
-
-## **Update der Applikation**
-
-Die Sensormodul-Applikation unterstützt die ETS-Update-Funktion. Das bedeutet, man kann einen neue Applikationsversion (und falls nötig auch einen neue Firmware) einspielen, ohne die Applikation komplett neu parametrieren zu müssen.
-
-Der Vorgang ist im [OpenKNX-Wiki](https://github.com/OpenKNX/OpenKNX/wiki/Wie-aktualisiert-man-eine-ETS-Applikation-auf-eine-aktuelle-Version) beschrieben.
 

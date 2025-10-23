@@ -1,4 +1,5 @@
 // cSpell:words millis Millis Divident Dewpoint Airquality airquality
+#ifdef SENSORMODULE
 #include "OpenKNX.h"
 #include "Sensor.h"
 #include "hardware.h"
@@ -85,3 +86,4 @@ class SensorModule : public OpenKNX::Module
 };
 
 extern SensorModule openknxSensorModule;
+#endif
