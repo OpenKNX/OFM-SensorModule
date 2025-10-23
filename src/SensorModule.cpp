@@ -336,7 +336,7 @@ void SensorModule::processSensor(sSensorInfo* cData, getSensorValue fGetSensorVa
         {
             lSend = false;
         }
-        cData->readDelay = millis();
+        cData->readDelay = delayTimerInit();
     }
 
     // send rate limitation, minimum send interval is 1 second
@@ -348,9 +348,7 @@ void SensorModule::processSensor(sSensorInfo* cData, getSensorValue fGetSensorVa
             knx.getGroupObject(iKoNumber).objectWritten();
             cData->lastSentValue = lValue;
         }
-        cData->sendDelay = millis();
-        if (cData->sendDelay == 0)
-            cData->sendDelay = 1;
+        cData->sendDelay = delayTimerInit();
     }
 }
 
