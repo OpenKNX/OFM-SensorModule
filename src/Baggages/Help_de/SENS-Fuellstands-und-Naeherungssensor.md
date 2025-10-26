@@ -6,3 +6,4 @@ Wird "Kein Sensor" ausgewählt, wird die Entfernung nicht ermittelt.
 
 Nur wenn ein Sensor für die Ermittlung der Entfernung ausgewählt wurde, erscheint eine Seite "Entfernung", auf der passende Einstellungen zum Messwert gemacht werden können.
 
+

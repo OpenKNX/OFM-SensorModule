@@ -20,7 +20,7 @@ Das Sensormodul erlaubt die Ausgabe verschiedener Sensorwerte auf den Bus. Dabei
 
 * Konfigurationen
  
-  * Messwert anpassen (verschieben und einen positiven oder negativen Wert)
+  * Messwert anpassen (verschieben um einen positiven oder negativen Wert)
   * bis zu 2 weitere Messwerte berücksichtigen (Mittelwertbildung mit frei einstellbaren Anteilen pro Messwert)
   * zyklisch Senden
   * bei absoluter Abweichung senden

@@ -15,4 +15,3 @@ Es gibt 6 Luftqualitätsgrade, entsprechend deutschen Schulnoten:
 * 4 - ausreichend (lüften empfohlen)
 * 5 - mangelhaft (lüften)
 * 6 - ungenügend (unbedingt lüften)
-
