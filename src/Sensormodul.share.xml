@@ -628,7 +628,7 @@
                     <choose ParamRefId="%AID%_UP-%TT%00104_R-%TT%0010401">
                       <when test="1">
                         <ComObjectRefRef RefId="%AID%_O-%TT%00069_R-%TT%0006901" />
-                        <ParameterSeparator Id="%AID%_PS-nnn" Text="Der VOC-Sensor braucht bis zu 2 Tage für die Kalibrierung, das KO 24 gibt den Fortschritt in % aus" />
+                        <ParameterSeparator Id="%AID%_PS-nnn" Text="Der VOC-Sensor braucht bis zu 2 Tage für die Kalibrierung, das KO 88 gibt den Fortschritt in % aus" />
                       </when>
                     </choose>
                   </when>
