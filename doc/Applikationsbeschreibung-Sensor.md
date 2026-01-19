@@ -54,7 +54,11 @@ Die Applikation für das SensorModule erlaubt die Parametrisierung des Sensormod
 
 Im folgenden werden Änderungen an dem Dokument erfasst, damit man nicht immer das Gesamtdokument lesen muss, um Neuerungen zu erfahren.
 
-15.09.2025: Firmware 4.9.1, Applikation 4.9
+19.01.2026: Firmware 4.10.1, Applikation 4.10
+
+* FIX: Startup-Problem vom SDC4x-Sensor ist behoben, es konnte passieren, dass der Sensor nach einem Neustart keine Werte gesendet hat und - selten - auch weitere Sensoren am Senden von Werten gehindert hat.
+
+15.09.2025: Firmware 4.10.0, Applikation 4.10
 
 * NEU: Die Library für den BME680-Support wurde ausgetauscht, damit in Zukunft auch RP2350 und ESP32 unterstützt werden können.
 * NEU: Mit Zusatzhardware wird jetzt auch der Analogsensor PT100 und PT1000 unterstützt.
