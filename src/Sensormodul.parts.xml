@@ -52,9 +52,9 @@
                             <ParameterRef Id="%AID%_UP-%TT%00%PPP+9%_R-%TT%00%PPP+9%01" RefId="%AID%_UP-%TT%00%PPP+9%" />
                         </ParameterRefs>
                         <ComObjectTable>
-                            <ComObject Id="%AID%_O-%TT%000%KOID0+0%" Name="%Kuerzel%" Text="%Messwert%" Number="%KONR0+0%" FunctionText="Messwert %Einheit%" ObjectSize="2 Bytes" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="%DPST%" />
-                            <ComObject Id="%AID%_O-%TT%000%KOID1+0%" Name="Ext1%Kuerzel%" Text="Extern: %Messwert% 1" Number="%KONR1+0%" FunctionText="Messwert %Einheit%" ObjectSize="2 Bytes" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled" ReadOnInitFlag="Disabled" DatapointType="%DPST%" />
-                            <ComObject Id="%AID%_O-%TT%000%KOID1+1%" Name="Ext2%Kuerzel%" Text="Extern: %Messwert% 2" Number="%KONR1+1%" FunctionText="Messwert %Einheit%" ObjectSize="2 Bytes" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled" ReadOnInitFlag="Disabled" DatapointType="%DPST%" />
+                            <ComObject Id="%AID%_O-%TT%000%KOID0+0%" Name="%Kuerzel%" Text="%Messwert%" Number="%KONR0+0%" FunctionText="Sensor: Messwert %Einheit%" ObjectSize="2 Bytes" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="%DPST%" />
+                            <ComObject Id="%AID%_O-%TT%000%KOID1+0%" Name="Ext1%Kuerzel%" Text="Externer %Messwert% 1" Number="%KONR1+0%" FunctionText="Sensor: Messwert %Einheit%" ObjectSize="2 Bytes" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled" ReadOnInitFlag="Disabled" DatapointType="%DPST%" />
+                            <ComObject Id="%AID%_O-%TT%000%KOID1+1%" Name="Ext2%Kuerzel%" Text="Externer %Messwert% 2" Number="%KONR1+1%" FunctionText="Sensor: Messwert %Einheit%" ObjectSize="2 Bytes" ReadFlag="Disabled" WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled" ReadOnInitFlag="Disabled" DatapointType="%DPST%" />
                         </ComObjectTable>
                         <ComObjectRefs>
                             <ComObjectRef Id="%AID%_O-%TT%000%KOID0+0%_R-%TT%000%KOID0+0%01" RefId="%AID%_O-%TT%000%KOID0+0%" />
