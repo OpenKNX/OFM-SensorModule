@@ -35,12 +35,12 @@ const std::string SensorModule::version()
 
 uint16_t SensorModule::getError()
 {
-    return (uint16_t)knx.getGroupObject(SENS_KoError).value(getDPT(VAL_DPT_7));
+    return (uint16_t)knx.getGroupObject(SENS_KoError).value(DPT_Value_2_Ucount);
 }
 
 void SensorModule::setError(uint16_t iValue)
 {
-    knx.getGroupObject(SENS_KoError).valueNoSend(iValue, getDPT(VAL_DPT_7));
+    knx.getGroupObject(SENS_KoError).valueNoSend(iValue, DPT_Value_2_Ucount);
 }
 
 void SensorModule::sendError()
@@ -241,7 +241,7 @@ bool SensorModule::readSensorValue(MeasureType iMeasureType, float& eValue)
 }
 
 // generic sensor processing
-void SensorModule::processSensor(sSensorInfo* cData, getSensorValue fGetSensorValue, MeasureType iMeasureType, float iOffsetFactor, float iValueFactor, uint16_t iParamIndex, uint16_t iKoNumber, uint8_t iDpt)
+void SensorModule::processSensor(sSensorInfo* cData, getSensorValue fGetSensorValue, MeasureType iMeasureType, float iOffsetFactor, float iValueFactor, uint16_t iParamIndex, uint16_t iKoNumber, const Dpt &iDpt)
 {
     // we process just a sensor, which is selected in ETS
     if ((gSensor & iMeasureType) != iMeasureType)
@@ -251,8 +251,9 @@ void SensorModule::processSensor(sSensorInfo* cData, getSensorValue fGetSensorVa
     bool lSend = lForce;
 
     // process send cycle
-    uint32_t lCycle = getDelayPattern(iParamIndex + 1);
+    uint32_t lCycle = paramDelay(knx.paramWord(iParamIndex + 1));
 
+    
     // we waited enough, let's send the value
     if (lCycle && delayCheck(cData->sendDelay, lCycle))
         lSend = true;
@@ -291,11 +292,11 @@ void SensorModule::processSensor(sSensorInfo* cData, getSensorValue fGetSensorVa
             {
                 case 2:
                     lFactor = knx.paramByte(iParamIndex + 10) * gIsExternalValueValid[lExtKoIndex + 1]; // factor for external value 2
-                    lDivident = (float)knx.getGroupObject(lExtKoIndex + SENS_KoExt2Temp).value(getDPT(iDpt)) * lFactor;
+                    lDivident = (float)knx.getGroupObject(lExtKoIndex + SENS_KoExt2Temp).value(iDpt) * lFactor;
                     lDivisor = lFactor;
                 case 1:
                     lFactor = knx.paramByte(iParamIndex + 9) * gIsExternalValueValid[lExtKoIndex]; // factor for external value 1
-                    lDivident += (float)knx.getGroupObject(lExtKoIndex + SENS_KoExt1Temp).value(getDPT(iDpt)) * lFactor;
+                    lDivident += (float)knx.getGroupObject(lExtKoIndex + SENS_KoExt1Temp).value(iDpt) * lFactor;
                     lDivisor += lFactor;
                     lFactor = knx.paramByte(iParamIndex + 8); // factor for internal value
                     lDivident += lValue * lFactor;
@@ -311,7 +312,7 @@ void SensorModule::processSensor(sSensorInfo* cData, getSensorValue fGetSensorVa
             {
                 // smoothing (? glätten ?) of the new value
                 // Formel: Value = ValueAlt + (ValueNeu - ValueAlt) / p
-                float lValueAlt = (float)knx.getGroupObject(iKoNumber).value(getDPT(iDpt));
+                float lValueAlt = (float)knx.getGroupObject(iKoNumber).value(iDpt);
                 if (!(lForce && lValueAlt == 0.0f))
                 {
                     lValue = lValueAlt + (lValue - lValueAlt) / knx.paramByte(iParamIndex + 6);
@@ -329,7 +330,7 @@ void SensorModule::processSensor(sSensorInfo* cData, getSensorValue fGetSensorVa
                         lSend = true;
                 }
                 // we always store the new value in KO, even it it is not sent (to satisfy potential read request)
-                knx.getGroupObject(iKoNumber).valueNoSend(lValue, getDPT(iDpt));
+                knx.getGroupObject(iKoNumber).valueNoSend(lValue, iDpt);
             }
         }
         else
@@ -344,7 +345,7 @@ void SensorModule::processSensor(sSensorInfo* cData, getSensorValue fGetSensorVa
     {
         if ((getError() & iMeasureType) == 0)
         {
-            float lValue = (float)knx.getGroupObject(iKoNumber).value(getDPT(iDpt));
+            float lValue = (float)knx.getGroupObject(iKoNumber).value(iDpt);
             knx.getGroupObject(iKoNumber).objectWritten();
             cData->lastSentValue = lValue;
         }
@@ -372,8 +373,8 @@ bool SensorModule::inPolygon(sPoint* iPoly, uint8_t iLen, float iX, float iY)
 // Dewpoint is a virtual sensor and might be implemented on sensor class level, but we implement it here (easier and shorter)
 bool SensorModule::calculateDewValue(MeasureType iMeasureType, float& eValue)
 {
-    float lTemp = knx.getGroupObject(SENS_KoTemp).value(getDPT(VAL_DPT_9));
-    float lHum = knx.getGroupObject(SENS_KoHum).value(getDPT(VAL_DPT_9));
+    float lTemp = KoSENS_Temp.value(DPT_Value_Temp);
+    float lHum = KoSENS_Hum.value(DPT_Value_Humidity);
     bool lTempHumValid = (((lTemp < 0.0f) || (lTemp > 0.0f)) && lHum > 0.0f);
     if (lTempHumValid)
     {
@@ -395,9 +396,9 @@ void SensorModule::calculateComfort(bool iForce /*= false*/)
         if (getError() & (Temperature | Humidity))
             return;
 
-        float lTemp = knx.getGroupObject(SENS_KoTemp).value(getDPT(VAL_DPT_9));
-        float lHum = knx.getGroupObject(SENS_KoHum).value(getDPT(VAL_DPT_9));
-        if (knx.paramByte(SENS_Comfort) & SENS_ComfortMask)
+        float lTemp = KoSENS_Temp.value(DPT_Value_Temp);
+        float lHum = KoSENS_Hum.value(DPT_Value_Humidity);
+        if (ParamSENS_Comfort)
         {
             // comfort zone
             uint8_t lComfort = 0;
@@ -409,10 +410,10 @@ void SensorModule::calculateComfort(bool iForce /*= false*/)
             {
                 lComfort = 1;
             }
-            if ((uint8_t)knx.getGroupObject(SENS_KoComfort).value(getDPT(VAL_DPT_5)) != lComfort)
+            if ((uint8_t)KoSENS_Comfort.value(DPT_Value_1_Ucount) != lComfort)
                 lSend = true;
             if (lSend)
-                knx.getGroupObject(SENS_KoComfort).value(lComfort, getDPT(VAL_DPT_5));
+                KoSENS_Comfort.value(lComfort, DPT_Value_1_Ucount);
         }
     }
 }
@@ -428,7 +429,7 @@ void SensorModule::calculateAccuracy(bool iForce /*= false*/)
         if (getError() & Accuracy)
             return;
 
-        if (knx.paramByte(SENS_Accuracy) & SENS_AccuracyMask)
+        if (ParamSENS_Accuracy)
         {
             // get accuracy
             float lAccuracyMeasure;
@@ -436,11 +437,11 @@ void SensorModule::calculateAccuracy(bool iForce /*= false*/)
             if (lSuccess)
             {
                 uint8_t lAccuracy = (uint8_t)lAccuracyMeasure;
-                uint8_t lOldAccuracy = (uint8_t)knx.getGroupObject(SENS_KoSensorAccuracy).value(getDPT(VAL_DPT_5001));
+                uint8_t lOldAccuracy = (uint8_t)KoSENS_SensorAccuracy.value(DPT_Scaling);
                 if (lOldAccuracy != lAccuracy)
                     lSend = true;
                 if (lSend)
-                    knx.getGroupObject(SENS_KoSensorAccuracy).value(lAccuracy, getDPT(VAL_DPT_5001));
+                    KoSENS_SensorAccuracy.value(lAccuracy, DPT_Scaling);
             }
         }
     }
@@ -474,7 +475,7 @@ void SensorModule::calculateAirquality(bool iForce /*= false*/)
         if (getError() & (Voc | Co2))
             return;
 
-        if (knx.paramByte(SENS_Airquality) & SENS_AirqualityMask)
+        if (ParamSENS_Airquality)
         {
             // do not calculate if underlying measures are not yet available
             float lValue = 0;
@@ -485,9 +486,10 @@ void SensorModule::calculateAirquality(bool iForce /*= false*/)
             {
                 // do not calculate if underlying measures are not yet available
                 if (openknxSensorDevicesModule.measureValue(Co2, lValue))
-                    lValue = knx.getGroupObject(SENS_KoCo2).value(getDPT(VAL_DPT_9));
+                    lValue = KoSENS_Co2.value(DPT_Value_AirQuality);
+
                 else if (openknxSensorDevicesModule.measureValue(Co2Calc, lValue))
-                    lValue = knx.getGroupObject(SENS_KoCo2b).value(getDPT(VAL_DPT_9));
+                    lValue = KoSENS_Co2b.value(DPT_Value_AirQuality);
                 else
                     return;
                 lAirquality = getAirquality(lValue, sCo2Limits);
@@ -496,13 +498,13 @@ void SensorModule::calculateAirquality(bool iForce /*= false*/)
             {
                 if (!openknxSensorDevicesModule.measureValue(Voc, lValue))
                     return;
-                lValue = knx.getGroupObject(SENS_KoVoc).value(getDPT(VAL_DPT_9));
+                lValue = KoSENS_Voc.value(DPT_Value_AirQuality);
                 lAirquality = getAirquality(lValue, sVocLimits);
             }
-            if ((uint8_t)knx.getGroupObject(SENS_KoAirquality).value(getDPT(VAL_DPT_5)) != lAirquality)
+            if ((uint8_t)KoSENS_Airquality.value(DPT_Value_1_Ucount) != lAirquality)
                 lSend = true;
             if (lSend)
-                knx.getGroupObject(SENS_KoAirquality).value(lAirquality, getDPT(VAL_DPT_5));
+                KoSENS_Airquality.value(lAirquality, DPT_Value_1_Ucount);
         }
     }
 }
@@ -533,32 +535,32 @@ void SensorModule::processSensors(bool iForce /*= false*/)
     switch (sMeasureType)
     {
         case BIT_Temp:
-            processSensor(&gTemp, readSensorValue, Temperature, 10.0f, 1.0f, SENS_TempOffset, SENS_KoTemp, VAL_DPT_9);
+            processSensor(&gTemp, readSensorValue, Temperature, 10.0f, 1.0f, SENS_TempOffset, SENS_KoTemp, DPT_Value_Temp);
             break;
         case BIT_Hum:
-            processSensor(&gHum, readSensorValue, Humidity, 1.0f, 1.0f, SENS_HumOffset, SENS_KoHum, VAL_DPT_9);
+            processSensor(&gHum, readSensorValue, Humidity, 1.0f, 1.0f, SENS_HumOffset, SENS_KoHum, DPT_Value_Humidity);
             break;
         case BIT_Pre:
-            processSensor(&gPre, readSensorValue, Pressure, 0.01f, 1.0f, SENS_PreOffset, SENS_KoPre, VAL_DPT_9);
+            processSensor(&gPre, readSensorValue, Pressure, 0.01f, 1.0f, SENS_PreOffset, SENS_KoPre, DPT_Value_Pres);
             break;
         case BIT_Voc:
-            processSensor(&gVoc, readSensorValue, Voc, 1.0f, 1.0f, SENS_VocOffset, SENS_KoVoc, VAL_DPT_9);
+            processSensor(&gVoc, readSensorValue, Voc, 1.0f, 1.0f, SENS_VocOffset, SENS_KoVoc, DPT_Value_AirQuality);
             break;
         case BIT_Co2:
-            processSensor(&gCo2, readSensorValue, Co2, 1.0f, 1.0f, SENS_Co2Offset, SENS_KoCo2, VAL_DPT_9);
+            processSensor(&gCo2, readSensorValue, Co2, 1.0f, 1.0f, SENS_Co2Offset, SENS_KoCo2, DPT_Value_AirQuality);
             break;
         case BIT_Co2Calc:
-            processSensor(&gCo2b, readSensorValue, Co2Calc, 1.0f, 1.0f, SENS_Co2Offset, SENS_KoCo2b, VAL_DPT_9);
+            processSensor(&gCo2b, readSensorValue, Co2Calc, 1.0f, 1.0f, SENS_Co2Offset, SENS_KoCo2b, DPT_Value_AirQuality);
             break;
         case BIT_LOGIC: // dew value, this constant is misleading...
             if ((gSensor & (BIT_Temp | BIT_Hum)) == (BIT_Temp | BIT_Hum))
-                processSensor(&gDew, SensorModule::calculateDewValue, static_cast<MeasureType>(Temperature | Humidity), 10.0f, 1.0f, SENS_DewOffset, SENS_KoDewpoint, VAL_DPT_9);
+                processSensor(&gDew, SensorModule::calculateDewValue, static_cast<MeasureType>(Temperature | Humidity), 10.0f, 1.0f, SENS_DewOffset, SENS_KoDewpoint, DPT_Value_Temp);
             break;
         case BIT_LUX:
-            processSensor(&gLux, readSensorValue, Lux, 1.0f, 1.0f, SENS_LuxOffset, SENS_KoLux, VAL_DPT_9);
+            processSensor(&gLux, readSensorValue, Lux, 1.0f, 1.0f, SENS_LuxOffset, SENS_KoLux, DPT_Value_Lux);
             break;
         case BIT_TOF:
-            processSensor(&gTof, readSensorValue, Tof, 1.0f, 1.0f, SENS_TofOffset, SENS_KoTof, VAL_DPT_7);
+            processSensor(&gTof, readSensorValue, Tof, 1.0f, 1.0f, SENS_TofOffset, SENS_KoTof, DPT_Value_2_Ucount);
             break;
         case 0x400:
             if ((gSensor & (BIT_Temp | BIT_Hum)) == (BIT_Temp | BIT_Hum))
@@ -645,7 +647,7 @@ void SensorModule::processInputKo(GroupObject& iKo)
         // println("Request values called");
         // print("KO-Value is ");
         // println((bool)iKo.value(getDpt(VAL_DPT_1)));
-        if ((bool)iKo.value(getDPT(VAL_DPT_1)))
+        if ((bool)iKo.value(DPT_Bool))
             gForceSensorRead = true;
     }
     else if (iKo.asap() >= SENS_KoExt1Temp && iKo.asap() <= SENS_KoExt2Tof)

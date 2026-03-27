@@ -55,7 +55,7 @@ class SensorModule : public OpenKNX::Module
     void addSensorMetadata(Sensor* iSensor, uint8_t iSensorId, MeasureType iMeasureType);
     void startSensor();
     static bool readSensorValue(MeasureType iMeasureType, float& eValue);
-    void processSensor(sSensorInfo* cData, getSensorValue fGetSensorValue, MeasureType iMeasureType, float iOffsetFactor, float iValueFactor, uint16_t iParamIndex, uint16_t iKoNumber, uint8_t iDpt);
+    void processSensor(sSensorInfo* cData, getSensorValue fGetSensorValue, MeasureType iMeasureType, float iOffsetFactor, float iValueFactor, uint16_t iParamIndex, uint16_t iKoNumber, const Dpt &iDpt);
     bool inPolygon(sPoint* iPoly, uint8_t iLen, float iX, float iY);
     void calculateComfort(bool iForce = false);
     void calculateAccuracy(bool iForce = false);
