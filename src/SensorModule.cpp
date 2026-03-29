@@ -252,8 +252,8 @@ void SensorModule::processSensor(sSensorInfo* cData, getSensorValue fGetSensorVa
 
     // process send cycle
     uint32_t lCycle = paramDelay(knx.paramWord(iParamIndex + 1));
+    GroupObject& lKo = knx.getGroupObject(iKoNumber);
 
-    
     // we waited enough, let's send the value
     if (lCycle && delayCheck(cData->sendDelay, lCycle))
         lSend = true;
@@ -283,20 +283,17 @@ void SensorModule::processSensor(sSensorInfo* cData, getSensorValue fGetSensorVa
             float lDivisor = 0.0f;
             float lDivident = 0.0f;
             float lFactor = 0.0f;
-            uint8_t lExtKoIndex = (iKoNumber - SENS_KoTemp) * 2;
-            if (iKoNumber > SENS_KoLux)
-            {
-                lExtKoIndex = (iKoNumber - SENS_KoLux + 5) * 2;
-            }
+            // pay attention on extra calucated CO2-VOC Ko
+            uint8_t lExtKoIndex = (((iKoNumber > SENS_KoCo2) ? iKoNumber - 1 : iKoNumber) - SENS_KoTemp) / 3 * 2;
             switch (lNumExternalValues)
             {
                 case 2:
                     lFactor = knx.paramByte(iParamIndex + 10) * gIsExternalValueValid[lExtKoIndex + 1]; // factor for external value 2
-                    lDivident = (float)knx.getGroupObject(lExtKoIndex + SENS_KoExt2Temp).value(iDpt) * lFactor;
+                    lDivident = (float)knx.getGroupObject(iKoNumber + (iKoNumber == SENS_KoCo2 ? 3 : 2)).value(iDpt) * lFactor;
                     lDivisor = lFactor;
                 case 1:
                     lFactor = knx.paramByte(iParamIndex + 9) * gIsExternalValueValid[lExtKoIndex]; // factor for external value 1
-                    lDivident += (float)knx.getGroupObject(lExtKoIndex + SENS_KoExt1Temp).value(iDpt) * lFactor;
+                    lDivident += (float)knx.getGroupObject(iKoNumber + (iKoNumber == SENS_KoCo2 ? 2 : 1)).value(iDpt) * lFactor;
                     lDivisor += lFactor;
                     lFactor = knx.paramByte(iParamIndex + 8); // factor for internal value
                     lDivident += lValue * lFactor;
@@ -312,25 +309,32 @@ void SensorModule::processSensor(sSensorInfo* cData, getSensorValue fGetSensorVa
             {
                 // smoothing (? glätten ?) of the new value
                 // Formel: Value = ValueAlt + (ValueNeu - ValueAlt) / p
-                float lValueAlt = (float)knx.getGroupObject(iKoNumber).value(iDpt);
-                if (!(lForce && lValueAlt == 0.0f))
+                float lValueAlt = (float)lKo.value(iDpt);
+                uint8_t lSmoothingFactor = knx.paramByte(iParamIndex + 6);
+                if (!lForce && lKo.initialized() && lSmoothingFactor > 0)
                 {
-                    lValue = lValueAlt + (lValue - lValueAlt) / knx.paramByte(iParamIndex + 6);
+                    lValue = lValueAlt + (lValue - lValueAlt) / (float)lSmoothingFactor;
                 }
-                // evaluate sending conditions (relative delta / absolute delta)
-                if (cData->lastSentValue != 0.0f)
+                // evaluate sending conditions: relative delta
+                // intended: Do not send if values are near 0
+                if (abs(lValue) >= 1.0f)
                 {
-                    float lDelta = 100.0f - lValue / cData->lastSentValue * 100.0f;
+                    float lDelta = 100.0f;
+                    if (cData->lastSentValue != 0.0f)
+                    {
+                        lDelta = 100.0f * (cData->lastSentValue - lValue) / cData->lastSentValue;
+                    }
                     uint8_t lPercent = knx.paramByte(iParamIndex + 5);
-                    if (lPercent > 0 && (uint8_t)round(abs(lDelta)) >= lPercent)
-                        lSend = true;
-                    float lAbsolute = knx.paramWord(iParamIndex + 3) / iOffsetFactor;
-                    float lDiff = abs(lValue - cData->lastSentValue);
-                    if (lAbsolute > 0.0f && lDiff >= lAbsolute)
+                    if (lPercent > 0 && (uint8_t)floor(abs(lDelta)) >= lPercent)
                         lSend = true;
                 }
+                // evaluate sending conditions: absolute delta
+                float lAbsolute = knx.paramWord(iParamIndex + 3) / iOffsetFactor;
+                float lDiff = abs(lValue - cData->lastSentValue);
+                if (lAbsolute > 0.0f && lDiff >= lAbsolute)
+                    lSend = true;
                 // we always store the new value in KO, even it it is not sent (to satisfy potential read request)
-                knx.getGroupObject(iKoNumber).valueNoSend(lValue, iDpt);
+                lKo.valueNoSend(lValue, iDpt);
             }
         }
         else
@@ -343,12 +347,12 @@ void SensorModule::processSensor(sSensorInfo* cData, getSensorValue fGetSensorVa
     // send rate limitation, minimum send interval is 1 second
     if (lSend && delayCheck(cData->sendDelay, 1000))
     {
-        if ((getError() & iMeasureType) == 0)
-        {
-            float lValue = (float)knx.getGroupObject(iKoNumber).value(iDpt);
-            knx.getGroupObject(iKoNumber).objectWritten();
+        // if ((getError() & iMeasureType) == 0)
+        // {
+            float lValue = (float)lKo.value(iDpt);
+            lKo.objectWritten();
             cData->lastSentValue = lValue;
-        }
+        // }
         cData->sendDelay = delayTimerInit();
     }
 }
@@ -650,10 +654,40 @@ void SensorModule::processInputKo(GroupObject& iKo)
         if ((bool)iKo.value(DPT_Bool))
             gForceSensorRead = true;
     }
-    else if (iKo.asap() >= SENS_KoExt1Temp && iKo.asap() <= SENS_KoExt2Tof)
+    else if (iKo.asap() >= SENS_KoExt1Temp && iKo.asap() <= SENS_KoExt2Temp)
     {
         // as soon as we receive any external sensor value, we mark this in our validity map
         gIsExternalValueValid[iKo.asap() - SENS_KoExt1Temp] = 1;
+    }
+    else if (iKo.asap() >= SENS_KoExt1Hum && iKo.asap() <= SENS_KoExt2Hum)
+    {
+        // as soon as we receive any external sensor value, we mark this in our validity map
+        gIsExternalValueValid[iKo.asap() - SENS_KoExt1Hum + 2] = 1;
+    }
+    else if (iKo.asap() >= SENS_KoExt1Pre && iKo.asap() <= SENS_KoExt2Pre)
+    {
+        // as soon as we receive any external sensor value, we mark this in our validity map
+        gIsExternalValueValid[iKo.asap() - SENS_KoExt1Pre + 4] = 1;
+    }
+    else if (iKo.asap() >= SENS_KoExt1Voc && iKo.asap() <= SENS_KoExt2Voc)
+    {
+        // as soon as we receive any external sensor value, we mark this in our validity map
+        gIsExternalValueValid[iKo.asap() - SENS_KoExt1Voc + 6] = 1;
+    }
+    else if (iKo.asap() >= SENS_KoExt1Co2 && iKo.asap() <= SENS_KoExt2Co2)
+    {
+        // as soon as we receive any external sensor value, we mark this in our validity map
+        gIsExternalValueValid[iKo.asap() - SENS_KoExt1Co2 + 8] = 1;
+    }
+    else if (iKo.asap() >= SENS_KoExt1Lux && iKo.asap() <= SENS_KoExt2Lux)
+    {
+        // as soon as we receive any external sensor value, we mark this in our validity map
+        gIsExternalValueValid[iKo.asap() - SENS_KoExt1Lux + 10] = 1;
+    }
+    else if (iKo.asap() >= SENS_KoExt1Tof && iKo.asap() <= SENS_KoExt2Tof)
+    {
+        // as soon as we receive any external sensor value, we mark this in our validity map
+        gIsExternalValueValid[iKo.asap() - SENS_KoExt1Tof + 12] = 1;
     }
 }
 
