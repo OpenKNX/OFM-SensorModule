@@ -317,9 +317,9 @@ void SensorModule::processSensor(sSensorInfo* cData, getSensorValue fGetSensorVa
                 }
                 // evaluate sending conditions: relative delta
                 // intended: Do not send if values are near 0
-                if (abs(lValue) >= 1.0f)
+                if (abs(lValue) >= 0.1f)
                 {
-                    float lDelta = 100.0f;
+                    float lDelta = 1000.0f;
                     if (cData->lastSentValue != 0.0f)
                     {
                         lDelta = 100.0f * (cData->lastSentValue - lValue) / cData->lastSentValue;
@@ -327,6 +327,10 @@ void SensorModule::processSensor(sSensorInfo* cData, getSensorValue fGetSensorVa
                     uint8_t lPercent = knx.paramByte(iParamIndex + 5);
                     if (lPercent > 0 && (uint8_t)floor(abs(lDelta)) >= lPercent)
                         lSend = true;
+                } else if (cData->lastSentValue != 0.0f)
+                {
+                    lValue = 0.0f;
+                    lSend = true;
                 }
                 // evaluate sending conditions: absolute delta
                 float lAbsolute = knx.paramWord(iParamIndex + 3) / iOffsetFactor;
@@ -345,7 +349,7 @@ void SensorModule::processSensor(sSensorInfo* cData, getSensorValue fGetSensorVa
     }
 
     // send rate limitation, minimum send interval is 1 second
-    if (lSend && delayCheck(cData->sendDelay, 1000))
+    if (lSend && delayCheck(cData->sendDelay, (iMeasureType == Tof ? 500 : 1000)))
     {
         // if ((getError() & iMeasureType) == 0)
         // {
