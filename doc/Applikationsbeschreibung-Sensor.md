@@ -54,6 +54,13 @@ Die Applikation für das SensorModule erlaubt die Parametrisierung des Sensormod
 
 Im folgenden werden Änderungen an dem Dokument erfasst, damit man nicht immer das Gesamtdokument lesen muss, um Neuerungen zu erfahren.
 
+31.03.2026: Firmware 4.11.3, Applikation 4.11
+
+* Das Sendeverhalten bei prozentueller Abweichung ist jetzt verbessert, es wird sichergestellt, dass auch 0-Werte gesendet werden können
+* Es konnte passieren, dass beim Senden mit absoluter Abweichung nach dem Senden eines 0-Wertes das Senden aufgehört hat, obwohl beim Lesen noch plausible Werte zurückgegeben wurden. Dies iat korrigiert.
+* Wenn mit einem Sensorwert weitere externe Werte verrechnet wurden, konnte es eine Speicherverletzung geben. Das ist jetzt korrigiert
+* Die Verschiebung der Kommunikationsobjekte in der Version 4.10 hatte noch einen Seiteneffekt bei internen Berechnungen, das ist jetzt behoben.
+
 19.01.2026: Firmware 4.10.1, Applikation 4.10
 
 * FIX: Startup-Problem vom SDC4x-Sensor ist behoben, es konnte passieren, dass der Sensor nach einem Neustart keine Werte gesendet hat und - selten - auch weitere Sensoren am Senden von Werten gehindert hat.
