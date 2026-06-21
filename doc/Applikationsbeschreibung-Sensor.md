@@ -54,6 +54,11 @@ Die Applikation für das SensorModule erlaubt die Parametrisierung des Sensormod
 
 Im folgenden werden Änderungen an dem Dokument erfasst, damit man nicht immer das Gesamtdokument lesen muss, um Neuerungen zu erfahren.
 
+20.06.2026: Firmware 4.11.4, Applikation 4.11
+
+* Wenn ein Sensor NaN (Not a Number, ungültiger Wert) liefert, wird keine Werteberechnung mehr durchgeführt. Damit wird auch bei defekten oder ausgefallenen Sensoren nicht mehr unbeabsichtigt viele Telegramme auf den Bus gesendet werden.
+* Eine Senderatenbegrenzung verhindert, dass der Bus von Sensorwerten geflutet werden kann.
+
 31.03.2026: Firmware 4.11.3, Applikation 4.11
 
 * Das Sendeverhalten bei prozentueller Abweichung ist jetzt verbessert, es wird sichergestellt, dass auch 0-Werte gesendet werden können

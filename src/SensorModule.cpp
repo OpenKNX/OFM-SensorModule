@@ -273,7 +273,7 @@ void SensorModule::processSensor(sSensorInfo* cData, getSensorValue fGetSensorVa
         }
         float lValue;
         bool lValid = fGetSensorValue(iMeasureType, lValue);
-        if (lValid)
+        if (lValid && !(lValue != lValue)) // (lValue != lValue) == true means NaN
         {
             // we have now the internal sensor value, we correct it now
             lValue = lValue / iValueFactor;
