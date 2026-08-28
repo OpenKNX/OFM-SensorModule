@@ -26,7 +26,7 @@ Die Applikation für das SensorModule erlaubt die Parametrisierung des Sensormod
     * [Optischer Signalgeber vorhanden (RGB-LED)?](#optischer-signalgeber-vorhanden-rgb-led)
   * [**Experteneinstellungen**](#experteneinstellungen)
 * **+ [Standardsensoren](#standardsensoren)**
-  * Konfiguration Standardsesnsoren am Beispiel Temperatur
+  * Konfiguration Standardsensoren am Beispiel Temperatur
     * [~ anpassen (interner Messwert)](#temperatur-anpassen-interner-messwert)
     * [Externe Werte](#externe-werte)
     * [Sendeverhalten](#sendeverhalten)
