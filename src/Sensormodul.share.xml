@@ -108,11 +108,13 @@
               <!-- Parameter types for Sensormodule -->
               <!-- align here to constants SENX_XXXX in Sensor.h -->
               <ParameterType Id="%AID%_PT-TempSensors" Name="TempSensors">
-                <TypeRestriction Base="Value" SizeInBit="4">
+                <TypeRestriction Base="Value" SizeInBit="8">
                   <Enumeration Text="Kein Sensor" Value="0" Id="%ENID%" />
+                  <Enumeration Text="SHT2x" Value="17" Id="%ENID%" />
                   <Enumeration Text="SHT3x" Value="1" Id="%ENID%" />
+                  <Enumeration Text="SHT4x" Value="15" Id="%ENID%" />
                   <Enumeration Text="BME280 / BMP280" Value="2" Id="%ENID%" />
-                  <Enumeration Text="BME680" Value="3" Id="%ENID%" />
+                  <Enumeration Text="BME680 / BME688" Value="3" Id="%ENID%" />
                   <Enumeration Text="SCD40" Value="9" Id="%ENID%" />
                   <Enumeration Text="SCD41" Value="13" Id="%ENID%" />
                   <Enumeration Text="Analog (PT100/1000)" Value="14" Id="%ENID%" />
@@ -121,11 +123,13 @@
               </ParameterType>
               <!-- align here to constants SENX_XXXX in Sensor.h -->
               <ParameterType Id="%AID%_PT-HumSensors" Name="HumSensors">
-                <TypeRestriction Base="Value" SizeInBit="4">
+                <TypeRestriction Base="Value" SizeInBit="8">
                   <Enumeration Text="Kein Sensor" Value="0" Id="%ENID%" />
+                  <Enumeration Text="SHT2x" Value="17" Id="%ENID%" />
                   <Enumeration Text="SHT3x" Value="1" Id="%ENID%" />
+                  <Enumeration Text="SHT4x" Value="15" Id="%ENID%" />
                   <Enumeration Text="BME280" Value="2" Id="%ENID%" />
-                  <Enumeration Text="BME680" Value="3" Id="%ENID%" />
+                  <Enumeration Text="BME680 / BME688" Value="3" Id="%ENID%" />
                   <Enumeration Text="SCD30 (nicht empfohlen)" Value="4" Id="%ENID%" />
                   <Enumeration Text="SCD40" Value="9" Id="%ENID%" />
                   <Enumeration Text="SCD41" Value="13" Id="%ENID%" />
@@ -133,40 +137,40 @@
               </ParameterType>
               <!-- align here to constants SENX_XXXX in Sensor.h -->
               <ParameterType Id="%AID%_PT-PreSensors" Name="PreSensors">
-                <TypeRestriction Base="Value" SizeInBit="4">
+                <TypeRestriction Base="Value" SizeInBit="8">
                   <Enumeration Text="Kein Sensor" Value="0" Id="%ENID%" />
                   <Enumeration Text="BME280 / BMP280" Value="2" Id="%ENID%" />
-                  <Enumeration Text="BME680" Value="3" Id="%ENID%" />
+                  <Enumeration Text="BME680 / BME688" Value="3" Id="%ENID%" />
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="%AID%_PT-VocSensors" Name="VocSensors">
-                <TypeRestriction Base="Value" SizeInBit="4">
+                <TypeRestriction Base="Value" SizeInBit="8">
                   <Enumeration Text="Kein Sensor" Value="0" Id="%ENID%" />
-                  <Enumeration Text="BME680" Value="3" Id="%ENID%" />
+                  <Enumeration Text="BME680 / BME688" Value="3" Id="%ENID%" />
                   <Enumeration Text="IAQCore" Value="5" Id="%ENID%" />
-                  <!-- <Enumeration Text="SGP30" Value="8" Id="%ENID%" /> -->
+                  <Enumeration Text="SGP30" Value="8" Id="%ENID%" />
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="%AID%_PT-Co2Sensors" Name="Co2Sensors">
-                <TypeRestriction Base="Value" SizeInBit="4">
+                <TypeRestriction Base="Value" SizeInBit="8">
                   <Enumeration Text="Kein Sensor" Value="0" Id="%ENID%" />
-                  <Enumeration Text="BME680" Value="3" Id="%ENID%" />
+                  <Enumeration Text="BME680 / BME688" Value="3" Id="%ENID%" />
                   <Enumeration Text="IAQCore" Value="5" Id="%ENID%" />
-                  <!-- <Enumeration Text="SGP30" Value="8" Id="%ENID%" /> -->
                   <Enumeration Text="SCD30 (nicht empfohlen)" Value="4" Id="%ENID%" />
                   <Enumeration Text="SCD40" Value="9" Id="%ENID%" />
                   <Enumeration Text="SCD41" Value="13" Id="%ENID%" />
+                  <Enumeration Text="SGP30" Value="8" Id="%ENID%" />
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="%AID%_PT-LuxSensors" Name="LuxSensors">
-                <TypeRestriction Base="Value" SizeInBit="4">
+                <TypeRestriction Base="Value" SizeInBit="8">
                   <Enumeration Text="Kein Sensor" Value="0" Id="%ENID%" />
                   <Enumeration Text="OPT3001" Value="6" Id="%ENID%" />
                   <Enumeration Text="VEML7700" Value="11" Id="%ENID%" />
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="%AID%_PT-TofSensors" Name="TofSensors">
-                <TypeRestriction Base="Value" SizeInBit="4" UIHint="DropDown">
+                <TypeRestriction Base="Value" SizeInBit="8" UIHint="DropDown">
                   <Enumeration Text="Kein Sensor" Value="0" Id="%ENID%" />
                   <Enumeration Text="VL53L1X / TOF400" Value="7" Id="%ENID%" />
                 </TypeRestriction>
@@ -261,24 +265,24 @@
               </Union>
               <op:usePart name="MESS" xpath="//Parameters/*" instanceFrom="6" />
 
-              <Union SizeInBit="32">
+              <Union SizeInBit="64">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="86" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%TT%00200" Name="TempSensor" ParameterType="%AID%_PT-TempSensors" Offset="0" BitOffset="0" Text="Temperatursensor" Value="0" />
-                <Parameter Id="%AID%_UP-%TT%00201" Name="HumSensor" ParameterType="%AID%_PT-HumSensors" Offset="0" BitOffset="4" Text="Luftfeuchtesensor" Value="0" />
-                <Parameter Id="%AID%_UP-%TT%00202" Name="PreSensor" ParameterType="%AID%_PT-PreSensors" Offset="1" BitOffset="0" Text="Luftdrucksensor" Value="0" />
-                <Parameter Id="%AID%_UP-%TT%00203" Name="VocSensor" ParameterType="%AID%_PT-VocSensors" Offset="1" BitOffset="4" Text="Voc-Sensor" Value="0" />
-                <Parameter Id="%AID%_UP-%TT%00204" Name="Co2Sensor" ParameterType="%AID%_PT-Co2Sensors" Offset="2" BitOffset="0" Text="Co2-Sensor" Value="0" />
-                <Parameter Id="%AID%_UP-%TT%00205" Name="LuxSensor" ParameterType="%AID%_PT-LuxSensors" Offset="2" BitOffset="4" Text="Helligkeitssensor" Value="0" />
-                <Parameter Id="%AID%_UP-%TT%00206" Name="TofSensor" ParameterType="%AID%_PT-TofSensors" Offset="3" BitOffset="0" Text="Füllstands- und Näherungssensor" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00201" Name="HumSensor" ParameterType="%AID%_PT-HumSensors" Offset="1" BitOffset="0" Text="Luftfeuchtesensor" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00202" Name="PreSensor" ParameterType="%AID%_PT-PreSensors" Offset="2" BitOffset="0" Text="Luftdrucksensor" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00203" Name="VocSensor" ParameterType="%AID%_PT-VocSensors" Offset="3" BitOffset="0" Text="Voc-Sensor" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00204" Name="Co2Sensor" ParameterType="%AID%_PT-Co2Sensors" Offset="4" BitOffset="0" Text="Co2-Sensor" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00205" Name="LuxSensor" ParameterType="%AID%_PT-LuxSensors" Offset="5" BitOffset="0" Text="Helligkeitssensor" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00206" Name="TofSensor" ParameterType="%AID%_PT-TofSensors" Offset="6" BitOffset="0" Text="Füllstands- und Näherungssensor" Value="0" />
               </Union>
 
               <Union SizeInBit="16">
-                <Memory CodeSegment="%AID%_RS-04-00000" Offset="90" BitOffset="0" />
+                <Memory CodeSegment="%AID%_RS-04-00000" Offset="94" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%TT%00218" Name="SCD41MeasureIntervalDelayBase" ParameterType="%AID%_PT-DelayBase" Offset="0" BitOffset="0" Text="Zeitbasis" Value="0" />
                 <Parameter Id="%AID%_UP-%TT%00219" Name="SCD41MeasureIntervalDelayTime" ParameterType="%AID%_PT-DelayTime" Offset="0" BitOffset="2" Text="Zeit" Value="30" />
               </Union>
               <Union SizeInBit="8">
-                <Memory CodeSegment="%AID%_RS-04-00000" Offset="92" BitOffset="0" />
+                <Memory CodeSegment="%AID%_RS-04-00000" Offset="96" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%TT%00220" Name="PT1000NumWires" ParameterType="%AID%_PT-PT1000NumWires" Offset="0" BitOffset="0" Text="Anzahl Anschlussadern" Value="0" />
                 <Parameter Id="%AID%_UP-%TT%00221" Name="PT100PT1000" ParameterType="%AID%_PT-PT100PT1000" Offset="0" BitOffset="2" Text="Art des Analogsensors" Value="0" />
                 <!-- 5 Bit frei -->

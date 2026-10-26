@@ -182,49 +182,49 @@ void SensorModule::startSensor()
     Sensor* lSensor;
 
     gSensor = 0;
-    uint8_t lSensorId = (knx.paramByte(SENS_TempSensor) & SENS_TempSensorMask) >> SENS_TempSensorShift;
+    uint8_t lSensorId = ParamSENS_TempSensor;
     if (lSensorId > 0)
     {
         gSensor |= BIT_Temp;
         lSensor = openknxSensorDevicesModule.factory(lSensorId, Temperature);
         addSensorMetadata(lSensor, lSensorId, Temperature);
     }
-    lSensorId = (knx.paramByte(SENS_HumSensor) & SENS_HumSensorMask) >> SENS_HumSensorShift;
+    lSensorId = ParamSENS_HumSensor;
     if (lSensorId > 0)
     {
         gSensor |= BIT_Hum;
         lSensor = openknxSensorDevicesModule.factory(lSensorId, Humidity);
         addSensorMetadata(lSensor, lSensorId, Humidity);
     }
-    lSensorId = (knx.paramByte(SENS_PreSensor) & SENS_PreSensorMask) >> SENS_PreSensorShift;
+    lSensorId = ParamSENS_PreSensor;
     if (lSensorId > 0)
     {
         gSensor |= BIT_Pre;
         lSensor = openknxSensorDevicesModule.factory(lSensorId, Pressure);
         addSensorMetadata(lSensor, lSensorId, Pressure);
     }
-    lSensorId = (knx.paramByte(SENS_VocSensor) & SENS_VocSensorMask) >> SENS_VocSensorShift;
+    lSensorId = ParamSENS_VocSensor;
     if (lSensorId > 0)
     {
         gSensor |= BIT_Voc | BIT_Co2Calc;
         lSensor = openknxSensorDevicesModule.factory(lSensorId, static_cast<MeasureType>(Voc | Accuracy | Co2Calc));
         addSensorMetadata(lSensor, lSensorId, static_cast<MeasureType>(Voc | Accuracy | Co2Calc));
     }
-    lSensorId = (knx.paramByte(SENS_Co2Sensor) & SENS_Co2SensorMask) >> SENS_Co2SensorShift;
+    lSensorId = ParamSENS_Co2Sensor;
     if (lSensorId > 0)
     {
         gSensor |= BIT_Co2;
         lSensor = openknxSensorDevicesModule.factory(lSensorId, Co2);
         addSensorMetadata(lSensor, lSensorId, Co2);
     }
-    lSensorId = (knx.paramByte(SENS_LuxSensor) & SENS_LuxSensorMask) >> SENS_LuxSensorShift;
+    lSensorId = ParamSENS_LuxSensor;
     if (lSensorId > 0)
     {
         gSensor |= BIT_LUX;
         lSensor = openknxSensorDevicesModule.factory(lSensorId, Lux);
         addSensorMetadata(lSensor, lSensorId, Lux);
     }
-    lSensorId = (knx.paramByte(SENS_TofSensor) & SENS_TofSensorMask) >> SENS_TofSensorShift;
+    lSensorId = ParamSENS_TofSensor;
     if (lSensorId > 0)
     {
         gSensor |= BIT_TOF;

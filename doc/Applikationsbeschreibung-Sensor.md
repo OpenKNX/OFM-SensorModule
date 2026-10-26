@@ -54,6 +54,18 @@ Die Applikation für das SensorModule erlaubt die Parametrisierung des Sensormod
 
 Im folgenden werden Änderungen an dem Dokument erfasst, damit man nicht immer das Gesamtdokument lesen muss, um Neuerungen zu erfahren.
 
+25.10.2026: Firmware 4.12.1, Applikation 4.12
+
+* NEU: Der BME688 wird jetzt auch unterstützt
+* NEU: Der SHT2x wird jetzt auch unterstützt mit Temperaturkompensation für Luftfeuchte
+* FIX: Beim BME680 gab es noch einen Fehler beim Neustart, der das Laden der bisherigen Kalibrierungswerte verhinderte. Das ist jetzt gelöst.
+
+12.10.2026: Firmware 4.12.0, Applikation 4.12
+
+* NEU: SHT 4.x Sensoren werden jetzt auch unterstützt
+* NEU: SHT 3.x und SHT 4.x Sensoren liefern für Luftfeuchte Werte, die mit dem Temperaturoffset kompensiert werden
+* NEU: Der VOC-Sensor SGP30 wird jetzt auch unterstützt, in diesem Release noch ohne Kompensation über Luftfeuchte
+
 20.06.2026: Firmware 4.11.4, Applikation 4.11
 
 * Wenn ein Sensor NaN (Not a Number, ungültiger Wert) liefert, wird keine Werteberechnung mehr durchgeführt. Damit wird auch bei defekten oder ausgefallenen Sensoren nicht mehr unbeabsichtigt viele Telegramme auf den Bus gesendet werden.
